@@ -34,9 +34,16 @@ Test that your redis brain works!
 
     $ redis-server
 
-### Testing Hubot Locally
+> Linux/Unix reminder: You can terminate any active script with Ctrl-C. This is how to turn of the redis server or ends a *Command Line Interface* (CLI) session with Hubot.
 
-You can test your hubot by running the following in a new terminal window.
+
+## Local Development
+
+You can test hubot locally by running the following in a new terminal window. First turn on the Bot's Brain server.
+
+    $ redis-server
+
+In a separate terminal tab / window.
 
     $ bin/hubot
 
@@ -47,7 +54,7 @@ prompt.
     [Tue Mar 25 2014 03:33:51 GMT-0400 (EDT)] INFO Initializing new data for brain
     Hubot>
 
-If you see redis connection errors (shown below) make certain your redis-server is running (and is installed) in a separate terminal tab/window.
+If you see redis connection errors (shown below) your redis server is likely not running, get on that.
 
     [Tue Mar 25 2014 02:36:33 GMT-0400 (EDT)] ERROR [Error: Redis connection to localhost:6379 failed - connect ECONNREFUSED]
     [Tue Mar 25 2014 02:36:33 GMT-0400 (EDT)] ERROR [Error: Redis connection to localhost:6379 failed - connect ECONNREFUSED]
@@ -64,73 +71,20 @@ Once you are up and running with a prompt you can interact with hubot by typing 
     ...
 
 
-### Scripting
+## Development
 
 Take a look at the scripts in the `./scripts` folder for examples.
-Delete any scripts you think are useless or boring.  Add whatever functionality you
+Add whatever functionality you
 want hubot to have. Read up on what you can do with hubot in the [Scripting Guide](https://github.com/github/hubot/blob/master/docs/scripting.md).
 
-### Redis Persistence
+> See the Development Guidelines for how best to integrate your work with the team.
 
-If you are going to use the `redis-brain.coffee` script from `hubot-scripts`
-(strongly suggested), you will need to add the Redis to Go addon on Heroku which requires a verified
-account or you can create an account at [Redis to Go][redistogo] and manually
-set the `REDISTOGO_URL` variable.
+### Heroku Commands (common)
 
-    $ heroku config:set REDISTOGO_URL="..."
+| Command        | Output       |
+| ------------- |:-------------:|
+| heroku config --remote <server> | Display all Environment Variables for target server |
 
-If you don't require any persistence feel free to remove the
-`redis-brain.coffee` from `hubot-scripts.json` and you don't need to worry
-about redis at all.
-
-[redistogo]: https://redistogo.com/
-
-## Adapters
-
-Adapters are the interface to the service you want your hubot to run on. This
-can be something like Campfire or IRC. There are a number of third party
-adapters that the community have contributed. Check
-[Hubot Adapters][hubot-adapters] for the available ones.
-
-If you would like to run a non-Campfire or shell adapter you will need to add
-the adapter package as a dependency to the `package.json` file in the
-`dependencies` section.
-
-Once you've added the dependency and run `npm install` to install it you can
-then run hubot with the adapter.
-
-    $ bin/hubot -a <adapter>
-
-Where `<adapter>` is the name of your adapter without the `hubot-` prefix.
-
-[hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
-
-## hubot-scripts
-
-There will inevitably be functionality that everyone will want. Instead
-of adding it to hubot itself, you can submit pull requests to
-[hubot-scripts][hubot-scripts].
-
-To enable scripts from the hubot-scripts package, add the script name with
-extension as a double quoted string to the `hubot-scripts.json` file in this
-repo.
-
-[hubot-scripts]: https://github.com/github/hubot-scripts
-
-## external-scripts
-
-Tired of waiting for your script to be merged into `hubot-scripts`? Want to
-maintain the repository and package yourself? Then this added functionality
-maybe for you!
-
-Hubot is now able to load scripts from third-party `npm` packages! To enable
-this functionality you can follow the following steps.
-
-1. Add the packages as dependencies into your `package.json`
-2. `npm install` to make sure those packages are installed
-
-To enable third-party scripts that you've added you will need to add the package
-name as a double quoted string to the `external-scripts.json` file in this repo.
 
 ## Deployment
 
@@ -150,42 +104,14 @@ You'll need to edit the `Procfile` to set the name of your hubot.
 More detailed documentation can be found on the
 [deploying hubot onto Heroku][deploy-heroku] wiki page.
 
-### Deploying to UNIX or Windows
-
-If you would like to deploy to either a UNIX operating system or Windows.
-Please check out the [deploying hubot onto UNIX][deploy-unix] and
-[deploying hubot onto Windows][deploy-windows] wiki pages.
-
-[heroku-node-docs]: http://devcenter.heroku.com/articles/node-js
-[deploy-heroku]: https://github.com/github/hubot/blob/master/docs/deploying/heroku.md
-[deploy-unix]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
-[deploy-windows]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
-
-## Campfire Variables
-
-If you are using the Campfire adapter you will need to set some environment
-variables. Refer to the documentation for other adapters and the configuraiton
-of those, links to the adapters can be found on [Hubot Adapters][hubot-adapters].
-
-Create a separate Campfire user for your bot and get their token from the web
-UI.
-
-    $ heroku config:set HUBOT_CAMPFIRE_TOKEN="..."
-
-Get the numeric IDs of the rooms you want the bot to join, comma delimited. If
-you want the bot to connect to `https://mysubdomain.campfirenow.com/room/42`
-and `https://mysubdomain.campfirenow.com/room/1024` then you'd add it like this:
-
-    $ heroku config:set HUBOT_CAMPFIRE_ROOMS="42,1024"
-
-Add the subdomain hubot should connect to. If you web URL looks like
-`http://mysubdomain.campfirenow.com` then you'd add it like this:
-
-    $ heroku config:set HUBOT_CAMPFIRE_ACCOUNT="mysubdomain"
-
-[hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
 
 ## Restart the bot
 
 You may want to get comfortable with `heroku logs` and `heroku restart`
 if you're having issues.
+
+
+[heroku-node-docs]: http://devcenter.heroku.com/articles/node-js
+[deploy-heroku]: https://github.com/github/hubot/blob/master/docs/deploying/heroku.md
+[deploy-unix]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
+[deploy-windows]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
