@@ -1,22 +1,22 @@
 {
-	"name": "hosted-hubot",
-	"version": "2.7.1",
+	"name": "wdd-hubot",
+	"version": "0.1.0",
 	"private": true,
-	"author": "GitHub Inc.",
+	"author": "Chris Chapman",
 	"keywords": [
 		"github",
 		"hubot",
-		"campfire",
+		"slack",
 		"bot"
 	],
-	"description": "A simple helpful robot for your Company",
+	"description": "Full Sail's First AI Bot.",
 	"licenses": [{
 		"type": "MIT",
 		"url": "https://github.com/github/hubot/raw/master/LICENSE"
 	}],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/github/hubot.git"
+		"url": "https://github.com/reactivepixel/WDD-Hubot.git"
 	},
 	"dependencies": {
 		"hubot": ">= 2.6.0 < 3.0.0",
