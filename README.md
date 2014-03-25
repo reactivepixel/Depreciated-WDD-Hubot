@@ -39,7 +39,7 @@ Test that your redis brain works!
 
 ## Local Development
 
-You can test hubot locally by running the following in a new terminal window. First turn on the Bot's Brain server.
+You can test hubot locally by running the following in a new terminal tab / window. First turn on the Bot's Brain server.
 
     $ redis-server
 
