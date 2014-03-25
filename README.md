@@ -1,26 +1,60 @@
-# Hubot
+# WDD-Hubot
 
-This is a version of GitHub's Campfire bot, hubot. He's pretty cool.
+This is a version of GitHub's Campfire bot, hubot.
+He's pretty cool under the control of Full Sail University's Staff and Students (until he's fully self-aware).
 
-This version is designed to be deployed on [Heroku][heroku]. This README was generated for you by hubot to help get you started. Definitely update and improve to talk about your own instance, how to use and deploy, what functionality he has, etc!
+This version is designed to be deployed on [Heroku][heroku].
 
 [heroku]: http://www.heroku.com
 
+## Requirements
+* Node.js
+* NPM
+* Redis
+
+These requirements and installation instructions are intended for a OS X local Development Environment.
+
+### Installing Redis
+You will need to build Redis from source on OS X, to do this first [Download](http://redis.io/download) the latest stable version.
+
+Unpack the .tar.gz by double-clicking. Then run the following commands to test the source, compile, and then move it into place.
+
+    $ cd ~Downloads/redis-2.8.7
+    $ sudo make test
+
+A significant number of compiling tests will run. Continue only if you get a "All tests passed without errors!" message. Alternativly you can disable the redis-brain of the bot for local testing (not recommended, but it works in a pinch).
+
+Next run:
+
+    $ sudo make
+    $ sudo mv src/redis-server /user/bin
+    $ sudo mv src/redis-cli /user/bin
+
+Test that your redis brain works!
+
+    $ redis-server
+
 ### Testing Hubot Locally
 
-You can test your hubot by running the following.
+You can test your hubot by running the following in a new terminal window.
 
-    % bin/hubot
+    $ bin/hubot
 
 You'll see some start up output about where your scripts come from and a
 prompt.
 
-    [Sun, 04 Dec 2011 18:41:11 GMT] INFO Loading adapter shell
-    [Sun, 04 Dec 2011 18:41:11 GMT] INFO Loading scripts from /home/tomb/Development/hubot/scripts
-    [Sun, 04 Dec 2011 18:41:11 GMT] INFO Loading scripts from /home/tomb/Development/hubot/src/scripts
+    Hubot> [Tue Mar 25 2014 03:33:51 GMT-0400 (EDT)] WARNING The HUBOT_AUTH_ADMIN environment variable not set
+    [Tue Mar 25 2014 03:33:51 GMT-0400 (EDT)] INFO Initializing new data for brain
     Hubot>
 
-Then you can interact with hubot by typing `hubot help`.
+If you see redis connection errors (shown below) make certain your redis-server is running (and is installed) in a separate terminal tab/window.
+
+    [Tue Mar 25 2014 02:36:33 GMT-0400 (EDT)] ERROR [Error: Redis connection to localhost:6379 failed - connect ECONNREFUSED]
+    [Tue Mar 25 2014 02:36:33 GMT-0400 (EDT)] ERROR [Error: Redis connection to localhost:6379 failed - connect ECONNREFUSED]
+    [Tue Mar 25 2014 02:36:33 GMT-0400 (EDT)] ERROR [Error: Redis connection to localhost:6379 failed - connect ECONNREFUSED]
+
+
+Once you are up and running with a prompt you can interact with hubot by typing `hubot help`.
 
     Hubot> hubot help
 
@@ -43,7 +77,7 @@ If you are going to use the `redis-brain.coffee` script from `hubot-scripts`
 account or you can create an account at [Redis to Go][redistogo] and manually
 set the `REDISTOGO_URL` variable.
 
-    % heroku config:set REDISTOGO_URL="..."
+    $ heroku config:set REDISTOGO_URL="..."
 
 If you don't require any persistence feel free to remove the
 `redis-brain.coffee` from `hubot-scripts.json` and you don't need to worry
@@ -65,7 +99,7 @@ the adapter package as a dependency to the `package.json` file in the
 Once you've added the dependency and run `npm install` to install it you can
 then run hubot with the adapter.
 
-    % bin/hubot -a <adapter>
+    $ bin/hubot -a <adapter>
 
 Where `<adapter>` is the name of your adapter without the `hubot-` prefix.
 
@@ -100,14 +134,14 @@ name as a double quoted string to the `external-scripts.json` file in this repo.
 
 ## Deployment
 
-    % heroku create --stack cedar
-    % git push heroku master
-    % heroku ps:scale app=1
+    $ heroku create --stack cedar
+    $ git push heroku master
+    $ heroku ps:scale app=1
 
 If your Heroku account has been verified you can run the following to enable
 and add the Redis to Go addon to your app.
 
-    % heroku addons:add redistogo:nano
+    $ heroku addons:add redistogo:nano
 
 If you run into any problems, checkout Heroku's [docs][heroku-node-docs].
 
@@ -136,18 +170,18 @@ of those, links to the adapters can be found on [Hubot Adapters][hubot-adapters]
 Create a separate Campfire user for your bot and get their token from the web
 UI.
 
-    % heroku config:set HUBOT_CAMPFIRE_TOKEN="..."
+    $ heroku config:set HUBOT_CAMPFIRE_TOKEN="..."
 
 Get the numeric IDs of the rooms you want the bot to join, comma delimited. If
-you want the bot to connect to `https://mysubdomain.campfirenow.com/room/42` 
+you want the bot to connect to `https://mysubdomain.campfirenow.com/room/42`
 and `https://mysubdomain.campfirenow.com/room/1024` then you'd add it like this:
 
-    % heroku config:set HUBOT_CAMPFIRE_ROOMS="42,1024"
+    $ heroku config:set HUBOT_CAMPFIRE_ROOMS="42,1024"
 
 Add the subdomain hubot should connect to. If you web URL looks like
 `http://mysubdomain.campfirenow.com` then you'd add it like this:
 
-    % heroku config:set HUBOT_CAMPFIRE_ACCOUNT="mysubdomain"
+    $ heroku config:set HUBOT_CAMPFIRE_ACCOUNT="mysubdomain"
 
 [hubot-adapters]: https://github.com/github/hubot/blob/master/docs/adapters.md
 
