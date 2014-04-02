@@ -1,6 +1,6 @@
 # WDD-Hubot
 
-This is a version of GitHub's Campfire bot, hubot.
+This is a version of GitHub's Campfire bot, hubot..
 He's pretty and cool under the control of Full Sail University's Staff and Students (until he's fully self-aware).
 
 This version is designed to be deployed on [Heroku][heroku].
