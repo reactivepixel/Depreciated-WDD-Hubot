@@ -1,14 +1,18 @@
 #Description:
 #  Helps you make desicions
-
+#
 # Dependencies:
 #   None
-
+#
 # Configuration:
 #   None
-
+#
 # Commands:
-#   hubot force me thin1,thin2,thing3 - Receive an answer
+#   hubot force me <thin1>, <thin2>, <thing3> - Receive a choice
+#
+# Author:
+#   Russell Schlup
+
 module.exports = (robot) ->
   robot.respond /force me (.*)/i, (msg) ->
     data = msg.match[1].trim()
