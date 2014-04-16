@@ -1,14 +1,14 @@
-//Description:
-//  Helps you make desicions
+#Description:
+#  Helps you make desicions
 
-// Dependencies:
-//   None
+# Dependencies:
+#   None
 
-// Configuration:
-//   None
+# Configuration:
+#   None
 
-// Commands:
-//   hubot force me thin1,thin2,thing3 - Receive an answer
+# Commands:
+#   hubot force me thin1,thin2,thing3 - Receive an answer
 
 module.exports = function(robot) {
   robot.respond(/force me (.*)/i, function(msg) {
