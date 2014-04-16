@@ -27,8 +27,8 @@ A significant number of compiling tests will run. Continue only if you get a "Al
 Next run:
 
     $ sudo make
-    $ sudo mv src/redis-server /user/bin
-    $ sudo mv src/redis-cli /user/bin
+    $ sudo mv src/redis-server /usr/bin
+    $ sudo mv src/redis-cli /usr/bin
 
 Test that your redis brain works!
 
