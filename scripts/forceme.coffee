@@ -20,4 +20,7 @@ module.exports = (robot) ->
       i++
     num = Math.floor(Math.random() * ((arr.length - 1) - 0 + 1)) + 0
     str = arr[num]
-    msg.send str
+    if !!str and str isnt "" and typeof str is "string"
+      msg.send str
+    else
+      msg.send "Something doesn't seem right."
