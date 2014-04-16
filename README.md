@@ -118,3 +118,5 @@ if you're having issues.
 
 ## Contributors
 - Russell Schlup
+
+- Nate Dickison
