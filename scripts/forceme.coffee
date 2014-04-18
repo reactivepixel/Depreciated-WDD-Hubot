@@ -27,7 +27,7 @@ module.exports = (robot) ->
       i++
 
     # random number generator
-    num = Math.floor(Math.random() * ((arr.length - 1) - 0 + 1)) + 0
+    num = Math.floor(Math.random() * ((arr.length - 1)+ 1))
 
     # pull the selection out of the array
     str = arr[num]
