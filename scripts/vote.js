@@ -33,7 +33,8 @@ module.exports = function(robot) {
       robot.brain.votes = objs
       setTimeout(function(){
         votes = robot.brain.votes
-        msg.send('#The Ballots are')
+        msg.send('# ---- The Ballots are')
+        strang = ''
         for(var key in votes){
           msg.send(key+': '+votes[key].votes)
         }
