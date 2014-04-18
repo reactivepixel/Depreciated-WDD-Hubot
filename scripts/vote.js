@@ -22,19 +22,19 @@ module.exports = function(robot) {
     // if there is a poll going on it won't allow you to set another one
     if (!robot.brain.ballots) {
       // pulls the first regex
-      data = msg.match[1].trim()
+      var data = msg.match[1].trim()
       // turns it into an array and splits by commas
-      ballots = data.split(",")
+      var ballots = data.split(",")
       // adds it to redis
       robot.brain.ballots = ballots
       // turn the string into an array
-      time = parseInt(msg.match[2].trim())
+      var  time = parseInt(msg.match[2].trim())
 
       if(time !== NaN){
         // will only let the max time be 5 mins
         if (time > 300000) {time = 300000}
 
-        objs = {}
+        var objs = {}
         // runs through the ballouts and makes
         // objects for voting purposes
         for(var i in ballots){
@@ -46,12 +46,12 @@ module.exports = function(robot) {
         // this funciton will run after the specified time you
         // set for it
         setTimeout(function(){
-          votes = robot.brain.votes
-          strang = '# ======== The Ballots are'
+          var votes = robot.brain.votes
+          var messageBack = '# ======== The Ballots are'
           for(var key in votes){
-            strang += key+': '+votes[key].votes+'/n'
+            messageBack += " "+key+': '+votes[key].votes+'/n'
           }
-          msg.send(strang)
+          msg.send(messageBack)
           robot.brain.ballots = false
         }, time)
       }else{
@@ -65,11 +65,11 @@ module.exports = function(robot) {
   // This funciton is for the voting procedure
   robot.respond(/vote (.*)/i, function(msg) {
     if (!!robot.brain.ballots) {
-      check = false
+      var check = false
       // pull the first regex
-      vote = msg.match[1].trim()
+      var vote = msg.match[1].trim()
       // pulls down the ballots from redis
-      ballots = robot.brain.ballots
+      var ballots = robot.brain.ballots
       // checks if the ballot exists
       for(var i in ballots){
         if(ballots[i]===vote){
