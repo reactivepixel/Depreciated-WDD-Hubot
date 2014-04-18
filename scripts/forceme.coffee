@@ -1,5 +1,5 @@
 #Description:
-#  Helps you make desicions
+#  Helps you make desicions by picking a choice at random
 #
 # Dependencies:
 #   None
