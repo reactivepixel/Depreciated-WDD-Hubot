@@ -29,29 +29,34 @@ module.exports = function(robot) {
       robot.brain.ballots = ballots
       // turn the string into an array
       time = parseInt(msg.match[2].trim())
-      // will only let the max time be 5 mins
-      if (time > 300000) {time = 300000}
 
-      objs = {}
-      // runs through the ballouts and makes
-      // objects for voting purposes
-      for(var i in ballots){
-        objs[ballots[i]] = {votes:0}
-      }
-      // saves the ballouts turned into objects to redis
-      robot.brain.votes = objs
+      if(time !== NaN){
+        // will only let the max time be 5 mins
+        if (time > 300000) {time = 300000}
 
-      // this funciton will run after the specified time you
-      // set for it
-      setTimeout(function(){
-        votes = robot.brain.votes
-        strang = '# ======== The Ballots are /n'
-        for(var key in votes){
-          strang += key+': '+votes[key].votes+'/n'
+        objs = {}
+        // runs through the ballouts and makes
+        // objects for voting purposes
+        for(var i in ballots){
+          objs[ballots[i]] = {votes:0}
         }
-        msg.send(strang)
-        robot.brain.ballots = false
-      }, time)
+        // saves the ballouts turned into objects to redis
+        robot.brain.votes = objs
+
+        // this funciton will run after the specified time you
+        // set for it
+        setTimeout(function(){
+          votes = robot.brain.votes
+          strang = '# ======== The Ballots are'
+          for(var key in votes){
+            strang += key+': '+votes[key].votes+'/n'
+          }
+          msg.send(strang)
+          robot.brain.ballots = false
+        }, time)
+      }else{
+        msg.send("Sorry the time was written incorrectly please write time in miliseconds with only number");  
+      }
     } else {
       msg.send("A vote is currently goin on");
     }
@@ -60,7 +65,7 @@ module.exports = function(robot) {
   // This funciton is for the voting procedure
   robot.respond(/vote (.*)/i, function(msg) {
     if (!!robot.brain.ballots) {
-      c = false
+      check = false
       // pull the first regex
       vote = msg.match[1].trim()
       // pulls down the ballots from redis
@@ -68,13 +73,13 @@ module.exports = function(robot) {
       // checks if the ballot exists
       for(var i in ballots){
         if(ballots[i]===vote){
-          c = true
+          check = true
         }
       }
 
       // if the for loop above found your vote
       // it will add it if not it will say it doesn't exist 
-      if(c){
+      if(check){
         // adds your vote to the chosen object
         robot.brain.votes[vote].votes++
         // gives you feedback
