@@ -33,11 +33,10 @@ module.exports = function(robot) {
       robot.brain.votes = objs
       setTimeout(function(){
         votes = robot.brain.votes
-        strang = '<h2>The Ballots are</h2><br />'
+        msg.send('#The Ballots are')
         for(var key in votes){
-          strang += key+': '+votes[key].votes+'<br />'
+          msg.send(key+': '+votes[key].votes)
         }
-        msg.send(strang);
         robot.brain.ballots = false
       }, time)
     } else {
