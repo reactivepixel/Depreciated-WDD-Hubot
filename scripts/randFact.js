@@ -15,6 +15,7 @@
 
 
 var request = require('request');
+var ent = require('ent');
 
 //Requests random fact from mentalfloss.com api
 function getFact(msg){
@@ -24,13 +25,16 @@ function getFact(msg){
 		
 		//Parse respsponse, find the fact, remove any html elements, stringify.
 		var jdata = JSON.parse(response.body);
-		var data = jdata[0].fact_body;
+		var data = jdata[0].fact_body;		
 		var regex = /(<([^>]+)>)/ig;
+				
 		var result = data.replace(regex, "");
+		
+		//Use ent to decode any html entities 
+		result = ent.decode(result);
 		
 		msg.send(result);
 		  
-	  
 	  }else{
 		//Return error if api request goes wrong.
 		msg.send("Something went long here.."); 
