@@ -16,8 +16,6 @@
 
 var request = require('request');
 
-var fact = 'Hubot is 59% Human';
-
 //Requests random fact from mentalfloss.com api
 function getFact(msg){
 	request('http://mentalfloss.com/api/1.0/views/amazing_facts.json?limit=1&display_id=xhr&cb=0.7231947963021575', function (error, response, body) {
