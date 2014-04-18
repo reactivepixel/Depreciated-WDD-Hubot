@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot force me <thin1>, <thin2>, <thing3> - Receive a choice
+#   hubot force me <thing1>, <thing2>, <thing3>, etc. - Receive a choice
 #
 # Author:
 #   Russell Schlup
