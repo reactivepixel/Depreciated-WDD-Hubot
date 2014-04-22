@@ -1,4 +1,4 @@
-#Description:
+# Description:
 #  Helps you make desicions by picking a choice at random
 #
 # Dependencies:
