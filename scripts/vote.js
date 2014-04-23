@@ -9,7 +9,7 @@
 //
 // Commands:
 //   hubot poll <thing1>,<thing2>,<thing3>,etc <time alive in miliseconds> "The max time is 300000 5m"
-//   hubot vote <ballot>
+//   hubot vote <thing1>
 //
 // Author:
 //   Russell Schlup
