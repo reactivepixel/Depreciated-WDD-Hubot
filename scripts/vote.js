@@ -9,19 +9,23 @@
 //
 // Commands:
 //   hubot poll <thing1>,<thing2>,<thing3>,etc <time alive in miliseconds> "The max time is 300000 5m"
-//   hubot vote <thing1>
+//   hubot vote <ballot>
 //
 // Author:
 //   Russell Schlup
 
 module.exports = function(robot) {
 
+// --------------- Redis Brain --------------- //
   // jQuery like .on function
   // this will set a redis variable once loaded
   robot.brain.on('loaded', function() {
     robot.brain.ballots = false
   });
 
+
+
+// --------------- Start the poll --------------- //
   // match[x] x is what regex section is located
   // i.e.        [0]   [1]   [2]
   robot.respond(/poll (.*?) (\d+)/i, function(msg) {
@@ -29,12 +33,28 @@ module.exports = function(robot) {
     // robot.brain.ballots are false by default above
     // if it is false then you can make a poll
     if (!robot.brain.ballots) {
-      
+      var data, ballots, time, objs;
+
       //trims the ballots of white space
       data = msg.match[1].trim()
 
       // splits the string into an array by it's commas
-      ballots = data.split(",")
+      dataSplit = data.split(",")
+
+      // filtered ballots
+      ballots = []
+
+      // appends items to ballots
+      for(var b in dataSplit){
+
+        // this filters the ballots
+        if (!!dataSplit[b] && dataSplit[b] !== "" && typeof dataSplit[b] === "string") {
+          
+          // if they pass the filter push it to ballots
+          ballots.push(dataSplit[b]);
+
+        }
+      }
 
       // set the ballots to the array created above
       robot.brain.ballots = ballots
@@ -87,11 +107,16 @@ module.exports = function(robot) {
     }
   });
 
+
+
+
+// --------------- Voting system--------------- //
   // This respond is another call for voting
   robot.respond(/vote (.*)/i, function(msg) {
 
     // if there are ballots and they are not blank
     if (!!robot.brain.ballots) {
+      var check, vote, ballots;
 
       // global check variable
       check = false
@@ -140,6 +165,8 @@ module.exports = function(robot) {
 };
 
 
+
+// --------------- Sends the Votes to the screen --------------- //
 function votes(msg,votes){
 
   // for every vote
@@ -151,4 +178,3 @@ function votes(msg,votes){
   }
 
 }
-//hubot poll there,here 10000
