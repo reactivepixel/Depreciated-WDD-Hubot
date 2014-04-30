@@ -110,7 +110,7 @@ module.exports = function(robot) {
   });
 
   robot.respond(/clear poll/i, function(msg){
-    var user;
+    // var user;
 
     // this is the user that sent the message
     user = msg.message.user;
@@ -120,10 +120,10 @@ module.exports = function(robot) {
       user = msg.message.user.name;
     };
 
-    // current will show th current poll going on
-    current(msg,robot.brain.votes);
-
     msg.send("The Poll was cleared by "+user);
+
+    // current will show th current poll going on
+    current(msg,robot.brain.votes)
 
     // This sets the ballots to false
     // so people can make a new poll
@@ -191,10 +191,10 @@ module.exports = function(robot) {
 function current(msg,poll){
 
   // The release message
-  (msg.send("# ----- The Ballots are"))(
+  msg.send("# ----- The Ballots are");
 
   // votes function requires msg
-  votes(msg, poll));
+  votes(msg, poll);
 
 };
 

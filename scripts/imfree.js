@@ -27,39 +27,15 @@ module.exports = function(robot) {
 // --------------- I'm free response --------------- //
 // the function is located at the bottom
   // regex \. = (allows "."), \d = (digit), * = 0+, {0,1} = 0 or 1
-  robot.respond(/i'm free for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfree(robot,msg)});
-  robot.respond(/im free for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfree(robot,msg)});
-  robot.respond(/imfree for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfree(robot,msg)});
+  robot.respond(/i'm free for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfreeResponse(robot,msg)});
+  robot.respond(/im free for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfreeResponse(robot,msg)});
+  robot.respond(/imfree for (\d{0,2}\.{0,1}\d*)?/i, function(msg){imfreeResponse(robot,msg)});
 
 
 // --------------- Who's free response --------------- //
-  robot.respond(/whos free/i, function(msg){
-    var peopleFree, user, key, person, counter;
-
-    // pull down who is already free
-    peopleFree = robot.brain.peopleFree;
-
-    counter = 0;
-
-    // msg.send(JSON.stringify(peopleFree))
-
-    // check
-    for(i in peopleFree){
-      counter++;
-      break;
-    }
-
-    if (counter !== 0) {
-      for(user in peopleFree){
-        
-        whosFree(msg,user,peopleFree[user].end);
-
-      };
-    }else{
-      msg.send("No one");
-    };
-
-  });
+  robot.respond(/whosfree/i, function(msg){whosFreeRes(robot,msg)});
+  robot.respond(/whos free/i, function(msg){whosFreeRes(robot,msg)});
+  robot.respond(/who's free/i, function(msg){whosFreeRes(robot,msg)});
 
 
 // --------------- I have to go response --------------- //
@@ -97,6 +73,35 @@ module.exports = function(robot) {
   });
 };
 
+// --------------- Who's free response function --------------- //
+function whosFreeResponse(robot,msg){
+
+  var peopleFree, user, key, person, counter;
+
+  // pull down who is already free
+  peopleFree = robot.brain.peopleFree;
+
+  counter = 0;
+
+  // msg.send(JSON.stringify(peopleFree))
+
+  // check
+  for(i in peopleFree){
+    counter++;
+    break;
+  }
+
+  if (counter !== 0) {
+    for(user in peopleFree){
+      
+      whosFree(msg,user,peopleFree[user].end);
+
+    };
+  }else{
+    msg.send("No one");
+  };
+}
+
 
 // --------------- Who's free function --------------- //
 // send each user in redis to the screen
@@ -125,8 +130,8 @@ function whosFree(msg,user,end){
 
 };
 
-// --------------- I'm free function --------------- //
-function imfree(robot,msg) {
+// --------------- I'm free response function --------------- //
+function imfreeResponse(robot,msg) {
   var user, time, end, peopleFree, send;
 
   // this is the user that sent the message
