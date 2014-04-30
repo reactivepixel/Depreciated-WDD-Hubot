@@ -82,6 +82,8 @@ module.exports = function(robot) {
       // stores objs in redis by the name of votes
       robot.brain.votes = objs
 
+      msg.send("Poll has begun")
+
       // Timer for the votes
       // setTimeout(function(){}, runTime)
       setTimeout(function(){

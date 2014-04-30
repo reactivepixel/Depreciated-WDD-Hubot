@@ -1,5 +1,5 @@
 // Description:
-//   Have a voting system with hubot
+//   Help student know you are available while you are offline.
 //
 // Dependencies:
 //   None
@@ -53,7 +53,8 @@ module.exports = function(robot) {
   robot.respond(/g2g/i, function(msg){
     var user;
 
-    user = "rschlup";
+    // this is the user that sent the message
+    user = msg.message.user
     
     // pull down who is already free
     peopleFree = robot.brain.peopleFree;
@@ -111,8 +112,7 @@ function imfree(robot,msg) {
   var user, time, end, peopleFree, send;
 
   // this is the user that sent the message
-  // user = msg.message.user
-  user = "rschlup";
+  user = msg.message.user
 
   // there are 3600000ms in an hour
   time = msg.match[1].trim()*3600000;
