@@ -191,10 +191,10 @@ module.exports = function(robot) {
 function current(msg,poll){
 
   // The release message
-  msg.send("# ----- The Ballots are");
+  (msg.send("# ----- The Ballots are"))(
 
   // votes function requires msg
-  votes(msg, poll);
+  votes(msg, poll));
 
 };
 

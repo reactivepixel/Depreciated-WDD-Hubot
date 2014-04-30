@@ -34,12 +34,22 @@ module.exports = function(robot) {
 
 // --------------- Who's free response --------------- //
   robot.respond(/whos free/i, function(msg){
-    var peopleFree, user, key, person;
+    var peopleFree, user, key, person, counter;
 
     // pull down who is already free
     peopleFree = robot.brain.peopleFree;
 
-    if (peopleFree !== []) {
+    counter = 0;
+
+    // msg.send(JSON.stringify(peopleFree))
+
+    // check
+    for(i in peopleFree){
+      counter++;
+      break;
+    }
+
+    if (counter !== 0) {
       for(user in peopleFree){
         
         whosFree(msg,user,peopleFree[user].end);
