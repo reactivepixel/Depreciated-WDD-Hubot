@@ -33,9 +33,9 @@ module.exports = function(robot) {
 
 
 // --------------- Who's free response --------------- //
-  robot.respond(/whosfree/i, function(msg){whosFreeRes(robot,msg)});
-  robot.respond(/whos free/i, function(msg){whosFreeRes(robot,msg)});
-  robot.respond(/who's free/i, function(msg){whosFreeRes(robot,msg)});
+  robot.respond(/whosfree/i, function(msg){whosFreeResponse(robot,msg)});
+  robot.respond(/whos free/i, function(msg){whosFreeResponse(robot,msg)});
+  robot.respond(/who's free/i, function(msg){whosFreeResponse(robot,msg)});
 
 
 // --------------- I have to go response --------------- //
