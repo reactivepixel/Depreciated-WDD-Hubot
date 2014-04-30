@@ -8,10 +8,10 @@
 //   None
 //
 // Commands:
-//   hubot poll <thing1>,<thing2>,<thing3>,etc <time alive in hours> "The max time is 300000 5m"
+//   hubot voter start <thing1>,<thing2>,<thing3>,etc <time alive in hours>
 //   hubot vote <ballot>
-//   hubot current poll - gives back stats on the current poll
-//   hubot clear poll - remove the poll and says who ended it
+//   hubot voter list - gives back stats on the current poll
+//   hubot voter clear - remove the poll and says who ended it
 //
 // Author:
 //   Russell Schlup
@@ -30,7 +30,7 @@ module.exports = function(robot) {
 // --------------- Start the poll --------------- //
   // match[x] x is what regex section is located
   // i.e.        [0]   [1]   [2]
-  robot.respond(/poll (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
+  robot.respond(/voter start (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
 
     // robot.brain.ballots are false by default above
     // if it is false then you can make a poll
@@ -102,14 +102,14 @@ module.exports = function(robot) {
     };
   });
 
-  robot.respond(/current poll/i, function(msg){
+  robot.respond(/voter list/i, function(msg){
 
     // current will show th current poll going on
     current(msg,robot.brain.votes);
 
   });
 
-  robot.respond(/clear poll/i, function(msg){
+  robot.respond(/voter clear/i, function(msg){
     // var user;
 
     // this is the user that sent the message

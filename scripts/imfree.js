@@ -9,8 +9,8 @@
 //
 // Commands:
 //   hubot imfree for <hours> (decimals are excepted i.e. 0.5 = 30 mins)
-//   hubot whos free to see who is available
-//   hubot g2g to say that you are no longer free
+//   hubot whos free - to see who is available
+//   hubot g2g - to say that you are no longer free
 //
 // Author:
 //   Russell Schlup
