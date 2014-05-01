@@ -22,7 +22,7 @@ module.exports = function(robot) {
   // jQuery like .on function
   // this will set a redis variable once loaded
   robot.brain.on('loaded', function() {
-    robot.brain.ballots = false;
+    robot.brain.votes = false;
   });
 
 
@@ -30,11 +30,11 @@ module.exports = function(robot) {
 // --------------- Start the poll --------------- //
   // match[x] x is what regex section is located
   // i.e.        [0]   [1]   [2]
-  robot.respond(/voter start (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
+  robot.respond(/voter create (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
 
-    // robot.brain.ballots are false by default above
+    // robot.brain.votes are false by default above
     // if it is false then you can make a poll
-    if (!robot.brain.ballots) {
+    if (!robot.brain.votes) {
       var data, ballots, time, objs;
 
       //trims the ballots of white space
@@ -47,7 +47,7 @@ module.exports = function(robot) {
       ballots = [];
 
       // appends items to ballots
-      for(var b in dataSplit){
+      for (var b in dataSplit) {
 
         // this filters the ballots
         if (!!dataSplit[b] && dataSplit[b] !== "" && typeof dataSplit[b] === "string") {
@@ -58,9 +58,6 @@ module.exports = function(robot) {
         };
       };
 
-      // set the ballots to the array created above
-      robot.brain.ballots = ballots;
-
       //turns the small digit to hours
       time = msg.match[2].trim()*3600000;
 
@@ -68,67 +65,87 @@ module.exports = function(robot) {
       objs = {};
 
       // for ever ballot it will create an object
-      for(var i in ballots){
+      for (var i in ballots) {
         
         // voteName = {votes:0}
         objs[ballots[i]] = {votes:0};
       
       };
 
-      // stores objs in redis by the name of votes
-      robot.brain.votes = objs;
+      // if there nothing in there don't do anything
+      if (ballots.length > 0) {
 
-      msg.send("Poll has begun");
+        // stores objs in redis by the name of votes
+        robot.brain.votes = objs;
 
-      // Timer for the votes
-      // setTimeout(function(){}, runTime)
-      setTimeout(function(){
+        msg.send("Poll has begun");
 
-        // current will show th current poll going on
-        current(msg,robot.brain.votes);
+        // Timer for the votes
+        // setTimeout(function(){}, runTime)
+        setTimeout(function(){
 
-        // This sets the ballots to false
-        // so people can make a new poll
-        robot.brain.ballots = false;
+          // current will show th current poll going on
+          current(msg,robot.brain.votes);
 
-      }, time);
+          // This sets the ballots to false
+          // so people can make a new poll
+          robot.brain.votes = false;
 
-    // 
+        }, time);
+
+      } else {
+        msg.send("Somethign doesn't look right");
+
+      };
+
     } else {
 
       // If ballots is not set to false
       msg.send("A vote is currently goin on");
-
     };
   });
 
   robot.respond(/voter list/i, function(msg){
 
-    // current will show th current poll going on
-    current(msg,robot.brain.votes);
+    // if votes are blank don't run
+    if (robot.brain.votes) {
 
+      // current will show th current poll going on
+      current(msg,robot.brain.votes);
+
+    } else {
+      msg.send('There is no poll going on');
+    
+    };
   });
 
   robot.respond(/voter clear/i, function(msg){
-    // var user;
+    var user;
 
-    // this is the user that sent the message
-    user = msg.message.user;
+    // if votes are blank don't run
+    if (robot.brain.votes) {
 
-    // Checks if a name is there
-    if(msg.message.user.name){
-      user = msg.message.user.name;
+      // this is the user that sent the message
+      user = msg.message.user;
+
+      // Checks if a name is there
+      if (msg.message.user.name) {
+        user = msg.message.user.name;
+      };
+
+      msg.send("The Poll was cleared by "+user);
+
+      // current will show th current poll going on
+      current(msg,robot.brain.votes);
+
+      // This sets the ballots to false
+      // so people can make a new poll
+      robot.brain.votes = false;
+
+    } else {
+
+      msg.send('There is no poll going on');
     };
-
-    msg.send("The Poll was cleared by "+user);
-
-    // current will show th current poll going on
-    current(msg,robot.brain.votes)
-
-    // This sets the ballots to false
-    // so people can make a new poll
-    robot.brain.ballots = false;
-
   });
 
 
@@ -138,7 +155,7 @@ module.exports = function(robot) {
   robot.respond(/vote (.*)/i, function(msg) {
 
     // if there are ballots and they are not blank
-    if (!!robot.brain.ballots) {
+    if (!!robot.brain.votes) {
       var check, vote, ballots;
 
       // global check variable
@@ -148,12 +165,12 @@ module.exports = function(robot) {
       vote = msg.match[1].trim();
 
       // pulls the ballots back down from redis
-      ballots = robot.brain.ballots;
+      ballots = robot.brain.votes;
 
-      for(var i in ballots){
+      for (var i in ballots) {
 
         // If what you voted for exists
-        if(ballots[i]===vote){
+        if (ballots[i]===vote) {
           // set check to true
           check = true;
         };
@@ -161,7 +178,7 @@ module.exports = function(robot) {
       };
 
       // if the check above passed
-      if(check){
+      if (check) {
 
         // vote what you voted for
         // robot.brain.votes.ballotVoted.votes += 1
@@ -170,7 +187,7 @@ module.exports = function(robot) {
         // feedback on what you voted for
         msg.send("You voted for "+vote);
 
-      }else{
+      } else {
 
         // if the check fails it is not a real ballot
         msg.send("That is not a ballot");
@@ -189,7 +206,6 @@ module.exports = function(robot) {
 
 // --------------- Currently voted for
 function current(msg,poll){
-
   // The release message
   msg.send("# ----- The Ballots are");
 
@@ -204,7 +220,7 @@ function current(msg,poll){
 function votes(msg,votes){
 
   // for every vote
-  for(var key in votes){
+  for (var key in votes) {
   
     // send it's name with it's message
     msg.send(key+': '+votes[key].votes);
