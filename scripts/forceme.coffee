@@ -1,4 +1,3 @@
-# Forceme.coffee
 # Description:
 #  Helps you make desicions by picking a choice at random
 #
@@ -22,7 +21,7 @@ module.exports = (robot) ->
     arr = data.split(",")
     i = 0
 
-    if arr.length > 0
+    if arr.length > 1
       # while loop to pull any blank or non-strings out of the array
       while i < arr.length
         arr.splice i, 1  unless arr[i]
@@ -42,4 +41,4 @@ module.exports = (robot) ->
       else
         msg.send "Something doesn't seem right."
     else
-      msg.send "You didn't write anything"
+      msg.send "You need to write more desicions"
