@@ -1,3 +1,4 @@
+# Forceme.coffee
 # Description:
 #  Helps you make desicions by picking a choice at random
 #
@@ -21,21 +22,24 @@ module.exports = (robot) ->
     arr = data.split(",")
     i = 0
 
-    # while loop to pull any blank or non-strings out of the array
-    while i < arr.length
-      arr.splice i, 1  unless arr[i]
-      i++
+    if arr.length > 0
+      # while loop to pull any blank or non-strings out of the array
+      while i < arr.length
+        arr.splice i, 1  unless arr[i]
+        i++
 
-    # random number generator
-    num = Math.floor(Math.random() * ((arr.length - 1)+ 1))
+      # random number generator
+      num = Math.floor(Math.random() * ((arr.length - 1)+ 1))
 
-    # pull the selection out of the array
-    str = arr[num]
+      # pull the selection out of the array
+      str = arr[num]
 
-    # final check to make sure that this is actually,
-    # purely is a string with something in it
+      # final check to make sure that this is actually,
+      # purely is a string with something in it
 
-    if !!str and str isnt "" and typeof str is "string"
-      msg.send str
+      if !!str and str isnt "" and typeof str is "string"
+        msg.send str
+      else
+        msg.send "Something doesn't seem right."
     else
-      msg.send "Something doesn't seem right."
+      msg.send "You didn't write anything"
