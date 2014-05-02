@@ -156,10 +156,7 @@ module.exports = function(robot) {
 
     // if there are ballots and they are not blank
     if (!!robot.brain.votes) {
-      var check, vote, ballots;
-
-      // global check variable
-      check = false;
+      var vote, ballots;
 
       // what the user voted for
       vote = msg.match[1].trim();
@@ -167,18 +164,8 @@ module.exports = function(robot) {
       // pulls the ballots back down from redis
       ballots = robot.brain.votes;
 
-      for (var i in ballots) {
-
-        // If what you voted for exists
-        if (ballots[i]===vote) {
-          // set check to true
-          check = true;
-        };
-
-      };
-
-      // if the check above passed
-      if (check) {
+      // if the vote exists
+      if (ballots[vote]) {
 
         // vote what you voted for
         // robot.brain.votes.ballotVoted.votes += 1
@@ -188,7 +175,6 @@ module.exports = function(robot) {
         msg.send("You voted for "+vote);
 
       } else {
-
         // if the check fails it is not a real ballot
         msg.send("That is not a ballot");
 
