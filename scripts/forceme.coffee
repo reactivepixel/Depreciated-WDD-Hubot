@@ -14,7 +14,7 @@
 #   Russell Schlup
 
 module.exports = (robot) ->
-  robot.respond /force me (./n*)/i, (msg) ->
+  robot.respond /force me (.*)/i, (msg) ->
     # pulls the data from the regex
     data = msg.match[1].trim()
     # turns the string from text into an array sperated by commas
