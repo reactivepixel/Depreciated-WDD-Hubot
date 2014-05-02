@@ -194,7 +194,7 @@ module.exports = function(robot) {
 
       };
 
-    }else{
+    } else {
 
       // feedback for if you try and vote but there is
       // nothing to vote for.

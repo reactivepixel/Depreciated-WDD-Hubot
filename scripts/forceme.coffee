@@ -8,13 +8,13 @@
 #   None
 #
 # Commands:
-#   hubot force me <thing1>, <thing2>, <thing3>, etc. - Receive a choice
+#   hubot force me <thing1>, <thing2>, <thing3>, <etc.> - Receive a choice
 #
 # Author:
 #   Russell Schlup
 
 module.exports = (robot) ->
-  robot.respond /force me (.*)/i, (msg) ->
+  robot.respond /force me (./n*)/i, (msg) ->
     # pulls the data from the regex
     data = msg.match[1].trim()
     # turns the string from text into an array sperated by commas
