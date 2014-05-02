@@ -1,8 +1,12 @@
 {
   "name": "wdd-hubot",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "author": "Chris Chapman",
+  "contributors":[
+  	{"name": "Russell Schlup", "github":"https://github.com/Russ93"},
+  	{"name": "Nate Dickison", "github":"https://github.com/ndickiso"},
+  ],
   "keywords": [
     "github",
     "hubot",
