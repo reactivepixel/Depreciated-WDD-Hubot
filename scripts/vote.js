@@ -8,8 +8,10 @@
 //   None
 //
 // Commands:
-//   hubot poll <thing1>,<thing2>,<thing3>,etc <time alive in miliseconds> "The max time is 300000 5m"
+//   hubot voter create <thing1>,<thing2>,<thing3>,etc <time alive in hours>
 //   hubot vote <ballot>
+//   hubot voter list - gives back stats on the current poll
+//   hubot voter clear - remove the poll and says who ended it
 //
 // Author:
 //   Russell Schlup
@@ -20,7 +22,7 @@ module.exports = function(robot) {
   // jQuery like .on function
   // this will set a redis variable once loaded
   robot.brain.on('loaded', function() {
-    robot.brain.ballots = false
+    robot.brain.votes = false;
   });
 
 
@@ -28,24 +30,24 @@ module.exports = function(robot) {
 // --------------- Start the poll --------------- //
   // match[x] x is what regex section is located
   // i.e.        [0]   [1]   [2]
-  robot.respond(/poll (.*?) (\d+)/i, function(msg) {
+  robot.respond(/voter create (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
 
-    // robot.brain.ballots are false by default above
+    // robot.brain.votes are false by default above
     // if it is false then you can make a poll
-    if (!robot.brain.ballots) {
+    if (!robot.brain.votes) {
       var data, ballots, time, objs;
 
       //trims the ballots of white space
-      data = msg.match[1].trim()
+      data = msg.match[1].trim();
 
       // splits the string into an array by it's commas
-      dataSplit = data.split(",")
+      dataSplit = data.split(",");
 
       // filtered ballots
-      ballots = []
+      ballots = [];
 
       // appends items to ballots
-      for(var b in dataSplit){
+      for (var b in dataSplit) {
 
         // this filters the ballots
         if (!!dataSplit[b] && dataSplit[b] !== "" && typeof dataSplit[b] === "string") {
@@ -53,62 +55,98 @@ module.exports = function(robot) {
           // if they pass the filter push it to ballots
           ballots.push(dataSplit[b]);
 
-        }
-      }
+        };
+      };
 
-      // set the ballots to the array created above
-      robot.brain.ballots = ballots
-
-      // The regex above (\d+) will only accept digits
-      // i.e. 5000min = 5000
-      // x = parseInt("10"): x = 10
-      time = parseInt(msg.match[2].trim())
-
-      // This makes the max time limit 5 mins
-      // 300000 ms = 5 min
-      if (time > 300000) {time = 300000}
+      //turns the small digit to hours
+      time = msg.match[2].trim()*3600000;
 
       // objs Stores the ballots from the for loop below
-      objs = {}
+      objs = {};
 
       // for ever ballot it will create an object
-      for(var i in ballots){
+      for (var i in ballots) {
         
         // voteName = {votes:0}
-        objs[ballots[i]] = {votes:0}
+        objs[ballots[i]] = {votes:0};
       
-      }
+      };
 
-      // stores objs in redis by the name of votes
-      robot.brain.votes = objs
+      // if there nothing in there don't do anything
+      if (ballots.length > 0) {
 
-      msg.send("Poll has begun")
+        // stores objs in redis by the name of votes
+        robot.brain.votes = objs;
 
-      // Timer for the votes
-      // setTimeout(function(){}, runTime)
-      setTimeout(function(){
+        msg.send("Poll has begun");
 
-        // The release message
-        msg.send("# ----- The Ballots are");
+        // Timer for the votes
+        // setTimeout(function(){}, runTime)
+        setTimeout(function(){
 
-        // votes function requires msg
-        votes(msg, robot.brain.votes)
+          // current will show th current poll going on
+          current(msg,robot.brain.votes);
 
-        // This sets the ballots to false
-        // so people can make a new poll
-        robot.brain.ballots = false
+          // This sets the ballots to false
+          // so people can make a new poll
+          robot.brain.votes = false;
 
-      }, time)
+        }, time);
 
-    // 
+      } else {
+        msg.send("Somethign doesn't look right");
+
+      };
+
     } else {
 
       // If ballots is not set to false
       msg.send("A vote is currently goin on");
-
-    }
+    };
   });
 
+  robot.respond(/voter list/i, function(msg){
+
+    // if votes are blank don't run
+    if (robot.brain.votes) {
+
+      // current will show th current poll going on
+      current(msg,robot.brain.votes);
+
+    } else {
+      msg.send('There is no poll going on');
+    
+    };
+  });
+
+  robot.respond(/voter clear/i, function(msg){
+    var user;
+
+    // if votes are blank don't run
+    if (robot.brain.votes) {
+
+      // this is the user that sent the message
+      user = msg.message.user;
+
+      // Checks if a name is there
+      if (msg.message.user.name) {
+        user = msg.message.user.name;
+      };
+
+      msg.send("The Poll was cleared by "+user);
+
+      // current will show th current poll going on
+      current(msg,robot.brain.votes);
+
+      // This sets the ballots to false
+      // so people can make a new poll
+      robot.brain.votes = false;
+
+    } else {
+
+      msg.send('There is no poll going on');
+    };
+  });
 
 
 
@@ -117,53 +155,49 @@ module.exports = function(robot) {
   robot.respond(/vote (.*)/i, function(msg) {
 
     // if there are ballots and they are not blank
-    if (!!robot.brain.ballots) {
-      var check, vote, ballots;
-
-      // global check variable
-      check = false
+    if (!!robot.brain.votes) {
+      var vote, ballots;
 
       // what the user voted for
-      vote = msg.match[1].trim()
+      vote = msg.match[1].trim();
 
       // pulls the ballots back down from redis
-      ballots = robot.brain.ballots
+      ballots = robot.brain.votes;
 
-      for(var i in ballots){
-
-        // If what you voted for exists
-        if(ballots[i]===vote){
-          // set check to true
-          check = true
-        }
-
-      }
-
-      // if the check above passed
-      if(check){
+      // if the vote exists
+      if (ballots[vote]) {
 
         // vote what you voted for
         // robot.brain.votes.ballotVoted.votes += 1
-        robot.brain.votes[vote].votes++
+        robot.brain.votes[vote].votes++;
 
         // feedback on what you voted for
         msg.send("You voted for "+vote);
 
-      }else{
-
+      } else {
         // if the check fails it is not a real ballot
         msg.send("That is not a ballot");
 
-      }
+      };
 
-    }else{
+    } else {
 
       // feedback for if you try and vote but there is
       // nothing to vote for.
       msg.send("There is no poll going on currently");
 
-    }
-  })
+    };
+  });
+};
+
+// --------------- Currently voted for
+function current(msg,poll){
+  // The release message
+  msg.send("# ----- The Ballots are");
+
+  // votes function requires msg
+  votes(msg, poll);
+
 };
 
 
@@ -172,11 +206,11 @@ module.exports = function(robot) {
 function votes(msg,votes){
 
   // for every vote
-  for(var key in votes){
+  for (var key in votes) {
   
     // send it's name with it's message
-    msg.send(key+': '+votes[key].votes)
+    msg.send(key+': '+votes[key].votes);
   
-  }
+  };
 
-}
+};

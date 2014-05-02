@@ -30,7 +30,8 @@
     "hubot-slack": "~2.0.4",
     "cleverbot-node": "~0.1.6",
     "request": "~2.34.0",
-    "ent": "~2.0.0"
+    "ent": "~2.0.0",
+    "cheerio": "~0.15.0"
   },
   "engines": {
     "node": ">= 0.8.x",
