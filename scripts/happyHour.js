@@ -83,7 +83,7 @@ function getHappy(msg,city){
 			    msg.send(description);
 			    
 			    //Send empty string to space out happy hours
-			    msg.send("  ");
+			    //msg.send("  ");
 			});
 		
 		//If city is not matched in list
@@ -121,6 +121,7 @@ function getCities(msg){
 		
 		//Set Variables
 		var cities;
+		var list = [];
 		
 		//Element for cities
 		cities = $('#cityBar .cityList li');
@@ -130,10 +131,12 @@ function getCities(msg){
 		
 			//For each city listed	
 			cities.each(function() {
-			   		
-			   		//Element for city name
-			   		msg.send($(this).text());
-			    });
+		   		
+		   		//Element for city name
+		   		list.push($(this).text());
+		    });
+		
+			msg.send(list);
 			    
 		//If no cities listed	
 		}else{
