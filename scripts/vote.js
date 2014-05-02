@@ -52,7 +52,7 @@ module.exports = function(robot) {
         if (!!dataSplit[b] && dataSplit[b] !== "" && typeof dataSplit[b] === "string") {
           
           // if they pass the filter push it to ballots
-          ballots.push(dataSplit[b]);
+          ballots.push(dataSplit[b].trim());
 
         };
       };
