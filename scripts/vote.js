@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   hubot voter start <thing1>,<thing2>,<thing3>,etc <time alive in hours>
+//   hubot voter create <thing1>,<thing2>,<thing3>,etc <time alive in hours>
 //   hubot vote <ballot>
 //   hubot voter list - gives back stats on the current poll
 //   hubot voter clear - remove the poll and says who ended it
