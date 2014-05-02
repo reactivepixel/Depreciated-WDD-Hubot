@@ -29,7 +29,7 @@ module.exports = function(robot) {
 // --------------- Start the poll --------------- //
   // match[x] x is what regex section is located
   // i.e.        [0]   [1]   [2]
-  robot.respond(/voter create (.*?) (\d*\.{0,1}\d*)?/i, function(msg) {
+  robot.respond(/voter create (.*)? (\d*\.{0,1}\d*)?/i, function(msg) {
 
     // robot.brain.votes are false by default above
     // if it is false then you can make a poll
