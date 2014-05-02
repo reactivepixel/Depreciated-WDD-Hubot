@@ -65,7 +65,6 @@ module.exports = function(robot) {
 
       // for ever ballot it will create an object
       for (var i in ballots) {
-        
         // voteName = {votes:0}
         objs[ballots[i]] = {votes:0};
       
@@ -195,7 +194,7 @@ function current(msg,poll){
   msg.send("# ----- The Ballots are");
 
   // votes function requires msg
-  votes(msg, poll);
+  setTimeout(votes(msg, poll), 500);
 
 };
 
