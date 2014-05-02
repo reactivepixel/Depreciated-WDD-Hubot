@@ -1,5 +1,5 @@
 // Description:
-//   Get happy with hubot current happy hour finder!
+//   Get happy with hubot happy hour finder for your current time!
 //
 // Dependencies:
 //   cheerio,ent,request
@@ -8,7 +8,7 @@
 //   none
 //
 // Commands:
-//   Hubot happy <city name> -or- <cities> (this shows the list of available cities)
+//   Hubot happy <city name> (mostly major cities 107 total avilable)
 //
 // Author:
 //   ndickiso
@@ -18,33 +18,6 @@
 var request = require('request'),
 	cheerio = require('cheerio'),
 	ent = require('ent');
-
-//------GLOBAL FUNCTIONS-------//
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
-//-------GLOBAL VARIABLES-------//
-
-function splitIt(arr,msg){
-	var list = [];
-	var total = arr.length;
-	var half = Math.round(total/2);
-	var remainder = total - half;
-	var a;
-	
-	for(var i=0;i<half;i++){
-		a = arr.pop(i);
-		list.push(a);
-	};
-	
-	msg.send(arr);
-	
-	msg.send(list);
-	
-	list = [];
-
-};
 
 
 //-----REQUEST CITY FUNCTION-----//
@@ -101,75 +74,23 @@ function getHappy(msg,city){
 			    //Send description
 			    msg.send(description);
 			    
-			    //Send empty string to space out happy hours
-			    //msg.send("  ");
 			});
 		
 		//If city is not matched in list
 		}else{
 			
-			//replace '-' with ' ', capitalize to read better
+			//replace '-' with ' ', to read better
 			city.split('-').join(' ');
-			city.capitalize();
 			
 			//Send error message that city is NOT listed or NO current happy hours
-			msg.send(city+" is not a happy city : (");
+			msg.send(city+" is not a happy city : ( Check for spaces in city names, and spelling!");
 		}
 		
 	  //If error with api request
 	  }else{
 	  
 		//Return error if api request goes wrong.
-		msg.send("Something went long here.."); 
-	  }
-	})
-}
-
-
-//-------REQUEST CITY LIST FUNCTION--------//
-function getCities(msg){
-	
-	//Request city stats page to get list of cities
-	request('http://www.gotime.com/stats', function (error, response, body) {
-	  
-	  //If response is good
-	  if (!error && response.statusCode < 300){
-		
-		//Load body into Cheerio
-		$ = cheerio.load(body);
-		
-		//Set Variables
-		var cities;
-		var list = [];
-		
-		//Element for cities
-		cities = $('#cityBar .cityList li');
-		
-		//If there are any cities to list
-		if(cities.length > 0){
-		
-			//For each city listed	
-			cities.each(function() {
-		   		
-		   		//Element for city name
-		   		list.push($(this).text());
-		    });
-			
-			//send to split function to break up
-			splitIt(list,msg);
-			    
-		//If no cities listed	
-		}else{
-			
-			//Error message for no cities 
-			msg.send("No cities to list..");
-		}
-		
-	  //If error with api request	  
-	  }else{
-		
-		//Return error if api request goes wrong.
-		msg.send("Something went long here.."); 
+		msg.send("Something went wrong here.."); 
 	  }
 	})
 }
@@ -267,18 +188,12 @@ module.exports = function(robot) {
 		//Check for city to not be empty
 		if(city !== ""){
 			
-			//If city equals citites, call get cities function to get city list
-			if(city === "cities"){
-				getCities(msg);
-			
-			//Otherwise send city to fixCity function to check for api city alterations	
-			}else{
-				fixCity(msg,city);
-			}
+			//Call fixCity function to check for api city alterations	
+			fixCity(msg,city);
 			
 		//Send error message if nothing is entered after hubot happy	
 		}else{
-			msg.send("Please enter a city. Try 'happy cities' to see the list of available cities.");
+			msg.send("Please enter a city.");
 		}
 		
   });
