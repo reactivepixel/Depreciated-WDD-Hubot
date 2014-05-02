@@ -19,7 +19,6 @@
 module.exports = function(robot) {
 
 // --------------- Redis Brain --------------- //
-  // jQuery like .on function
   // this will set a redis variable once loaded
   robot.brain.on('loaded', function() {
     robot.brain.votes = false;
