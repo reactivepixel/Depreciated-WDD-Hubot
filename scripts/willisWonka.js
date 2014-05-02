@@ -16,8 +16,8 @@
 
 var request = require('request');
 
-//Instantiate Variables for random vocabulary selections, counter, and input data
-var rT,rA,rB,rN,thinking,answer,busy,noInput,counter,data;
+//Instantiate Variables for random vocabulary and counter
+var thinking,answer,busy,noInput,counter;
 
 //Counter, Willis can only handle so many questions before he gets irritated
 counter = 0;
@@ -80,11 +80,13 @@ function ranNum(arr){
 
 //Ask function
 function ask(msg){
-
+	
+	var ranThin,ranAnsw,ranBusy,ranNoIn;
+	
 	//Setting varibles for random indexs in response arrays.
-	rT = thinking[ranNum(thinking)];
-	rA = answer[ranNum(answer)];
-	rB = busy[ranNum(busy)];
+	ranThin = thinking[ranNum(thinking)];
+	ranAnsw = answer[ranNum(answer)];
+	ranBusy = busy[ranNum(busy)];
 	
 	counter ++;
 	
@@ -92,16 +94,16 @@ function ask(msg){
 	if(counter>=5){
 		
 		//Slight delay to give a little character, sends random busy response
-		setTimeout(function(){msg.send(rB)},500);
+		setTimeout(function(){msg.send(ranBusy)},500);
 		counter = 0;
 		
 	}else{
 		
 		//Slight delay to give a little character, sends random thinking response
-		setTimeout(function(){msg.send(rT)},500);
+		setTimeout(function(){msg.send(ranThin)},500);
 		
 		//Slightly longer delay for answer, sends random answer response
-		setTimeout(function(){msg.send(rA)},2500);	
+		setTimeout(function(){msg.send(ranAnsw)},2500);	
 	}
 	
 };
@@ -109,6 +111,9 @@ function ask(msg){
 //Listens for "hubot willis"
 module.exports = function(robot) {
   return robot.respond(/willis/i, function(msg) {
+	  
+	  //Set Varibles
+	  var minData;
 	  
 	  //Finds character length of input following "hubot", trims outer whitespace 
 	  minData = msg.match.input.trim().length;
@@ -121,8 +126,8 @@ module.exports = function(robot) {
 	  }else{
 	  
 	  	  //Sets random index for noInput responses, and sends the error message if there is less then 20 characters typed.
- 		  rN = noInput[ranNum(noInput)];
-	  	  msg.send(rN);
+ 		  ranNoIn = noInput[ranNum(noInput)];
+	  	  msg.send(ranNoIn);
 	  }
   });
 }
