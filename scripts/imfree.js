@@ -84,8 +84,6 @@ function whosFreeResponse(robot,msg){
 
   counter = 0;
 
-  // msg.send(JSON.stringify(peopleFree))
-
   // check
   for(i in peopleFree){
     counter++;
