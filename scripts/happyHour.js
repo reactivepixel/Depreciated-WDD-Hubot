@@ -26,6 +26,25 @@ String.prototype.capitalize = function() {
 
 //-------GLOBAL VARIABLES-------//
 
+function splitIt(arr,msg){
+	var list = [];
+	var total = arr.length;
+	var half = Math.round(total/2);
+	var remainder = total - half;
+	var a;
+	
+	for(var i=0;i<half;i++){
+		a = arr.pop(i);
+		list.push(a);
+	};
+	
+	msg.send(arr);
+	
+	msg.send(list);
+	
+	list = [];
+
+};
 
 
 //-----REQUEST CITY FUNCTION-----//
@@ -135,8 +154,9 @@ function getCities(msg){
 		   		//Element for city name
 		   		list.push($(this).text());
 		    });
-		
-			msg.send(list);
+			
+			//send to split function to break up
+			splitIt(list,msg);
 			    
 		//If no cities listed	
 		}else{
