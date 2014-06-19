@@ -28,7 +28,7 @@ function getFact(msg){
 		var data = jdata[0].fact_body;		
 		var regex = /(<([^>]+)>)/ig;
 		
-		var result = "Hello World";		
+		var result = "Hello World";  		
 		//var result = data.replace(regex, "");
 		
 		//Use ent to decode any html entities 
@@ -38,7 +38,7 @@ function getFact(msg){
 		  
 	  }else{
 		//Return error if api request goes wrong.
-		msg.send("Something went long here.."); 
+		msg.send("Something went wrong here.."); 
 	  }
 	})
 }
