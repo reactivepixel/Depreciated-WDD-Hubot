@@ -28,8 +28,7 @@ function getFact(msg){
 		var data = jdata[0].fact_body;		
 		var regex = /(<([^>]+)>)/ig;
 		
-		var result = "Hello World";  		
-		//var result = data.replace(regex, "");
+		var result = data.replace(regex, "");
 		
 		//Use ent to decode any html entities 
 		result = ent.decode(result);
