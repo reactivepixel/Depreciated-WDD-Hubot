@@ -1,9 +1,11 @@
 {
   "name": "wdd-hubot",
-  "version": "0.3.0",
+  "version": "1.0.1",
   "private": true,
   "author": "Chris Chapman",
   "contributors":[
+    {"name": "Jairo Jurado", "github":"https://github.com/jjairo92"},
+    {"name": "Mike Taatgen", "github":"https://github.com/bogoroh"},
   	{"name": "Russell Schlup", "github":"https://github.com/Russ93"},
   	{"name": "Nate Dickison", "github":"https://github.com/ndickiso"}
   ],
