@@ -92,7 +92,7 @@ module.exports = function(robot) {
         }, time);
 
       } else {
-        msg.send("Somethign doesn't look right");
+        msg.send("Something doesn't look right");
 
       };
 
