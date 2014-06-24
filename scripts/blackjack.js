@@ -203,20 +203,25 @@ if (card4 == "D1" || card4 == "C1" || card4 == "S1" || card4 == "H1") {
 msg.send("You got:");
 msg.send(value1.toString() + " Of " + card1suit.toString());
 msg.send(value2.toString() + " Of " + card2suit.toString());
-msg.send("This converts to:" + (value1 + value2));
+msg.send("This converts to: " + (value1 + value2));
 
 msg.send("Dealer got:");
 msg.send(value3.toString() + " Of " + card3suit.toString());
 msg.send(value4.toString() + " Of " + card4suit.toString());
-msg.send("This converts to:" + (value3 + value4));
+msg.send("This converts to: " + (value3 + value4));
 
 // Check who is closest to 21
+
+// If dealerscore is higher than playerscore and dealerscore is less then 21
 if (dealerscore >= playerscore || dealerscore < 21){
 	msg.send("Dealer wins");
+// If dealerscore is 21, Dealer automatically wins with a blackjack
 } else if (dealerscore == 21){
  	msg.send("Dealer wins with a blackjack");
+// If the playerscore is higher than dealerscore and playerscore is not equal to 21
 } else if (dealerscore < playerscore || playerscore <21){
  	msg.send("Player wins");
+// If the playerscore is 21 and the dealer doesn't have blackjack
 } else if (playerscore == 21 || dealerscore !== 21) {
 	msg.send("Player wins with a blackjack");
 }
