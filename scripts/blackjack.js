@@ -25,27 +25,25 @@ var dealCard = function(deck){
 
 var cardGen = function(num, suit){
 	// Switch statement for Ace, Jack,Queen, King to display as text
+	var disp = num;
 	switch (num) {
-		case 0:
-			disp: "Ace";
+		case 1:
+			disp = "Ace";
 			num = 11;
 			break;
 		case 11:
-			disp: "Jack";
+			disp = "Jack";
 			num = 10;
 			break;
 		case 12:
-			disp: "Queen";
+			disp = "Queen";
 			num = 10;
 			break;
 		case 13:
-			disp: "King";
+			disp = "King";
 			num = 10;
 			break;
-		default:
-			disp:num;	
 	}
-
 	return {
 		display:disp,
 		suit: suit,
@@ -66,7 +64,7 @@ var calcScore = function(ary){
 var dispHand = function(ary){
 	var aryHand = [];
 	for(var HandIndex = 0; HandIndex < ary.length; HandIndex++){
-		aryHand.push(ary[HandIndex].display + ary[HandIndex].suit);
+		aryHand.push(ary[HandIndex].display + " " + ent.decode(ary[HandIndex].suit));
 	}
 	return aryHand.join(", ");
 }
@@ -82,12 +80,13 @@ function playJack(msg){
 	// For loop for the 4 suits
 	for(var i=0; i<4; i++){
 		// For loop for the 13 values
-	    for(var cardValue=0; cardValue<13; cardValue++){
+	    for(var cardValue=1; cardValue<=13; cardValue++){
 	        // Push the card to the deck array
 	       deck.push(cardGen(cardValue,arySuits[i]));
 	    }
 	}
 
+	
 	// Deal 2 cards per user
 	var handSize = 2;
 
@@ -104,7 +103,7 @@ function playJack(msg){
 		delt["You"].push(dealCard(deck));
 		delt["Dealer"].push(dealCard(deck));
 	}
-	
+
 	// Variables to calculate score for Dealer and Player
 	var scoreYou = calcScore(delt["You"]),
 		scoreDealer = calcScore(delt["Dealer"]);
