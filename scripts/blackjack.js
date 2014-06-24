@@ -65,48 +65,54 @@ function playJack(msg){
 	var card3suit = "";
 	var card4suit = "";
 
+	// decode an ascii symbol
+	var symHearts = ent.decode("&#9829;");
+	var symClubs = ent.decode("&#9827;");
+	var symSpades = ent.decode("&#9824;");
+	var symDiamonds = ent.decode("&#9830;");
+	
 	// If statement for card 1 suit
 	if (card1suitshort == "D") {
-		card1suit = "Diamond";
+		card1suit = symDiamonds;
 	} else if (card1suitshort == "H") {
-		card1suit = "Heart";
+		card1suit = symHearts;
 	} else if (card1suitshort == "C") {
-		card1suit = "Clubs";
+		card1suit = symClubs;
 	} else if (card1suitshort == "S") {
-		card1suit = "Spades";
+		card1suit = symSpades;
 	};
 
 	// If statement for card 2 suit
 	if (card2suitshort == "D") {
-		card2suit = "Diamond";
+		card2suit = symDiamonds;
 	} else if (card2suitshort == "H") {
-		card2suit = "Heart";
+		card2suit = symHearts;
 	} else if (card2suitshort == "C") {
-		card2suit = "Clubs";
+		card2suit = symClubs;
 	} else if (card2suitshort == "S") {
-		card2suit = "Spades";
+		card2suit = symSpades;
 	}
 
 	// If statement for card 3 suit
 	if (card3suitshort == "D") {
-		card3suit = "Diamond";
+		card3suit = symDiamonds;
 	} else if (card3suitshort == "H") {
-		card3suit = "Heart";
+		card3suit = symHearts;
 	} else if (card3suitshort == "C") {
-		card3suit = "Clubs";
+		card3suit = symClubs;
 	} else if (card3suitshort == "S") {
-		card3suit = "Spades";
+		card3suit = symSpades;
 	} 
 
 	// If statement for card 4 suit
 	if (card4suitshort == "D") {
-		card4suit = "Diamonds";
+		card4suit = symDiamonds;
 	} else if (card4suitshort == "H") {
-		card4suit = "Hearts";
+		card4suit = symHearts;
 	} else if (card4suitshort == "C") {
-		card4suit = "Clubs";
+		card4suit = symClubs;
 	} else if (card4suitshort == "S") {
-		card4suit = "Spades";
+		card4suit = symSpades;
 	} 
 
 	// Initialize value variables
@@ -207,10 +213,6 @@ function playJack(msg){
 		value4 = 10;
 	}
 
-
-	// decode an ascii symbol
-	var sym = ent.decode("&#9825;");
-	
 	// Array to make the msg.send syncronize
 	var messageArray = [];
 
