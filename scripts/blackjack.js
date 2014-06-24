@@ -13,6 +13,8 @@
 // Author:
 //   bogoroh
 
+var ent = require('ent');
+
 function playJack(msg){
 	var suits = new Array("H", "C", "S", "D");
 	var cards = new Array();
@@ -193,7 +195,11 @@ function playJack(msg){
 		value4 = 10;
 	}
 
-	msg.send("You got:");
+	// decode an ascii symbol
+	var sym = ent.decode("&#9825;");
+	
+	msg.send("You got:" + sym); // add symbol into a static msg
+	
 	msg.send(value1.toString() + " Of " + card1suit.toString());
 	msg.send(value2.toString() + " Of " + card2suit.toString());
 	msg.send("This converts to: " + (value1 + value2));
