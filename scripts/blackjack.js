@@ -193,15 +193,18 @@ function playJack(msg){
 		value4 = 10;
 	}
 
-	msg.send("You got:");
-	msg.send(value1.toString() + " Of " + card1suit.toString());
-	msg.send(value2.toString() + " Of " + card2suit.toString());
-	msg.send("This converts to: " + (value1 + value2));
+	// Array to make the msg.send syncronize
+	var messageArray = [];
 
-	msg.send("Dealer got:");
-	msg.send(value3.toString() + " Of " + card3suit.toString());
-	msg.send(value4.toString() + " Of " + card4suit.toString());
-	msg.send("This converts to: " + (value3 + value4));
+	messageArray.push("You got:");
+	messageArray.push(value1.toString() + " Of " + card1suit.toString());
+	messageArray.push(value2.toString() + " Of " + card2suit.toString());
+	messageArray.push("This converts to: " + (value1 + value2));
+
+	messageArray.push("Dealer got:");
+	messageArray.push(value3.toString() + " Of " + card3suit.toString());
+	messageArray.push(value4.toString() + " Of " + card4suit.toString());
+	messageArray.push("This converts to: " + (value3 + value4));
 
 	// Check who is closest to 21
 	// initialize total value variable
@@ -210,16 +213,21 @@ function playJack(msg){
 
 	// If dealerscore is higher than playerscore and dealerscore is less then 21
 	if (dealerscore >= playerscore && dealerscore < 21){
-		msg.send("Dealer wins");
+		messageArray.push("Dealer wins");
 	// If dealerscore is 21, Dealer automatically wins with a blackjack
 	} else if (dealerscore == 21){
-	 	msg.send("Dealer wins with a blackjack");
+	 	messageArray.push("Dealer wins with a blackjack");
 	// If the playerscore is higher than dealerscore and playerscore is not equal to 21
 	} else if (dealerscore < playerscore && playerscore <21){
-	 	msg.send("Player wins");
+	 	messageArray.push("Player wins");
 	// If the playerscore is 21 and the dealer doesn't have blackjack
 	} else if (playerscore == 21 && dealerscore !== 21) {
-		msg.send("Player wins with a blackjack");
+		messageArray.push("Player wins with a blackjack");
+	}
+
+	// Output the strings in syncronize back
+	for(z=0;i<messageArray.length;z++){
+		msg.send(messageArray[z]);
 	}
 }
 
