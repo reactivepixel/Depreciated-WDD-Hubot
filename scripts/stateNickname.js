@@ -14,14 +14,46 @@
 // Jairo Jurado
 
 
+	var data = [
+		{
+			title : "Alabama",
+			nicknames : [
+				"The Heart of Dixie",
+				"The Yellowhammer State",
+				"The Cotton Plantation State",
+				"The Cotton State",
+				"The Lizard State",
+				"The Pioneer Space Capital of the World"
+			]
+		},{
+			title : "North Dakota",
+			officialNickname : "The Peace Garden State",
+			nicknames : [
+				"The Sioux State",
+				"The Flickertail State",
+				"Land of the Dakotas",
+				"The Roughrider State"
+			]
+		}
+	];
+
 // runs function to get the state nickname
 function getNickname(msg) {
-	var state = msg.match[1].trim().toLowerCase(); // trims what user entered and turns it into lowercase
-	
-	var officialNickname = ""; // will hold the official state nickname
-	var nicknamesArray = []; // will hold the unofficial nicknames for state entered
-	
-	
+	 var state = msg.match[1].trim().toLowerCase(); // trims what user entered and turns it into lowercase
+
+	for(var key in data){
+		var objState = data[key];
+		if(objState.title.toLowerCase() === state){
+			if(objState.officialNickname){
+				msg.send("Official Nickname: " + objState.officialNickname + ".");
+				msg.send("Other Nickname: " + objState.nicknames + ".");
+			} else {
+				msg.send("Other Nickname: " + objState.nicknames + ".");
+			}
+		}
+	}
+
+return false;
 	// conditional to check if what the user entered is a valid state
 	if (state == 'alabama') {
 		// pushes all alabama unofficial nicknames to nicknamesArray
