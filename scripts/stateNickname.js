@@ -1,5 +1,5 @@
 // Description:
-// Finds state nickname for state entered
+// Finds and returns state nickname for state entered
 //
 // Dependencies:
 // none
@@ -432,23 +432,24 @@ function getNickname(msg) {
 		checkOfficialNickname(); // calls checkOfficialNickname function
 		showOtherNicknames(); // calls showOtherNicknames function
 	} else {
-		msg.send('State entered is not valid, make sure state is spelled correctly then run command again.')
+		msg.send('State entered is not valid, make sure state is spelled correctly then run command again.');
 	}
 	
 	
 	// runs function to check if state has an official nickname or not
 	function checkOfficialNickname() {
-		// conditional to check if state has official nickname
+		// conditional to check if state has an official nickname
 		if (officialNickname == "") {
-			msg.send(state + ' has no official nickname'); // lets user know the state has no official nickname
+			// capitalizes first letter of the state and lets user know the state has no official nickname
+			msg.send(state.charAt(0).toUpperCase()+state.substring(1) + ' has no official nickname.');
 		} else {
-			msg.send('Official Nickname: ' + officialNickname);
+			msg.send('Official Nickname: ' + officialNickname + '.');
 		}
 	}
 	
 	// runs function to display on the screen all nicknames inside nicknamesArray
 	function showOtherNicknames() {
-		msg.send('Other Nicknames: ' + nicknamesArray);
+		msg.send('Other Nicknames: ' + nicknamesArray + '.');
 	}
 }
 
