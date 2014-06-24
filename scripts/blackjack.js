@@ -104,6 +104,9 @@ var value2 = 0;
 var value3 = 0;
 var value4 = 0;
 
+// initialize total value variable
+var dealerscore = 0;
+var playerscore = 0;
 
 // Check the value of card 1
 if (card1 == "D1" || card1 == "C1" || card1 == "S1" || card1 == "H1") {
@@ -197,8 +200,27 @@ if (card4 == "D1" || card4 == "C1" || card4 == "S1" || card4 == "H1") {
 	value4 = 10;
 }
 
-msg.send(card1);
-msg.send(value1.toString() + "Of" + card1suit.toString());
+msg.send("You got:");
+msg.send(value1.toString() + " Of " + card1suit.toString());
+msg.send(value2.toString() + " Of " + card2suit.toString());
+msg.send("This converts to:" + (value1 + value2));
+
+msg.send("Dealer got:");
+msg.send(value3.toString() + " Of " + card3suit.toString());
+msg.send(value4.toString() + " Of " + card4suit.toString());
+msg.send("This converts to:" + (value3 + value4));
+
+// Check who is closest to 21
+if (dealerscore >= playerscore || dealerscore < 21){
+	msg.send("Dealer wins");
+} else if (dealerscore == 21){
+ 	msg.send("Dealer wins with a blackjack");
+} else if (dealerscore < playerscore || playerscore <21){
+ 	msg.send("Player wins");
+} else if (playerscore == 21 || dealerscore !== 21) {
+	msg.send("Player wins with a blackjack");
+}
+
 // msg.send(card3);
 // msg.send(card4);
 
