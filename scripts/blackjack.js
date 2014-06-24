@@ -18,25 +18,37 @@ function playJack(msg){
 	var cards = new Array();
 	// changed 3 to 4 to display all four suits
 	var cnt = 0;
-	for(i=0; i<4; i++){
-	    for(j=1; j<=13; j++){
+	for(var i=0; i<4; i++){
+	    for(var j=1; j<=13; j++){
 	        cards[cnt++] = suits[i] + j;
 	    }
 	}
-	var random1 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card1)
+	var random1 = Math.floor(Math.random()*cards.length);
 	var card1 = cards[random1];
+
+	// Remove the first card from the array
 	cards.splice(random1,1);
 
-	var random2 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card2)
+	var random2 = Math.floor(Math.random()*cards.length);
 	var card2 = cards[random2];
+
+	// Remove card2 from the array
 	cards.splice(random2,1);
 
-	var random3 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card3)
+	var random3 = Math.floor(Math.random()*cards.length);
 	var card3 = cards[random3];
+
+	// Remove card3 from the array
 	cards.splice(random3,1);
 
-	var random4 = Math.floor(Math.random()*cards.length)
+	// Grab a random card form the array (card4)
+	var random4 = Math.floor(Math.random()*cards.length);
 	var card4 = cards[random4];
+
+	// Remove card4 from the array
 	cards.splice(random4,1);
 
 	// Variable to check if What suit it is
@@ -60,7 +72,7 @@ function playJack(msg){
 		card1suit = "Clubs";
 	} else if (card1suitshort == "S") {
 		card1suit = "Spades";
-	} 
+	};
 
 	// If statement for card 2 suit
 	if (card2suitshort == "D") {
@@ -71,7 +83,7 @@ function playJack(msg){
 		card2suit = "Clubs";
 	} else if (card2suitshort == "S") {
 		card2suit = "Spades";
-	} 
+	}
 
 	// If statement for card 3 suit
 	if (card3suitshort == "D") {
@@ -86,9 +98,9 @@ function playJack(msg){
 
 	// If statement for card 4 suit
 	if (card4suitshort == "D") {
-		card4suit = "Diamond";
+		card4suit = "Diamonds";
 	} else if (card4suitshort == "H") {
-		card4suit = "Heart";
+		card4suit = "Hearts";
 	} else if (card4suitshort == "C") {
 		card4suit = "Clubs";
 	} else if (card4suitshort == "S") {
