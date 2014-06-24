@@ -205,20 +205,20 @@ function playJack(msg){
 
 	// Check who is closest to 21
 	// initialize total value variable
-	var dealerscore = value3 + value4;
-	var playerscore = value1 + value2;
+	var dealerscore = value3 + value4; // 11
+	var playerscore = value1 + value2; // 13
 
 	// If dealerscore is higher than playerscore and dealerscore is less then 21
-	if (dealerscore >= playerscore || dealerscore < 21){
+	if (dealerscore >= playerscore && dealerscore < 21){
 		msg.send("Dealer wins");
 	// If dealerscore is 21, Dealer automatically wins with a blackjack
 	} else if (dealerscore == 21){
 	 	msg.send("Dealer wins with a blackjack");
 	// If the playerscore is higher than dealerscore and playerscore is not equal to 21
-	} else if (dealerscore < playerscore || playerscore <21){
+	} else if (dealerscore < playerscore && playerscore <21){
 	 	msg.send("Player wins");
 	// If the playerscore is 21 and the dealer doesn't have blackjack
-	} else if (playerscore == 21 || dealerscore !== 21) {
+	} else if (playerscore == 21 && dealerscore !== 21) {
 		msg.send("Player wins with a blackjack");
 	}
 }
