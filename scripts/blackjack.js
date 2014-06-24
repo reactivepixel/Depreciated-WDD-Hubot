@@ -20,25 +20,37 @@ function playJack(msg){
 	var cards = new Array();
 	// changed 3 to 4 to display all four suits
 	var cnt = 0;
-	for(i=0; i<4; i++){
-	    for(j=1; j<=13; j++){
+	for(var i=0; i<4; i++){
+	    for(var j=1; j<=13; j++){
 	        cards[cnt++] = suits[i] + j;
 	    }
 	}
-	var random1 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card1)
+	var random1 = Math.floor(Math.random()*cards.length);
 	var card1 = cards[random1];
+
+	// Remove the first card from the array
 	cards.splice(random1,1);
 
-	var random2 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card2)
+	var random2 = Math.floor(Math.random()*cards.length);
 	var card2 = cards[random2];
+
+	// Remove card2 from the array
 	cards.splice(random2,1);
 
-	var random3 = Math.floor(Math.random()*cards.length)
+	// Grab a random card from the array (card3)
+	var random3 = Math.floor(Math.random()*cards.length);
 	var card3 = cards[random3];
+
+	// Remove card3 from the array
 	cards.splice(random3,1);
 
-	var random4 = Math.floor(Math.random()*cards.length)
+	// Grab a random card form the array (card4)
+	var random4 = Math.floor(Math.random()*cards.length);
 	var card4 = cards[random4];
+
+	// Remove card4 from the array
 	cards.splice(random4,1);
 
 	// Variable to check if What suit it is
@@ -62,7 +74,7 @@ function playJack(msg){
 		card1suit = "Clubs";
 	} else if (card1suitshort == "S") {
 		card1suit = "Spades";
-	} 
+	};
 
 	// If statement for card 2 suit
 	if (card2suitshort == "D") {
@@ -73,7 +85,7 @@ function playJack(msg){
 		card2suit = "Clubs";
 	} else if (card2suitshort == "S") {
 		card2suit = "Spades";
-	} 
+	}
 
 	// If statement for card 3 suit
 	if (card3suitshort == "D") {
@@ -88,9 +100,9 @@ function playJack(msg){
 
 	// If statement for card 4 suit
 	if (card4suitshort == "D") {
-		card4suit = "Diamond";
+		card4suit = "Diamonds";
 	} else if (card4suitshort == "H") {
-		card4suit = "Heart";
+		card4suit = "Hearts";
 	} else if (card4suitshort == "C") {
 		card4suit = "Clubs";
 	} else if (card4suitshort == "S") {
@@ -195,19 +207,22 @@ function playJack(msg){
 		value4 = 10;
 	}
 
+
 	// decode an ascii symbol
 	var sym = ent.decode("&#9825;");
 	
-	msg.send("You got:" + sym); // add symbol into a static msg
-	
-	msg.send(value1.toString() + " Of " + card1suit.toString());
-	msg.send(value2.toString() + " Of " + card2suit.toString());
-	msg.send("This converts to: " + (value1 + value2));
+	// Array to make the msg.send syncronize
+	var messageArray = [];
 
-	msg.send("Dealer got:");
-	msg.send(value3.toString() + " Of " + card3suit.toString());
-	msg.send(value4.toString() + " Of " + card4suit.toString());
-	msg.send("This converts to: " + (value3 + value4));
+	messageArray.push("You got:" + sym);
+	messageArray.push(value1.toString() + " Of " + card1suit.toString());
+	messageArray.push(value2.toString() + " Of " + card2suit.toString());
+	messageArray.push("This converts to: " + (value1 + value2));
+
+	messageArray.push("Dealer got:");
+	messageArray.push(value3.toString() + " Of " + card3suit.toString());
+	messageArray.push(value4.toString() + " Of " + card4suit.toString());
+	messageArray.push("This converts to: " + (value3 + value4));
 
 	// Check who is closest to 21
 	// initialize total value variable
@@ -216,16 +231,21 @@ function playJack(msg){
 
 	// If dealerscore is higher than playerscore and dealerscore is less then 21
 	if (dealerscore >= playerscore && dealerscore < 21){
-		msg.send("Dealer wins");
+		messageArray.push("Dealer wins");
 	// If dealerscore is 21, Dealer automatically wins with a blackjack
 	} else if (dealerscore == 21){
-	 	msg.send("Dealer wins with a blackjack");
+	 	messageArray.push("Dealer wins with a blackjack");
 	// If the playerscore is higher than dealerscore and playerscore is not equal to 21
 	} else if (dealerscore < playerscore && playerscore <21){
-	 	msg.send("Player wins");
+	 	messageArray.push("Player wins");
 	// If the playerscore is 21 and the dealer doesn't have blackjack
 	} else if (playerscore == 21 && dealerscore !== 21) {
-		msg.send("Player wins with a blackjack");
+		messageArray.push("Player wins with a blackjack");
+	}
+
+	// Output the strings in syncronize back
+	for(z=0;i<messageArray.length;z++){
+		msg.send(messageArray[z]);
 	}
 }
 
