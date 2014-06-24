@@ -101,10 +101,6 @@ function playJack(msg){
 	var value3 = 0;
 	var value4 = 0;
 
-	// initialize total value variable
-	var dealerscore = 0;
-	var playerscore = 0;
-
 	// Check the value of card 1
 	if (card1 == "D1" || card1 == "C1" || card1 == "S1" || card1 == "H1") {
 		value1 = 11;
@@ -208,6 +204,9 @@ function playJack(msg){
 	msg.send("This converts to: " + (value3 + value4));
 
 	// Check who is closest to 21
+	// initialize total value variable
+	var dealerscore = value3 + value4;
+	var playerscore = value1 + value2;
 
 	// If dealerscore is higher than playerscore and dealerscore is less then 21
 	if (dealerscore >= playerscore || dealerscore < 21){
