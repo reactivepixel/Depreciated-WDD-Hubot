@@ -198,7 +198,7 @@ if (card4 == "D1" || card4 == "C1" || card4 == "S1" || card4 == "H1") {
 }
 
 msg.send(card1);
-msg.send(value1.toString() + "Of" + card1suit.toString();
+msg.send(value1.toString() + "Of" + card1suit.toString());
 // msg.send(card3);
 // msg.send(card4);
 
