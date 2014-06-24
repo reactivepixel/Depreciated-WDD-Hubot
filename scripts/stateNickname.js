@@ -1,5 +1,5 @@
 // Description:
-// Finds state Nickname for state entered
+// Finds state nickname for state entered
 //
 // Dependencies:
 // none
@@ -32,6 +32,7 @@ function getNickname(msg) {
 											"The Lizard State",
 											"The Pioneer Space Capital of the World");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'alaska') {
 		// pushes all alaska unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Last Frontier",
@@ -39,6 +40,7 @@ function getNickname(msg) {
 											"Seward's Folly",
 											"Seward's Ice Box");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'arizona') {
 		// pushes all arizona unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Grand Canyon State",
@@ -51,6 +53,7 @@ function getNickname(msg) {
 											"The Sand Hill State",
 											"The Sunset State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'arkansas') {
 		// pushes all arkansas unofficial nicknames to nicknamesArray
 		var officialNickname = "The Natural State";
@@ -62,6 +65,7 @@ function getNickname(msg) {
 											"The Toothpick State",
 											"The Bear State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'california') {
 		// pushes all california unofficial nicknames to nicknamesArray
 		var officialNickname = "The Golden State";
@@ -69,6 +73,7 @@ function getNickname(msg) {
 											"The El Dorado State",
 											"The Grape State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'colorado') {
 		// pushes all colorado unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Centennial State",
@@ -78,6 +83,7 @@ function getNickname(msg) {
 											"Switzerland of America",
 											"The Highest State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'connecticut') {
 		// pushes all connecticut unofficial nicknames to nicknamesArray
 		var officialNickname = "The Constitution State";
@@ -88,6 +94,7 @@ function getNickname(msg) {
 											"The Provisions State",
 											"Land of Steady Habits");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'delaware') {
 		// pushes all delaware unofficial nicknames to nicknamesArray
 		var officialNickname = "The First State";
@@ -99,6 +106,7 @@ function getNickname(msg) {
 											"Corporate Capital",
 											"Small Wonder");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'florida') {
 		// pushes all florida unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Sunshine State",
@@ -109,6 +117,7 @@ function getNickname(msg) {
 											"The Peninsula State",
 											"The Gulf State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'georgia') {
 		// pushes all georgia unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("Empire State of the South",
@@ -118,6 +127,7 @@ function getNickname(msg) {
 											"The Buzzard State",
 											"Yankee-land of the South");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'hawaii') {
 		// pushes all hawaii unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Aloha State",
@@ -125,12 +135,14 @@ function getNickname(msg) {
 											"Paradise of the Pacific",
 											"The Youngest State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'idaho') {
 		// pushes all idaho unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Gem State",
 											"Gem of the Mountains",
 											"Little Ida");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'illinois') {
 		// pushes all illinois unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Prairie State",
@@ -140,16 +152,19 @@ function getNickname(msg) {
 											"The Sucker State",
 											"Egypt");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'indiana') {
 		// pushes all indiana unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("Crossroads of America",
 											"The Hoosier State",
 											"Playground of the Middle West");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'iowa') {
 		// pushes all iowa unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Hawkeye State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'kansas') {
 		// pushes all kansas unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Sunflower State",
@@ -158,12 +173,14 @@ function getNickname(msg) {
 											"The Cyclone State",
 											"Bleeding Kansas");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'kentucky') {
 		// pushes all kentucky unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Bluegrass State",
 											"The Hemp State",
 											"The Tobacco State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'louisiana') {
 		// pushes all louisiana unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Pelican State",
@@ -172,6 +189,7 @@ function getNickname(msg) {
 											"The Child of the Mississippi",
 											"Fisherman's Paradise");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'maine') {
 		// pushes all maine unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Pine Tree State",
@@ -179,11 +197,13 @@ function getNickname(msg) {
 											"The Border State",
 											"The Old Dirigo State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'maryland') {
 		// pushes all maryland unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Old Line State",
 											"The Free State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'massachusetts') {
 		// pushes all massachusetts unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Bay State",
@@ -192,6 +212,7 @@ function getNickname(msg) {
 											"The Puritan State",
 											"The Baked Bean State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'michigan') {
 		// pushes all michigan unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Wolverine State",
@@ -200,6 +221,7 @@ function getNickname(msg) {
 											"The Water Wonderland",
 											"The Auto State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'minnesota') {
 		// pushes all minnesota unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The North Star State",
@@ -207,6 +229,7 @@ function getNickname(msg) {
 											"The Bread and Butter State",
 											"Land of 10,000 Lakes");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'mississippi') {
 		// pushes all mississippi unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Magnolia State",
@@ -215,6 +238,7 @@ function getNickname(msg) {
 											"The Bayou State",
 											"The Mud-cat State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'missouri') {
 		// pushes all missouri unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Show Me State",
@@ -223,6 +247,7 @@ function getNickname(msg) {
 											"The Lead State",
 											"The Ozark State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'montana') {
 		// pushes all montana unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Treasure State",
@@ -230,6 +255,7 @@ function getNickname(msg) {
 											"The Stub Toe State",
 											"The Bonanza State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'nebraska') {
 		// pushes all nebraska unofficial nicknames to nicknamesArray
 		var officialNickname = "The Cornhusker State";
@@ -237,12 +263,14 @@ function getNickname(msg) {
 											"The Antelope State",
 											"The Bug-eating State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'nevada') {
 		// pushes all nevada unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Silver State",
 											"The Sagebrush State",
 											"The Battle Born State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'new hampshire') {
 		// pushes all new hampshire unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Granite State",
@@ -250,6 +278,7 @@ function getNickname(msg) {
 											"Switzerland of America",
 											"The Mother of Rivers");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'new jersey') {
 		// pushes all new jersey unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Garden State",
@@ -257,24 +286,28 @@ function getNickname(msg) {
 											"The Camden & Amboy State",
 											"The Jersey Blue State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'new mexico') {
 		// pushes all new mexico unofficial nicknames to nicknamesArray
 		var officialNickname = "Land of Enchantment";
 		var nicknames = nicknamesArray.push("The Cactus State",
 											"The Spanish State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'new york') {
 		// pushes all new york unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Empire State",
 											"The Excelsior State",
 											"The Knickerbocker State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'north carolina') {
 		// pushes all north carolina unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Tar Heel State",
 											"The Old North State",
 											"The Turpentine State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'north dakota') {
 		// pushes all north dakota unofficial nicknames to nicknamesArray
 		var officialNickname = "The Peace Garden State";
@@ -283,27 +316,32 @@ function getNickname(msg) {
 											"Land of the Dakotas",
 											"The Roughrider State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'ohio') {
 		// pushes all ohio unofficial nicknames to nicknamesArray
 		var officialNickname = "The Buckeye State";
 		var nicknames = nicknamesArray.push("Mother of Modern Presidents");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'oklahoma') {
 		// pushes all oklahoma unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Sooner State",
 											"Boomer's Paradise");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'oregon') {
 		// pushes all oregon unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Beaver State",
 											"The Web-foot State",
 											"The Hard-case State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'pennsylvania') {
 		// pushes all pennsylvania unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Keystone State",
 											"The Quaker State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'rhode island') {
 		// pushes all rhode island unofficial nicknames to nicknamesArray
 		var officialNickname = "The Ocean State";
@@ -312,6 +350,7 @@ function getNickname(msg) {
 											"The Smallest State",
 											"Land of Roger Williams");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'south carolina') {
 		// pushes all south carolina unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Palmetto State",
@@ -320,6 +359,7 @@ function getNickname(msg) {
 											"Keystone of the South Atlantic Seaboard",
 											"The Iodine State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'south dakota') {
 		// pushes all south dakota unofficial nicknames to nicknamesArray
 		var officialNickname = "The Mount Rushmore State";
@@ -327,6 +367,7 @@ function getNickname(msg) {
 											"The Blizzard State",
 											"The Artesian State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'tennessee') {
 		// pushes all tennessee unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("Volunteer State",
@@ -334,12 +375,14 @@ function getNickname(msg) {
 											"Mother of Southwestern Statesmen",
 											"The Hog and Hominy State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'texas') {
 		// pushes all texas unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Lone Star State",
 											"The Beef State",
 											"The Banner State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'utah') {
 		// pushes all utah unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Beehive State",
@@ -347,10 +390,12 @@ function getNickname(msg) {
 											"Land of the Saints",
 											"The Salt Lake State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'vermont') {
 		// pushes all vermont unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Green Mountain State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'virginia') {
 		// pushes all virginia unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("Old Dominion",
@@ -359,33 +404,36 @@ function getNickname(msg) {
 											"Mother of States",
 											"Mother of Statesmen");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'washington') {
 		// pushes all washington unofficial nicknames to nicknamesArray
 		var officialNickname = "The Evergreen State";
 		var nicknames = nicknamesArray.push("The Chinook State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'west virginia') {
 		// pushes all west virginia unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Mountain State",
 											"Switzerland of America",
 											"The Panhandle State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'wisconsin') {
 		// pushes all wisconsin unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Badger State",
 											"The Copper State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else if (state == 'wyoming') {
 		// pushes all wyoming unofficial nicknames to nicknamesArray
 		var nicknames = nicknamesArray.push("The Equality State",
 											"Big Wyoming",
 											"The Cowboy State");
 		checkOfficialNickname(); // calls checkOfficialNickname function
+		showOtherNicknames(); // calls showOtherNicknames function
 	} else {
 		msg.send('State entered is not valid, make sure state is spelled correctly then run command again.')
 	}
-	
-	
 	
 	
 	// runs function to check if state has an official nickname or not
@@ -398,8 +446,10 @@ function getNickname(msg) {
 		}
 	}
 	
-	console.log(nicknamesArray);
-	//msg.send(state);
+	// runs function to display on the screen all nicknames inside nicknamesArray
+	function showOtherNicknames() {
+		msg.send('Other Nicknames: ' + nicknamesArray);
+	}
 }
 
 // Listens for "state nickname <state>" and calls getNickname function.
