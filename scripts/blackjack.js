@@ -244,7 +244,7 @@ function playJack(msg){
 	}
 
 	// Output the strings in syncronize back
-	for(z=0;i<messageArray.length;z++){
+	for(var z=0;z<messageArray.length;z++){
 		msg.send(messageArray[z]);
 	}
 }
