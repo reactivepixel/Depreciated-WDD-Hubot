@@ -13,8 +13,10 @@
 // Author:
 //   bogoroh
 
+// Variable to create entity
 var ent = require('ent');
 
+// Function to deal a card and remove it from the card array
 var dealCard = function(deck){
 		var target = Math.floor(Math.random()*deck.length),
 		aryReturn = deck.splice(target,1);
@@ -22,12 +24,36 @@ var dealCard = function(deck){
 	}
 
 var cardGen = function(num, suit){
+	// Switch statement for Ace, Jack,Queen, King to display as text
+	switch (num) {
+		case 0:
+			disp: "Ace";
+			num = 11;
+			break;
+		case 11:
+			disp: "Jack";
+			num = 10;
+			break;
+		case 12:
+			disp: "Queen";
+			num = 10;
+			break;
+		case 13:
+			disp: "King";
+			num = 10;
+			break;
+		default:
+			disp:num;	
+	}
+
 	return {
+		display:disp,
 		suit: suit,
 		value: num
 	}
 }
 
+// Function to calculate the score of the 2 cards
 var calcScore = function(ary){
 		var scoreKeeper = 0;
 		for(var i = 0; i < ary.length; i++){
@@ -36,62 +62,61 @@ var calcScore = function(ary){
 		return scoreKeeper;
 	}
 
+// Function to display your hand
+var dispHand = function(ary){
+	var aryHand = [];
+	for(var HandIndex = 0; HandIndex < ary.length; HandIndex++){
+		aryHand.push(ary[HandIndex].display + ary[HandIndex].suit);
+	}
+	return aryHand.join(", ");
+}
+
+
+// Function to play blackjack
 function playJack(msg){
 	var arySuits = ["H", "C", "S", "D"],
 		deck = [],
 		delt = [];
 		
-	
-	// changed 3 to 4 to display all four suits
 	var cnt = 0;
+	// For loop for the 4 suits
 	for(var i=0; i<4; i++){
-	    for(var cardValue=1; cardValue<=13; cardValue++){
-	        //deck[cnt++] = suits[i] + cardValue;
+		// For loop for the 13 values
+	    for(var cardValue=0; cardValue<13; cardValue++){
+	        // Push the card to the deck array
 	       deck.push(cardGen(cardValue,arySuits[i]));
 	    }
 	}
 
-	// Deal 4 cards and save to delt arry
+	// Deal 2 cards per user
 	var handSize = 2;
 
 	for(var dealIndex=0; dealIndex<handSize; dealIndex++){
-		
-			if(!delt["You"]){
-				delt["You"] = [];	
-			}
+		if(!delt["You"]){
+			delt["You"] = [];	
+		}
 
-			if(!delt["Dealer"]){
-				delt["Dealer"] = [];	
-			}
+		if(!delt["Dealer"]){
+			delt["Dealer"] = [];	
+		}
 			
-
+		// Push to the delt array the cards the player and dealer has been delt
 		delt["You"].push(dealCard(deck));
 		delt["Dealer"].push(dealCard(deck));
 	}
 	
+	// Variables to calculate score for Dealer and Player
+	var scoreYou = calcScore(delt["You"]),
+		scoreDealer = calcScore(delt["Dealer"]);
 	
-	var dispHand = function(ary){
-		var aryHand = [];
-	
-		for(var HandIndex = 0; HandIndex < ary.length; HandIndex++){
-			aryHand.push(ary[HandIndex].value + ary[HandIndex].suit);
-		}
-		return aryHand.join(", ");
-	}
-	
-		var scoreYou = calcScore(delt["You"]),
-			scoreDealer = calcScore(delt["Dealer"]);
-	
-
 	// decode an ascii symbol
 	//var sym = ent.decode("&#9825;");
 	
 	// Array to make the msg.send syncronize
 	var messageArray = [];
 
-
-	messageArray.push("Your Score: " + scoreDealer + " (" + dispHand(delt["You"]) + ")" );
-	messageArray.push("Your Score: " + scoreYou + " (" + dispHand(delt["Dealer"]) + ")" );
+	messageArray.push("Your Score: " + scoreYou + " (" + dispHand(delt["You"]) + ")" );
+	messageArray.push("Dealer Score: " + scoreDealer + " (" + dispHand(delt["Dealer"]) + ")" );
 	if (scoreYou > scoreDealer){
 		messageArray.push("You Win!");
 	} else {
@@ -108,7 +133,7 @@ function playJack(msg){
 
 //Listens for the exact match of random fact and calls random fact function.
 module.exports = function(robot) {
-  return robot.respond(/play blackjack/i, function(msg) {
+  return robot.respond(/blackjack/i, function(msg) {
  		playJack(msg);
   });
 }
