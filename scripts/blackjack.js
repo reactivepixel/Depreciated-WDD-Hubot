@@ -2,13 +2,13 @@
 //   Play a game of blackjack against Hubot
 //
 // Dependencies:
-//   None
+//   Ent
 //
 // Configuration:
 //   None
 //
 // Commands:
-//   Hubot play blackjack
+//   Hubot blackjack - Plays a game of blackjack
 //
 // Author:
 //   Bogoroh
@@ -77,7 +77,7 @@ var dispHand = function(ary){
 
 // Function to play blackjack
 function playJack(msg){
-	// Initialize "deck","delt" array
+	// Initialize "deck","delt","arySuits" array
 	var arySuits = ["&hearts;" , "&clubs;", "&spades;", "&diams;"],
 		deck = [],
 		delt = [];
@@ -118,7 +118,7 @@ function playJack(msg){
 	var scoreYou = calcScore(delt["You"]),
 		scoreDealer = calcScore(delt["Dealer"]);
 
-	// Array to make the msg.send synchronize
+	// Array to output msg.send
 	var messageArray = [];
 
 	// Display the scores for player and dealer
