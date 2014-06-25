@@ -1,5 +1,5 @@
 // Description:
-// Finds and returns state nickname for state entered
+// Finds and returns state nicknames for state entered
 //
 // Dependencies:
 // none
