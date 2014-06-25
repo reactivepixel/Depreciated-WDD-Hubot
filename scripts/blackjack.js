@@ -11,17 +11,18 @@
 //   Hubot play blackjack
 //
 // Author:
-//   bogoroh
+//   Bogoroh
 
 // Variable to create entity
 var ent = require('ent');
 
 // Function to deal a card and remove it from the card array
 var dealCard = function(deck){
-		var target = Math.floor(Math.random()*deck.length),
-		aryReturn = deck.splice(target,1);
-		return aryReturn[0];
-	}
+	var target = Math.floor(Math.random()*deck.length),
+	aryReturn = deck.splice(target,1);
+
+	return aryReturn[0];
+}
 
 var cardGen = function(num, suit){
 	// Switch statement for Ace, Jack,Queen, King to display as text
@@ -45,7 +46,7 @@ var cardGen = function(num, suit){
 			break;
 	}
 	return {
-		display:disp,
+		display: disp,
 		suit: suit,
 		value: num
 	}
@@ -53,30 +54,36 @@ var cardGen = function(num, suit){
 
 // Function to calculate the score of the 2 cards
 var calcScore = function(ary){
-		var scoreKeeper = 0;
-		for(var i = 0; i < ary.length; i++){
-			scoreKeeper += ary[i].value;
-		}
-		return scoreKeeper;
+	var scoreKeeper = 0;
+
+	for(var i = 0; i < ary.length; i++){
+		scoreKeeper += ary[i].value;
 	}
+
+	return scoreKeeper;
+}
 
 // Function to display your hand
 var dispHand = function(ary){
 	var aryHand = [];
+
 	for(var HandIndex = 0; HandIndex < ary.length; HandIndex++){
 		aryHand.push(ary[HandIndex].display + " " + ent.decode(ary[HandIndex].suit));
 	}
-	return aryHand.join(", ");
+
+	return aryHand.join(" , ");
 }
 
 
 // Function to play blackjack
 function playJack(msg){
-	var arySuits = ["H", "C", "S", "D"],
+	// Initialize "deck","delt" array
+	var arySuits = ["&hearts;" , "&clubs;", "&spades;", "&diams;"],
 		deck = [],
 		delt = [];
 		
 	var cnt = 0;
+
 	// For loop for the 4 suits
 	for(var i=0; i<4; i++){
 		// For loop for the 13 values
@@ -86,15 +93,18 @@ function playJack(msg){
 	    }
 	}
 
-	
 	// Deal 2 cards per user
 	var handSize = 2;
 
+	// Loop to deal a card and push it to the delt array
 	for(var dealIndex=0; dealIndex<handSize; dealIndex++){
+
+		// Checks if the player's "delt" array has cards inside
 		if(!delt["You"]){
 			delt["You"] = [];	
 		}
 
+		// Checks if the dealer's "delt" array has cards inside
 		if(!delt["Dealer"]){
 			delt["Dealer"] = [];	
 		}
@@ -107,32 +117,35 @@ function playJack(msg){
 	// Variables to calculate score for Dealer and Player
 	var scoreYou = calcScore(delt["You"]),
 		scoreDealer = calcScore(delt["Dealer"]);
-	
-	// decode an ascii symbol
-	//var sym = ent.decode("&#9825;");
-	
-	// Array to make the msg.send syncronize
+
+	// Array to make the msg.send synchronize
 	var messageArray = [];
 
-	messageArray.push("Your Score: " + scoreYou + " (" + dispHand(delt["You"]) + ")" );
-	messageArray.push("Dealer Score: " + scoreDealer + " (" + dispHand(delt["Dealer"]) + ")" );
+	// Display the scores for player and dealer
+	messageArray.push("Your Score: " + scoreYou + " (" + dispHand(delt["You"]) + " )" );
+	messageArray.push("Dealer Score: " + scoreDealer + " (" + dispHand(delt["Dealer"]) + " )" );
+
+	// Checks to see who won
 	if (scoreYou > scoreDealer){
 		messageArray.push("You Win!");
 	} else {
-		messageArray.push("You Lose");
+		messageArray.push("You Lose.");
 	}
 
-
-	// Output the strings in syncronize back
-	for(var z=0;z<messageArray.length;z++){
-		msg.send(messageArray[z]);
-	}
+	// Interval to syncronize msg.send
+	setTimeout(function (){
+		// Output the strings in syncronize back
+		for(var z=0;z<messageArray.length;z++){
+			msg.send(messageArray[z]);
+			
+		}
+	}, 500);
 }
 
 
-//Listens for the exact match of random fact and calls random fact function.
+//Listens for the exact match of "blackjack" and calls playJack function.
 module.exports = function(robot) {
-  return robot.respond(/blackjack/i, function(msg) {
- 		playJack(msg);
-  });
+	return robot.respond(/blackjack/i, function(msg) {
+		playJack(msg);
+	});
 }
