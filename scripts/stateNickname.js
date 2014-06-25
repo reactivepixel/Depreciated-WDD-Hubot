@@ -8,12 +8,13 @@
 // none
 //
 // Commands:
-// hubot state nickname <state>
+// hubot statenick <state>
 //
 // Author:
 // Jairo Jurado
 
 
+// Array of objects containing the state title, state official nickname (not all states have an official nickname), and the state's other known nicknames
 var data = [
 	{
 		title: "Alabama",
@@ -515,14 +516,14 @@ function getNickname(msg) {
 	};
 	
 	// Conditional to send a "state not found" message if the state wasn't found in the data array
-	if(stateFound == false) {
+	if(stateFound === false) {
 		msg.send('State entered is not valid, make sure state is spelled correctly then run command again.');
 	}
 }
 
-// Listens for "state nickname <state>" and calls getNickname function.
+// Listens for "statenick <state>" and calls getNickname function.
 module.exports = function(robot) {
 	return robot.respond(/statenick (.*)/i, function(msg) {
-		getNickname(msg); // calls get nickname function and passes to the function what user wrote
+		getNickname(msg);
 	});
 }
