@@ -20,7 +20,6 @@ var ent = require('ent');
 var dealCard = function(deck){
 	var target = Math.floor(Math.random()*deck.length),
 	aryReturn = deck.splice(target,1);
-
 	return aryReturn[0];
 }
 
@@ -59,7 +58,6 @@ var calcScore = function(ary){
 	for(var i = 0; i < ary.length; i++){
 		scoreKeeper += ary[i].value;
 	}
-
 	return scoreKeeper;
 }
 
