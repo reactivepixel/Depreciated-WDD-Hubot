@@ -335,14 +335,6 @@ var data = [
 		]
 	},
 	{
-		title: "North Carolina",
-		nicknames: [
-			"The Tar Heel State",
-			"The Old North State",
-			"The Turpentine State"
-		]
-	},
-	{
 		title: "North Dakota",
 		officialNickname: "The Peace Garden State",
 		nicknames: [
@@ -503,13 +495,13 @@ function getNickname(msg) {
 				msg.send("Official Nickname: " + objState.officialNickname + ".");
 				
 				// Displays array of other nicknames, in a string, with a ", " in between each element
-				msg.send("Other Nicknames: " + objState.nicknames.join(', ') + ".");
+				msg.send("Other Nicknames: " + objState.nicknames.join(", ") + ".");
 				break; // breaks the loop once it finds the nicknames
 			} else {
-				msg.send(objState.title + ' has no official nickname.');
+				msg.send(objState.title + " has no official nickname.");
 				
 				// Displays array of other nicknames, in a string, with a ", " in between each element
-				msg.send("Other Nicknames: " + objState.nicknames.join(', ') + "."); 
+				msg.send("Other Nicknames: " + objState.nicknames.join(", ") + "."); 
 				break; // Breaks the loop once it finds the nicknames
 			}
 		}
@@ -517,7 +509,7 @@ function getNickname(msg) {
 	
 	// Conditional to send a "state not found" message if the state wasn't found in the data array
 	if(stateFound === false) {
-		msg.send('State entered is not valid, make sure state is spelled correctly then run command again.');
+		msg.send("State entered is not valid, make sure state is spelled correctly then run command again.");
 	}
 }
 
