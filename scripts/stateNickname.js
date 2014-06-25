@@ -14,7 +14,7 @@
 // Jairo Jurado
 
 
-// Array of objects containing the state title, state official nickname (not all states have an official nickname), and the state's other known nicknames
+// Array of objects containing the state titles, state official nicknames (not all states have an official nickname), and the state's other known nicknames
 var data = [
 	{
 		title: "Alabama",
