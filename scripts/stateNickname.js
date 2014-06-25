@@ -500,12 +500,14 @@ function getNickname(msg) {
 			stateFound = true;
 			if (objState.officialNickname) {
 				msg.send("Official Nickname: " + objState.officialNickname + ".");
-				msg.send("Other Nicknames: " + objState.nicknames + ".");
+				
+				// Displays array of other nicknames, in a string, with a ", " in between each element
+				msg.send("Other Nicknames: " + objState.nicknames.join(', ') + ".");
 				break; // breaks the loop once it finds the nicknames
 			} else {
 				msg.send(objState.title + ' has no official nickname.');
 				
-				// Displays array of other nicknames in a string with a ", " in between each element
+				// Displays array of other nicknames, in a string, with a ", " in between each element
 				msg.send("Other Nicknames: " + objState.nicknames.join(', ') + "."); 
 				break; // Breaks the loop once it finds the nicknames
 			}
