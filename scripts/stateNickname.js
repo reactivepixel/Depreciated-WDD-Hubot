@@ -8,7 +8,7 @@
 // none
 //
 // Commands:
-// hubot statenick <state>
+// hubot statenick <state> - Enter a U.S. state and get all its nicknames
 //
 // Author:
 // Jairo Jurado
