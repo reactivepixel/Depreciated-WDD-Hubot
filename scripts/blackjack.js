@@ -132,14 +132,10 @@ function playJack(msg){
 		messageArray.push("You Lose.");
 	}
 
-	// Interval to syncronize msg.send
-	setTimeout(function (){
-		// Output the strings in syncronize back
-		for(var z=0;z<messageArray.length;z++){
-			msg.send(messageArray[z]);
-			
-		}
-	}, 500);
+	// Output the strings back
+	for(var z=0;z<messageArray.length;z++){
+		msg.send(messageArray[z]);	
+	}
 }
 
 
