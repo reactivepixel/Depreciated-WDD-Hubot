@@ -1,5 +1,5 @@
 // Description:
-// Finds and returns state nicknames for state entered
+// Finds and returns state nicknames for state entered.
 //
 // Dependencies:
 // none
@@ -8,7 +8,7 @@
 // none
 //
 // Commands:
-// hubot statenick <state> - Enter a U.S. state and get all its nicknames
+// hubot statenick <state> - Enter a U.S. state and get all its nicknames.
 //
 // Author:
 // Jairo Jurado
