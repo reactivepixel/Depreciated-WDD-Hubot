@@ -63,57 +63,6 @@ var calcScore = function(ary){
 	return scoreKeeper;
 }
 
-<<<<<<< HEAD
-	// decode an ascii symbol
-	var symHearts = ent.decode("&#9829;");
-	var symClubs = ent.decode("&#9827;");
-	var symSpades = ent.decode("&#9824;");
-	var symDiamonds = ent.decode("&#9830;");
-	
-	// If statement for card 1 suit
-	if (card1suitshort == "D") {
-		card1suit = symDiamonds;
-	} else if (card1suitshort == "H") {
-		card1suit = symHearts;
-	} else if (card1suitshort == "C") {
-		card1suit = symClubs;
-	} else if (card1suitshort == "S") {
-		card1suit = symSpades;
-	};
-
-	// If statement for card 2 suit
-	if (card2suitshort == "D") {
-		card2suit = symDiamonds;
-	} else if (card2suitshort == "H") {
-		card2suit = symHearts;
-	} else if (card2suitshort == "C") {
-		card2suit = symClubs;
-	} else if (card2suitshort == "S") {
-		card2suit = symSpades;
-	}
-
-	// If statement for card 3 suit
-	if (card3suitshort == "D") {
-		card3suit = symDiamonds;
-	} else if (card3suitshort == "H") {
-		card3suit = symHearts;
-	} else if (card3suitshort == "C") {
-		card3suit = symClubs;
-	} else if (card3suitshort == "S") {
-		card3suit = symSpades;
-	} 
-
-	// If statement for card 4 suit
-	if (card4suitshort == "D") {
-		card4suit = symDiamonds;
-	} else if (card4suitshort == "H") {
-		card4suit = symHearts;
-	} else if (card4suitshort == "C") {
-		card4suit = symClubs;
-	} else if (card4suitshort == "S") {
-		card4suit = symSpades;
-	} 
-=======
 // Function to display your hand
 var dispHand = function(ary){
 	var aryHand = [];
@@ -124,7 +73,6 @@ var dispHand = function(ary){
 
 	return aryHand.join(" , ");
 }
->>>>>>> deckBuilder
 
 
 // Function to play blackjack
@@ -166,15 +114,11 @@ function playJack(msg){
 		delt["Dealer"].push(dealCard(deck));
 	}
 
-<<<<<<< HEAD
-	// Array to make the msg.send syncronize
-=======
 	// Variables to calculate score for Dealer and Player
 	var scoreYou = calcScore(delt["You"]),
 		scoreDealer = calcScore(delt["Dealer"]);
 
 	// Array to make the msg.send synchronize
->>>>>>> deckBuilder
 	var messageArray = [];
 
 	// Display the scores for player and dealer
