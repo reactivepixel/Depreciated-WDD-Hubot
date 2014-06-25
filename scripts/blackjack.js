@@ -24,7 +24,7 @@ var dealCard = function(deck){
 }
 
 var cardGen = function(num, suit){
-	// Switch statement for Ace, Jack,Queen, King to display as text
+	// Switch statement for Ace, Jack, Queen, King to display as text
 	var disp = num;
 	switch (num) {
 		case 1:
@@ -68,7 +68,7 @@ var dispHand = function(ary){
 	for(var HandIndex = 0; HandIndex < ary.length; HandIndex++){
 		aryHand.push(ary[HandIndex].display + " " + ent.decode(ary[HandIndex].suit));
 	}
-
+	// Join the hands together with a comma
 	return aryHand.join(" , ");
 }
 
