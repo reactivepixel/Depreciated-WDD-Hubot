@@ -520,7 +520,7 @@ function getNickname(msg) {
 
 // Listens for "state nickname <state>" and calls getNickname function.
 module.exports = function(robot) {
-	return robot.respond(/state nickname (.*)/i, function(msg) {
+	return robot.respond(/statenick (.*)/i, function(msg) {
 		getNickname(msg); // calls get nickname function and passes to the function what user wrote
 	});
 }
