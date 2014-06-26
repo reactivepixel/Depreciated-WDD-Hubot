@@ -32,7 +32,7 @@ function getTip(msg) {
 		var total = tip + amountDecimal;
 		
 		// Sends the calculated tip and total to the user.
-		msg.send("The 15% tip amount for "+ amountDecimal.toFixed(2) +" is $"+ tip.toFixed(2) +". Your total will be "+ total.toFixed(2) +".");
+		msg.send("The 15% tip amount for $"+ amountDecimal.toFixed(2) +" is $"+ tip.toFixed(2) +". Your total will be $"+ total.toFixed(2) +".");
 	}
 }
 
