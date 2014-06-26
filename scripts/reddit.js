@@ -29,8 +29,8 @@ function reddit(msg){
 			var title = json.data.children[0].data.title;
 			var link =  json.data.children[0].data.permalink;
 			// Check to make sure the area code has been found
-			messageArray.push(title + " is the top title for " + "/r/"+ sub + ".")
-			messageArray.push("The link for this article is: " + "http://www.reddit.com" +link)
+			messageArray.push(title + " for " + "/r/"+ sub + ".")
+			messageArray.push("Article: " + "http://www.reddit.com" +link)
 
 			// Output the strings back
 			for(z = 0; z <= messageArray.length; z++){
