@@ -22,11 +22,12 @@ function reddit(msg){
 				if (!error && response.statusCode < 300){
 					// Parse the json
 					var json = JSON.parse(body);
-					console.log(json);
 					var sub = json.data.children[0].data.subreddit;
 					var title = json.data.children[0].data.title;
+					var link =  json.data.children[0].data.permalink;
 					// Check to make sure the area code has been found
 					msg.send(title + " is the top title for " + "/r/"+ sub + ".")
+					msg.send("The link for this article is: " + "http://www.reddit.com" +link)
 				}
 				else{
 					//Return error if api request goes wrong.
