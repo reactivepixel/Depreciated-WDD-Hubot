@@ -20,7 +20,7 @@ function getTip(msg) {
 	var amountDecimal = parseFloat(amount);
 	
 	if(isNaN(amountDecimal)) {
-		console.log("Please enter only numbers.");
+		msg.send("There are letters in your input. Please enter only numbers.");
 	} else {
 		var tip = .15 * amountDecimal;
 		var total = tip + amountDecimal;
