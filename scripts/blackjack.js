@@ -131,9 +131,14 @@ function playJack(msg){
 	}
 
 	// Output the strings back
-	for(var z=0;z<messageArray.length;z++){
-		msg.send(messageArray[z]);	
-	}
+	for(z = 0; z <= messageArray.length; z++){
+    (function(z){
+        setTimeout(function(){
+            msg.send(messageArray[z])
+        }, 500 * z);
+    }(z));
+} 
+	
 }
 
 
