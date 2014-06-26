@@ -16,11 +16,12 @@
 
 // Function to calculate the tip amount.
 function getTip(msg) {
+
 	// Variable to hold user's input.
 	var amount = msg.match[1].trim();
 	// Converts amount variable to a decimal and holds it in a new variable.
 	var amountDecimal = parseFloat(amount);
-	
+	console.log("-----", amountDecimal);
 	// Checks whether the amountDecimal variable is a number or not.
 	if(isNaN(amountDecimal)) {
 		// If the user's input is not a number, the user is informed to only enter numbers.
@@ -38,7 +39,7 @@ function getTip(msg) {
 
 //Listens for the exact match of tip and calls getTip function.
 module.exports = function(robot) {
-	return robot.respond(/tip (.*)/i, function(msg) {
+	return robot.respond(/tip \$(.*)/i, function(msg) {
 		getTip(msg);
 	});
 }
