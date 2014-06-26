@@ -13,20 +13,22 @@
 // Author:
 // Jairo Jurado
 
-// Dependency for dollar amounts with dollar sign and commas.
+// Dependency to show dollar amounts with dollar sign and commas.
 var numeral = require('numeral');
 
 // Function to calculate the tip amount.
 function getTip(msg) {
 	// Variable to hold user's input.
-	var amount = msg.match[1].trim().replace(',', '.');
+	var amount = msg.match[1].trim();
 	// Converts amount variable to a decimal and holds it in a new variable.
 	var amountDecimal = parseFloat(amount);
 	
 	// Checks whether the amountDecimal variable is a number or not.
 	if(isNaN(amountDecimal)) {
 		// If the user's input is not a number, the user is informed to only enter numbers.
-		msg.send("Please only enter numbers.");
+		msg.send("Please only enter whole numbers/decimals.");
+	} else if(amountDecimal <= 0) { // If the user's input is less than or equal to 0, the user is informed to enter a positive number.
+		msg.send("Please enter a positive whole number/decimal.");
 	} else { // If the user's input is a number, calculations will run.
 		
 		// Calculates the tips.
@@ -41,13 +43,13 @@ function getTip(msg) {
 		
 		// Sends the amount entered, calculated tip, and total to the user. Formats numerical values to dollar values.
 		msg.send("Amount entered: "+ numeral(amountDecimal).format('$0,0.00') +".");
-		msg.send("10% tip is "+ numeral(tip10).format('$0,0.00') +". Total is "+ numeral(total10).format('$0,0.00') +".");
-		msg.send("15% tip is "+ numeral(tip15).format('$0,0.00') +". Total is "+ numeral(total15).format('$0,0.00') +".");
-		msg.send("20% tip is "+ numeral(tip20).format('$0,0.00') +". Total is "+ numeral(total20).format('$0,0.00') +".");
+		msg.send("10% tip is "+ numeral(tip10).format("$0,0.00") +". Total is "+ numeral(total10).format("$0,0.00") +".");
+		msg.send("15% tip is "+ numeral(tip15).format("$0,0.00") +". Total is "+ numeral(total15).format("$0,0.00") +".");
+		msg.send("20% tip is "+ numeral(tip20).format("$0,0.00") +". Total is "+ numeral(total20).format("$0,0.00") +".");
 	}
 }
 
-//Listens for the exact match of tip and calls getTip function.
+//Listens for the exact match of "tip"" and calls getTip function.
 module.exports = function(robot) {
 	return robot.respond(/tip (.*)/i, function(msg) {
 		getTip(msg);
