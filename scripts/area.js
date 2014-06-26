@@ -31,7 +31,7 @@ function areaCode(msg){
 		msg.send("Area code contains illegal Characters and/or letters. Please only enter numbers.");
 	// Checks to make sure the area code length is equal to 3 numbers
 	} else if (codeString.length !== 3){
-		msg.send("Area code is not equal to 3 numbers. Make sure it's only 3.");
+		msg.send("Area code is not equal to 3 digits. Make sure it's only 3.");
 	} else {
 		codeStr = code.toString();
 		request('http://www.allareacodes.com/api/1.0/api.json?npa='+codeStr+'&tracking_email=derp@apetion.com&tracking_url=http://apetion.com', function (error, response, body) {
@@ -44,7 +44,7 @@ function areaCode(msg){
 					// Check to make sure the area code has been found
 					if (status === "success"){
 						var data = json.area_codes[0].state;
-						msg.send("Area code " + code + " is located in " +data);
+						msg.send("Area code " + code + " is located in " + data + "." );
 					// Area code was not found
 					} else {
 						msg.send("Sorry, this area code has not been found. Please try another area code.");
