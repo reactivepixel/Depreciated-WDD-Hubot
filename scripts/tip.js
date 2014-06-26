@@ -39,7 +39,7 @@ function getTip(msg) {
 		var total15 = tip15 + amountDecimal;
 		var total20 = tip20 + amountDecimal;
 		
-		// Sends the calculated tip and total to the user. Formats numerical values to dollar values.
+		// Sends the amount entered, calculated tip, and total to the user. Formats numerical values to dollar values.
 		msg.send("Amount entered: "+ numeral(amountDecimal).format('$0,0.00') +".");
 		msg.send("10% tip is "+ numeral(tip10).format('$0,0.00') +". Total is "+ numeral(total10).format('$0,0.00') +".");
 		msg.send("15% tip is "+ numeral(tip15).format('$0,0.00') +". Total is "+ numeral(total15).format('$0,0.00') +".");
