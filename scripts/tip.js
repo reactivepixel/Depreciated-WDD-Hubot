@@ -59,6 +59,7 @@ function getTip(msg) {
 		}(z));
 	}
 }
+}
 
 //Listens for the exact match of "tip"" and calls getTip function.
 module.exports = function(robot) {
