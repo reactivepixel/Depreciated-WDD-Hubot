@@ -1,5 +1,5 @@
 // Description:
-//   Hubot gives you a state back when you give him the areacode
+//   Hubot gives you a random subreddit with it's top title for the day
 //
 // Dependencies:
 //   Request
@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot reddit  - Gets you a random subreddit with the top post
+//   Hubot redtop  - Gets you a random subreddit with the top post
 //
 // Author:
 //   Bogoroh
@@ -18,10 +18,11 @@ var request = require('request')
 // Function to find the area of an areacode
 function reddit(msg){
 	// Array to output msg.send
-	var messageArray = [];
+	
 	request('http://www.reddit.com/r/random/top.json', function (error, response, body) {
 		// Make sure the connection went successfully through
 		if (!error && response.statusCode < 300){
+			var messageArray = [];
 			// Parse the json
 			var json = JSON.parse(body);
 			var sub = json.data.children[0].data.subreddit;
@@ -37,7 +38,8 @@ function reddit(msg){
 		        setTimeout(function(){
 		            msg.send(messageArray[z])
 		        }, 500 * z);
-		    }(z));
+		    }(z))
+			}
 		}
 		else{
 			//Return error if api request goes wrong.
@@ -48,7 +50,7 @@ function reddit(msg){
 
 //Listens for the exact match of "blackjack" and calls playJack function.
 module.exports = function(robot) {
-	return robot.respond(/reddit/i, function(msg) {
+	return robot.respond(/redtop/i, function(msg) {
 		reddit(msg);
 	});
 }
