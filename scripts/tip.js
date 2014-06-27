@@ -1,5 +1,5 @@
 // Description:
-// Enter dollar amount and get how much for tip.
+// Enter dollar amount and get a tip amount back
 //
 // Dependencies:
 // numeral
@@ -30,7 +30,6 @@ function getTip(msg) {
 	} else if(amountDecimal <= 0) { // If the user's input is less than or equal to 0, the user is informed to enter a positive number.
 		msg.send("Please enter a positive whole number/decimal.");
 	} else { // If the user's input is a number, calculations will run.
-		
 		// Calculates the tips.
 		var tip10 = .10 * amountDecimal;
 		var tip15 = .15 * amountDecimal;
@@ -55,7 +54,7 @@ function getTip(msg) {
 		(function(z){
 			setTimeout(function(){
 				msg.send(messageArray[z])
-			}, 500 * z);
+			}, 300 * z);
 		}(z));
 	}
 }
