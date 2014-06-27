@@ -45,7 +45,7 @@ function reddit(msg){
 		else{
 			//Returns error if api request goes wrong.
 			msg.send("Something went wrong here."); 
-		}	
+		}
 	});
 }
 
