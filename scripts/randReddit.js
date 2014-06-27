@@ -30,10 +30,8 @@ function reddit(msg){
 			var link =  json.data.children[0].data.permalink;
 
 			// Pushes to messageArray
-			//messageArray.push(title + " for " + "/r/"+ sub + ".");
-			messageArray.push("Article: "+ title +".");
-			messageArray.push("Subreddit: "+ "`/r/"+ sub + "`");
-			messageArray.push("Link: " + "http://www.reddit.com" +link);
+			messageArray.push(title + " in "+ "`/r/"+ sub + "`");
+			messageArray.push("http://www.reddit.com" +link);
 
 			// Output the strings back
 			for(z = 0; z <= messageArray.length; z++){
