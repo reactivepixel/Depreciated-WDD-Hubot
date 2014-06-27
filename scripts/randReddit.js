@@ -32,7 +32,7 @@ function reddit(msg){
 			// Pushes to messageArray
 			//messageArray.push(title + " for " + "/r/"+ sub + ".");
 			messageArray.push("Article: "+ title +".");
-			messageArray.push("Subreddit: "+ sub + ".");
+			messageArray.push("Subreddit: "+ "`/r/"+ sub + "`");
 			messageArray.push("Link: " + "http://www.reddit.com" +link);
 
 			// Output the strings back
