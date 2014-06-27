@@ -40,25 +40,25 @@ function getTip(msg) {
 		var total15 = tip15 + amountDecimal;
 		var total20 = tip20 + amountDecimal;
 		
-		// Array for your messages to be send
+		// Array to hold all the messages that will be sent.
 		var messageArray = [];
 		
-		// Sends the amount entered, calculated tip, and total to the user. Formats numerical values to dollar values.
+		// Pushes each string to messageArray.
 		messageArray.push("Amount entered: "+ numeral(amountDecimal).format('$0,0.00') +".");
 		messageArray.push("10% tip is "+ numeral(tip10).format("$0,0.00") +". Total is "+ numeral(total10).format("$0,0.00") +".");
 		messageArray.push("15% tip is "+ numeral(tip15).format("$0,0.00") +". Total is "+ numeral(total15).format("$0,0.00") +".");
 		messageArray.push("20% tip is "+ numeral(tip20).format("$0,0.00") +". Total is "+ numeral(total20).format("$0,0.00") +".");
 		
-		// Output the strings back
-		for(z = 0; z <= messageArray.length; z++){
-		(function(z){
-			setTimeout(function(){
-				msg.send(messageArray[z])
-			}, 300 * z);
-		}(z));
-	}
-}
-}
+		// Outputs the strings back.
+		for(z = 0; z <= messageArray.length; z++) {
+			(function(z) {
+				setTimeout(function(){
+					msg.send(messageArray[z])
+				}, 300 * z);
+			}(z));
+		} // End of for loop.
+	} // End of "else".
+} // End of "getTip" function.
 
 //Listens for the exact match of "tip"" and calls getTip function.
 module.exports = function(robot) {

@@ -35,14 +35,13 @@ function reddit(msg){
 
 			// Output the strings back
 			for(z = 0; z <= messageArray.length; z++){
-		    (function(z){
-		        setTimeout(function(){
-		            msg.send(messageArray[z])
-		        }, 500 * z);
-		    }(z))
+				(function(z){
+					setTimeout(function(){
+						msg.send(messageArray[z])
+					}, 500 * z);
+				}(z));
 			}
-		}
-		else{
+		} else {
 			//Returns error if api request goes wrong.
 			msg.send("Something went wrong here."); 
 		}

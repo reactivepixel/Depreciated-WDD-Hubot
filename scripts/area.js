@@ -8,12 +8,12 @@
 //   None
 //
 // Commands:
-//   Hubot areacode <areacode> - Enter area code, get its state
+//   Hubot areacode <areacode> - Enter area code, get its state.
 //
 // Author:
 //   Bogoroh
 
-var request = require('request')
+var request = require('request');
 
 // Function to find the area of an area code.
 function areaCode(msg){
@@ -45,21 +45,21 @@ function areaCode(msg){
 					// Checks to make sure the area code has been found.
 					if (status === "success"){
 						var data = json.area_codes[0].state;
-						msg.send("Area code " + code + " is located in " + data + "." );
+						msg.send("Area code " + code + " is located in " + data + ".");
 					// Area code was not found.
 					} else {
 						msg.send("Sorry, this area code has not been found. Please try another area code.");
 					}
 				}
 				else{
-					//Returns error if api request goes wrong.
-					msg.send("Something went wrong here.."); 
-				}	
+					// Returns error if api request goes wrong.
+					msg.send("Something went wrong here.");
+				}
 		});
 	}
 }
 
-//Listens for the exact match of "blackjack" and calls playJack function.
+// Listens for the exact match of "blackjack" and calls playJack function.
 module.exports = function(robot) {
 	return robot.respond(/areacode (.*)/i, function(msg) {
 		areaCode(msg);
