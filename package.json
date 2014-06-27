@@ -3,11 +3,23 @@
   "version": "1.2.0",
   "private": true,
   "author": "Chris Chapman",
-  "contributors":[
-    {"name": "Jairo Jurado", "github":"https://github.com/jjairo92"},
-    {"name": "Mike Taatgen", "github":"https://github.com/bogoroh"},
-  	{"name": "Russell Schlup", "github":"https://github.com/Russ93"},
-  	{"name": "Nate Dickison", "github":"https://github.com/ndickiso"}
+  "contributors": [
+    {
+      "name": "Jairo Jurado",
+      "github": "https://github.com/jjairo92"
+    },
+    {
+      "name": "Mike Taatgen",
+      "github": "https://github.com/bogoroh"
+    },
+    {
+      "name": "Russell Schlup",
+      "github": "https://github.com/Russ93"
+    },
+    {
+      "name": "Nate Dickison",
+      "github": "https://github.com/ndickiso"
+    }
   ],
   "keywords": [
     "github",
@@ -27,13 +39,14 @@
     "url": "https://github.com/reactivepixel/WDD-Hubot.git"
   },
   "dependencies": {
+    "cheerio": "~0.15.0",
+    "cleverbot-node": "~0.1.6",
+    "ent": "~2.0.0",
     "hubot": ">= 2.6.0 < 3.0.0",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-slack": "~2.0.4",
-    "cleverbot-node": "~0.1.6",
-    "request": "~2.34.0",
-    "ent": "~2.0.0",
-    "cheerio": "~0.15.0"
+    "numeral": "^1.5.3",
+    "request": "~2.34.0"
   },
   "engines": {
     "node": ">= 0.8.x",

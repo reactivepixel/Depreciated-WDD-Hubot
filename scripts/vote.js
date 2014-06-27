@@ -39,7 +39,7 @@ module.exports = function(robot) {
       //trims the ballots of white space
       data = msg.match[1].trim();
 
-      // splits the string into an array by it's commas
+      // splits the string into an array by its commas
       dataSplit = data.split(",");
 
       // filtered ballots
@@ -63,26 +63,26 @@ module.exports = function(robot) {
       // objs Stores the ballots from the for loop below
       objs = {};
 
-      // for ever ballot it will create an object
+      // for every ballot, it will create an object
       for (var i in ballots) {
         // voteName = {votes:0}
         objs[ballots[i]] = {votes:0};
       
       };
 
-      // if there nothing in there don't do anything
+      // if there is nothing in there, don't do anything
       if (ballots.length > 0) {
 
         // stores objs in redis by the name of votes
         robot.brain.votes = objs;
 
-        msg.send("Poll has begun");
+        msg.send("Poll has begun.");
 
         // Timer for the votes
         // setTimeout(function(){}, runTime)
         setTimeout(function(){
 
-          // current will show th current poll going on
+          // current will show the current poll going on
           current(msg,robot.brain.votes);
 
           // This sets the ballots to false
@@ -92,27 +92,27 @@ module.exports = function(robot) {
         }, time);
 
       } else {
-        msg.send("Something doesn't look right");
+        msg.send("Something doesn't look right.");
 
       };
 
     } else {
 
       // If ballots is not set to false
-      msg.send("A vote is currently goin on");
+      msg.send("A vote is currently going on.");
     };
   });
 
   robot.respond(/voter list/i, function(msg){
 
-    // if votes are blank don't run
+    // if votes are blank, don't run
     if (robot.brain.votes) {
 
-      // current will show th current poll going on
+      // current will show the current poll going on
       current(msg,robot.brain.votes);
 
     } else {
-      msg.send('There is no poll going on');
+      msg.send("There is no poll going on.");
     
     };
   });
@@ -120,7 +120,7 @@ module.exports = function(robot) {
   robot.respond(/voter clear/i, function(msg){
     var user;
 
-    // if votes are blank don't run
+    // if votes are blank, don't run
     if (robot.brain.votes) {
 
       // this is the user that sent the message
@@ -133,7 +133,7 @@ module.exports = function(robot) {
 
       msg.send("The Poll was cleared by "+user);
 
-      // current will show th current poll going on
+      // current will show the current poll going on
       current(msg,robot.brain.votes);
 
       // This sets the ballots to false
@@ -142,7 +142,7 @@ module.exports = function(robot) {
 
     } else {
 
-      msg.send('There is no poll going on');
+      msg.send("There is no poll going on.");
     };
   });
 
@@ -174,7 +174,7 @@ module.exports = function(robot) {
 
       } else {
         // if the check fails it is not a real ballot
-        msg.send("That is not a ballot");
+        msg.send("That is not a ballot.");
 
       };
 
@@ -182,7 +182,7 @@ module.exports = function(robot) {
 
       // feedback for if you try and vote but there is
       // nothing to vote for.
-      msg.send("There is no poll going on currently");
+      msg.send("There is no poll going on currently.");
 
     };
   });
@@ -206,7 +206,7 @@ function votes(msg,votes){
   // for every vote
   for (var key in votes) {
   
-    // send it's name with it's message
+    // send its name with its message
     msg.send(key+': '+votes[key].votes);
   
   };
