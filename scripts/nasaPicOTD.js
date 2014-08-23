@@ -20,7 +20,27 @@ var cheerio = require('cheerio');
 
 function getAstroPicOfTheDay(msg){
 
-	msg.send("The keyphrase works.");
+	var pictureUrl = 'http://apod.nasa.gov/apod/ap140823.html';
+
+	request(pictureUrl, function (error, response, html) {
+
+		if (!error && response.statusCode < 300){
+
+			var $ = cheerio.load(html);
+			var picture;
+
+			$('img').filter(function(){
+				var data = $(this);
+				picture = data.attr('src');
+			})
+
+			msg.send("http://apod.nasa.gov/apod/" + picture);
+
+		}else{
+
+			msg.send("Error");
+		}
+	})
 
 }
 
