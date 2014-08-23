@@ -20,7 +20,13 @@ var cheerio = require('cheerio');
 
 function getAstroPicOfTheDay(msg){
 
-	var pictureUrl = 'http://apod.nasa.gov/apod/ap140823.html';
+	var astroPicDate = new Date();
+	var day = astroPicDate.getDate();
+	var month = astroPicDate.getMonth() + 1;
+	var year = astroPicDate.getFullYear() - 2000;
+
+	var pictureUrl = 'http://apod.nasa.gov/apod/ap'+ year +""+ (month < 10 ? "0"+month : month)+""+day +'.html';
+
 
 	request(pictureUrl, function (error, response, html) {
 
