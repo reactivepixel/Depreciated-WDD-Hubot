@@ -22,7 +22,7 @@
 // GitHub - bkerickson
 
 
-// required packages
+// required dependencies
 var request = require('request');
 var cheerio = require('cheerio');
 
@@ -62,14 +62,14 @@ function getAstroPicOfTheDay(msg){
 		astroPicYear = twoDigitDateFormat((astroPicYear - 2000) + 100);
 	}
 
-
 	// build the target url for the Astronomy Picture of the Day
 	astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
 	// make the request call to the url to get the page html
 	request(astroPicUrl, function (error, response, html) {
 
+		// test for errors or bad response status codes
 		if (!error && response.statusCode < 300){
-
+			// load the page html with cheerio
 			$ = cheerio.load(html);
 
 			// get the title of the image
@@ -88,7 +88,7 @@ function getAstroPicOfTheDay(msg){
 			});
 
 		}else{
-			//Return error message if the request fails for bad date or no image.
+			//Return error message if the request fails for bad date, no image, or errors
 			msg.send("You may have entered a date outside of the range NASA provides (between 06/16/1995 and today), or the date may not have a photo.  Please try again.");
 		};
 
