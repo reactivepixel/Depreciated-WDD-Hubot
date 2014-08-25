@@ -8,8 +8,7 @@
 // none
 //
 // Commands:
-// hubot bmi <height>/<weight> - Enter height and weight, your BMI will be returned.
-// hubot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight"
+// hubot bmi <height>/<weight> - ie.(hubot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight")
 //
 // Author:
 // Anthony Kluba
