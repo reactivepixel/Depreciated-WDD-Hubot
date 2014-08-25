@@ -49,9 +49,7 @@ function getYoMommaJoke(msg){
 
 module.exports = function(robot){
 	//Receives the command and anything after the command.
-	return robot.respond(/yo momma(.*)/i, function(msg){
-		//Takes in what the user has to say.
-		msg.hear(msg.match[0]);
+	return robot.respond(/yo momma(.*)/i, function(msg){		
 		//Calls the function to get the random joke.
 		getYoMommaJoke(msg);
 	});
