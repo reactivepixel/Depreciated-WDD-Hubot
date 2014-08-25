@@ -22,7 +22,7 @@ var request = require('request');
 function googlShortener(msg){
 
 	// define a regex pattern to test the entered url
-	var urlRegexPattern = new RegExp("/(http(s)?:\/\/)?([a-zA-Z\-]*\.)+(com|org|net|edu|gov)(\/.*(\/)*)*/i");
+	var urlRegexPattern = new RegExp('(http(s)?:\/\/)?([a-zA-Z\-]*\.)+(com|org|net|edu|gov)(\/.*(\/)*)*');
 	// test if a url was entered and that it passes the regex test
 	if(msg.match[1] && urlRegexPattern.test(msg.match[1])){
 		// save the entered url and trim it of whitespace
