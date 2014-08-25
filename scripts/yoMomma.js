@@ -1,19 +1,19 @@
-//Description:
-//	Calls an api to get a random Yo Momma joke.
-
-//Dependencies:
-//	request, cheerio
-
-//Configuration:
-//	N/A
-
-//Commands:
-//	Hubot yo momma <Your Joke> -You can put any yo momma joke.
-//	Hubot yo momma - Or you can just put the command if you prefer.
-
-//Author:
-//	Austin Mayer
-//	austinemayer@gmail.com
+// Description:
+// Calls an api to get a random Yo Momma joke.
+//
+// Dependencies:
+// request, cheerio
+//
+// Configuration:
+// N/A
+//
+// Commands:
+// Hubot yo momma <Your Joke> -You can put any yo momma joke.
+// Hubot yo momma - Or you can just put the command if you prefer.
+//
+// Author:
+// Austin Mayer
+// austinemayer@gmail.com
 
 //Dependencies required.
 var request = require('request');
