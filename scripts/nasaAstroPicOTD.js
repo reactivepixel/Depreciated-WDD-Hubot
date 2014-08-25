@@ -18,7 +18,8 @@
 // Hubot nasa picture May 4, 2014 - gets the NASA Astronomy Picture of the Day for May 4, 2014
 //
 // Author:
-// bkerickson
+// Bryan Erickson
+// GitHub - bkerickson
 
 
 // required packages
@@ -70,19 +71,21 @@ function getAstroPicOfTheDay(msg){
 		if (!error && response.statusCode < 300){
 
 			$ = cheerio.load(html);
+
 			// get the title of the image
-			$('title').filter(function(){
-				pageTitleTag = $(this);
-				astroPicOfDayTitle = pageTitleTag.text().trim();
-			});
+			if($('title').length > 0){
+				$('title').filter(function(){
+					pageTitleTag = $(this);
+					astroPicOfDayTitle = pageTitleTag.text().trim();
+				});
+				msg.send(astroPicOfDayTitle);
+			}
 			// get the url to the image
 			$('img').filter(function(){
 				pageImgTag = $(this);
 				astroPicOfDay = pageImgTag.attr('src');
+				msg.send("http://apod.nasa.gov/apod/" + astroPicOfDay);
 			});
-
-			msg.send(astroPicOfDayTitle);
-			msg.send("http://apod.nasa.gov/apod/" + astroPicOfDay);
 
 		}else{
 			//Return error message if the request fails for bad date or no image.
