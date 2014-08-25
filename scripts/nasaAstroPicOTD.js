@@ -23,13 +23,14 @@
 
 
 // required dependencies
-var request = require('request');
-var cheerio = require('cheerio');
+var request = require('request'),
+	cheerio = require('cheerio');
 
 //Function that scrapes the NASA Astronomy Picture of the Day for the image title and image url
-function getAstroPicOfTheDay(msg){
+function getAstroPicOfADay(msg){
 
 	// if a date option was entered, create a new Date object from the entered date
+	// else no date option is entered, get a new Date object with the current date
 	if(msg.match[2]){
 		// trim any whitespace from the entered date option
 		enteredAstroPicDate = msg.match[2].trim();
@@ -46,7 +47,6 @@ function getAstroPicOfTheDay(msg){
 		}
 
 	}else{
-		// no date option was entered, create a Date object with the current date
 		var astroPicFullDate = new Date();
 	};
 
@@ -68,6 +68,7 @@ function getAstroPicOfTheDay(msg){
 	request(astroPicUrl, function (error, response, html) {
 
 		// test for errors or bad response status codes
+		// else return error message if the request fails for bad date, no image, or errors
 		if (!error && response.statusCode < 300){
 			// load the page html with cheerio
 			$ = cheerio.load(html);
@@ -88,7 +89,6 @@ function getAstroPicOfTheDay(msg){
 			});
 
 		}else{
-			//Return error message if the request fails for bad date, no image, or errors
 			msg.send("You may have entered a date outside of the range NASA provides (between 06/16/1995 and today), or the date may not have a photo.  Please try again.");
 		};
 
@@ -111,6 +111,6 @@ function twoDigitDateFormat(inputDate){
 //Listens for the keyphrases 'nasa pic' or 'nasa picture', calls the function to get the picture
 module.exports = function(robot) {
   return robot.respond(/(nasa pic\b|nasa picture)\s*(.*)?$/i, function(msg) {
- 		getAstroPicOfTheDay(msg);
+ 		getAstroPicOfADay(msg);
   });
 }
