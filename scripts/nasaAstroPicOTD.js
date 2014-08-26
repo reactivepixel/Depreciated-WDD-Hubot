@@ -13,7 +13,7 @@
 // Hubot nasa picture - gets the NASA Astronomy Picture of the Day for today.
 // Hubot nasa pic <date> - gets the NASA Astronomy Picture of the Day for a specific date (between 06/16/1995 and today, some dates may have no picture)
 // Hubot nasa picture <date> - gets the NASA Astronomy Picture of the Day for a specific date (between 06/16/1995 and today, some dates may have no picture)
-// Hubot nasa picture 11/11/11 - gets the NASA Astronomy Picture of the Day for 11/11/11
+// Hubot nasa pic 11/11/11 - gets the NASA Astronomy Picture of the Day for 11/11/11
 // Hubot nasa picture 12/31/2013 - gets the NASA Astronomy Picture of the Day for 12/31/2013
 // Hubot nasa picture May 4, 2014 - gets the NASA Astronomy Picture of the Day for May 4, 2014
 //
@@ -65,6 +65,8 @@ function getAstroPicOfADay(msg){
 		// test for errors or bad status codes, scrape the title and img url if it passes
 		// else return error message if the request fails for bad date, no image, or errors
 		if (!error && response.statusCode < 300){
+
+			var outputMessageArray = [];
 			// load the page html with cheerio
 			$ = cheerio.load(html);
 
@@ -74,14 +76,22 @@ function getAstroPicOfADay(msg){
 					pageTitleTag = $(this);
 					astroPicOfDayTitle = pageTitleTag.text().trim();
 				});
-				msg.send(astroPicOfDayTitle);
+				outputMessageArray.push(astroPicOfDayTitle);
 			}
 			// get the url to the image
 			$('img').filter(function(){
 				pageImgTag = $(this);
 				astroPicOfDay = pageImgTag.attr('src');
-				msg.send("http://apod.nasa.gov/apod/" + astroPicOfDay);
+				outputMessageArray.push("http://apod.nasa.gov/apod/" + astroPicOfDay);
 			});
+
+			for(arrayIndex = 0; arrayIndex < outputMessageArray.length; arrayIndex++){
+				(function(arrayIndex){
+					setTimeout(function(){
+						msg.send(outputMessageArray[arrayIndex])
+					}, 100 * arrayIndex);
+				}(arrayIndex));
+			}
 
 		}else{
 			msg.send("You may have entered a date outside of the range NASA provides (between 06/16/1995 and today), or the date may not have a photo.  Please try again.");
@@ -105,7 +115,7 @@ function twoDigitDateFormat(inputDate){
 
 //Listens for the keyphrases 'nasa pic' or 'nasa picture', calls the function to get the picture
 module.exports = function(robot) {
-  return robot.respond(/(nasa pic\b|nasa picture)\s*(.*)?$/i, function(msg) {
- 		getAstroPicOfADay(msg);
-  });
+	return robot.respond(/(nasa pic\b|nasa picture)\s*(.*)?$/i, function(msg) {
+			getAstroPicOfADay(msg);
+	});
 }
