@@ -88,8 +88,8 @@ var astroPicUrl = 'http://apod.nasa.gov/apod/astropix.html';
 					outputMessageArray.push("http://apod.nasa.gov/apod/" + astroPicOfDay);
 				});
 			}else {
-				outputMessageArray.push("The picture for this date is not an image, click the url below to view it on the The Astronomy Picture of the Day site.");
-				outputMessageArray.push(astroPicUrl);
+				outputMessageArray.push("The picture for this date is not a picture. Oops! Here is the link, check it out for yourself: " + astroPicUrl);
+				outputMessageArray.push();
 			}
 
 			for(arrayIndex = 0; arrayIndex < outputMessageArray.length; arrayIndex++){
