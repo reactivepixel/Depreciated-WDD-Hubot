@@ -8,8 +8,7 @@
 // none
 //
 // Commands:
-// hubot bmi <height>/<weight> - Enter height and weight, your BMI will be returned.
-// hubot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight"
+// hubot bmi <height>/<weight> - ie.(Derpbot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight")
 //
 // Author:
 // Anthony Kluba
@@ -20,17 +19,11 @@ function getBMI(msg) {
 	// Variable to hold user's input.
 	var measurements = msg.match[1].trim();
 	// Separates user's height from weight
-	var separate = measurements.split("/"); 
+	var arrMeasurements = measurements.split("/"); 
 	
 	// Check for correct format of user inputs
-	if(separate.length <= 1 || separate.length > 2){ // if users input is missing or has more than required values, inform the user to use correct format
+	if( (arrMeasurements.length <= 1 || arrMeasurements.length > 2) || (isNaN(arrMeasurements[0]) || arrMeasurements[0].match(/[.+-]/i)) || (isNaN(arrMeasurements[1]) || arrMeasurements[1].match(/[.+-]/i))){
 		msg.send("Issue with format, please format as such (ie. 70/200)");
-	}else if((isNaN(separate[0]) || separate[0].match(/[.+-]/i)) && (isNaN(separate[1]) || separate[1].match(/[.+-]/i))){ // if user height and weight input is not a number, inform the user only to use numbers
-		msg.send("Issue with height and weight, please only use whole numbers. (ie. 70/200)");
-	}else if(isNaN(separate[0]) || separate[0].match(/[.+-]/i)){ // if user height input is not a number, inform the user only to use numbers
-		msg.send("Issue with height, please only use whole numbers. (ie. 70/200)");
-	}else if(isNaN(separate[1]) || separate[1].match(/[.+-]/i)){ // if user weight input is not a number, inform the user only to use numbers 
-		msg.send("Issue with weight, please only use whole numbers. (ie. 70/200)");
 	}else{
 		
 		// user's height and weight values
