@@ -23,13 +23,14 @@
 
 
 // required dependencies
-var request = require('request');
-var cheerio = require('cheerio');
+var request = require('request'),
+	cheerio = require('cheerio');
 
 //Function that scrapes the NASA Astronomy Picture of the Day for the image title and image url
-function getAstroPicOfTheDay(msg){
+function getAstroPicOfADay(msg){
 
 	// if a date option was entered, create a new Date object from the entered date
+	// else no date option is entered, get a new Date object with the current date
 	if(msg.match[2]){
 		// trim any whitespace from the entered date option
 		enteredAstroPicDate = msg.match[2].trim();
@@ -46,28 +47,23 @@ function getAstroPicOfTheDay(msg){
 		}
 
 	}else{
-		// no date option was entered, create a Date object with the current date
 		var astroPicFullDate = new Date();
 	};
 
-	// get the day, month, and year from the date, pass them into the twoDigitDateFormat function
+	// get the day, month, and year from the date, pass month and day into twoDigitDateFormat function to format them to 2-digit
 	var astroPicDay = twoDigitDateFormat(astroPicFullDate.getDate());
 	var astroPicMonth = twoDigitDateFormat(astroPicFullDate.getMonth() + 1);
-
-	var astroPicYear = astroPicFullDate.getFullYear();
-	// get the 2-digit year from the 4-digit year
-	if(astroPicYear > 1999){
-		astroPicYear = twoDigitDateFormat(astroPicYear - 2000);
-	}else if(astroPicYear <= 1999){
-		astroPicYear = twoDigitDateFormat((astroPicYear - 2000) + 100);
-	}
+	// get the 2-digit substring year from the 4-digit year
+	var astroPicYear = astroPicFullDate.getFullYear().toString().substr(2,2);
 
 	// build the target url for the Astronomy Picture of the Day
-	astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
+	var astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
+
 	// make the request call to the url to get the page html
 	request(astroPicUrl, function (error, response, html) {
 
-		// test for errors or bad response status codes
+		// test for errors or bad status codes, scrape the title and img url if it passes
+		// else return error message if the request fails for bad date, no image, or errors
 		if (!error && response.statusCode < 300){
 			// load the page html with cheerio
 			$ = cheerio.load(html);
@@ -88,7 +84,6 @@ function getAstroPicOfTheDay(msg){
 			});
 
 		}else{
-			//Return error message if the request fails for bad date, no image, or errors
 			msg.send("You may have entered a date outside of the range NASA provides (between 06/16/1995 and today), or the date may not have a photo.  Please try again.");
 		};
 
@@ -97,11 +92,11 @@ function getAstroPicOfTheDay(msg){
 
 // function to convert the date components into strings 2 chars long for the YYMMDD format of the APOTD url
 function twoDigitDateFormat(inputDate){
-	// if the date is a single digit, convert it to a 2-digit format by concatenating it to a 0
+	// if the date input is a single digit, convert it to a 2-digit format as a string with a leading 0
+	// else the date is already 2-digit, just convert it to a string
 	if(inputDate < 10){
 		outputDate = "0" + inputDate;
 	}else{
-		// otherwise the date is already 2-digit, convert it to a string
 		outputDate = "" + inputDate;
 	}
 
@@ -111,6 +106,6 @@ function twoDigitDateFormat(inputDate){
 //Listens for the keyphrases 'nasa pic' or 'nasa picture', calls the function to get the picture
 module.exports = function(robot) {
   return robot.respond(/(nasa pic\b|nasa picture)\s*(.*)?$/i, function(msg) {
- 		getAstroPicOfTheDay(msg);
+ 		getAstroPicOfADay(msg);
   });
 }
