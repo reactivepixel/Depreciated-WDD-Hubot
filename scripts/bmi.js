@@ -24,40 +24,35 @@ function getBMI(msg) {
 	// Check for correct format of user inputs
 	if( (arrMeasurements.length <= 1 || arrMeasurements.length > 2) || (isNaN(arrMeasurements[0]) || arrMeasurements[0].match(/[.+-]/i)) || (isNaN(arrMeasurements[1]) || arrMeasurements[1].match(/[.+-]/i))){
 		msg.send("Issue with format, please format as such (ie. 70/200)");
-	}else{
+	}else{ // if user has used correct format, run calculations
 		
 		// user's height and weight values
-		var height = parseInt(separate[0],10); // convert string to int
-		var weight = parseInt(separate[1],10); // convert string to int
+		var height = parseInt(arrMeasurements[0],10); // convert string to int
+		var weight = parseInt(arrMeasurements[1],10); // convert string to int
 		
-		// Check for unlikely measurements
-		if(weight <= height){ // if user's weight is less than or equal to height, notify them they have major problems or entered values incorrect
-			msg.send("Issue with height/weight ratio, please format as such (ie. 70/200)");
-		}else if(height < 48 || height > 84){ // if user's height is out of adult BMI height range, inform user to check value entered
-			msg.send("Issue with height value, please use height in inches. (ie. 70/200)");
-		}else if(weight < 80 || weight > 300){ // if user's weight is out of adult BMI weight range, inform user to check value entered
-			msg.send("Issue with weight value, please use weight in pounds. (ie. 70/200)");
-		}else{ // if user has used correct format, run calculations
+		// CALCULATING BMI
+		var heightSquared = height * height; // Height(inches) squared
+		var divided = weight / heightSquared // divide weight by height(squared)
+		var bmi = (divided * 703).toFixed(2) // result of weight divided by height squared multiplied by converion factor of 703 and round 2 decimal places
 		
-			// CALCULATING BMI
-			var heightSquared = height * height; // Height(inches) squared
-			var divided = weight / heightSquared // divide weight by height(squared)
-			var bmi = (divided * 703).toFixed(2) // result of weight divided by height squared multiplied by converion factor of 703 and round 2 decimal places
-			
-			// JUDGING personal BMI
-			if(bmi <= 18){ // outputs user is underweight
-				msg.send("BMI of " + bmi + " suggest, underweight");
-			}else if(bmi <= 18.5){ // outputs user is thin for height
-				msg.send("BMI of " + bmi + " suggest, thin for height");
-			}else if(bmi >= 18.6 && bmi <= 24.9){ // outputs user is healthy weight
-				msg.send("BMI of " + bmi + " suggest, healthy weight");
-			}else if(bmi >= 25 && bmi <= 29.9){ // outputs user is overweight
-				msg.send("BMI of " + bmi + " suggest, overweight");
-			}else{ // outputs user is obese
-				msg.send("BMI of " + bmi + " suggest, obesity");
-			} // End of JUDGING "else".
-		} // End of Calculating "else".
-	} // End of "else".
+		var strJudgment = '';
+		// JUDGING personal BMI
+		if(bmi <= 18){ // outputs user is underweight
+			strJudgment = " suggest, underweight";
+		}else if(bmi <= 18.5){ // outputs user is thin for height
+			strJudgment = " suggest, thin for height";
+		}else if(bmi >= 18.6 && bmi <= 24.9){ // outputs user is healthy weight
+			strJudgment = " suggest, healthy weight";
+		}else if(bmi >= 25 && bmi <= 29.9){ // outputs user is overweight
+			strJudgment = " suggest, overweight";
+		}else{ // outputs user is obese
+			strJudgment = " suggest, obesity";
+		} // End of JUDGING "else".
+		
+		// successful output
+		msg.send("BMI of " + bmi + strJudgment);
+		
+	} // End of format "else".
 } // End of "bmi" function.
 	
 	
