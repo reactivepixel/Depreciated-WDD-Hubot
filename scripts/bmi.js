@@ -23,7 +23,8 @@ function getBMI(msg) {
 	
 
 	// Check for correct format of user inputs
-	if( (arrMeasurements.length <= 1 || arrMeasurements.length > 2) 
+	if( (arrMeasurements.length <= 1 || arrMeasurements.length > 2)
+	|| (arrMeasurements[0] == 0 || arrMeasurements[1] == 0) 
 	|| (arrMeasurements[0].length == 0 || arrMeasurements[1].length == 0)
 	|| (isNaN(arrMeasurements[0]) || arrMeasurements[0].match(/[.+-]/i)) 
 	|| (isNaN(arrMeasurements[1]) || arrMeasurements[1].match(/[.+-]/i))){
