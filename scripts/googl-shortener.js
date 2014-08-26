@@ -35,7 +35,7 @@ function googlShortener(msg){
 	}
 	// if the string length is 0 as a result of a failed regex or no entry, send an error message
 	if(googlEnteredUrl.length == 0){
-		msg.send("Please check the URL you entered or enter a URL to be shortened, and try again. Note: only .com, .org, .net, .edu, and .gov can be used. IE: hubot `googl www.google.com`");
+		msg.send("Please check the URL you entered or enter a URL to be shortened, and try again. Note: only .com, .org, .net, .edu, and .gov can be used. IE: `hubot googl www.google.com`");
 		return;
 	}
 
@@ -62,7 +62,7 @@ function googlShortener(msg){
 	}); // end of request
 }; // end of googlShortener function
 
-//Listens for the keyphrase 'googl <URL>' and calls the function to get a shortened URL from goo.gl
+//Listens for the key-phrase 'googl <URL>' and calls the function to get a shortened URL from goo.gl
 module.exports = function(robot) {
 	return robot.respond(/googl(.*)?$/i, function(msg) {
 			googlShortener(msg);
