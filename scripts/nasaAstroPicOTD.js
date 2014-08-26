@@ -89,7 +89,7 @@ function getAstroPicOfADay(msg){
 				(function(arrayIndex){
 					setTimeout(function(){
 						msg.send(outputMessageArray[arrayIndex])
-					}, 100 * arrayIndex);
+					}, 50 * arrayIndex);
 				}(arrayIndex));
 			}
 
