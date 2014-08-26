@@ -5,8 +5,20 @@
   "author": "Chris Chapman",
   "contributors": [
     {
+      "name": "Anthony Kluba",
+      "github": "https://github.com/Akluba"
+    },
+    {
+      "name": "Austin Mayer",
+      "github": "https://github.com/austinemayer"
+    },
+    {
       "name": "Bryan Erickson",
       "github": "https://github.com/bkerickson"
+    },
+    {
+     "name": "Jairo Jurado",
+     "github": "https://github.com/jjairo92"
     },
     {
       "name": "Mike Taatgen",
@@ -15,7 +27,11 @@
     {
       "name": "Nate Dickison",
       "github": "https://github.com/ndickiso"
-    }
+    },
+    {
+     "name": "Russell Schlup",
+     "github": "https://github.com/Russ93"
+   }
   ],
   "keywords": [
     "github",
