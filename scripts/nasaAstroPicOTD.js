@@ -58,7 +58,7 @@ function getAstroPicOfADay(msg){
 
 	// build the target url for the Astronomy Picture of the Day
 	var astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
-
+	msg.send(astroPicUrl);
 	// make the request call to the url to get the page html
 	request(astroPicUrl, function (error, response, html) {
 
