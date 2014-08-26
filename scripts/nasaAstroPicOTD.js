@@ -28,6 +28,8 @@ var request = require('request'),
 
 //Function that scrapes the NASA Astronomy Picture of the Day for the image title and image url
 function getAstroPicOfADay(msg){
+	msg.send("http://stream1.gifsoup.com/view2/4267612/ah-ah-ah-jurasic-park-o.gif");
+	return false;
 
 	// if a date option was entered, create a new Date object from the entered date
 	// else no date option is entered, get a new Date object with the current date
