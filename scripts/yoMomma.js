@@ -8,7 +8,7 @@
 // N/A
 //
 // Commands:
-// Hubot yo momma <Your Joke> -You can put any yo momma joke.
+// Hubot yo momma <Your Joke> - You can put any yo momma joke.
 // Hubot yo momma - Or you can just put the command if you prefer.
 //
 // Author:
@@ -16,8 +16,8 @@
 // austinemayer@gmail.com
 
 //Dependencies required.
-var request = require('request');
-var cheerio = require('cheerio');
+var request = require('request'),
+	cheerio = require('cheerio');
 
 function getYoMommaJoke(msg){
 	//Makes a request to get a random yo momma joke from the api.
@@ -27,9 +27,9 @@ function getYoMommaJoke(msg){
 			//Cheerio gets the html from the requested page.
 			$ = cheerio.load(response.body);
 			//Parses the Json and just grabs the joke to send back to the user.
-			var yoMommaText = $('body').text();
-			var yoMommaJSON = JSON.parse(yoMommaText);
-			var yoMommaJoke = yoMommaJSON.joke;
+			var yoMommaText = $('body').text(),
+				yoMommaJSON = JSON.parse(yoMommaText),
+				yoMommaJoke = yoMommaJSON.joke;
 			msg.send(yoMommaJoke);
 		}
 		else{
