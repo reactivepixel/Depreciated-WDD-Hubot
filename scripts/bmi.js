@@ -8,7 +8,7 @@
 // none
 //
 // Commands:
-// hubot bmi <height>/<weight> - ie.(hubot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight")
+// hubot bmi <height(in)>/<weight(lbs)> - ie.(Derpbot bmi 70/200 - returns string of "BMI of 28.69 suggest, overweight")
 //
 // Author:
 // Anthony Kluba
@@ -21,8 +21,10 @@ function getBMI(msg) {
 	// Separates user's height from weight
 	var arrMeasurements = measurements.split("/"); 
 	
+
 	// Check for correct format of user inputs
 	if( (arrMeasurements.length <= 1 || arrMeasurements.length > 2) 
+	|| (arrMeasurements[0].length == 0 || arrMeasurements[1].length == 0)
 	|| (isNaN(arrMeasurements[0]) || arrMeasurements[0].match(/[.+-]/i)) 
 	|| (isNaN(arrMeasurements[1]) || arrMeasurements[1].match(/[.+-]/i))){
 		msg.send("Error, please format as such (ie. 70/200)");
