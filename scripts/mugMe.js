@@ -74,15 +74,15 @@ function getMugShot(msg){
 					}else{
 						arresteeInfo.push('Name not stated.');
 					}
-					if (recentArrest.charges.length > 0){
-						arresteeInfo.push(recentArrest.charges);
-					}else{
-						arresteeInfo.push('Charges not stated.');
-					}
 					if (recentArrest.mugshot.length > 0){
 						arresteeInfo.push(recentArrest.mugshot);
 					}else{
 						arresteeInfo.push('No Picture not availble.');
+					}
+					if (recentArrest.charges.length > 0){
+						arresteeInfo.push(recentArrest.charges);
+					}else{
+						arresteeInfo.push('Charges not stated.');
 					}
 
 					for(j = 0; j < arresteeInfo.length; j++){
