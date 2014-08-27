@@ -22,7 +22,8 @@ var request = require('request');
 function googlShortener(msg){
 
 	// define the regex pattern to test the entered url
-	var urlRegexPattern = new RegExp('(http(s)?:\/\/)?(([a-zA-Z0-9\-])+\.)+(com|org|net|edu|gov)(\/.*(\/)*)*');
+	var urlRegexPattern = new RegExp('(http(s)?:\/\/)?(([a-zA-Z0-9\-])+\.)+(com|org|net|edu|gov)(\/.*(\/)*)*'),
+		googlMessageArray = [];
 
 	// test if a url was entered and that it passes the regex test
 	// else no url was entered or it was not valid, set the variable to an empty string
@@ -52,12 +53,19 @@ function googlShortener(msg){
 		// if no errors came back and the status is good, display the new shortened URL
 		// else there was an error with the API call, send an error message
 		if (!error && response.statusCode < 300) {
-			msg.send(response.body.longUrl + " was successfully shortened.")
-			msg.send("Your shortened URL is: `" + response.body.id + "`");
+			googlMessageArray.push(response.body.longUrl + " was successfully shortened.");
+			googlMessageArray.push("Your shortened URL is: `" + response.body.id + "`");
 		}else{
-			msg.send("Google could not shorten your url, or the URL shortener is down at the moment. Please check that you entered your URL correctly and try again in a few minutes.");
+			googlMessageArray.push("Google could not shorten your url, or the URL shortener is down at the moment. Please check that you entered your URL correctly and try again in a few minutes.");
 		}
 
+		for(arrayIndex = 0; arrayIndex < googlMessageArray.length; arrayIndex++){
+			(function(arrayIndex){
+				setTimeout(function(){
+					msg.send(googlMessageArray[arrayIndex])
+				}, 50 * arrayIndex);
+			}(arrayIndex));
+		};
 	}); // end of request
 }; // end of googlShortener function
 
