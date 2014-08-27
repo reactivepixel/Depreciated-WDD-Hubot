@@ -35,7 +35,8 @@ function onToday(msg){
 		arrMonth[11] = "December"; 
 	
 	// setting date -- month and day
-	var date = new Date(),
+	var date = new Date();
+		date.setHours(date.getHours()-4); // makes up for 4hour difference with derpbot/hubot
 		month = arrMonth[date.getMonth()],
 		day = date.getDate();
 	
