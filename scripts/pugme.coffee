@@ -9,7 +9,7 @@
 #
 # Commands:
 #   hubot pug me - Receive a pug
-#   hubot pug bomb N - get N pugs
+#   hubot pug bomb N - get N pugs (Max 20)
 
 module.exports = (robot) ->
 
@@ -18,7 +18,7 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         msg.send JSON.parse(body).pug
 
-  robot.respond /pug bomb( (\d+))?/i, (msg) ->
+  robot.respond /pug bomb( \b([1-9]|1[0-9]|2[0])\b)?/i, (msg) ->
     count = msg.match[2] || 5
     msg.http("http://pugme.herokuapp.com/bomb?count=" + count)
       .get() (err, res, body) ->
