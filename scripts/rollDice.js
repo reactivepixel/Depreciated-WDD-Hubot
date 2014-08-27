@@ -66,7 +66,7 @@ function getDiceRoll(numSides){
 	return Math.ceil(Math.random() * numSides);
 }; // end of getDiceRoll function
 
-//Listens for the keyphrase roll a d<##> or roll <#> d<##> such as roll a d20
+//Listens for the key-phrase "roll a d<##>" or "roll <#> d<##>" such as "roll a d20"
 module.exports = function(robot) {
 	return robot.respond(/roll (.+) (d[0-9]+)/i, function(msg) {
 		// regex tests for the entered roll so only certain sets of dice can be rolled

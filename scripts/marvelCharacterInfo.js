@@ -58,7 +58,7 @@ function marvelCharacterAPISearch(msg){
 		marvelAPIBaseUrl = 'http://gateway.marvel.com/v1/public/characters?ts=' + marvelTimeStamp + '&apikey=' + marvelPubKey + '&hash=' + marvelMD5Hash + "&name=" + marvelCharacter;
 
 
-	// make a waterfall style cascade of calls to prevent asynchonous issues
+	// make a waterfall style cascade of calls to prevent asynchronous issues
 	async.waterfall([
 		function(callback){
 			var characterInfoArray = [];
@@ -165,7 +165,7 @@ function marvelWikiSearch(msg, characterName){
 	}); // end of request
 }; // end of marvelWikiSearch
 
-//Listens for the keyphrase 'marvel <character>' and calls the function to get information about that character
+//Listens for the key-phrase 'marvel <character>' and calls the function to get information about that character
 module.exports = function(robot) {
 	return robot.respond(/marvel(.*)?$/i, function(msg) {
 			marvelCharacterAPISearch(msg);
