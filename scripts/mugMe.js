@@ -26,27 +26,15 @@ function getMugShot(msg){
 	    function(callback){
 
 	    		//Makes a request to get the list if county id's from the table.
-				request('http://www.jailbase.com/api/#recent', function (error, response){
+				request('http://www.jailbase.com/api/1/sources/', function (error, response){
 
 						//Catches an error or if the api does not come back with anything.
 						if(!error && response.statusCode < 300){
 
-							//Cheerio gets the html from the requested page.
-							$ = cheerio.load(response.body);
-
-							//Selects the table, creates an empty array, and grabs the length of the table.
-							var countyTable = $('table'),
-								countyList = [],
-								countyTableLength = countyTable.find('tr').length;
-
-							//loops through each table row, gets the county id, and pushes it to the array.
-							for(var i = 2; i < countyTableLength; i ++){
-								countyList.push(countyTable.find('tr:nth-child('+i+')').find('td:first-of-type').text());
-							}
-
-							//selects a random county and passes it to the next function
-							var randomCounty = countyList[Math.floor(Math.random()*countyList.length)];
-							callback(null, randomCounty);
+							var	countyInfoJSON = JSON.parse(response.body),
+								countyId = countyInfoJSON.records[Math.floor(Math.random()*countyInfoJSON.records.length)].source_id;
+							
+							callback(null, countyId);
 						}
 						else{
 							//Message if there is an error and breaks out of the function.
@@ -65,7 +53,7 @@ function getMugShot(msg){
 
 					//Parses the Json and just grabs the first record to send back to the user.
 					var mugShotJSON = JSON.parse(response.body),
-						recentArrest = mugShotJSON.records[0]
+						recentArrest = mugShotJSON.records[0],
 						arresteeInfo = [];
 
 					//Outputs the name, charges, and mugshot of the arrestee if availble.
