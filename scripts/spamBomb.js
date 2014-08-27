@@ -2,10 +2,10 @@
 // Makes hubot spam a user next time they talk.
 //
 // Dependencies:
-// N/A
+// None
 //
 // Configuration:
-// N/A
+// None
 //
 // Commands:
 // Hubot spambomb <amount> <user>: <message> - Makes hubot spam a user next time they talk.
@@ -30,7 +30,7 @@ module.exports = function(robot) {
     };
   })(this));
   robot.respond(/spambomb (\b([1-9]|1[0-9]|2[0])\b) (.*?): (.*)/i, function(msg) {
-    if(msg.match[3].trim() === 0||msg.match[3].trim() > 20){
+    if(msg.match[2].trim() == 0|| msg.match[2].trim() > 20){
       msg.send("Please enter a number between 1 and 20");
     }else{
       var user, users;

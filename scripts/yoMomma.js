@@ -5,7 +5,7 @@
 // request, cheerio
 //
 // Configuration:
-// N/A
+// None
 //
 // Commands:
 // Hubot yo momma <Your Joke> - You can put any yo momma joke.
