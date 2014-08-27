@@ -83,7 +83,7 @@ function getMugShot(msg){
 						arresteeInfo.push('Charges not stated.');
 					}
 					if (recentArrest.mugshot.length > 0){
-						arresteeInfo.push(recentArrest.mugshot);
+						arresteeInfo.push(recentArrest.mugshot.replace("small/", ""));
 					}else{
 						arresteeInfo.push('No Picture not availble.');
 					}
