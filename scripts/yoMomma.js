@@ -20,8 +20,6 @@ var request = require('request'),
 	cheerio = require('cheerio');
 
 function getYoMommaJoke(msg){
-	msg.send("http://stream1.gifsoup.com/view2/4267612/ah-ah-ah-jurasic-park-o.gif");
-	return false;
 	//Makes a request to get a random yo momma joke from the api.
 	request('http://api.yomomma.info/', function (error, response){
 		//Catches an error or if the api does not come back with anything.
