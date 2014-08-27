@@ -81,6 +81,11 @@ function getMugShot(msg){
 					}else{
 						arresteeInfo.push('No Picture not availble.');
 					}
+					if (recentArrest.more_info_url.length > 0){
+						arresteeInfo.push(recentArrest.more_info_url);
+					}else{
+						arresteeInfo.push('More Info Not availble.');
+					}
 					
 					//Sends out each array item in the proper order
 					for(i = 0; i < arresteeInfo.length; i++){
