@@ -9,6 +9,7 @@
 #
 # Commands:
 #   hubot ambush <user name>: <message>
+#   hubot ambush <user name>: --facepalm - will ambush a user with a facepalm image
 #
 # Author:
 #   jmoses
@@ -26,13 +27,20 @@ module.exports = (robot) ->
     users = robot.brain.usersForFuzzyName(msg.match[1].trim())
     facepalmTest = "/ /i"
     facepalm = "http://i.imgur.com/iWKad22.jpg"
-    if users.length is 1
+    facepalmTest = /// #begin of line
+    (^--facepalm$)
+    ///i            #end of line and ignore case
+    if users.length is 1 and users[0] is 'bkerickson'
       user = users[0]
-      emailPattern = /// #begin of line
-      (^--facepalm$)
-      ///i            #end of line and ignore case
+      msg.send "Nice try "
+      if msg.match[2].match facepalmTest
+        appendAmbush robot.brain.data.ambushes, msg.message.user, msg.message.user, facepalm
+        msg.send "Nice try " + msg.message.user + "."
 
-      if msg.match[2].match emailPattern
+    else if users.length is 1
+      user = users[0]
+
+      if msg.match[2].match facepalmTest
         appendAmbush robot.brain.data.ambushes, user, msg.message.user, facepalm
       else
         appendAmbush robot.brain.data.ambushes, user, msg.message.user, msg.match[2]
