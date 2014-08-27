@@ -2,7 +2,7 @@
 // Retrieves information for a character in the Marvel Comics Universe
 //
 // Dependencies:
-// request, MD5, async
+// request, MD5, cheerio, async
 //
 // Configuration:
 // HUBOT_MARVEL_PRIVATE_KEY

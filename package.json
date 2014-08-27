@@ -51,6 +51,7 @@
     "url": "https://github.com/reactivepixel/WDD-Hubot.git"
   },
   "dependencies": {
+    "MD5": "^1.2.1",
     "async": "^0.9.0",
     "cheerio": "~0.15.0",
     "cleverbot-node": "~0.1.6",
