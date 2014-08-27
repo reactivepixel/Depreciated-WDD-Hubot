@@ -169,10 +169,10 @@ function marvelWikiSearch(msg, characterName){
 				$('#Page_title_matches + h2 + ul.mw-search-results li:first-of-type').filter(function(){
 					marvelWikiPageLink = $(this).find('a').attr('href');
 					marvelWikiPageTitle = $(this).find('a').attr('title');
-					msg.send("I had to do some digging, but I found " + marvelWikiPageTitle + " on `http://www.marvel.com" + marvelWikiPageLink + "` . Hope that's the right character.");
+					msg.send("I had to do some digging, but I found " + marvelWikiPageTitle + " on http://www.marvel.com" + marvelWikiPageLink + " . Hope that's the right character.");
 				});
 			}else{
-				msg.send("I couldn't find anything for '"+ characterName +"'. Are you sure they are a Marvel character? Can you check the spelling and try again?");
+				msg.send("I couldn't find anything for "+ characterName +". Are you sure they are a Marvel character? Can you check the spelling and try again?");
 			}
 		}else{
 			msg.send("Marvel's sites might be down right now, please try again later.");
