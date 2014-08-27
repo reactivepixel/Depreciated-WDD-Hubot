@@ -29,7 +29,7 @@ module.exports = function(robot) {
       return (base = robot.brain.data).textBombs || (base.textBombs = {});
     };
   })(this));
-  robot.respond(/textbomb( \b([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0])\b)? (.*?): (.*)/i, function(msg) {
+  robot.respond(/textbomb( \b([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0])\b) (.*?): (.*)/i, function(msg) {
     if(msg.match[3].trim() == 0||msg.match[3].trim() > 50){
       msg.send("Please enter a number between 1 and 50");
     }else{
