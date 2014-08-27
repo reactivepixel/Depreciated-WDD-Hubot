@@ -17,8 +17,8 @@
       "github": "https://github.com/bkerickson"
     },
     {
-     "name": "Jairo Jurado",
-     "github": "https://github.com/jjairo92"
+      "name": "Jairo Jurado",
+      "github": "https://github.com/jjairo92"
     },
     {
       "name": "Mike Taatgen",
@@ -29,9 +29,9 @@
       "github": "https://github.com/ndickiso"
     },
     {
-     "name": "Russell Schlup",
-     "github": "https://github.com/Russ93"
-   }
+      "name": "Russell Schlup",
+      "github": "https://github.com/Russ93"
+    }
   ],
   "keywords": [
     "github",
@@ -51,6 +51,8 @@
     "url": "https://github.com/reactivepixel/WDD-Hubot.git"
   },
   "dependencies": {
+    "MD5": "^1.2.1",
+    "async": "^0.9.0",
     "cheerio": "~0.15.0",
     "cleverbot-node": "~0.1.6",
     "ent": "~2.0.0",
