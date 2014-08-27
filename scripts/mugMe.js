@@ -31,9 +31,11 @@ function getMugShot(msg){
 						//Catches an error or if the api does not come back with anything.
 						if(!error && response.statusCode < 300){
 
+							//Calls the api to get a random county id first
 							var	countyInfoJSON = JSON.parse(response.body),
 								countyId = countyInfoJSON.records[Math.floor(Math.random()*countyInfoJSON.records.length)].source_id;
 							
+							//passes the county id to the next function in the waterfall
 							callback(null, countyId);
 						}
 						else{
