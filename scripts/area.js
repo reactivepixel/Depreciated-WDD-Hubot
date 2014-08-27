@@ -17,49 +17,45 @@ var request = require('request');
 
 // Function to find the area of an area code.
 function areaCode(msg){
-	// Converts the string to an int.
-	var codeReceive = msg.match[1].trim();
-	// Regex for removing specials characters.
-	var regex = /[^\w\s]/gi;	
-	// Remove regex characters.
-	var codeString = codeReceive.replace(regex, "");
-	// Converts user's input into a number.
-	var code = parseInt(codeString);
+	
+	var codeReceive = msg.match[1].trim(), // Converts the string to an int.
+		regex = /[^\w\s]/gi, // Regex for removing specials characters.
+		codeString = codeReceive.replace(regex, ""), // Remove regex characters.
+		code = parseInt(codeString); // Converts user's input into a number.
 	
 	// Conditional to make sure the user only typed numbers.
 	if (isNaN(code)) {
 		msg.send("Area code contains illegal Characters and/or letters. Please only enter numbers.");
-	// Checks to make sure the area code's length is equal to 3 numbers.
-	} else if (codeString.length !== 3){
+	} else if (codeString.length !== 3){ // Checks to make sure the area code's length is equal to 3 numbers.
 		msg.send("Area code is not equal to 3 digits. Make sure it's only 3.");
 	} else {
-		// Stringify the "code" variable.
-		codeStr = code.toString();
-		request('http://www.allareacodes.com/api/1.0/api.json?npa='+codeStr+'&tracking_email=derp@apetion.com&tracking_url=http://apetion.com', function (error, response, body) {
+		
+		codeStr = code.toString(), // Stringify the "code" variable.
+		apiURL = 'http://www.allareacodes.com/api/1.0/api.json?npa='+codeStr+'&tracking_email=derp@apetion.com&tracking_url=http://apetion.com';
+		
+		// Making request to API
+		request(apiURL, function (error, response, body) {
 				// Conditional to make sure the connection went successfully through.
 				if (!error && response.statusCode < 300){
 					// Parse the json
-					var json = JSON.parse(body);
-					var status = json.status;
+					var json = JSON.parse(body),
+						status = json.status;
 					
-					// Checks to make sure the area code has been found.
-					if (status === "success"){
+					if (status === "success"){ // Checks to make sure the area code has been found.
 						var data = json.area_codes[0].state;
 						msg.send("Area code " + code + " is located in " + data + ".");
-					// Area code was not found.
-					} else {
+					} else { // Area code was not found.
 						msg.send("Sorry, this area code has not been found. Please try another area code.");
 					}
 				}
-				else{
-					// Returns error if api request goes wrong.
+				else{ // Returns error if api request goes wrong.
 					msg.send("Something went wrong here.");
 				}
 		});
 	}
 }
 
-// Listens for the exact match of "blackjack" and calls playJack function.
+// Listens for the exact match of "areacode" and calls areaCode function.
 module.exports = function(robot) {
 	return robot.respond(/areacode (.*)/i, function(msg) {
 		areaCode(msg);
