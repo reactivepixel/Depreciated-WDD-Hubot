@@ -30,16 +30,14 @@ module.exports = (robot) ->
     facepalmTest = /// #begin of line
     (^--facepalm$)
     ///i            #end of line and ignore case
-    if users.length is 1 and users[0] is 'bkerickson'
+    if users.length is 1 and users[0].name is 'bkerickson'
       user = users[0]
-      msg.send "Nice try "
       if msg.match[2].match facepalmTest
         appendAmbush robot.brain.data.ambushes, msg.message.user, msg.message.user, facepalm
         msg.send "Nice try " + msg.message.user + "."
 
     else if users.length is 1
       user = users[0]
-
       if msg.match[2].match facepalmTest
         appendAmbush robot.brain.data.ambushes, user, msg.message.user, facepalm
       else
