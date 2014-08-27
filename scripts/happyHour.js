@@ -12,7 +12,10 @@
 //
 // Author:
 //   ndickiso
-
+//
+// Contributor:
+//   Bryan Erickson
+// 	 bkerickson - GitHub
 
 //------DEPENDANCIES----------//
 var request = require('request'),
@@ -99,7 +102,8 @@ function getHappy(msg,city){
 //------FIX CITY REQUEST---------//
 function fixCity(msg,city){
 
-		//switch statement to switch city name to the specifc format need for certain names
+		//switch statement to change city name to the specifc format need for certain names
+		// changed to switch from numerous if statements
 	switch (city) {
 		case "broward":
 		case "palm-beach":
@@ -133,7 +137,8 @@ function fixCity(msg,city){
 		case "minneapolis--st-paul"	:
 			city = "minneapolis";
 			break;
-// Los Angeles permanently broken without a full rewrite
+
+// Los Angeles permanently broken without a rewrite of the code to deal with possible changes in the gotime.com url scheme
 		// case "los-angeles":
 		// 	city = "la";
 		// 	break;
@@ -180,11 +185,7 @@ function fixCity(msg,city){
 		case "washington-dc":
 			city = "dc";
 
-
-	}
-
-
-
+	};
 
 
 		//Send fixed city name to getHappy function to return happy hours
