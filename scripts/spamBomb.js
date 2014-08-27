@@ -30,18 +30,22 @@ module.exports = function(robot) {
     };
   })(this));
   robot.respond(/textbomb( \b([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|5[0])\b)? (.*?): (.*)/i, function(msg) {
-    var user, users;
-    users = robot.brain.usersForFuzzyName(msg.match[3].trim());
-    if (users.length === 1) {
-      user = users[0];
-      for (i = 0, len = msg.match[2].trim(); i < len; i++) {
-        appendTextBomb(robot.brain.data.textBombs, user, msg.message.user, msg.match[4]);
+    if(msg.match[3].trim() == 0||msg.match[3].trim() > 50){
+      msg.send("Please enter a number between 1 and 50");
+    }else{
+      var user, users;
+      users = robot.brain.usersForFuzzyName(msg.match[3].trim());
+      if (users.length === 1) {
+        user = users[0];
+        for (i = 0, len = msg.match[2].trim(); i < len; i++) {
+          appendTextBomb(robot.brain.data.textBombs, user, msg.message.user, msg.match[4]);
+        }
+        return msg.send("textBomb prepared");
+      } else if (users.length > 1) {
+        return msg.send("Too many users like that");
+      } else {
+        return msg.send("" + msg.match[3] + "? Never heard of 'em");
       }
-      return msg.send("textBomb prepared");
-    } else if (users.length > 1) {
-      return msg.send("Too many users like that");
-    } else {
-      return msg.send("" + msg.match[3] + "? Never heard of 'em");
     }
   });
   return robot.hear(/./i, function(msg) {
