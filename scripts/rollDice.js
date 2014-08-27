@@ -27,7 +27,7 @@ function rollDice(msg){
 
 	// if only one die is rolled, get a random number for the number of sides of the die
 	// else get random numbers for the number of dice rolled storing them to an array for output
-	if (numberDice == 'a' || numberDice == 1){
+	if (numberDice == 'a' || numberDice == 'A' || numberDice == 1){
 		newRoll = getDiceRoll(diceSides);
 		if (newRoll == diceSides){
 			msg.send("You rolled a " + newRoll + " : Critical hit!");
