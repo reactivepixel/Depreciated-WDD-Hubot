@@ -74,23 +74,26 @@ function getMugShot(msg){
 					}else{
 						arresteeInfo.push('Name not stated.');
 					}
+					if (recentArrest.charges.length > 0){
+						for(i = 0; i < recentArrest.charges.length; i++){
+							arresteeInfo.push(recentArrest.charges[i]);
+					    };
+					}else{
+						arresteeInfo.push('Charges not stated.');
+					}
 					if (recentArrest.mugshot.length > 0){
 						arresteeInfo.push(recentArrest.mugshot);
 					}else{
 						arresteeInfo.push('No Picture not availble.');
 					}
-					if (recentArrest.charges.length > 0){
-						arresteeInfo.push(recentArrest.charges);
-					}else{
-						arresteeInfo.push('Charges not stated.');
-					}
+					
 
-					for(j = 0; j < arresteeInfo.length; j++){
-				    (function(j){
+					for(i = 0; i < arresteeInfo.length; i++){
+				    (function(i){
 				        setTimeout(function(){
-							msg.send(arresteeInfo[j]);
-				        }, 1000 * j);
-				    }(j))};
+							msg.send(arresteeInfo[i]);
+				        }, 500 * i);
+				    }(i))};
 					
 				}
 				else{
