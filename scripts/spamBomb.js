@@ -29,22 +29,22 @@ module.exports = function(robot) {
       return (base = robot.brain.data).spamBombs || (base.spamBombs = {});
     };
   })(this));
-  robot.respond(/spambomb (\b([1-9]|1[0-9]|2[0])\b) (.*?): (.*)/i, function(msg) {
-    if(msg.match[2].trim() == 0|| msg.match[2].trim() > 20){
+  robot.respond(/spambomb (.*) (.*?): (.*)/i, function(msg) {
+    if(msg.match[1].trim() <= 0|| msg.match[1].trim() > 20 || (isNaN(msg.match[1].trim()))){
       return msg.send("Please enter a number between 1 and 20");
     }else{
       var user, users;
-      users = robot.brain.usersForFuzzyName(msg.match[3].trim());
+      users = robot.brain.usersForFuzzyName(msg.match[2].trim());
       if (users.length === 1) {
         user = users[0];
-        for (i = 0, len = msg.match[2].trim(); i < len; i++) {
-          appendSpamBomb(robot.brain.data.spamBombs, user, msg.message.user, msg.match[4]);
+        for (i = 0, len = msg.match[1].trim(); i < len; i++) {
+          appendSpamBomb(robot.brain.data.spamBombs, user, msg.message.user, msg.match[3]);
         }
         return msg.send("Spam bomb prepared");
       } else if (users.length > 1) {
         return msg.send("Too many users like that");
       } else {
-        return msg.send("" + msg.match[3] + "? Never heard of 'em");
+        return msg.send("" + msg.match[2] + "? Never heard of 'em");
       }
     }
   });
