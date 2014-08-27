@@ -24,11 +24,16 @@ module.exports = (robot) ->
 
   robot.respond /ambush (.*?): (.*)/i, (msg) ->
     users = robot.brain.usersForFuzzyName(msg.match[1].trim())
-    facepalmTest = new RegExp("/(^--facepalm$)/i")
+    facepalmTest = "/ /i"
+    facepalm = "http://i.imgur.com/iWKad22.jpg"
     if users.length is 1
       user = users[0]
-      if facepalmTest.test(msg.match[2]) is true
-        appendAmbush robot.brain.data.ambushes, user, msg.message.user, "http://i.imgur.com/iWKad22.jpg"
+      emailPattern = /// #begin of line
+      (^--facepalm$)
+      ///i            #end of line and ignore case
+
+      if msg.match[2].match emailPattern
+        appendAmbush robot.brain.data.ambushes, user, msg.message.user, facepalm
       else
         appendAmbush robot.brain.data.ambushes, user, msg.message.user, msg.match[2]
       msg.send "Ambush prepared"
