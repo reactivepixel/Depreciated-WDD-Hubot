@@ -19,7 +19,6 @@
 #   bkerickson - GitHub
 #
 
-
 appendAmbush = (data, toUser, fromUser, message) ->
   data[toUser.name] or= []
 
@@ -31,22 +30,21 @@ module.exports = (robot) ->
 
   robot.respond /ambush (.*?): (.*)/i, (msg) ->
     users = robot.brain.usersForFuzzyName(msg.match[1].trim())
-    niceTryArray = []
     facepalm = "http://i.imgur.com/iWKad22.jpg" # picard facepalm image
+    facepalmArray = []
     facepalmTest = /// #begin of line
-    niceTryArray = []
     (^--facepalm$)
     ///i            #end of line and ignore case
-    # if the target user of a --facepalm is bkerickson, the sender receives facepalm url
+    # if the target user of a --facepalm is bkerickson, the sender receives the facepalm image
     # else, if anyone else, send them the url of the picard facepalm image
     if users.length is 1 and users[0].name is 'bkerickson'
       user = users[0]
       if msg.match[2].match facepalmTest
-        niceTryArray.push "Nice try " + msg.message.user.name + "."
-        niceTryArray.push facepalm
-        for arrayIndex in niceTryArray # loop through the array sending msg to 'draw' the ASCII
-          do (arrayIndex) ->
-            setTimeout (() -> msg.send arrayIndex), 30
+        facepalmArray[0] = "Nice try " + msg.message.user.name + "." #add sender's name to array
+        facepalmArray[1] = facepalm # add facepalm image to array
+        for num in facepalmArray # loop through the array sending msg
+          do (num) ->
+            setTimeout (() -> msg.send num), 30
     else if users.length is 1
       user = users[0]
       # if matches --facepalm, send the facepalm image, else send whatever message was entered
