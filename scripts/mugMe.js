@@ -85,8 +85,8 @@ function getMugShot(msg){
 						arresteeInfo.push('No Picture not availble.');
 					}
 
-					for(var j = 0; j <= arresteeInfo.length; j++){
-				    	msg.send(arresteeInfo[j])
+					for(var j = 0; j < arresteeInfo.length; j++){
+				    	msg.send(arresteeInfo[j]);
 				    };
 
 				}
