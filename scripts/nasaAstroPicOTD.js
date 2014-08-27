@@ -31,8 +31,8 @@ function getAstroPicOfADay(msg){
 	msg.send("http://stream1.gifsoup.com/view2/4267612/ah-ah-ah-jurasic-park-o.gif");
 	return false;
 
-	// if a date option was entered, create a new Date object from the entered date
-	// else no date option is entered, get a new Date object with the current date
+	// if a date option was entered, create a new Date object from the entered date and get the YYMMDD for the URL
+	// else no date option is entered, get a new Date object with the current date and set the URL to the current day's picture url
 	if(msg.match[2]){
 		// trim any whitespace from the entered date option
 		enteredAstroPicDate = msg.match[2].trim();
@@ -48,18 +48,19 @@ function getAstroPicOfADay(msg){
 			// date is valid, nothing to do here
 		}
 
+		// get the day, month, and year from the date, pass month and day into twoDigitDateFormat function to format them to 2-digit
+		var astroPicDay = twoDigitDateFormat(astroPicFullDate.getDate());
+		var astroPicMonth = twoDigitDateFormat(astroPicFullDate.getMonth() + 1);
+		// get the 2-digit substring year from the 4-digit year
+		var astroPicYear = astroPicFullDate.getFullYear().toString().substr(2,2);
+
+		// build the target url for the Astronomy Picture of the Day
+		var astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
+
 	}else{
 		var astroPicFullDate = new Date();
+var astroPicUrl = 'http://apod.nasa.gov/apod/astropix.html';
 	};
-
-	// get the day, month, and year from the date, pass month and day into twoDigitDateFormat function to format them to 2-digit
-	var astroPicDay = twoDigitDateFormat(astroPicFullDate.getDate());
-	var astroPicMonth = twoDigitDateFormat(astroPicFullDate.getMonth() + 1);
-	// get the 2-digit substring year from the 4-digit year
-	var astroPicYear = astroPicFullDate.getFullYear().toString().substr(2,2);
-
-	// build the target url for the Astronomy Picture of the Day
-	var astroPicUrl = 'http://apod.nasa.gov/apod/ap'+ astroPicYear + astroPicMonth + astroPicDay +'.html';
 
 	// make the request call to the url to get the page html
 	request(astroPicUrl, function (error, response, html) {
@@ -80,12 +81,18 @@ function getAstroPicOfADay(msg){
 				});
 				outputMessageArray.push(astroPicOfDayTitle);
 			}
-			// get the url to the image
-			$('img').filter(function(){
-				pageImgTag = $(this);
-				astroPicOfDay = pageImgTag.attr('src');
-				outputMessageArray.push("http://apod.nasa.gov/apod/" + astroPicOfDay);
-			});
+			// get the url to the image,
+			// else if the 'pic of the day' is a video, get the video url
+			if($('img').length > 0){
+				$('img').filter(function(){
+					pageImgTag = $(this);
+					astroPicOfDay = pageImgTag.attr('src');
+					outputMessageArray.push("http://apod.nasa.gov/apod/" + astroPicOfDay);
+				});
+			}else {
+				outputMessageArray.push("The picture for this date is not a picture. Oops! Here is the link, check it out for yourself: " + astroPicUrl);
+				outputMessageArray.push();
+			}
 
 			for(arrayIndex = 0; arrayIndex < outputMessageArray.length; arrayIndex++){
 				(function(arrayIndex){
