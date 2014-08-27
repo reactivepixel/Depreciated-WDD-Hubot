@@ -68,7 +68,7 @@ function getDiceRoll(numSides){
 
 //Listens for the keyphrase roll a d<##> or roll <#> d<##> such as roll a d20
 module.exports = function(robot) {
-	return robot.respond(/roll (.+) (.+\s*)/i, function(msg) {
+	return robot.respond(/roll (.+) (d[0-9]+)/i, function(msg) {
 		// regex tests for the entered roll so only certain sets of dice can be rolled
 		var diceTest = new RegExp("(^d4$|^d6$|^d8$|^d10$|^d12$|^d20$|^D4$|^D6$|^D8$|^D10$|^D12$|^D20$)"),
 			numberDiceTest = new RegExp("(^a$|^A$|^1$|^2$|^3$|^4$|^5$)");
