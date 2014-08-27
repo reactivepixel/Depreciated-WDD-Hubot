@@ -18,7 +18,7 @@
 #   Bryan Erickson
 #   bkerickson - GitHub
 #
-ent = require("ent");
+
 
 appendAmbush = (data, toUser, fromUser, message) ->
   data[toUser.name] or= []
@@ -31,8 +31,10 @@ module.exports = (robot) ->
 
   robot.respond /ambush (.*?): (.*)/i, (msg) ->
     users = robot.brain.usersForFuzzyName(msg.match[1].trim())
+    niceTryArray = []
     facepalm = "http://i.imgur.com/iWKad22.jpg" # picard facepalm image
     facepalmTest = /// #begin of line
+    niceTryArray = []
     (^--facepalm$)
     ///i            #end of line and ignore case
     # if the target user of a --facepalm is bkerickson, the sender receives facepalm url
@@ -40,8 +42,11 @@ module.exports = (robot) ->
     if users.length is 1 and users[0].name is 'bkerickson'
       user = users[0]
       if msg.match[2].match facepalmTest
-        msg.send "Nice try " + msg.message.user.name + "."
-        msg.send facepalm
+        niceTryArray.push "Nice try " + msg.message.user.name + "."
+        niceTryArray.push facepalm
+        for arrayIndex in niceTryArray # loop through the array sending msg to 'draw' the ASCII
+          do (arrayIndex) ->
+            setTimeout (() -> msg.send arrayIndex), 30
     else if users.length is 1
       user = users[0]
       # if matches --facepalm, send the facepalm image, else send whatever message was entered
