@@ -89,7 +89,7 @@ function getMugShot(msg){
 				    (function(j){
 				        setTimeout(function(){
 							msg.send(arresteeInfo[j]);
-				        }, 600 * j);
+				        }, 1000 * j);
 				    }(j))};
 					
 				}
