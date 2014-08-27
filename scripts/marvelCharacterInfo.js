@@ -2,7 +2,7 @@
 // Retrieves information for a character in the Marvel Comics Universe
 //
 // Dependencies:
-// request, MD5, cheerio, async
+// request, MD5, async, cheerio
 //
 // Configuration:
 // HUBOT_MARVEL_PRIVATE_KEY
@@ -25,18 +25,19 @@ var request = require('request'),
 //Function that makes a call to the Marvel API for info on a Marvel character
 function marvelCharacterAPISearch(msg){
 
-	// wikiFound is a boolean to track if a Marvel wiki link is found during the info retrieval
+	// boolean to track if a Marvel wiki link is found during the info retrieval
 	var wikiFound = false;
 
 	// test if a character was entered, then cleanse the string for illegal 'characters'
+	// else nothing was entered and set the variable to an empty string
 	if(msg.match[1]){
 		marvelCharacter = msg.match[1];
 		marvelCharacter = marvelCharacter.replace(/[^a-zA-Z0-9-\s]+/g, "");
 		marvelCharacter = marvelCharacter.trim();
 	}else{
-		// otherwise, nothing was entered and set the variable to an empty string
 		marvelCharacter = "";
 	}
+
 	// test if the character name was entered or if it was empty / nothing was entered
 	if(marvelCharacter.length == 0){
 		msg.send("It looks like you did not enter a character name, please try again. IE: hubot marvel Thor");
@@ -57,7 +58,7 @@ function marvelCharacterAPISearch(msg){
 		marvelAPIBaseUrl = 'http://gateway.marvel.com/v1/public/characters?ts=' + marvelTimeStamp + '&apikey=' + marvelPubKey + '&hash=' + marvelMD5Hash + "&name=" + marvelCharacter;
 
 
-
+	// make a waterfall style cascade of calls to prevent asynchonous issues
 	async.waterfall([
 		function(callback){
 			var characterInfoArray = [];
@@ -72,96 +73,86 @@ function marvelCharacterAPISearch(msg){
 					var	marvelJSON = JSON.parse(body);
 					// make sure there is data to display, if no results were found, try the Marvel wiki as a second try at finding some character info
 					if(marvelJSON.data.count == 0){
-
 						marvelWikiSearch(msg, marvelCharacter);
-
 						return false;
 					}else{
-
 						callback(null, marvelJSON, characterInfoArray);
-					}
-				}
+					};
+				};
 			}); // end of request
 		},
-	function(marvelJSONData, marvelInfoArray, callback){
+		function(marvelJSONData, marvelInfoArray, callback){
+			// if information doesn't exist or a severe lack of information in the API, do the secondary search instead
+			if(marvelJSONData.data.results[0].description.trim().length == 0 && wikiFound == false){
+				marvelWikiSearch(msg, marvelCharacter);
+				return false;
+			}
 
 
-		if(marvelJSONData.data.results[0].description.trim().length == 0 && wikiFound == false){
+			// if a proper name for the character is in the data, get it and add it to the message array
+			if(marvelJSONData.data.results[0].name.length > 0){
+				var marvelCharName = marvelJSONData.data.results[0].name;
+				marvelInfoArray.push(marvelCharName);
+			};
+			// if a thumbnail exists, get the 'portrait_xlarge' version and add it to the message array
+			var notNoImage = new RegExp("http\:\/\/[a-zA-Z0-9\.\/]*\/image_not_available");
+			if(marvelJSONData.data.results[0].thumbnail.path.length > 0 &&
+		notNoImage.test(marvelJSONData.data.results[0].thumbnail.path) == false){
+				var marvelCharThumbnail = marvelJSONData.data.results[0].thumbnail.path
+					+ "/portrait_xlarge."
+					+ marvelJSONData.data.results[0].thumbnail.extension;
+				marvelInfoArray.push(marvelCharThumbnail);
+			};
 
-			marvelWikiSearch(msg, marvelCharacter);
-			return false;
-		}
+			//if the description exists and is not empty, add it to the message array
+			if(marvelJSONData.data.results[0].description.trim().length > 0){
+				var marvelCharDescription = marvelJSONData.data.results[0].description.trim();
+				marvelInfoArray.push(marvelCharDescription);
+			};
 
-
-		// if a proper name for the character is in the data, get it and add it to the message array
-		if(marvelJSONData.data.results[0].name.length > 0){
-			var marvelCharName = marvelJSONData.data.results[0].name;
-			marvelInfoArray.push(marvelCharName);
-		};
-		// if a thumbnail exists, get the 'portrait_xlarge' version and add it to the message array
-		var notNoImage = new RegExp("http\:\/\/[a-zA-Z0-9\.\/]*\/image_not_available");
-
-		if(marvelJSONData.data.results[0].thumbnail.path.length > 0 &&
-	notNoImage.test(marvelJSONData.data.results[0].thumbnail.path) == false){
-
-			var marvelCharThumbnail = marvelJSONData.data.results[0].thumbnail.path
-				+ "/portrait_xlarge."
-				+ marvelJSONData.data.results[0].thumbnail.extension;
-			marvelInfoArray.push(marvelCharThumbnail);
-		};
-
-		//if the description exists and is not empty, add it to the message array
-		if(marvelJSONData.data.results[0].description.trim().length > 0){
-			var marvelCharDescription = marvelJSONData.data.results[0].description.trim();
-			marvelInfoArray.push(marvelCharDescription);
-		};
-
-		// if there are urls to more info, get the url to Marvel's wiki page for the character if it exists, and add it to the message array
-		if(marvelJSONData.data.results[0].urls.length > 0){
-			var urlArray = marvelJSONData.data.results[0].urls;
-			for(var urlArrayIndex = 0; urlArrayIndex < urlArray.length; urlArrayIndex++){
-				if(urlArray[urlArrayIndex].type == "wiki"){
-					wikiFound = true;
-					marvelInfoArray.push("Check out Marvel's wiki page for more info on "+ marvelCharName + " at: '" + urlArray[urlArrayIndex].url.slice(0,urlArray[urlArrayIndex].url.indexOf("?")) + "'");
+			// if there are urls to more info, get the url to Marvel's wiki page for the character if it exists, and add it to the message array
+			if(marvelJSONData.data.results[0].urls.length > 0){
+				var urlArray = marvelJSONData.data.results[0].urls;
+				for(var urlArrayIndex = 0; urlArrayIndex < urlArray.length; urlArrayIndex++){
+					if(urlArray[urlArrayIndex].type == "wiki"){
+						wikiFound = true;
+						marvelInfoArray.push("Check out Marvel's wiki page for more info on "+ marvelCharName + " at: '" + urlArray[urlArrayIndex].url.slice(0,urlArray[urlArrayIndex].url.indexOf("?")) + "'");
+					};
 				};
 			};
-		};
-
 			callback(null, marvelInfoArray);
-	    }
+		}
 	], function (err, result) {
-	   for(var messageArrayIndex = 0; messageArrayIndex < result.length; messageArrayIndex++){
+	for(var messageArrayIndex = 0; messageArrayIndex < result.length; messageArrayIndex++){
 			(function(messageArrayIndex){
 				setTimeout(function(){
-					msg.send(result[messageArrayIndex])
+					msg.send(result[messageArrayIndex]);
 				}, 50 * messageArrayIndex);
 			}(messageArrayIndex));
 		}
 		characterInfoArray = [];
 		return false;
-	});
-
-
+	}); // end of async waterfall
 }; // end of marvelCharacterAPISearch function
 
 // secondary function to search the Marvel wiki and scrape for a potential match to entered character
 function marvelWikiSearch(msg, characterName){
 
 	// add the character name to the Marvel wiki search url
-	marvelWikiUrl = "http://marvel.com/universe3zx/index.php?ns0=1&search=" + characterName + "&title=Special%3ASearch&fulltext=Advanced+search"
+	marvelWikiUrl = "http://marvel.com/universe3zx/index.php?ns0=1&search=" + characterName + "&title=Special%3ASearch&fulltext=Advanced+search";
 	request(marvelWikiUrl, function (error, response, html) {
-
+		// if no errors and good status code
+		// else send an error message because the Marvel sites may be down
 		if (!error && response.statusCode < 300){
-
 			// load the page html with cheerio
 			$ = cheerio.load(html);
 
-			// get the title of the image
+			// if a character was found and a result comes back, get the title of the character and url
+			// else character might not exist or suggest spelling is checked and try again
 			if($('#Page_title_matches + h2 + ul.mw-search-results li:first-of-type').length > 0){
 				$('#Page_title_matches + h2 + ul.mw-search-results li:first-of-type').filter(function(){
 					marvelWikiPageLink = $(this).find('a').attr('href');
 					marvelWikiPageTitle = $(this).find('a').attr('title');
-
 					msg.send("I had to do some digging, but I found " + marvelWikiPageTitle + " on `http://www.marvel.com" + marvelWikiPageLink + "` . Hope that's the right character.");
 				});
 			}else{
@@ -171,11 +162,8 @@ function marvelWikiSearch(msg, characterName){
 			msg.send("Marvel's sites might be down right now, please try again later.");
 		}
 		return false;
-	});
-
+	}); // end of request
 }; // end of marvelWikiSearch
-
-
 
 //Listens for the keyphrase 'marvel <character>' and calls the function to get information about that character
 module.exports = function(robot) {
