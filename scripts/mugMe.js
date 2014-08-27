@@ -75,6 +75,7 @@ function getMugShot(msg){
 						arresteeInfo.push('Name not stated.');
 					}
 					if (recentArrest.charges.length > 0){
+						//Loops through all of their charges.
 						for(i = 0; i < recentArrest.charges.length; i++){
 							arresteeInfo.push(recentArrest.charges[i]);
 					    };
@@ -87,7 +88,7 @@ function getMugShot(msg){
 						arresteeInfo.push('No Picture not availble.');
 					}
 					
-
+					//Sends out each array item in the proper order
 					for(i = 0; i < arresteeInfo.length; i++){
 				    (function(i){
 				        setTimeout(function(){
