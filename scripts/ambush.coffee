@@ -15,24 +15,28 @@
 
 appendAmbush = (data, toUser, fromUser, message) ->
   data[toUser.name] or= []
-  
+
   data[toUser.name].push [fromUser.name, message]
-  
+
 module.exports = (robot) ->
   robot.brain.on 'loaded', =>
     robot.brain.data.ambushes ||= {}
 
   robot.respond /ambush (.*?): (.*)/i, (msg) ->
     users = robot.brain.usersForFuzzyName(msg.match[1].trim())
+    facepalmTest = new RegExp("/(^--facepalm$)/i")
     if users.length is 1
       user = users[0]
-      appendAmbush(robot.brain.data.ambushes, user, msg.message.user, msg.match[2])
+      if facepalmTest.test(msg.match[2]) is true
+        appendAmbush robot.brain.data.ambushes, user, msg.message.user, "http://i.imgur.com/iWKad22.jpg"
+      else
+        appendAmbush robot.brain.data.ambushes, user, msg.message.user, msg.match[2]
       msg.send "Ambush prepared"
     else if users.length > 1
       msg.send "Too many users like that"
     else
       msg.send "#{msg.match[1]}? Never heard of 'em"
-  
+
   robot.hear /./i, (msg) ->
     return unless robot.brain.data.ambushes?
     if (ambushes = robot.brain.data.ambushes[msg.message.user.name])
