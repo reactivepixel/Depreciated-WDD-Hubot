@@ -34,7 +34,7 @@ module.exports = (robot) ->
       user = users[0]
       if msg.match[2].match facepalmTest
         appendAmbush robot.brain.data.ambushes, msg.message.user, msg.message.user, facepalm
-        msg.send "Nice try " + msg.message.user + "."
+        msg.send "Nice try " + msg.message.user.name + "."
 
     else if users.length is 1
       user = users[0]
