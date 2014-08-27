@@ -54,7 +54,7 @@ function googlShortener(msg){
 		// else there was an error with the API call, send an error message
 		if (!error && response.statusCode < 300) {
 			googlMessageArray.push(response.body.longUrl + " was successfully shortened.");
-			googlMessageArray.push("Your shortened URL is: `" + response.body.id + "`");
+			googlMessageArray.push("Your shortened URL is: " + response.body.id + " ");
 		}else{
 			googlMessageArray.push("Google could not shorten your url, or the URL shortener is down at the moment. Please check that you entered your URL correctly and try again in a few minutes.");
 		}
