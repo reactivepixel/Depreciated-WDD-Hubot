@@ -8,7 +8,7 @@
 // None
 //
 // Commands:
-// Hubot googl <LONG URL> - Will shorten a long url to a goo.gl one. (Only .com, .org, .net, .edu, and .gov domains)
+// Hubot googl <LONG URL> - Will shorten a long url to a goo.gl one. (Only .com, .org, .net, .edu, and .gov domains).
 // Hubot googl www.google.com - Will shorten www.google.com to http://goo.gl/fbsS
 //
 // Author:
@@ -37,6 +37,8 @@ function googlShortener(msg){
 	if(googlEnteredUrl.length == 0){
 		msg.send("Please check the URL you entered or enter a URL to be shortened, and try again. Note: only .com, .org, .net, .edu, and .gov can be used. IE: `hubot googl www.google.com`");
 		return false;
+	}else{
+		// nothing to do here
 	}
 
 	// options for the request POST call

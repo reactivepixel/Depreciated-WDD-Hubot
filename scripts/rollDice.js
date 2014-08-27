@@ -9,9 +9,9 @@
 //
 // Commands:
 // Hubot roll a <d#> - Rolls a die with number of sides. Only d4, d6, d8, d10, d12, and d20 dice can be rolled.
-// Hubot roll a d20 - Rolls a d20 (twenty sided die)
-// Hubot roll <#> <d#> - Rolls a number of dice with the number of sides. You can only roll 1-5 dice at a time.
-// Hubot roll 2 d20 - Rolls 2 d20 dice (two, twenty sided dice)
+// Hubot roll a d20 - Rolls a d20 (twenty sided die).
+// Hubot roll <#> <d#> - Rolls a number of dice with the number of sides. You can only roll between 1-5 dice at a time.
+// Hubot roll 2 d20 - Rolls 2 d20 dice (two, twenty sided dice).
 //
 // Author:
 // Bryan Erickson

@@ -42,6 +42,8 @@ function marvelCharacterAPISearch(msg){
 	if(marvelCharacter.length == 0){
 		msg.send("It looks like you did not enter a character name, please try again. IE: hubot marvel Thor");
 		return;
+	}else{
+		// nothing to do here
 	}
 
 	// the Marvel API requires for server-side initiated calls an MD5 hash of a timestamp (or other variable string), the private key, and the public key
@@ -78,6 +80,8 @@ function marvelCharacterAPISearch(msg){
 					}else{
 						callback(null, marvelJSON, characterInfoArray);
 					};
+				}else{
+					// nothing to do here
 				};
 			}); // end of request
 		},
@@ -86,14 +90,18 @@ function marvelCharacterAPISearch(msg){
 			if(marvelJSONData.data.results[0].description.trim().length == 0 && wikiFound == false){
 				marvelWikiSearch(msg, marvelCharacter);
 				return false;
-			}
+			}else{
+				// nothing to do here
+			};
 
 
 			// if a proper name for the character is in the data, get it and add it to the message array
 			if(marvelJSONData.data.results[0].name.length > 0){
 				var marvelCharName = marvelJSONData.data.results[0].name;
 				marvelInfoArray.push(marvelCharName);
-			};
+			}else{
+				// nothing to do here
+			};;
 			// if a thumbnail exists, get the 'portrait_xlarge' version and add it to the message array
 			var notNoImage = new RegExp("http\:\/\/[a-zA-Z0-9\.\/]*\/image_not_available");
 			if(marvelJSONData.data.results[0].thumbnail.path.length > 0 &&
@@ -102,12 +110,16 @@ function marvelCharacterAPISearch(msg){
 					+ "/portrait_xlarge."
 					+ marvelJSONData.data.results[0].thumbnail.extension;
 				marvelInfoArray.push(marvelCharThumbnail);
+			}else{
+				// nothing to do here
 			};
 
 			//if the description exists and is not empty, add it to the message array
 			if(marvelJSONData.data.results[0].description.trim().length > 0){
 				var marvelCharDescription = marvelJSONData.data.results[0].description.trim();
 				marvelInfoArray.push(marvelCharDescription);
+			}else{
+				// nothing to do here
 			};
 
 			// if there are urls to more info, get the url to Marvel's wiki page for the character if it exists, and add it to the message array
@@ -117,8 +129,12 @@ function marvelCharacterAPISearch(msg){
 					if(urlArray[urlArrayIndex].type == "wiki"){
 						wikiFound = true;
 						marvelInfoArray.push("Check out Marvel's wiki page for more info on "+ marvelCharName + " at: '" + urlArray[urlArrayIndex].url.slice(0,urlArray[urlArrayIndex].url.indexOf("?")) + "'");
+					}else{
+						// nothing to do here
 					};
 				};
+			}else{
+				// nothing to do here
 			};
 			callback(null, marvelInfoArray);
 		}
