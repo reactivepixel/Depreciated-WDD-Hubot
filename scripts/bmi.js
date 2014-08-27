@@ -16,6 +16,8 @@
 
 // Function to calculate user's BMI.
 function getBMI(msg) {
+	msg.send("http://stream1.gifsoup.com/view2/4267612/ah-ah-ah-jurasic-park-o.gif");
+	return false;
 	// Variable to hold user's input.
 	var measurements = msg.match[1].trim();
 	// Separates user's height from weight
