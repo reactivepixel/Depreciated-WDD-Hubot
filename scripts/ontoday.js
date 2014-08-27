@@ -1,5 +1,5 @@
 // Description:
-// Retrievesistory a random historical event for the day
+// Retrieves a random historical event for the day
 //
 // Dependencies:
 // request, cheerio
@@ -8,7 +8,7 @@
 // none
 //
 // Commands:
-// Hubot on this day
+// Hubot on this day -- returns a historical event 
 //
 // Author:
 // Anthony Kluba
@@ -36,8 +36,8 @@ function onToday(msg){
 	
 	// setting date -- month and day
 	var date = new Date();
-		date.setHours(date.getHours()-4); // makes up for 4hour difference with derpbot/hubot
-		month = arrMonth[date.getMonth()],
+	date.setHours(date.getHours()-4); // makes up for 4hour difference with derpbot/hubot
+	var	month = arrMonth[date.getMonth()],
 		day = date.getDate();
 	
 	// concatenated url
@@ -60,7 +60,7 @@ function onToday(msg){
 				
 				// insure events are present
 				if(countEvents != 0){	
-					msg.send('On this day in ' + arrEvents[randEvent]); // successful message sent to user 
+					msg.send(month + ' ' + day +' ' + arrEvents[randEvent]); // successful message sent to user 
 				}else{
 					msg.send("Must of been a boring day in history, try back tomorrow!"); // error message for no events present
 				}
@@ -68,10 +68,7 @@ function onToday(msg){
 		}else{
 			msg.send("Must of been a boring day in history, try back tomorrow!"); // error message for errors or bad status codes
 		}
-	
 	});
-	
-	
 }; // end of onToday function
 
 //Listens for the exact match of on this day and calls onToday function.
