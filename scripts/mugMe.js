@@ -65,24 +65,30 @@ function getMugShot(msg){
 
 					//Parses the Json and just grabs the first record to send back to the user.
 					var mugShotJSON = JSON.parse(response.body),
-						recentArrest = mugShotJSON.records[0];
+						recentArrest = mugShotJSON.records[0]
+						arresteeInfo = [];
 
 					//Outputs the name, charges, and mugshot of the arrestee if availble.
 					if (recentArrest.name.length > 0){
-						msg.send(recentArrest.name);
+						arresteeInfo.push(recentArrest.name);
 					}else{
-						msg.send('Name not stated.');
+						arresteeInfo.push('Name not stated.');
 					}
 					if (recentArrest.charges.length > 0){
-						msg.send(recentArrest.charges);
+						arresteeInfo.push(recentArrest.charges);
 					}else{
-						msg.send('Charges not stated.');
+						arresteeInfo.push('Charges not stated.');
 					}
 					if (recentArrest.name.length > 0){
-						msg.send(recentArrest.mugshot);
+						arresteeInfo.push(recentArrest.mugshot);
 					}else{
-						msg.send('No Picture not availble.');
+						arresteeInfo.push('No Picture not availble.');
 					}
+
+					for(var j = 0; j <= arresteeInfo.length; j++){
+				    	msg.send(arresteeInfo[j])
+				    };
+
 				}
 				else{
 
