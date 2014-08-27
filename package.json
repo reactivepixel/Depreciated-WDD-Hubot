@@ -1,9 +1,21 @@
 {
   "name": "wdd-hubot",
-  "version": "1.2.1",
+  "version": "2.1.2",
   "private": true,
   "author": "Chris Chapman",
   "contributors": [
+    {
+      "name": "Anthony Kluba",
+      "github": "https://github.com/Akluba"
+    },
+    {
+      "name": "Austin Mayer",
+      "github": "https://github.com/austinemayer"
+    },
+    {
+      "name": "Bryan Erickson",
+      "github": "https://github.com/bkerickson"
+    },
     {
       "name": "Jairo Jurado",
       "github": "https://github.com/jjairo92"
@@ -13,12 +25,12 @@
       "github": "https://github.com/bogoroh"
     },
     {
-      "name": "Russell Schlup",
-      "github": "https://github.com/Russ93"
-    },
-    {
       "name": "Nate Dickison",
       "github": "https://github.com/ndickiso"
+    },
+    {
+      "name": "Russell Schlup",
+      "github": "https://github.com/Russ93"
     }
   ],
   "keywords": [
@@ -39,6 +51,7 @@
     "url": "https://github.com/reactivepixel/WDD-Hubot.git"
   },
   "dependencies": {
+    "async": "^0.9.0",
     "cheerio": "~0.15.0",
     "cleverbot-node": "~0.1.6",
     "ent": "~2.0.0",

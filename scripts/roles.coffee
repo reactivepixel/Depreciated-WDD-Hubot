@@ -2,8 +2,8 @@
 #   Assign roles to people you're chatting with
 #
 # Commands:
-#   hubot <user> is a badass guitarist - assign a role to a user
-#   hubot <user> is not a badass guitarist - remove a role from a user
+#   hubot assign <user> is a badass guitarist - assign a role to a user
+#   hubot assign <user> is not a badass guitarist - remove a role from a user
 #   hubot who is <user> - see what roles a user has
 #
 # Examples:
@@ -43,7 +43,7 @@ module.exports = (robot) ->
       else
         msg.send "#{name}? Never heard of 'em"
 
-  robot.respond /@?([\w .\-_]+) is (["'\w: \-_]+)[.!]*$/i, (msg) ->
+  robot.respond /assign @?([\w .\-_]+) is (["'\w: \-_]+)[.!]*$/i, (msg) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
@@ -67,7 +67,7 @@ module.exports = (robot) ->
         else
           msg.send "I don't know anything about #{name}."
 
-  robot.respond /@?([\w .\-_]+) is not (["'\w: \-_]+)[.!]*$/i, (msg) ->
+  robot.respond /assign @?([\w .\-_]+) is not (["'\w: \-_]+)[.!]*$/i, (msg) ->
     name    = msg.match[1].trim()
     newRole = msg.match[2].trim()
 
