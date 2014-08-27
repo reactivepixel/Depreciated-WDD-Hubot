@@ -70,17 +70,17 @@ function getMugShot(msg){
 
 					//Outputs the name, charges, and mugshot of the arrestee if availble.
 					if (recentArrest.name.length > 0){
-						arresteeInfo.push(recentArrest.name);
+						arresteeInfo.push(recentArrest.name.text());
 					}else{
 						arresteeInfo.push('Name not stated.');
 					}
 					if (recentArrest.charges.length > 0){
-						arresteeInfo.push(recentArrest.charges);
+						arresteeInfo.push(recentArrest.charges.text());
 					}else{
 						arresteeInfo.push('Charges not stated.');
 					}
 					if (recentArrest.mugshot.length > 0){
-						arresteeInfo.push(recentArrest.mugshot);
+						arresteeInfo.push(recentArrest.mugshot.text());
 					}else{
 						arresteeInfo.push('No Picture not availble.');
 					}
