@@ -43,7 +43,8 @@ function areaCode(msg){
 					
 					if (status === "success"){ // Checks to make sure the area code has been found.
 						var data = json.area_codes[0].state,
-							reqLink = '<a href="http://www.allareacodes.com/">Area code</a> data by <a href="http://www.allareacodes.com/"><img border="0" src="http://www.allareacodes.com/images/new_logo_small.gif" alt="All Area Codes" align=absmiddle></a>'
+							reqLink = "Area code data provided by http://www.allareacodes.com";
+							
 						msg.send("Area code " + code + " is located in " + data + ". \n" + reqLink);
 					} else { // Area code was not found.
 						msg.send("Sorry, this area code has not been found. Please try another area code.");
