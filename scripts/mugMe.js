@@ -58,7 +58,7 @@ function getMugShot(msg){
 						recentArrest = mugShotJSON.records[0],
 						arresteeInfo = [];
 
-					//Outputs the name, charges, and mugshot of the arrestee if availble.
+					//Outputs the name, charges, and mugshot of the arrestee if available.
 					if (recentArrest.name.length > 0){
 						arresteeInfo.push(recentArrest.name);
 					}else{
@@ -73,18 +73,20 @@ function getMugShot(msg){
 						arresteeInfo.push('Charges not stated.');
 					}
 					if (recentArrest.mugshot.length > 0){
+						//Checks if the placeholder image is present.
 						if(recentArrest.mugshot != "http://imgstore.jailbase.com/widgets/NoMug.gif"){
+							//Cuts out small/ in the url to get the large picture.
 							arresteeInfo.push(recentArrest.mugshot.replace("small/", ""));
 						}else{
 							arresteeInfo.push(recentArrest.mugshot);
 						}
 					}else{
-						arresteeInfo.push('No Picture not availble.');
+						arresteeInfo.push('No picture available.');
 					}
 					if (recentArrest.more_info_url.length > 0){
-						arresteeInfo.push(recentArrest.more_info_url);
+						arresteeInfo.push("More Info: "+recentArrest.more_info_url);
 					}else{
-						arresteeInfo.push('More Info Not availble.');
+						arresteeInfo.push('More Info Not available.');
 					}
 					
 					//Sends out each array item in the proper order

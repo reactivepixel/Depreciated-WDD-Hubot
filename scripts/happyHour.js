@@ -8,7 +8,7 @@
 //   none
 //
 // Commands:
-//   Hubot happy <city name> (mostly major cities 107 total avilable)
+//   Hubot happy <city name> (mostly major cities 107 total available).
 //
 // Author:
 //   ndickiso
@@ -26,7 +26,7 @@ var request = require('request'),
 //-----REQUEST CITY FUNCTION-----//
 function getHappy(msg,city){
 
-	//Call gotime.com to scrape, conatinating in filtered city variable
+	//Call gotime.com to scrape, concatenating in filtered city variable
 	request('http://www.gotime.com/'+city+'/find/places/All-Happy+Hours-now-in-'+city+'?', function (error, response, body) {
 
 	//If response is good
@@ -53,7 +53,7 @@ function getHappy(msg,city){
 				//Set variables
 				var name,time,district,rating,description;
 
-				//Remove uneeded text inside time anchor tag
+				//Remove not needed text inside time anchor tag
 				$(this).find('div span.time a').empty();
 
 				//Element with name of venue
@@ -102,7 +102,7 @@ function getHappy(msg,city){
 //------FIX CITY REQUEST---------//
 function fixCity(msg,city){
 
-		//switch statement to change city name to the specifc format need for certain names
+		//switch statement to change city name to the specific format need for certain names
 		// changed to switch from numerous if statements
 	switch (city) {
 		case "broward":
