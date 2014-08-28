@@ -10,6 +10,7 @@
 # Commands:
 #   hubot pug me - Receive a pug
 #   hubot pug bomb N - get N pugs (Max 10)
+#   hubot how many pugs are there - gets the count of pugs you have requested
 
 module.exports = (robot) ->
 

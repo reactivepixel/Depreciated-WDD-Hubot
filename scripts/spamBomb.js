@@ -1,5 +1,5 @@
 // Description:
-// Makes hubot spam a user next time they talk.
+// Makes Hubot spam a user next time they talk.
 //
 // Dependencies:
 // None
@@ -8,14 +8,14 @@
 // None
 //
 // Commands:
-// Hubot spambomb <amount> <user>: <message> - Makes hubot spam a user next time they talk.
+// Hubot spambomb <amount> <user>: <message> - Makes Hubot spam a user next time they talk.
 //
 // Author:
 // Austin Mayer
 // austinemayer@gmail.com
 
 var appendSpamBomb;
-
+//
 appendSpamBomb = function(data, toUser, fromUser, message) {
   var name;
   data[name = toUser.name] || (data[name] = []);
@@ -29,7 +29,16 @@ module.exports = function(robot) {
       return (base = robot.brain.data).spamBombs || (base.spamBombs = {});
     };
   })(this));
-  robot.respond(/spambomb (.*) (.*?): (.*)/i, function(msg) {
+
+  robot.respond(/(spambomb (\d)+ (\w)*: (\w)*|spambomb (\w)*: (\w)*)/i, function(msg) {
+    msg.send(msg.match[0]);
+    msg.send(msg.match[1]);
+    msg.send(msg.match[2]);
+    msg.send(msg.match[3]);
+    msg.send(msg.match[4]);
+    msg.send(msg.match[5]);
+    msg.send(msg.match[6]);
+    var count = msg.match[1].trim() || 5;
     if(msg.match[1].trim() <= 0|| msg.match[1].trim() > 20 || (isNaN(msg.match[1].trim()))){
       return msg.send("Please enter a number between 1 and 20");
     }else{
@@ -48,6 +57,7 @@ module.exports = function(robot) {
       }
     }
   });
+
   return robot.hear(/./i, function(msg) {
     var spamBomb, spamBombs, i, len;
     if (robot.brain.data.spamBombs == null) {
