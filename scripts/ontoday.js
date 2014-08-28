@@ -58,7 +58,7 @@ function onToday(msg){
 					randEvent = Math.floor(Math.random() * countEvents) + 1; // chooses random number 
 				
 				// insure events are present
-				if(countEvents != 0){	
+				if(countEvents > 0){	
 					msg.send(month + ' ' + day +' ' + arrEvents[randEvent]); // successful message sent to user 
 				}else{
 					msg.send("Must of been a boring day in history, try back tomorrow!"); // error message for no events present
