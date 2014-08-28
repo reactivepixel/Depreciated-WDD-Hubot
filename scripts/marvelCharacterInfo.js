@@ -128,7 +128,7 @@ function marvelCharacterAPISearch(msg){
 				for(var urlArrayIndex = 0; urlArrayIndex < urlArray.length; urlArrayIndex++){
 					if(urlArray[urlArrayIndex].type == "wiki"){
 						wikiFound = true;
-						marvelInfoArray.push("Check out Marvel's wiki page for more info on "+ marvelCharName + " at: '" + urlArray[urlArrayIndex].url.slice(0,urlArray[urlArrayIndex].url.indexOf("?")) + "'");
+						marvelInfoArray.push("Check out Marvel's wiki page for more info on "+ marvelCharName + " at: " + urlArray[urlArrayIndex].url.slice(0,urlArray[urlArrayIndex].url.indexOf("?")) + "");
 					}else{
 						// nothing to do here
 					};
