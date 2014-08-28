@@ -81,7 +81,7 @@ function marvelCharacterAPISearch(msg){
 						callback(null, marvelJSON, characterInfoArray);
 					};
 				}else{
-					// nothing to do here
+					marvelWikiSearch(msg, marvelCharacter);
 				};
 			}); // end of request
 		},
