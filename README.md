@@ -117,6 +117,8 @@ if you're having issues.
 [deploy-windows]: https://github.com/github/hubot/blob/master/docs/deploying/unix.md
 
 ## Contributors
+- Holly Springsteen
+
 - Russell Schlup
 
 - Nate Dickison
