@@ -8,9 +8,11 @@
 //   None
 //
 // Commands:
-//   Hubot clear - 
+//   Hubot clear - Clears the current height chat.
 //
 // Author: dgernea
+
+
 function seeThrough(msg){
 	msg.send("\f");
 }
