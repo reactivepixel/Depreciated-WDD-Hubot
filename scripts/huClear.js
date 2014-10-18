@@ -13,11 +13,11 @@
 // Author: dgernea
 
 
-function seeThrough(msg){
-	msg.send("\f");
-}
-module.exports = function(robot) {
-	return robot.respond(/clear/i,function(msg){
-		seeThrough(msg);
-	});
-}
+// function seeThrough(msg){
+// 	msg.send("\f");
+// }
+// module.exports = function(robot) {
+// 	return robot.respond(/clear/i,function(msg){
+// 		seeThrough(msg);
+// 	});
+// }
