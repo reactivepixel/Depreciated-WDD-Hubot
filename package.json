@@ -31,6 +31,10 @@
     {
       "name": "Russell Schlup",
       "github": "https://github.com/Russ93"
+    },
+    {
+      "name": "Holly Springsteen",
+      "github": "https://github.com/demondesigner"
     }
   ],
   "keywords": [
@@ -60,7 +64,8 @@
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
     "hubot-slack": "~2.0.4",
     "numeral": "^1.5.3",
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "mathjs": "*"
   },
   "engines": {
     "node": ">= 0.8.x",
