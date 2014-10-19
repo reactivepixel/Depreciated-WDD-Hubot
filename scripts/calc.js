@@ -24,8 +24,12 @@ function calculator(msg){
 		// expression from user
 		var expression = msg.match[1],
 			regExpressions = math.eval(msg.match[1]); // evaluate expression with mathjs
-		// send result
-		msg.send(expression+" = "+regExpressions);
+		if(expression == "0/0" || expression == "0 / 0"){
+			msg.send("Please enter a valid expression");
+		}else{
+			// send result
+			msg.send(expression+" = "+regExpressions);
+		}
 	}
 	// lets you handle the error
 	catch(err){
