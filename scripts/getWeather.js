@@ -13,6 +13,7 @@
 // Author:
 //   Eddie Gemayel
 
+//Storing request in variable
 var request = require('request');
 
 // Function to find the weather of the city entered
