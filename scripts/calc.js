@@ -37,7 +37,8 @@ function calculator(msg){
 	}
 }
 
-//Listens for the exact match of random fact and calls random fact function.
+// Runs the function for the calculator
+// + - * / sin(30 deg) cos(30 deg) tan(30 deg) "5 cm to inches"
 module.exports = function(robot) {
   return robot.respond(/math (.*)/i, function(msg) {
  		calculator(msg);
