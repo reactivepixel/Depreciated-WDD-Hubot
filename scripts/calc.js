@@ -17,7 +17,7 @@
 // reuqire mathjs for calculation of expressions
 var math = require('mathjs');
 
-// function to take expression of from user and convert it
+// function to take expression of from user and convert it 
 function calculator(msg){
 	// lets you test a block of code for errors
 	try {
