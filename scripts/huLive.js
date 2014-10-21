@@ -15,7 +15,7 @@
 
 // This containse the responses so i can flip between them.
 var responseArr=[
-	"I am here, what's up? ","Can I help you?"
+	"I am here, what's up?","Can I help you?"
 ]
 // Here i play with fire as i regex some of the things the robot will listen for.
 module.exports = function(robot){
