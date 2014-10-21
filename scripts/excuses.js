@@ -9,7 +9,7 @@
 // none
 //
 // Commands:
-// Hubot excuse me
+// Hubot excuse me - Retrieves an excuse from developerexcuses.com/
 //
 // Author:
 // Holly Springsteen

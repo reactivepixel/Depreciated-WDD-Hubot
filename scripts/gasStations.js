@@ -21,8 +21,9 @@ function gasStations(msg){
   var urlStationsList = 'http://devapi.mygasfeed.com/stations/brands/rfej9napna.json?'; // url that connects the list of gas station
 
 // function to find the list of gas stations
-  request(urlStationsList, function (error, response, body) {
 
+  request(urlStationsList, function (error, response, body) {
+  if(!error && response.statusCode <300){  // if API connects
   // Parse the json
   var jsonStations = JSON.parse(body);
   var stations = jsonStations.stations;
@@ -64,6 +65,9 @@ function gasStations(msg){
         msg.send("No gas station found!");
       }
 
+  }else{
+    msg.send("Something wen't wrong here!")
+  }
   });
 
 

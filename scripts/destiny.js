@@ -18,6 +18,10 @@ module.exports = function(robot) {
 	// wait for the user to ask if this is their day
 	return robot.respond(/is it (.*) day/i, function(msg) {
 		// variables full of useful information
+		// 		action - user input
+		// 		nbDay - converts time to epoch time (milliseconds)
+		// 		actionHash - hash number based on user input to randomize the response
+		
 		var action = msg.match[1],
 			nbDay = Math.floor(new Date().getTime() / 1000 / 86400),
 			actionHash = action.length + action.charCodeAt(0) + action.charCodeAt(action.length - 1),
