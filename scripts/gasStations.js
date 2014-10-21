@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot gas station <name>
+//   Hubot gas station <name> -  Hubot tells the gas price for the gas station you entered
 //
 // Author:
 //   Arturo Alquicira
