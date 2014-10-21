@@ -13,16 +13,22 @@
 //	Hubot clear tablet clears the tablet avg line height.
 //
 // Author: 
-//	 dgerena
+//	 dgerena aka Eli!
 
+
+// I had wished to be able to pass in some specific charecter codes to push the page dependent on size of the browser had to settle for entering in spaces...
 function seeThrough(msg){
 	for(var esc = 0;esc < msg.count; esc++){
 		msg.send(" ");
 	}
 }
+// my filtering here is directly due to a misunderstanding about the extent to which i understood regex. Have to work on that for the forseable future...
+// regex can be awesome or a pain in the rear.
 module.exports = function(robot) {
 	return robot.respond(/clear\sdesktop|clear\smobile|clear\stablet/i,function(msg){
 		console.log("msg "+msg.message.text);
+		//Filtering out the possible context to which someone might try to use the huclear.js/ Will work with the local and staging bots.
+		//Suggested fixes or upgrades are to extend this to work with anyones bot named anything. Or to function while somehow getting the viewing size.
 		if(msg.message.text == "Derpbot clear desktop"){
 			msg.count = 25;
 			seeThrough(msg);
@@ -47,9 +53,10 @@ module.exports = function(robot) {
 			msg.count = 21;
 			seeThrough(msg);
 			console.log("20");
-		}else if(msg.message.text == "derpbot"||"hubot"){
+		}else if(msg.message.text == "derpbot"||"hubot"){ //Error checking for mispelling the names of the bots.
 			msg.send("Hey! My name should be capitalized.")
 		}else{
+			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots Ill explain you need to learn to speak clearly.
 			msg.send("Hey! I can't understand you when you mumble.")
 		}
 	});
