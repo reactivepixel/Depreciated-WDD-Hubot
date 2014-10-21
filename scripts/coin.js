@@ -17,6 +17,7 @@
 var thecoin = ["heads", "tails"];
 
 module.exports = function(robot) {
+	// flip a coin and get a result
 	return robot.respond(/(throw|flip|toss) a coin/i, function(msg) {
 		msg.send(msg.random(thecoin));
 	});
