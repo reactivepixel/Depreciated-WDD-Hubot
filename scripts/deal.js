@@ -34,15 +34,17 @@ function localDeal(msg){
 					// Parse the json
 					var json = JSON.parse(body);
                     //check if json had no errors
-                    if (!json== []){ 
+                    if (json.length==0){ 
+                        msg.send("No Deals in your area!!");
+                         
+                    }else{
+                        //if api pulls no results
                         msg.send("Local Deal In Your Area For " + json[0].dealinfo + 
 						" From " + json[0].name + 
 						" Located at "+ json[0].address + " "+json[0].city + " " +json[0].state + " " + json[0].zip + 
-						" Expires on " + json[0].expirationDate);  
-                    }else{
-                        //if api pulls no results
-                        msg.send("There were no deals in your area");
-                    }    
+						" Expires on " + json[0].expirationDate); 
+                        
+                    }   
             }else{
                 //sends error if something is down
                 msg.send("Sorry,the server must be down");
