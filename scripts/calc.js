@@ -26,15 +26,15 @@ function calculator(msg){
 			regExpressions = math.eval(msg.match[1]), // evaluate expression with mathjs
 			expressionCheck = isNaN(regExpressions);
 
-		if(expressionCheck){
+		if(expression == "help"){
+			// Future expansion ... build a help menu for valid operators
+			// http://mathjs.org/docs/expressions.html
+			msg.send("No Help for you");
+		}else if(expressionCheck){
 			msg.send("Please enter a valid expression");
 		}else{
-			if(expression == "0/0" || expression == "0 / 0" || expression == "help"){
-				msg.send("Please enter a valid expression");
-			}else{
-				// send result
-				msg.send(expression+" = "+regExpressions);
-			}
+			// send result
+			msg.send(expression+" = "+regExpressions);
 		}
 	}
 	// lets you handle the error
