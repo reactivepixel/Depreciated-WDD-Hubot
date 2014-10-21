@@ -25,7 +25,7 @@ module.exports = function(robot) {
 			limit = (Math.sin(actionHash) + 1) / 2;
 
 		// change my or My to your for the response
-		if(action == 'my' || action == 'My'){
+		if(action.toLowerCase() == 'my'){
 			action ='your';
 		}
 
