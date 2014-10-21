@@ -60,7 +60,11 @@ function getWeather(msg){
 						//spit back out the error to the user
 						msg.send(error);
 					}
+				}else{
+					//If the API actually never responds whatsoever
+					msg.send("It appears the API is down. Please try again later.");
 				}
+
 		});
 	}
 }//end of function

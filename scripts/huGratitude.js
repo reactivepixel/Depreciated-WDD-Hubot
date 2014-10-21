@@ -14,7 +14,7 @@
 //	 dgerena aka Eli!
 //varied responses for gratitude
 var responseArr=[
-	"Anytime user.","No problem ,just doing my thang."
+	"Anytime user.","No problem, just doing my thang."
 ]
 //Have the robots accept gratitude from the users.
 module.exports = function(robot){

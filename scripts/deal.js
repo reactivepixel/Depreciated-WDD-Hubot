@@ -42,11 +42,13 @@ function localDeal(msg){
                     }else{
                         //if api pulls no results
                         msg.send("There were no deals in your area");
-                    }
-                    
-            } 
-    });       
-}
+                    }    
+            }else{
+                //sends error if something is down
+                msg.send("Sorry,the server must be down");
+            }
+        });
+    }//closes 1st else line 27
 }//closes function
 
 // Listens for the exact match of deal and calls localDeal function.
