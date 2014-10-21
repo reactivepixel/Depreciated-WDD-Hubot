@@ -25,7 +25,7 @@ function seeThrough(msg){
 // my filtering here is directly due to a misunderstanding about the extent to which i understood regex. Have to work on that for the forseable future...
 // regex can be awesome or a pain in the rear.
 module.exports = function(robot) {
-	return robot.respond(/clear\sdesktop|clear\smobile|clear\stablet/i,function(msg){
+	return robot.respond(/^clear\sdesktop$|^clear\smobile$|^clear\stablet$/i,function(msg){
 		console.log("msg "+msg.message.text);
 		//Filtering out the possible context to which someone might try to use the huclear.js/ Will work with the local and staging bots.
 		//Suggested fixes or upgrades are to extend this to work with anyones bot named anything. Or to function while somehow getting the viewing size.
