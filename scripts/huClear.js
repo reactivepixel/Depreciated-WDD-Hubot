@@ -23,15 +23,27 @@ function seeThrough(msg){
 module.exports = function(robot) {
 	return robot.respond(/clear\sdesktop|clear\smobile|clear\stablet/i,function(msg){
 		console.log("msg "+msg.message.text);
-		if(msg.message.text == "Derpbot clear desktop"||"Hubot clear desktop"){
+		if(msg.message.text == "Derpbot clear desktop"){
 			msg.count = 25;
 			seeThrough(msg);
 			console.log("25");
-		}else if(msg.message.text == "Derpbot clear mobile"||"Hubot clear mobile"){
+		}else if(msg.message.text == "Derpbot clear mobile"){
 			msg.count = 11;
 			seeThrough(msg);
 			console.log("10");
-		}else if(msg.message.text == "Derpbot clear tablet"||"Hubot clear tablet"){
+		}else if(msg.message.text == "Derpbot clear tablet"){
+			msg.count = 21;
+			seeThrough(msg);
+			console.log("20");
+		}else if(msg.message.text == "Hubot clear desktop"){
+			msg.count = 25;
+			seeThrough(msg);
+			console.log("25");
+		}else if(msg.message.text == "Hubot clear mobile"){
+			msg.count = 11;
+			seeThrough(msg);
+			console.log("10");
+		}else if(msg.message.text == "Hubot clear tablet"){
 			msg.count = 21;
 			seeThrough(msg);
 			console.log("20");
