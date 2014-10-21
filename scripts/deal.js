@@ -38,7 +38,7 @@ function localDeal(msg){
                         msg.send("No Deals in your area!!");
                          
                     }else{
-                        //if api pulls no results
+                        //if no errors spit out
                         msg.send("Local Deal In Your Area For " + json[0].dealinfo + 
 						" From " + json[0].name + 
 						" Located at "+ json[0].address + " "+json[0].city + " " +json[0].state + " " + json[0].zip + 
