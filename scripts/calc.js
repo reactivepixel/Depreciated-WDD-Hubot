@@ -28,8 +28,8 @@ function calculator(msg){
 
 		if(expression == "help"){
 			// Future expansion ... build a help menu for valid operators
-			// http://mathjs.org/docs/expressions.html
-			msg.send("No Help for you");
+			// http://mathjs.org/docs/expressions.html#operators
+			msg.send("http://mathjs.org/docs/expressions.html#operators");
 		}else if(expressionCheck){
 			msg.send("Please enter a valid expression");
 		}else{
