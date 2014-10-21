@@ -13,6 +13,7 @@
 // Author:
 //   Eddie Gemayel
 
+//store the required request into a variable for easy access
 var request = require('request');
 
 // Function to find the weather of the location entered
@@ -67,6 +68,7 @@ function getWeather(msg){
 // Listens for the exact match of show weather and calls the getWeather function.
 module.exports = function(robot) {
 	return robot.respond(/show weather (.*)/i, function(msg) {
+		//call the function above
 		getWeather(msg);
 	});
 }
