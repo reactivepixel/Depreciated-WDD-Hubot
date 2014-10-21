@@ -44,6 +44,7 @@ function localDeal(msg){
                         msg.send("There were no deals in your area");
                     }    
             }else{
+                //sends error if something is down
                 msg.send("Sorry,the server must be down");
             }
         });
