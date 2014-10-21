@@ -24,13 +24,13 @@ function calculator(msg){
 		// expression from user
 		var expression = msg.match[1],
 			regExpressions = math.eval(msg.match[1]), // evaluate expression with mathjs
-			expressionCheck = isNaN(regExpressions);
+			areYouNaN = isNaN(regExpressions);
 
 		if(expression == "help"){
 			// Future expansion ... build a help menu for valid operators
 			// http://mathjs.org/docs/expressions.html#operators
 			msg.send("http://mathjs.org/docs/expressions.html#operators");
-		}else if(expressionCheck){
+		}else if(areYouNaN){
 			msg.send("Please enter a valid expression");
 		}else{
 			// send result
