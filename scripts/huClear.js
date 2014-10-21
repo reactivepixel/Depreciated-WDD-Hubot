@@ -53,11 +53,9 @@ module.exports = function(robot) {
 			msg.count = 21;
 			seeThrough(msg);
 			console.log("20");
-		}else if(msg.message.text == "derpbot"||"hubot"){ //Error checking for mispelling the names of the bots.
-			msg.send("Hey! My name should be capitalized.")
 		}else{
 			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots Ill explain you need to learn to speak clearly.
-			msg.send("Hey! I can't understand you when you mumble.")
+			msg.send("Hey! I can't understand you when you mumble. Also make sure to capitalize my awesome name, all right.")
 		}
 	});
 }
