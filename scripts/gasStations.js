@@ -1,5 +1,5 @@
 // Description:
-//   Hubot tells you how much worth $1 USD Dollar vs differents currencies.
+//   Hubot tells the price of gas for some gas stations
 //
 // Dependencies:
 //   Request
@@ -18,15 +18,14 @@ var request = require('request');
 
 function gasStations(msg){
   var inputName = msg.match[1]; // grab the value
-  var url = 'http://devapi.mygasfeed.com/stations/brands/rfej9napna.json?'; // url that connects the list of gas station
-  // msg.send(inputName);
+  var urlStationsList = 'http://devapi.mygasfeed.com/stations/brands/rfej9napna.json?'; // url that connects the list of gas station
 
 // function to find the list of gas stations
-  request(url, function (error, response, body) {
+  request(urlStationsList, function (error, response, body) {
 
   // Parse the json
-  var json = JSON.parse(body);
-  var stations = json.stations;
+  var jsonStations = JSON.parse(body);
+  var stations = jsonStations.stations;
   var totalErrors = 0;
       // loop through the list of gas stations
       for(var i=0, arr=stations.length; i<arr; i++){
@@ -37,15 +36,13 @@ function gasStations(msg){
 
         // conditional to match the Gas Station Name that the user typed with the gas station list
         if(station_name.toLowerCase()===inputName.toLowerCase()){
-          // msg.send('ok!');
-          var url2 = "http://devapi.mygasfeed.com/stations/details/"+station_id+"/rfej9napna.json?" // if it matches then concatinate with the API url for the details of the gas station
-          // msg.send(url2);
+          var urlStationDetails = "http://devapi.mygasfeed.com/stations/details/"+station_id+"/rfej9napna.json?" // if it matches then concatinate with the API url for the details of the gas station
 
           // function to find the details and prices of the gas station selected
-          request(url2, function (error, response, body) {
+          request(urlStationDetails, function (error, response, body) {
             // Parse the json
-            var json2 = JSON.parse(body);
-            var details = json2.details;
+            var jsonDetails = JSON.parse(body);
+            var details = jsonDetails.details;
 
             var regular = details.reg_price;
             var mid = details.mid_price;
@@ -56,7 +53,6 @@ function gasStations(msg){
           });
 
         }else{
-          //  msg.send("No gas station found!");
           totalErrors++;
         }
 
