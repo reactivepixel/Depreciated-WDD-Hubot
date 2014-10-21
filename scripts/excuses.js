@@ -1,5 +1,5 @@
 // Description:
-// Excuses scraper from developerexcuses.com/
+// Retrieves an excuse from developerexcuses.com/
 //
 // Dependencies:
 // cheerio
@@ -14,13 +14,15 @@
 // Holly Springsteen
 // hhspringsteen@gmail.com
 
+// cheerio scraper
 var cheerio = require('cheerio');
 
 module.exports = function(robot) {
 	return robot.respond(/excuse me/i, function(msg) {
 		return robot.http("http://developerexcuses.com/").get()(function(err, res, body) {
-			var $ = cheerio.load(body);
-			return msg.send($('.wrapper a').text());
+			// get excuses from developerexcuses.com
+			var $ = cheerio.load(body); // scrape the site for the body
+			return msg.send($('.wrapper a').text()); // send back an excuse
 		});
 	});
 };
