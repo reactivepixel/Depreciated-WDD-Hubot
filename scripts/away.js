@@ -8,8 +8,8 @@
 // none
 //
 // Commands:
-// brb
-// afk
+// brb - will let people know when you are away and welcomes you back upon next entry
+// afk - will let people know when you are away and welcomes you back upon next entry
 //
 // Author:
 // Holly Springsteen
