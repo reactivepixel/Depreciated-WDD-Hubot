@@ -44,7 +44,7 @@ module.exports = function(robot) {
 	});
 
 	// hubot if you hear brb or afk do this
-	return robot.hear(/\b(brb|afk)\b/i, function(msg) {
+	return robot.hear(/^(brb|afk)/i, function(msg) {
 		msg.send(msg.message.user.name + " is currently away.");
 		setTimeout(function(){
 			return users_away[msg.message.user.name] = true;
