@@ -19,10 +19,15 @@ var cheerio = require('cheerio');
 
 module.exports = function(robot) {
 	return robot.respond(/excuse me/i, function(msg) {
-		return robot.http("http://developerexcuses.com/").get()(function(err, res, body) {
-			// get excuses from developerexcuses.com
-			var $ = cheerio.load(body); // scrape the site for the body
-			return msg.send($('.wrapper a').text()); // send back an excuse
-		});
+		try{
+			return robot.http("http://developerexcuses.com/").get()(function(err, res, body) {
+				// get excuses from developerexcuses.com
+				var $ = cheerio.load(body); // scrape the site for the body
+				return msg.send($('.wrapper a').text()); // send back an excuse
+			});
+		}
+		catch(err){
+			msg.send("Sorry no excuses right now, developerexcuses.com is down :(");
+		}
 	});
 };
