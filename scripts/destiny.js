@@ -16,7 +16,7 @@
 
 module.exports = function(robot) {
 	// wait for the user to ask if this is their day
-	return robot.respond(/is it (\w+) day/i, function(msg) {
+	return robot.respond(/is it (.*) day/i, function(msg) {
 		// variables full of useful information
 		var action = msg.match[1],
 			nbDay = Math.floor(new Date().getTime() / 1000 / 86400),
