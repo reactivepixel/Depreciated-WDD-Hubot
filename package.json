@@ -1,6 +1,6 @@
 {
   "name": "wdd-hubot",
-  "version": "2.2.2",
+  "version": "3.1.3",
   "private": true,
   "author": "Chris Chapman",
   "contributors": [
@@ -34,8 +34,29 @@
     },
     {
       "name": "Holly Springsteen",
-      "github": "https://github.com/demondesigner"
+      "github": "https://github.com/demondesigner",
+      "email": "hhspringsteen@gmail.com"
+    },
+    {
+      "name": "Arturo Alquicira",
+      "github": "https://github.com/arturoalquicira",
+      "email": "arturoalquicira@me.com"
+    },
+    {
+      "name": "Eddie Gemayel",
+      "github": "https://github.com/eddiegemayel",
+      "email": "eddiegem16@gmail.com"
+    },
+    {
+      "name": "Lyteia Kitchen",
+      "github": "https://github.com/LyteiaHF1",
+      "email": "Lytehighfashion@gmail.com"
+    },
+    {
+      "name": "Damasio ELi Gerena",
+      "github": "https://github.com/dgerena"
     }
+
   ],
   "keywords": [
     "github",

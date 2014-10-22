@@ -16,8 +16,12 @@
 
 module.exports = function(robot) {
 	// wait for the user to ask if this is their day
-	return robot.respond(/is it (\w+) day/i, function(msg) {
+	return robot.respond(/is it (.*) day/i, function(msg) {
 		// variables full of useful information
+		// 		action - user input
+		// 		nbDay - converts time to epoch time (milliseconds)
+		// 		actionHash - hash number based on user input to randomize the response
+		
 		var action = msg.match[1],
 			nbDay = Math.floor(new Date().getTime() / 1000 / 86400),
 			actionHash = action.length + action.charCodeAt(0) + action.charCodeAt(action.length - 1),
@@ -25,7 +29,7 @@ module.exports = function(robot) {
 			limit = (Math.sin(actionHash) + 1) / 2;
 
 		// change my or My to your for the response
-		if(action == 'my' || action == 'My'){
+		if(action.toLowerCase() == 'my'){
 			action ='your';
 		}
 

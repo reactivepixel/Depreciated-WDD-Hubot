@@ -18,7 +18,7 @@ var responseArr=[
 ]
 //Have the robots accept gratitude from the users.
 module.exports = function(robot){
-	return robot.hear(/^thank\syou|Hubot$|thanks\shubot$|thanks\sderpbot$|thanks\sDerpbot$/i, function(msg){
+	return robot.hear(/^thank\syou$|^thanks\shubot|^thanks\sderpbot$|^thanks\sDerpbot$|^thanks$/i, function(msg){
   		//Heh giving the bots a bit of boasting
     	msg.send(responseArr[Math.floor(Math.random()*2)]); 
 	});

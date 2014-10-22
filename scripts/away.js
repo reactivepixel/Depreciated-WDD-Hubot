@@ -23,7 +23,7 @@ module.exports = function(robot) {
 	robot.hear(/(.*)/i, function(msg) {
 		var substr, user, _results;
 		// if the user is away and the text is not brb or afk
-		if (users_away[msg.message.user.name] && msg.message.text !== 'brb' && msg.message.text !== 'afk') {
+		if (users_away[msg.message.user.name] && msg.message.text != 'brb' && msg.message.text != 'afk') {
 			// welcome back the user
 			msg.send("Welcome back "+msg.message.user.name+"!");
 			// remove user from users_away object
@@ -44,10 +44,10 @@ module.exports = function(robot) {
 	});
 
 	// hubot if you hear brb or afk do this
-	return robot.hear(/\b(brb|afk)\b/i, function(msg) {
+	return robot.hear(/^(brb|afk)/i, function(msg) {
 		msg.send(msg.message.user.name + " is currently away.");
 		setTimeout(function(){
 			return users_away[msg.message.user.name] = true;
-		}, 10);
+		}, 200);
 	});
 };
