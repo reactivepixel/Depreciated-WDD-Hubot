@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot currency <currency> -  Converts $1 USD to various currencies (cad, chf, dkk, eur, gbp, hkd, jpy, mxn, nzd, php, sek, sgd, thb, zar)
+//   Hubot currency <currency> -  Converts $1 USD to various currencies (aud, cad, chf, dkk, eur, gbp, hkd, jpy, mxn, nzd, php, sek, sgd, thb, zar)
 //
 // Author:
 //   Arturo Alquicira
@@ -51,8 +51,12 @@ function currencyVal(msg){
                 msg.send(resStart + " Mexican Pesos");
                 break;
 
-              case "cad":
+              case "aud":
                 msg.send(resStart + " Australian Dollar");
+                break;
+
+              case "cad":
+                msg.send(resStart + " Canadian Dollar");
                 break;
 
               case "chf":
