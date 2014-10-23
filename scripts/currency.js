@@ -26,7 +26,7 @@ function currencyVal(msg){
   var input = msg.match[1],
       code = input.toLowerCase(), //grab the code
       currency = msg.match[1].trim(), //trim the code to get the length
-      url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e'; // concatinate the code into the API url
+      url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e'; // concatenate the code into the API url
 
 // conditional to check the user only type three letters
   if(!isNaN(currency)){ // if it's not a number

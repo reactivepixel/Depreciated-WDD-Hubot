@@ -1,5 +1,5 @@
 // Description:
-//   Hubot gives you a quote from iheartquotes its set to random so a diffrent quote from each category each time
+//   Hubot gives you a quote from iheartquotes its set to random so a different quote from each category each time
 //
 // Dependencies:
 //   Request
@@ -30,7 +30,7 @@ function getQuote(msg){
  
         }else{
             //sends error if something is down
-                msg.send("Sorry,the server must be down");
+                msg.send("Sorry, the server must be down");
         } 
     });
 

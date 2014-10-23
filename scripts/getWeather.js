@@ -37,7 +37,7 @@ function getWeather(msg){
 		// make the request to the api
 		request(apiURL, function (error, response, body) {
 
-				// This conditional makes sure the connection goes thru successfully
+				// This conditional makes sure the connection goes through successfully
 				if (!error && response.statusCode < 300){
 
 					// Parse the incoming json
@@ -47,8 +47,8 @@ function getWeather(msg){
 					if(!json.response.error){
 						//spit back out the information to the user
 						msg.send(json.current_observation.display_location.city + ", " + json.current_observation.display_location.state_name + " on " + json.current_observation.local_time_rfc822 +
-							"\nTemperature: " + json.current_observation.temp_f + " degrees farenheit.\nFeels like: " +
-							json.current_observation.feelslike_f + " degrees farenheit." +
+							"\nTemperature: " + json.current_observation.temp_f + " degrees Fahrenheit.\nFeels like: " +
+							json.current_observation.feelslike_f + " degrees Fahrenheit." +
 							"\nHumidity: " + json.current_observation.relative_humidity +
 							"\nCondition: "+ json.current_observation.weather +
 							"\nWind: " + json.current_observation.wind_mph + "mph " + json.current_observation.wind_string);

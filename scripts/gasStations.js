@@ -40,7 +40,7 @@ function gasStations(msg){
 
         // conditional to match the Gas Station Name that the user typed with the gas station list
         if(station_name.toLowerCase()===inputName.toLowerCase()){
-          var urlStationDetails = "http://devapi.mygasfeed.com/stations/details/"+station_id+"/rfej9napna.json?"; // if it matches then concatinate with the API url for the details of the gas station
+          var urlStationDetails = "http://devapi.mygasfeed.com/stations/details/"+station_id+"/rfej9napna.json?"; // if it matches then concatenate with the API url for the details of the gas station
 
           // function to find the details and prices of the gas station selected
           request(urlStationDetails, function (error, response, body) {
@@ -88,7 +88,7 @@ function gasStations(msg){
       }
 
   }else{
-    msg.send("Something wen't wrong here!");
+    msg.send("Something went wrong here!");
   }
 });
 

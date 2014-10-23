@@ -46,7 +46,7 @@ function localDeal(msg){
                     }   
             }else{
                 //sends error if something is down
-                msg.send("Sorry,the server must be down");
+                msg.send("Sorry, the server must be down");
             }
         });
     }//closes 1st else line 27

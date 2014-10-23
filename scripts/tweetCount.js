@@ -28,7 +28,7 @@ function getTweetCount(msg){
   	'((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
   	'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
   	'(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-  	'(\\#[-a-z\\d_]*)?$','i'); // fragment locator // fragment locater
+  	'(\\#[-a-z\\d_]*)?$','i'); // fragment locater // fragment locater
 
 	//Regex conditional to see if whatever was entered was actually a URL 
 	if(pattern.test(url)) {
@@ -39,7 +39,7 @@ function getTweetCount(msg){
 		// make the request to the api
 		request(apiURL, function (error, response, body) {
 
-			// This conditional makes sure the connection goes thru successfully
+			// This conditional makes sure the connection goes through successfully
 			if (!error && response.statusCode < 300){
 
 				// Parse the incoming json
@@ -49,13 +49,13 @@ function getTweetCount(msg){
 				msg.send("That page has been shared on Twitter "+ json.count +" times." );
 
 			}else{
-				//send them back error message if connection didnt go through
+				//send them back error message if connection didn't go through
 				msg.send("It appears the API is down. Please try again later.");
 			}
 		});
 	}else{
-		//if they didnt enter a url
-		msg.send("Hmm...I don't think that's a valid URL.");
+		//if they didn't enter a url
+		msg.send("Hmmm...I don't think that's a valid URL.");
 	}
 
 }//end of function

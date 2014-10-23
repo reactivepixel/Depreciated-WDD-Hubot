@@ -14,7 +14,7 @@
 // Holly Springsteen
 // hhspringsteen@gmail.com
 
-// reuqire mathjs for calculation of expressions
+// require mathjs for calculation of expressions
 var math = require('mathjs');
 
 // function to take expression of from user and convert it 
