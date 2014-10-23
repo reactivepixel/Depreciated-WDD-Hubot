@@ -36,40 +36,41 @@ function currencyVal(msg){
         // Conditional to make sure the connection went successfully through.
         if (!error && response.statusCode < 300){
           // Parse the json
-          var json = JSON.parse(body);
-          var amount = json.amount;
+          var json = JSON.parse(body),
+              amount = json.amount,
+              resStart = "$1 dollar worth $" + amount;
 
           // conditional to check asign the value a name
           if(code==="mxn"){
-            msg.send("$1 dollar worth $" + amount + " Mexican Pesos");
+            msg.send(resStart + " Mexican Pesos");
           }else if(code==="aud"){
-            msg.send("$1 dollar worth $" + amount + " Australian Dollar");
+            msg.send(resStart + " Australian Dollar");
           }else if(code==="cad"){
-              msg.send("$1 dollar worth $" + amount + " Canadian Dollar");
+              msg.send(resStart + " Canadian Dollar");
           }else if(code==="chf"){
-            msg.send("$1 dollar worth $" + amount + " Swiss Franc");
+            msg.send(resStart + " Swiss Franc");
           }else if(code==="dkk"){
-            msg.send("$1 dollar worth $" + amount + " Danish Krone Dollar");
+            msg.send(resStart + " Danish Krone Dollar");
           }else if(code==="eur"){
-            msg.send("$1 dollar worth $" + amount + " Euro");
+            msg.send(resStart + " Euro");
           }else if(code==="gbp"){
-            msg.send("$1 dollar worth $" + amount + " Pound Sterling ");
+            msg.send(resStart + " Pound Sterling ");
           }else if(code==="hkd"){
-            msg.send("$1 dollar worth $" + amount + " Hong Kong Dollar");
+            msg.send(resStart + " Hong Kong Dollar");
           }else if(code==="jpy"){
-            msg.send("$1 dollar worth $" + amount + " Japanese Yen");
+            msg.send(resStart + " Japanese Yen");
           }else if(code==="nzd"){
-            msg.send("$1 dollar worth $" + amount + " New Zealand Dollar");
+            msg.send(resStart + " New Zealand Dollar");
           }else if(code==="php"){
-            msg.send("$1 dollar worth $" + amount + " Philippine Dollar");
+            msg.send(resStart + " Philippine Dollar");
           }else if(code==="sek"){
-            msg.send("$1 dollar worth $" + amount + " Swedish Krona");
+            msg.send(resStart + " Swedish Krona");
           }else if(code==="sgd"){
-            msg.send("$1 dollar worth $" + amount + " Singapore Dollar");
+            msg.send(resStart + " Singapore Dollar");
           }else if(code==="thb"){
-            msg.send("$1 dollar worth $" + amount + " Thailand Baht");
+            msg.send(resStart + " Thailand Baht");
           }else if(code==="zar"){
-            msg.send("$1 dollar worth $" + amount + " South Africa Rand");
+            msg.send(resStart + " South Africa Rand");
           }else{ // Currency was not found.
             msg.send("Sorry, this currency has not been found.");
           }
