@@ -12,6 +12,8 @@
 //
 // Author:
 //   Arturo Alquicira
+//  Edited by Eddie Gemayel 
+// Added older barrel prices for available gas stations
 
 var request = require('request');
 
@@ -49,8 +51,24 @@ function gasStations(msg){
             var mid = details.mid_price;
             var premium = details.pre_price;
 
+            //Conditional statement to check for Gas stations that do NOT have previous price data.
+            if(jsonDetails.previousPrices[0] != undefined){
 
-            msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium);
+              //if the gas station has previous price data, it will display like so.
+              msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium +
+              ". " + jsonDetails.previousPrices[0].date + 
+              ", the price for " +jsonDetails.previousPrices[0].type +
+              " at " +inputName +
+              " was $" +jsonDetails.previousPrices[0].price+
+              " per barrel."  
+              );
+              
+            }else{
+              //otherwise, gas station prices will display normally
+               msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium);
+            }
+            
+           
           });
 
         }else{
