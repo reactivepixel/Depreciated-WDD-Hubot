@@ -11,7 +11,8 @@
 //   None
 //
 // Author: 
-//	 dgerena aka Eli!
+// Eli Gerena
+// dgerena@github.com
 
 //After making all of these before creating a switch statement for replies i think i can do away with them.
 // Or add a greater amount to them so as to have a bank to call them from
@@ -35,7 +36,7 @@ var gratsReg="^thank\\syou$|^thanks\\shubot|^thanks\\sderpbot$|^thanks\\sDerpbot
 var lifeReg="^are\\syou\\salive\\?$|are\\syou\\sdown\\?$|^are\\syou\\sdead\\?$|^you\\sup\\?$|you down\\?$|^dead$/"
 //building the primary regex for inputs
 var RegEx = boastReg+gratsReg+lifeReg+regMod
-console.log(RegEx)
+//filtering through msg to find what the robot heard and respond.
 function responseFilter(msg){
 	switch(msg.message.text){
 			//Boast section

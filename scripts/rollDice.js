@@ -8,6 +8,7 @@
 // none
 //
 // Commands:
+// All rolls are against the Dungeon Master Now! 
 // Hubot roll a <d#> - Rolls a die with number of sides. Only d4, d6, d8, d10, d12, and d20 dice can be rolled.
 // Hubot roll a d20 - Rolls a d20 (twenty sided die).
 // Hubot roll <#> <d#> - Rolls a number of dice with the number of sides. You can only roll between 1-5 dice at a time.
@@ -16,6 +17,8 @@
 // Author:
 // Bryan Erickson
 // GitHub - bkerickson
+// 
+// DMification added by Eli Gerena
 
 
 //Function that gets a random number (or set of random numbers) based on the sides of a selected dice type
@@ -24,29 +27,64 @@ function rollDice(msg){
 		diceSides = parseInt(msg.match[2].substring(1), 10),
 		diceArray = [],
 		newRoll;
+		//Open edit by Eli Gerena
+		dNum=20;
+		counterRoll="d"+dNum
+		dmRoll=0
 
 	// if only one die is rolled, get a random number for the number of sides of the die
 	// else get random numbers for the number of dice rolled storing them to an array for output
 	if (numberDice == 'a' || numberDice == 'A' || numberDice == 1){
 		newRoll = getDiceRoll(diceSides);
+		dmRoll = getDiceRoll(dNum);
 		if (newRoll == diceSides){
-			msg.send("You rolled a " + newRoll + " : Critical hit!");
+			if(dmRoll > 10){
+				msg.send("You rolled a " + newRoll + " : Critical hit. DM rolled a "+dmRoll+", Crit Confirmed!");//dgerena added crit confirm
+			}else{
+				msg.send("You rolled a " + newRoll + " : Critical hit. DM rolled a "+dmRoll+", Crit denied!");//dgerena added crit denial
+			}
 		}else if (newRoll == 1){
-			msg.send("You rolled a " + newRoll + " : Critical miss!");
+			if(dmRoll < 10){
+				msg.send("You rolled a " + newRoll + " : Critical miss!. DM rolled a "+dmRoll+", Severity is low!");//dgerena added fail severity
+			}else{
+				msg.send("You rolled a " + newRoll + " : Critical miss!. DM rolled a "+dmRoll+", Severity is High!");//dgerena added fail severity
+			}
 		}else{
-			msg.send("You rolled a " + newRoll);
+			if(dmRoll > newRoll){
+				msg.send("You rolled a " + newRoll+" failing the DC check of "+dmRoll);//dgerena added dc fail
+			}else{
+				msg.send("You rolled a " + newRoll+" beating the DC check of "+dmRoll);//dgerena added dc beaten
+			}
 		};
 	}else{
 		diceArray[0] = "You rolled: ";
 		// loop for each of the number of dice to be rolled
 		for (numRolls = 0; numRolls < numberDice; numRolls++){
 			newRoll = getDiceRoll(diceSides);
+			dmRoll = getDiceRoll(diceSides);
 			if (newRoll == diceSides){
-				diceArray.push("\t\t" + newRoll + " : Critical hit!");
+				//Crit check
+				if(dmRoll >= (diceSides/2)){
+					diceArray.push("\t\t" + newRoll + " : Critical hit! DM rolled a "+dmRoll+", Crit Confirmed!");//dgerena added crit confirm
+				}else{
+					diceArray.push("\t\t" + newRoll + " : Critical hit! DM rolled a "+dmRoll+", Crit denied!");//dgerena added crit denial
+				}
 			}else if (newRoll == 1){
-				diceArray.push("\t\t" + newRoll + " : Critical miss!");
+				//Fail check
+				if(dmRoll < (diceSides/2)){
+					diceArray.push("\t\t" + newRoll + " : Critical miss! DM rolled a "+dmRoll+", Severity is low!");//dgerena added fail severity
+				}else{
+					diceArray.push("\t\t" + newRoll + " : Critical miss! DM rolled a "+dmRoll+", Severity is High!");//dgerena added fail severity
+				}
 			}else{
-				diceArray.push("\t\t" + newRoll);
+				//Roll against DM 
+				if(dmRoll > newRoll){
+					diceArray.push("\t\t" + newRoll+" losing against the roll of "+dmRoll);//dgerena added dc fail
+				}else if(dmRoll==newRoll){
+					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+" first roll favored.");//dgerena added dc favored roll
+				}else{
+					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll);//dgerena added dc beaten
+				}
 			};
 		};
 		// loop through the array of dice roll message array
