@@ -12,6 +12,10 @@
 //
 // Author:
 //   Arturo Alquicira
+//
+// Contributor:
+//  Holly Springsteen
+//  hhspringsteen@gmail.com
 
 var request = require('request');
 
@@ -38,7 +42,7 @@ function currencyVal(msg){
           // Parse the json
           var json = JSON.parse(body),
               amount = json.amount,
-              resStart = "$1 dollar worth $" + amount;
+              resStart = "$1 dollar worth $" + amount; // Holly Springsteen - variable cleanup and use variable for repetitive msg
 
           //Switch statement to check assign the value a name
 
