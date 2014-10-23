@@ -29,27 +29,22 @@ module.exports = function(robot) {
 		//Filtering out the possible context to which someone might try to use the huclear.js/ Will work with the local and staging bots.
 		//Suggested fixes or upgrades are to extend this to work with anyones bot named anything. Or to function while somehow getting the viewing size.
 		//Still couldnt somehow pass in the robot to concat onto the string clear desktop to make dynamic for each robot its plugged into.
-		switch(msg.message.text){
+		var input = msg.message.text
+		switch(input.toLowerCase()){
 			//desktop clear
-			case"Derpbot clear desktop":
 			case"derpbot clear desktop":
-			case"Hubot clear desktop":
 			case"hubot clear desktop":
 				msg.count = 25;
 				seeThrough(msg);
 				break;
 			//mobile clear
-			case"Derpbot clear mobile":
 			case"derpbot clear mobile":
-			case"Hubot clear mobile":
 			case"hubot clear mobile":
 				msg.count = 11;
 				seeThrough(msg);
 				break;
-			//tablet clear		
-			case"Derpbot clear tablet":
+			//tablet clear
 			case"derpbot clear tablet":
-			case"Hubot clear tablet":
 			case"hubot clear tablet":
 				msg.count = 21;
 				seeThrough(msg);
