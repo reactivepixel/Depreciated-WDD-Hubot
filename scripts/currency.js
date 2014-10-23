@@ -23,10 +23,10 @@ var request = require('request');
 // Function to find the value of a currency.
 function currencyVal(msg){
 
-  var input = msg.match[1];
-  var code = input.toLowerCase(); //grab the code
-  var currency = msg.match[1].trim(); //trim the code to get the length
-  var url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e' // concatinate the code into the API url
+  var input = msg.match[1],
+      code = input.toLowerCase(), //grab the code
+      currency = msg.match[1].trim(), //trim the code to get the length
+      url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e'; // concatinate the code into the API url
 
 // conditional to check the user only type three letters
   if(!isNaN(currency)){ // if it's not a number
@@ -110,21 +110,21 @@ function currencyVal(msg){
               default:
                 msg.send("Sorry, this currency has not been found.");
 
-              }
+              };
 
 
 
         }else{ // Currency was not found.
             msg.send("Sorry, this currency has not been found.");
-          }
+          };
         }
 
   )};
-}
+};
 
-// Listens for the exact match of "areacode" and calls areaCode function.
+// Listens for value entered and calls currencyVal function.
 module.exports = function(robot) {
   return robot.respond(/currency (.*)/i, function(msg) {
     currencyVal(msg);
   });
-}
+};
