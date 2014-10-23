@@ -8,10 +8,11 @@
 //   None
 //
 // Commands:
-//   Hubot get tweet count <url> - Enter an article's URL starting with 'http' to see how many times it has been shared on Twitter.
+//   Hubot get tweet count <url> - Enter an article's URL to see how many times it has been shared on Twitter.
 //
 // Author:
 //   Eddie Gemayel
+
 
 //storing the request in a variable
 var request = require('request');
@@ -21,10 +22,16 @@ function getTweetCount(msg){
    
 	//get URL that the user entered
 	var url = msg.match[1];
+	//RegEx to test if url entered was an actual URL
+	var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  	'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+  	'((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  	'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  	'(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  	'(\\#[-a-z\\d_]*)?$','i'); // fragment locator // fragment locater
 
-	//Regex conditional to see if whatever was entered was actually an http URL 
-	if (/^(f|ht)tps?:\/\//i.test(url)) {
-      		
+	//Regex conditional to see if whatever was entered was actually a URL 
+	if(pattern.test(url)) {
 		
 		//url for the API stored in a variable
 		apiURL = 'http://urls.api.twitter.com/1/urls/count.json?url='+ url +'';
@@ -48,8 +55,8 @@ function getTweetCount(msg){
 			}
 		});
 	}else{
-		//if they didnt enter an http url
-		msg.send("Hmm...I don't think that's a valid URL. Be sure it starts with http.");
+		//if they didnt enter a url
+		msg.send("Hmm...I don't think that's a valid URL.");
 	}
 
 }//end of function
