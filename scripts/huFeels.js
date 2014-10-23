@@ -24,11 +24,11 @@
 //a few regex notations I need
 var regMod="i",
 	slash="/",
-//specific regex for each one to use to fileter later
+	//specific regex for each one to use to fileter later
 	boastReg="/^pretty\\snice|^awesome$|^cool$|^nice$|",
 	gratsReg="^thank\\syou$|^thanks\\shubot|^thanks\\sderpbot$|^thanks\\sDerpbot$|^thanks$|",
 	lifeReg="^are\\syou\\salive\\?$|are\\syou\\sdown\\?$|^are\\syou\\sdead\\?$|^you\\sup\\?$|you down\\?$|^dead$/",
-//building the primary regex for inputs
+	//building the primary regex for inputs
 	RegEx = boastReg+gratsReg+lifeReg+regMod;
 
 //filtering through msg to find what the robot heard and respond.
@@ -100,7 +100,6 @@ function responseFilter(msg){
 }
 module.exports = function(robot) {
 	return robot.hear(RegEx, function(msg) {
-		// msg.send(msg.message);
 		responseFilter(msg);
 	});
 };
