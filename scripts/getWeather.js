@@ -51,7 +51,7 @@ function getWeather(msg){
 						" in " + json.current_observation.display_location.state_name +
 						" is currently "+ json.current_observation.weather +
 						" with " + json.current_observation.wind_mph +
-						" mph winds " +json.current_observation.wind_string +"Humidity: "+json.current_observation.relative_humidity+ " It's now " + json.current_observation.temp_f + 
+						" mph winds " +json.current_observation.wind_string +" humidity " + json.current_observation.relative_humidity+ " It's now " + json.current_observation.temp_f + 
 						" degrees farenheit. But it feels like " +json.current_observation.feelslike_f + " degrees farenheit. Local time here in " +json.current_observation.display_location.city + " is " + json.current_observation.local_time_rfc822);
 
 					//if there is an error
