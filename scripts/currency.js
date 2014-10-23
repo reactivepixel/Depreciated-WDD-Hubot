@@ -38,42 +38,73 @@ function currencyVal(msg){
           // Parse the json
           var json = JSON.parse(body),
               amount = json.amount,
-              resStart = "$1 dollar worth $" + amount; // Holly Springsteen - use variable for beginning of response
+              resStart = "$1 dollar worth $" + amount;
 
-          // conditional to check asign the value a name
-          if(code==="mxn"){
-            msg.send(resStart + " Mexican Pesos");
-          }else if(code==="aud"){
-            msg.send(resStart + " Australian Dollar");
-          }else if(code==="cad"){
-              msg.send(resStart + " Canadian Dollar");
-          }else if(code==="chf"){
-            msg.send(resStart + " Swiss Franc");
-          }else if(code==="dkk"){
-            msg.send(resStart + " Danish Krone Dollar");
-          }else if(code==="eur"){
-            msg.send(resStart + " Euro");
-          }else if(code==="gbp"){
-            msg.send(resStart + " Pound Sterling ");
-          }else if(code==="hkd"){
-            msg.send(resStart + " Hong Kong Dollar");
-          }else if(code==="jpy"){
-            msg.send(resStart + " Japanese Yen");
-          }else if(code==="nzd"){
-            msg.send(resStart + " New Zealand Dollar");
-          }else if(code==="php"){
-            msg.send(resStart + " Philippine Dollar");
-          }else if(code==="sek"){
-            msg.send(resStart + " Swedish Krona");
-          }else if(code==="sgd"){
-            msg.send(resStart + " Singapore Dollar");
-          }else if(code==="thb"){
-            msg.send(resStart + " Thailand Baht");
-          }else if(code==="zar"){
-            msg.send(resStart + " South Africa Rand");
-          }else{ // Currency was not found.
-            msg.send("Sorry, this currency has not been found.");
-          }
+          // swithch statement to check asign the value a name
+
+          switch (code) {
+              case "mxn":
+                msg.send(resStart + " Mexican Pesos");
+                break;
+
+              case "cad":
+                msg.send(resStart + " Australian Dollar");
+                break;
+
+              case "chf":
+                msg.send(resStart + " Swiss Franc");
+                break;
+
+              case "dkk":
+                msg.send(resStart + " Danish Krone Dollar");
+                break;
+
+              case "eur":
+                msg.send(resStart + " Euro");
+                break;
+
+              case "gbp":
+                msg.send(resStart + " Pound Sterling ");
+                break;
+
+              case "hkd":
+                msg.send(resStart + " Hong Kong Dollar");
+                break;
+
+              case "jpy":
+                msg.send(resStart + " Japanese Yen");
+                break;
+
+              case "nzd":
+                msg.send(resStart + " New Zealand Dollar");
+                break;
+
+              case "php":
+                msg.send(resStart + " Philippine Dollar");
+                break;
+
+              case "sek":
+                msg.send(resStart + " Swedish Krona");
+                break;
+
+              case "sgd":
+                msg.send(resStart + " Singapore Dollar");
+                break;
+
+              case "thb":
+                msg.send(resStart + " Thailand Baht");
+                break;
+
+              case "zar":
+                msg.send(resStart + " South Africa Rand");
+                break;
+
+              default:
+                msg.send("Sorry, this currency has not been found.");
+
+              }
+
+
 
         }else{ // Currency was not found.
             msg.send("Sorry, this currency has not been found.");
