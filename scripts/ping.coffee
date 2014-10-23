@@ -24,3 +24,5 @@ module.exports = (robot) ->
     msg.send "Goodbye, cruel world."
     process.exit 0
 
+  robot.hear /^PONG$/i,(msg) ->
+    msg.send "Thats not how this goes..."#quick edit by Eli Gerena
