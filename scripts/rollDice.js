@@ -1,5 +1,6 @@
 // Description:
 // Rolls dice based on the dice used in DnD
+// All rolls are against the Dungeon Master Now! 
 //
 // Dependencies:
 // none
@@ -8,7 +9,6 @@
 // none
 //
 // Commands:
-// All rolls are against the Dungeon Master Now! 
 // Hubot roll a <d#> - Rolls a die with number of sides. Only d4, d6, d8, d10, d12, and d20 dice can be rolled.
 // Hubot roll a d20 - Rolls a d20 (twenty sided die).
 // Hubot roll <#> <d#> - Rolls a number of dice with the number of sides. You can only roll between 1-5 dice at a time.
@@ -29,7 +29,6 @@ function rollDice(msg){
 		newRoll;
 		//Open edit by Eli Gerena
 		dNum=20;
-		counterRoll="d"+dNum
 		dmRoll=0
 
 	// if only one die is rolled, get a random number for the number of sides of the die
@@ -51,9 +50,9 @@ function rollDice(msg){
 			}
 		}else{
 			if(dmRoll > newRoll){
-				msg.send("You rolled a " + newRoll+" failing the DC check of "+dmRoll);//dgerena added dc fail
+				msg.send("You rolled a " + newRoll+" failing the DC check of "+dmRoll+".");//dgerena added dc fail
 			}else{
-				msg.send("You rolled a " + newRoll+" beating the DC check of "+dmRoll);//dgerena added dc beaten
+				msg.send("You rolled a " + newRoll+" beating the DC check of "+dmRoll+".");//dgerena added dc beaten
 			}
 		};
 	}else{
@@ -79,11 +78,11 @@ function rollDice(msg){
 			}else{
 				//Roll against DM 
 				if(dmRoll > newRoll){
-					diceArray.push("\t\t" + newRoll+" losing against the roll of "+dmRoll);//dgerena added dc fail
+					diceArray.push("\t\t" + newRoll+" losing against the roll of "+dmRoll+".");//dgerena added dc fail
 				}else if(dmRoll==newRoll){
 					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+" first roll favored.");//dgerena added dc favored roll
 				}else{
-					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll);//dgerena added dc beaten
+					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+".");//dgerena added dc beaten
 				}
 			};
 		};

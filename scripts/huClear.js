@@ -35,21 +35,18 @@ module.exports = function(robot) {
 			case"Hubot clear desktop":
 				msg.count = 25;
 				seeThrough(msg);
-				console.log("26");
 				break;
 			//mobile clear
 			case"Derpbot clear mobile":
 			case"Hubot clear mobile":
 				msg.count = 11;
 				seeThrough(msg);
-				console.log("15");
 				break;
 			//tablet clear		
 			case"Derpbot clear tablet":
 			case"Hubot clear tablet":
 				msg.count = 21;
 				seeThrough(msg);
-				console.log("21");
 				break;
 			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots will explain you need to learn to speak clearly.
 			default:
