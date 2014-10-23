@@ -50,49 +50,30 @@ function responseFilter(msg){
 	switch(msg.message.text){
 			//Boast section
 			case "nice":
-				msg.send(randomBoast);
-				break;
 			case "awesome":
-				msg.send(randomBoast);
-				break;
 			case "cool":
-				msg.send(randomBoast);
-				break;
 			case "pretty nice":
 				msg.send(randomBoast);
 				break;
+
 			//Gratitude section
 			case "thank you":
-				msg.send(randomGratitude);
-				break;
 			case "thanks hubot":
-				msg.send(randomGratitude);
-				break;
 			case "thanks derpbot":
-				msg.send(randomGratitude);
-				break;
 			case "thanks":
 				msg.send(randomGratitude);
 				break;
+
 			//Living section
 			case "are you alive?":
-				msg.send(randomLifeResponses);
-				break;
 			case "are you down?":
-				msg.send(randomLifeResponses);
-				break;
 			case "are you dead?":
-				msg.send(randomLifeResponses);
-				break;
 			case "dead":
-				msg.send(randomLifeResponses);
-				break;
 			case "you down?":
-				msg.send(randomLifeResponses);
-				break;
 			case "you up?":
 				msg.send(randomLifeResponses);
 				break;
+				
 			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots will explain you need to learn to speak clearly.
 			default:
 				msg.send("Hey! I can't understand you when you mumble make sure to capitalize my awesome name, all right.")
