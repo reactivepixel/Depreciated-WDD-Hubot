@@ -1,5 +1,3 @@
-
-
 // Description:
 //   Hubot tells you how much worth $1 USD Dollar vs differents currencies.
 //
