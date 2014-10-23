@@ -56,9 +56,6 @@ module.exports = function(robot) {
 				msg.count = 21;
 				seeThrough(msg);
 				break;
-			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots will explain you need to learn to speak clearly.
-			default:
-				msg.send("Hey! I can't understand you when you mumble make sure to capitalize my awesome name, all right.")
 		}
 	});
 }
