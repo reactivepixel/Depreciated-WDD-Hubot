@@ -49,7 +49,7 @@ function getTweetCount(msg){
 		});
 	}else{
 		//if they didnt enter an http url
-		msg.send("Hmm...I don't think that's a valid URL. Be sure it starts with 'http'.");
+		msg.send("Hmm...I don't think that's a valid URL. Be sure it starts with http.");
 	}
 
 }//end of function
