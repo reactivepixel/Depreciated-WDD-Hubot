@@ -19,7 +19,8 @@ var request = require('request');
 // Function to find the value of a currency.
 function currencyVal(msg){
 
-  var code = msg.match[1]; //grab de code
+  var input = msg.match[1];
+  var code = input.toLowerCase(); //grab de code
   var currency = msg.match[1].trim(); //trim the code to get the length
   var url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e' // concatinate the code into the API url
 
