@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot get tweetcount <url> - Shows the amount of times an article on the web has been shared on twitter
+//   Hubot get tweet count <url> - Enter an article's URL starting with "http" to see how many times it has been shared on Twitter.
 //
 // Author:
 //   Eddie Gemayel
@@ -19,8 +19,12 @@ var request = require('request');
 // Function to find the tweet count of an internet article
 function getTweetCount(msg){
    
-		//get URL that the user entered
-		var url = msg.match[1];
+	//get URL that the user entered
+	var url = msg.match[1];
+
+	//Regex conditional to see if whatever was entered was actually an http URL 
+	if (/^(f|ht)tps?:\/\//i.test(url)) {
+      		
 		
 		//url for the API stored in a variable
 		apiURL = 'http://urls.api.twitter.com/1/urls/count.json?url='+ url +'';
@@ -43,14 +47,16 @@ function getTweetCount(msg){
 				msg.send(json.error);
 			}
 		});
+	}else{
+		//if they didnt enter an http url
+		msg.send("Hmm...I don't think that is a URL.");
+	}
 
-	
-	
 }//end of function
 
 // Listens for the exact match of show weather and calls the getWeather function.
 module.exports = function(robot) {
-	return robot.respond(/get tweetcount (.*)/i, function(msg) {
+	return robot.respond(/get tweet count (.*)/i, function(msg) {
 		//call our main function
 		getTweetCount(msg);
 	});
