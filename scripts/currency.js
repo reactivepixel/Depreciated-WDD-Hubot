@@ -1,5 +1,5 @@
 // Description:
-//   Hubot tells you how much worth $1 USD Dollar vs differents currencies.
+//   Converts $1 USD to various currencies.
 //
 // Dependencies:
 //   Request
@@ -20,7 +20,7 @@ var request = require('request');
 function currencyVal(msg){
 
   var input = msg.match[1];
-  var code = input.toLowerCase(); //grab de code
+  var code = input.toLowerCase(); //grab the code
   var currency = msg.match[1].trim(); //trim the code to get the length
   var url = 'http://currency-api.appspot.com/api/usd/'+code+'.json?key=6aab585c1cf938938e7388b31db56a9b0fadf00e' // concatinate the code into the API url
 
@@ -40,7 +40,7 @@ function currencyVal(msg){
               amount = json.amount,
               resStart = "$1 dollar worth $" + amount;
 
-          // swithch statement to check asign the value a name
+          //Switch statement to check assign the value a name
 
           switch (code) {
               case "mxn":
