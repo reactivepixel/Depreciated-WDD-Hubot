@@ -8,9 +8,9 @@
 //   None
 //
 // Commands:
-//  (capitalize) Robot clear desktop clears the desktop avg line height.
-//	Robot clear mobile clears the mobile avg line height.
-//	Robot clear tablet clears the tablet avg line height.
+//	(capitalized) Robot clear desktop - clears the desktop avg line height
+//	(capitalized) Robot clear mobile - clears the mobile avg line height
+//	(capitalized) Robot clear tablet - clears the tablet avg line height
 //
 // Author: 
 //	 dgerena aka Eli!
