@@ -25,13 +25,9 @@ function rollDice(msg){
 		diceSides = parseInt(msg.match[2].substring(1), 10),
 		diceArray = [],
 		newRoll;
-<<<<<<< HEAD
 		//Open edit by Eli Gerena
 		dNum=20;
 		dmRoll=0
-=======
->>>>>>> master
-
 	// if only one die is rolled, get a random number for the number of sides of the die
 	// else get random numbers for the number of dice rolled storing them to an array for output
 	if (numberDice == 'a' || numberDice == 'A' || numberDice == 1){
@@ -41,15 +37,12 @@ function rollDice(msg){
 		}else if (newRoll == 1){
 			msg.send("You rolled a " + newRoll + " : Critical miss!");
 		}else{
-<<<<<<< HEAD
 			if(dmRoll > newRoll){
 				msg.send("You rolled a " + newRoll+" failing the DC check of "+dmRoll+".");//dgerena added dc fail
 			}else{
 				msg.send("You rolled a " + newRoll+" beating the DC check of "+dmRoll+".");//dgerena added dc beaten
 			}
-=======
 			msg.send("You rolled a " + newRoll);
->>>>>>> master
 		};
 	}else{
 		diceArray[0] = "You rolled: ";
@@ -61,7 +54,6 @@ function rollDice(msg){
 			}else if (newRoll == 1){
 				diceArray.push("\t\t" + newRoll + " : Critical miss!");
 			}else{
-<<<<<<< HEAD
 				//Roll against DM 
 				if(dmRoll > newRoll){
 					diceArray.push("\t\t" + newRoll+" losing against the roll of "+dmRoll+".");//dgerena added dc fail
@@ -70,9 +62,7 @@ function rollDice(msg){
 				}else{
 					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+".");//dgerena added dc beaten
 				}
-=======
 				diceArray.push("\t\t" + newRoll);
->>>>>>> master
 			};
 		};
 		// loop through the array of dice roll message array
