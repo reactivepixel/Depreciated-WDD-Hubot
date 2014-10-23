@@ -54,11 +54,12 @@ function gasStations(msg){
 
             //Conditional statement to check for Gas stations that do NOT have previous price data.
             // eddie gemayel added this conditional part
+            var gasPrices = inputName+" prices:\nRegular: $"+regular+"\n"+"Medium: $"+mid+"\n"+"Premium: $"+premium
+            
             if(jsonDetails.previousPrices[0] != undefined){
 
               //if the gas station has previous price data, it will display like so.
-              msg.send(inputName+" prices: "+
-              "\nRegular: $"+regular+"\n"+"Medium: $"+mid+"\n"+"Premium: $"+premium +
+              msg.send(gasPrices +
               "\n" + jsonDetails.previousPrices[0].date + 
               ", the price for " +jsonDetails.previousPrices[0].type +
               " at " +inputName +
@@ -68,7 +69,7 @@ function gasStations(msg){
               
             }else{
               //otherwise, gas station prices will display normally
-               msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium);
+               msg.send(gasPrices);
             }
             
            
