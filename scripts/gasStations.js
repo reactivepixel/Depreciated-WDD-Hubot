@@ -15,9 +15,10 @@
 //  Edited by Eddie Gemayel 
 // Added older barrel prices for available gas stations
 
+//store request in a variable
 var request = require('request');
 
-
+// function to get gas stations
 function gasStations(msg){
   var inputName = msg.match[1]; // grab the value
   var urlStationsList = 'http://devapi.mygasfeed.com/stations/brands/rfej9napna.json?'; // url that connects the list of gas station
@@ -52,6 +53,7 @@ function gasStations(msg){
             var premium = details.pre_price;
 
             //Conditional statement to check for Gas stations that do NOT have previous price data.
+            // eddie gemayel added this conditional part
             if(jsonDetails.previousPrices[0] != undefined){
 
               //if the gas station has previous price data, it will display like so.
@@ -93,6 +95,7 @@ function gasStations(msg){
 
 module.exports = function(robot) {
   return robot.respond(/gas station (.*)/i, function(msg) {
+    //call function if someone types gas station command
     gasStations(msg);
   });
 }
