@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot get tweet count <url> - Enter an article's URL to see how many times it has been shared on Twitter.
+//   Hubot tweet count <url> - Enter an article's URL to see how many times it has been shared on Twitter.
 //
 // Author:
 //   Eddie Gemayel
@@ -63,7 +63,7 @@ function getTweetCount(msg){
 
 // Listens for the exact match of show weather and calls the getWeather function.
 module.exports = function(robot) {
-	return robot.respond(/get tweet count (.*)/i, function(msg) {
+	return robot.respond(/tweet count (.*)/i, function(msg) {
 		//call our main function
 		getTweetCount(msg);
 	});
