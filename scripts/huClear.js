@@ -8,9 +8,9 @@
 //   None
 //
 // Commands:
-//  (capitalize) Robot clear desktop clears the desktop avg line height.
-//	Robot clear mobile clears the mobile avg line height.
-//	Robot clear tablet clears the tablet avg line height.
+//	Hubot clear desktop - clears the desktop avg line height
+//	Hubot clear mobile - clears the mobile avg line height
+//	Hubot clear tablet - clears the tablet avg line height
 //
 // Author: 
 //	 dgerena aka Eli!
@@ -32,19 +32,25 @@ module.exports = function(robot) {
 		switch(msg.message.text){
 			//desktop clear
 			case"Derpbot clear desktop":
+			case"derpbot clear desktop":
 			case"Hubot clear desktop":
+			case"hubot clear desktop":
 				msg.count = 25;
 				seeThrough(msg);
 				break;
 			//mobile clear
 			case"Derpbot clear mobile":
+			case"derpbot clear mobile":
 			case"Hubot clear mobile":
+			case"hubot clear mobile":
 				msg.count = 11;
 				seeThrough(msg);
 				break;
 			//tablet clear		
 			case"Derpbot clear tablet":
+			case"derpbot clear tablet":
 			case"Hubot clear tablet":
+			case"hubot clear tablet":
 				msg.count = 21;
 				seeThrough(msg);
 				break;
