@@ -1,100 +1,79 @@
 // Description:
-// Rolls dice based on the dice used in DnD
-// All rolls are against the Dungeon Master Now! 
+// Shortens a long URL using Google's URL shortening service, goo.gl
 //
 // Dependencies:
-// none
+// request
 //
 // Configuration:
-// none
+// None
 //
 // Commands:
-// Hubot roll a <d#> - Rolls a die with number of sides. Only d4, d6, d8, d10, d12, and d20 dice can be rolled.
-// Hubot roll a d20 - Rolls a d20 (twenty sided die).
-// Hubot roll <#> <d#> - Rolls a number of dice with the number of sides. You can only roll between 1-5 dice at a time.
-// Hubot roll 2 d20 - Rolls 2 d20 dice (two, twenty sided dice).
+// Hubot googl <LONG URL> - Will shorten a long url to a goo.gl one. (Only .com, .org, .net, .edu, and .gov domains).
+// Hubot googl www.google.com - Will shorten www.google.com to http://goo.gl/fbsS
 //
 // Author:
 // Bryan Erickson
 // GitHub - bkerickson
 
+// required dependencies
+var request = require('request');
 
-//Function that gets a random number (or set of random numbers) based on the sides of a selected dice type
-function rollDice(msg){
-	var numberDice = msg.match[1].trim(),
-		diceSides = parseInt(msg.match[2].substring(1), 10),
-		diceArray = [],
-		newRoll;
-		//Open edit by Eli Gerena
-		dNum=20;
-		dmRoll=0
-	// if only one die is rolled, get a random number for the number of sides of the die
-	// else get random numbers for the number of dice rolled storing them to an array for output
-	if (numberDice == 'a' || numberDice == 'A' || numberDice == 1){
-		newRoll = getDiceRoll(diceSides);
-		if (newRoll == diceSides){
-			msg.send("You rolled a " + newRoll + " : Critical hit!");
-		}else if (newRoll == 1){
-			msg.send("You rolled a " + newRoll + " : Critical miss!");
-		}else{
-			if(dmRoll > newRoll){
-				msg.send("You rolled a " + newRoll+" failing the DC check of "+dmRoll+".");//dgerena added dc fail
-			}else{
-				msg.send("You rolled a " + newRoll+" beating the DC check of "+dmRoll+".");//dgerena added dc beaten
-			}
-			msg.send("You rolled a " + newRoll);
-		};
+//Function that makes a call to Google's goo.gl url shortener service API
+function googlShortener(msg){
+
+	// define the regex pattern to test the entered url
+	var urlRegexPattern = new RegExp('(http(s)?:\/\/)?(([a-zA-Z0-9\-])+\.)+(com|org|net|edu|gov)(\/.*(\/)*)*'),
+		googlMessageArray = [];
+
+	// test if a url was entered and that it passes the regex test
+	// else no url was entered or it was not valid, set the variable to an empty string
+	if(msg.match[1] && urlRegexPattern.test(msg.match[1])){
+		// if valid save the entered url and trim it of any whitespace
+		googlEnteredUrl = msg.match[1].trim();
 	}else{
-		diceArray[0] = "You rolled: ";
-		// loop for each of the number of dice to be rolled
-		for (numRolls = 0; numRolls < numberDice; numRolls++){
-			newRoll = getDiceRoll(diceSides);
-			if (newRoll == diceSides){
-				diceArray.push("\t\t" + newRoll + " : Critical hit!");
-			}else if (newRoll == 1){
-				diceArray.push("\t\t" + newRoll + " : Critical miss!");
-			}else{
-				//Roll against DM 
-				if(dmRoll > newRoll){
-					diceArray.push("\t\t" + newRoll+" losing against the roll of "+dmRoll+".");//dgerena added dc fail
-				}else if(dmRoll==newRoll){
-					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+" first roll favored.");//dgerena added dc favored roll
-				}else{
-					diceArray.push("\t\t" + newRoll+" beating the roll of "+dmRoll+".");//dgerena added dc beaten
-				}
-				diceArray.push("\t\t" + newRoll);
-			};
-		};
-		// loop through the array of dice roll message array
-		for(arrIndex = 0; arrIndex < diceArray.length; arrIndex++){
-			(function(arrIndex){
-				setTimeout(function(){
-					msg.send(diceArray[arrIndex]);
-				}, 30 * arrIndex);
-			}(arrIndex));
-		};
-	};
-	return false;
-}; // end of rollDice function
+		googlEnteredUrl = "";
+	}
+	// if the string length is 0 as a result of a failed regex or no entry, send an error message
+	if(googlEnteredUrl.length == 0){
+		msg.send("Please check the URL you entered or enter a URL to be shortened, and try again. Note: only .com, .org, .net, .edu, and .gov can be used. IE: `hubot googl www.google.com`");
+		return false;
+	}else{
+		// nothing to do here
+	}
 
-// function that gets the number for the 'roll of the dice'
-function getDiceRoll(numSides){
-	return Math.ceil(Math.random() * numSides);
-}; // end of getDiceRoll function
-
-//Listens for the key-phrase "roll a d<##>" or "roll <#> d<##>" such as "roll a d20"
-module.exports = function(robot) {
-	return robot.respond(/roll (.+) (d[0-9]+)/i, function(msg) {
-		// regex tests for the entered roll so only certain sets of dice can be rolled
-		var diceTest = new RegExp("(^d4$|^d6$|^d8$|^d10$|^d12$|^d20$|^D4$|^D6$|^D8$|^D10$|^D12$|^D20$)"),
-			numberDiceTest = new RegExp("(^a$|^A$|^1$|^2$|^3$|^4$|^5$)");
-
-		// if the tests fail, the entered roll is not good, give an error message with info on how to roll dice
-		// else, call the rollDice function
-		if(!numberDiceTest.test(msg.match[1].trim()) || !diceTest.test(msg.match[2].trim())){
-			msg.send("Please try to roll again. Reminder: You can only roll 1-5 dice at a time, and only 4, 6, 8, 10, 12, or 20 sides. IE: `hubot roll a d20` or `hubot roll 2 d20`");
-		}else{
-			rollDice(msg);
+	// options for the request POST call
+	var googlPostOptions = {
+		uri: 'https://www.googleapis.com/urlshortener/v1/url',
+		method: 'POST',
+		json: {
+			"longUrl": googlEnteredUrl
 		}
+	};
+
+	// send the request to the goo.gl API
+	request(googlPostOptions, function (error, response, body) {
+		// if no errors came back and the status is good, display the new shortened URL
+		// else there was an error with the API call, send an error message
+		if (!error && response.statusCode < 300) {
+			googlMessageArray.push(response.body.longUrl + " was successfully shortened.");
+			googlMessageArray.push("Your shortened URL is: " + response.body.id + "");
+		}else{
+			googlMessageArray.push("Google could not shorten your url, or the URL shortener is down at the moment. Please check that you entered your URL correctly and try again in a few minutes.");
+		}
+		// loop through the output message array
+		for(arrayIndex = 0; arrayIndex < googlMessageArray.length; arrayIndex++){
+			(function(arrayIndex){
+				setTimeout(function(){
+					msg.send(googlMessageArray[arrayIndex])
+				}, 50 * arrayIndex);
+			}(arrayIndex));
+		};
+	}); // end of request
+}; // end of googlShortener function
+
+//Listens for the key-phrase 'googl <URL>' and calls the function to get a shortened URL from goo.gl
+module.exports = function(robot) {
+	return robot.respond(/googl(.*)?$/i, function(msg) {
+			googlShortener(msg);
 	});
 }
