@@ -40,7 +40,7 @@ function currencyVal(msg){
               amount = json.amount,
               resStart = "$1 dollar worth $" + amount;
 
-          // conditional to check asign the value a name
+          // swithch statement to check asign the value a name
 
           switch (code) {
               case "mxn":
@@ -100,7 +100,7 @@ function currencyVal(msg){
                 break;
 
               default:
-                msg.send("Not Found !");
+                msg.send("Sorry, this currency has not been found.");
 
               }
 
