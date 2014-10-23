@@ -50,8 +50,7 @@ function getTweetCount(msg){
 
 			}else{
 				//send them back error message if connection didnt go through
-				var json = JSON.parse(response.body);
-				msg.send(json.error);
+				msg.send("It appears the API is down. Please try again later.");
 			}
 		});
 	}else{
