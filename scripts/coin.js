@@ -41,8 +41,10 @@ function multipleCoins(msg){
 		setTimeout(function(){
 			msg.send('Heads: '+heads+' Tails: '+tails);
 		}, 200);
-	}else{
+	}else if(coins > 1000000){
 		msg.send("Come on, how about we flip a reasonable number of coins.")
+	}else{
+		msg.send("You threw 0 coins so you get nothing.")
 	}
 }
 

@@ -35,6 +35,11 @@ var regMod="i",
 function responseFilter(msg){
 	//After making all of these before creating a switch statement for replies i think i can do away with them.
 	// Or add a greater amount to them so as to have a bank to call them from
+
+	// Holly Springsteen
+	// consolidate variables
+	// use msg.random instead of complex math
+	// use variables in msg.send cases
 	var boasts=["Ya, I'm the best","I am the greatest!"],
 		gratitudes=["Anytime "+msg.message.user.name+".","No problem, just doing my thang."],
 		lifeResponses=["I am here, what's up?","No, Can I help you?"],

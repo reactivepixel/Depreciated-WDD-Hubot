@@ -12,10 +12,13 @@
 //
 // Author:
 //   Arturo Alquicira
+//  Edited by Eddie Gemayel 
+// Added older barrel prices for available gas stations
 
+//store request in a variable
 var request = require('request');
 
-
+// function to get gas stations
 function gasStations(msg){
   var inputName = msg.match[1]; // grab the value
   var urlStationsList = 'http://devapi.mygasfeed.com/stations/brands/rfej9napna.json?'; // url that connects the list of gas station
@@ -49,8 +52,25 @@ function gasStations(msg){
             var mid = details.mid_price;
             var premium = details.pre_price;
 
+            //Conditional statement to check for Gas stations that do NOT have previous price data.
+            // eddie gemayel added this conditional part
+            if(jsonDetails.previousPrices[0] != undefined){
 
-            msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium);
+              //if the gas station has previous price data, it will display like so.
+              msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium +
+              ". " + jsonDetails.previousPrices[0].date + 
+              ", the price for " +jsonDetails.previousPrices[0].type +
+              " at " +inputName +
+              " was $" +jsonDetails.previousPrices[0].price+
+              " per barrel."  
+              );
+              
+            }else{
+              //otherwise, gas station prices will display normally
+               msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium);
+            }
+            
+           
           });
 
         }else{
@@ -75,6 +95,7 @@ function gasStations(msg){
 
 module.exports = function(robot) {
   return robot.respond(/gas station (.*)/i, function(msg) {
+    //call function if someone types gas station command
     gasStations(msg);
   });
 }
