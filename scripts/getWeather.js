@@ -12,6 +12,7 @@
 //
 // Author:
 //   Eddie Gemayel
+// feels like/local time/wind string added by Lyte
 
 //store the required request into a variable for easy access
 var request = require('request');
@@ -21,7 +22,7 @@ function getWeather(msg){
 
 	//get zipcode the user entered
 	var zipcode = msg.match[1];
-	
+
 	// Conditional statement to check if user entered an integer or not
 	if (isNaN(zipcode)) {
 
@@ -29,10 +30,10 @@ function getWeather(msg){
 		msg.send("The location you entered is invalid. Be sure you are entering a valid zipcode and try again.");
 
 	}else {
-		
+
 		//url for the API stored in a variable
 		apiURL = 'http://api.wunderground.com/api/00bacbd3046f5248/conditions/q/'+zipcode+'.json';
-		
+
 		// make the request to the api
 		request(apiURL, function (error, response, body) {
 
@@ -46,12 +47,12 @@ function getWeather(msg){
 					if(!json.response.error){
 
 						//spit back out the information to the user
-						msg.send("The city of " + json.current_observation.display_location.city + 
-						" in " + json.current_observation.display_location.state_name + 
-						" is currently "+ json.current_observation.weather + 
-						" with " + json.current_observation.wind_mph + 
-						" mph winds. It's now "+ json.current_observation.temp_f + 
-						" degrees farenheit." );
+						msg.send(" The city of " + json.current_observation.display_location.city +
+						" in " + json.current_observation.display_location.state_name +
+						" is currently "+ json.current_observation.weather +
+						" with " + json.current_observation.wind_mph +
+						" mph winds " +json.current_observation.wind_string +"Humidity: "+json.current_observation.relative_humidity+ " It's now " + json.current_observation.temp_f + 
+						" degrees farenheit. But it feels like " +json.current_observation.feelslike_f + " degrees farenheit. Local time here in " +json.current_observation.display_location.city + " is " + json.current_observation.local_time_rfc822);
 
 					//if there is an error
 					}else{
