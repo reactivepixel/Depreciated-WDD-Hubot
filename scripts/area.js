@@ -54,106 +54,157 @@ function areaCode(msg){
 							time = json.area_codes[0].current_time,
 							reqLink = "Data provided by http://www.allareacodes.com";
 						
-						if(state=="AL"){
-							state="Alabama"
-						}else if(state=="AK"){
-							state="Alaska"
-						}else if(state=="AZ"){
-							state="Arizona"
-						}else if(state=="AR"){
-							state="Arkansas"
-						}else if(state=="CA"){
-							state="California"
-						}else if(state=="CO"){
-							state="Colorado"
-						}else if(state=="CT"){
-							state="Connecticut"
-						}else if(state=="DE"){
-							state="Delaware"
-						}else if(state=="FL"){
-							state="Florida"
-						}else if(state=="GA"){
-							state="Georgia"
-						}else if(state=="HI"){
-							state="Hawaii"
-						}else if(state=="ID"){
-							state="Idaho"
-						}else if(state=="IL"){
-							state="Illinois"
-						}else if(state=="IN"){
-							state="Indiana"
-						}else if(state=="IA"){
-							state="Iowa"
-						}else if(state=="KS"){
-							state="Kansas"
-						}else if(state=="KY"){
-							state="Kentucky"
-						}else if(state=="LA"){
-							state="Louisiana"
-						}else if(state=="ME"){
-							state="Maine"
-						}else if(state=="MD"){
-							state="Maryland"
-						}else if(state=="MA"){
-							state="Massachusetts"
-						}else if(state=="MI"){
-							state="Michigan"
-						}else if(state=="MN"){
-							state="Minnesota"
-						}else if(state=="MS"){
-							state="Mississippi"
-						}else if(state=="MO"){
-							state="Missouri"
-						}else if(state=="MT"){
-							state="Montana"
-						}else if(state=="NE"){
-							state="Nebraska"
-						}else if(state=="NV"){
-							state="Nevada"
-						}else if(state=="NH"){
-							state="New Hampshire"
-						}else if(state=="NJ"){
-							state="New Jersey"
-						}else if(state=="NM"){
-							state="New Mexico"
-						}else if(state=="NY"){
-							state="New York"
-						}else if(state=="NC"){
-							state="North Carolina"
-						}else if(state=="ND"){
-							state="North Dakota"
-						}else if(state=="OH"){
-							state="Ohio"
-						}else if(state=="OK"){
-							state="Oklahoma"
-						}else if(state=="OR"){
-							state="Oregon"
-						}else if(state=="PA"){
-							state="Pennsylvania"
-						}else if(state=="RI"){
-							state="Rhode Island"
-						}else if(state=="SC"){
-							state="South Carolina"
-						}else if(state=="SD"){
-							state="South Dakota"
-						}else if(state=="TN"){
-							state="Tennessee"
-						}else if(state=="TX"){
-							state="Texas"
-						}else if(state=="UT"){
-							state="Utah"
-						}else if(state=="VT"){
-							state="Vermont"
-						}else if(state=="VA"){
-							state="Virginia"
-						}else if(state=="WA"){
-							state="Washington"
-						}else if(state=="WV"){
-							state="West Virginia"
-						}else if(state=="WI"){
-							state="Wisconsin"
-						}else if(state=="WY"){
-							state="Wyoming"
+						switch(state){
+							case "AL":
+								state="Alabama";
+								break;
+							case "AK":
+								state="Alaska";
+								break;
+							case "AZ":
+								state="Arizona";
+								break;
+							case "AR":
+								state="Arkansas";
+								break;
+							case "CA":
+								state="California";
+								break;
+							case "CO":
+								state="Colorado";
+								break;
+							case "CT":
+								state="Connecticut";
+								break;
+							case "DE":
+								state="Delaware";
+								break;
+							case "FL":
+								state="Florida";
+								break;
+							case "GA":
+								state="Georgia";
+								break;
+							case "HI":
+								state="Hawaii";
+								break;
+							case "ID":
+								state="Idaho";
+								break;
+							case "IL":
+								state="Illinois";
+								break;
+							case "IN":
+								state="Indiana";
+								break;
+							case "IA":
+								state="Iowa";
+								break;
+							case "KS":
+								state="Kansas";
+								break;
+							case "KY":
+								state="Kentucky";
+								break;
+							case "LA":
+								state="Louisiana";
+								break;
+							case "ME":
+								state="Maine";
+								break;
+							case "MD":
+								state="Maryland";
+								break;
+							case "MA":
+								state="Massachusetts";
+								break;
+							case "MI":
+								state="Michigan";
+								break;
+							case "MN":
+								state="Minnesota";
+								break;
+							case "MS":
+								state="Mississippi";
+								break;
+							case "MO":
+								state="Missouri";
+								break;
+							case "MT":
+								state="Montana";
+								break;
+							case "NE":
+								state="Nebraska";
+								break;
+							case "NV":
+								state="Nevada";
+								break;
+							case "NH":
+								state="New Hampshire";
+								break;
+							case "NJ":
+								state="New Jersey";
+								break;
+							case "NM":
+								state="New Mexico";
+								break;
+							case "NY":
+								state="New York";
+								break;
+							case "NC":
+								state="North Carolina";
+								break;
+							case "ND":
+								state="North Dakota";
+								break;
+							case "OH":
+								state="Ohio";
+								break;
+							case "OK":
+								state="Oklahoma";
+								break;
+							case "OR":
+								state="Oregon";
+								break;
+							case "PA":
+								state="Pennsylvania";
+								break;
+							case "RI":
+								state="Rhode Island";
+								break;
+							case "SC":
+								state="South Carolina";
+								break;
+							case "SD":
+								state="South Dakota";
+								break;
+							case "TN":
+								state="Tennessee";
+								break;
+							case "TX":
+								state="Texas";
+								break;
+							case "UT":
+								state="Utah";
+								break;
+							case "VT":
+								state="Vermont";
+								break;
+							case "VA":
+								state="Virginia";
+								break;
+							case "WA":
+								state="Washington";
+								break;
+							case "WV":
+								state="West Virginia";
+								break;
+							case "WI":
+								state="Wisconsin";
+								break;
+							case "WY":
+								state="Wyoming";
+								break;
 						}
 
 						msg.send("Area code " + code + " is located in " + state + ". \n" + "Timezone: "+timezone + " \n" + "Current Time: "+time + " \n" + reqLink);
