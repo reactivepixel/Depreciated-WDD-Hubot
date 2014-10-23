@@ -46,6 +46,9 @@ function areaCode(msg){
 						status = json.status;
 					
 					if (status === "success"){ // Checks to make sure the area code has been found.
+						// Holly Springsteen
+						// Allow for timezone and current time to be shown
+						// Convert state abbrev to full name
 						var state = json.area_codes[0].state,
 							timezone = json.area_codes[0].timezone,
 							time = json.area_codes[0].current_time,
