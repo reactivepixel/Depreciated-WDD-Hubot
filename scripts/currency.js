@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot currency <currency> -  Hubot tells you how much worth $1 USD Dollar in different countries. Only (aud, cad, chf, dkk, eur, gbp, hkd, jpy, mxn, nzd, php, sek, sgd, thb, zar)
+//   Hubot currency <currency> -  Converts $1 USD to various currencies (aud, cad, chf, dkk, eur, gbp, hkd, jpy, mxn, nzd, php, sek, sgd, thb, zar)
 //
 // Author:
 //   Arturo Alquicira
