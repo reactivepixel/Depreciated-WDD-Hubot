@@ -57,8 +57,9 @@ function gasStations(msg){
             if(jsonDetails.previousPrices[0] != undefined){
 
               //if the gas station has previous price data, it will display like so.
-              msg.send(inputName+" prices: "+"Regular: $"+regular+", "+"Medium: $"+mid+", "+"Premium: $"+premium +
-              ". " + jsonDetails.previousPrices[0].date + 
+              msg.send(inputName+" prices: "+
+              "\nRegular: $"+regular+"\n"+"Medium: $"+mid+"\n"+"Premium: $"+premium +
+              "\n" + jsonDetails.previousPrices[0].date + 
               ", the price for " +jsonDetails.previousPrices[0].type +
               " at " +inputName +
               " was $" +jsonDetails.previousPrices[0].price+
