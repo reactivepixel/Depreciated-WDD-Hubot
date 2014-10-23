@@ -51,8 +51,12 @@ function currencyVal(msg){
                 msg.send(resStart + " Mexican Pesos");
                 break;
 
-              case "cad":
+              case "aud":
                 msg.send(resStart + " Australian Dollar");
+                break;
+
+              case "cad":
+                msg.send(resStart + " Canadian Dollar");
                 break;
 
               case "chf":
