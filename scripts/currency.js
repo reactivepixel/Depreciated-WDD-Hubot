@@ -38,7 +38,7 @@ function currencyVal(msg){
           // Parse the json
           var json = JSON.parse(body),
               amount = json.amount,
-              resStart = "$1 dollar worth $" + amount;
+              resStart = "$1 dollar worth $" + amount; // Holly Springsteen - use variable for beginning of response
 
           // conditional to check asign the value a name
           if(code==="mxn"){
