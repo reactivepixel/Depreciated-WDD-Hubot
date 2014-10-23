@@ -54,7 +54,7 @@ function gasStations(msg){
 
             //Conditional statement to check for Gas stations that do NOT have previous price data.
             // eddie gemayel added this conditional part
-            var gasPrices = inputName+" prices:\nRegular: $"+regular+"\n"+"Medium: $"+mid+"\n"+"Premium: $"+premium
+            var gasPrices = inputName+" prices:\nRegular: $"+regular+"\n"+"Medium: $"+mid+"\n"+"Premium: $"+premium;
             
             if(jsonDetails.previousPrices[0] != undefined){
 
