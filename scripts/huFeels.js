@@ -24,8 +24,8 @@
 //a few regex notations I need
 var regMod="i",
 	slash="/",
-	//specific regex for each one to use to fileter later
-	boastReg="/^pretty\\snice|^awesome$|^cool$|^nice$|",
+	//specific regex for each one to use to filter later
+	boastReg="/pretty\\snice|^awesome$|^cool$|^nice$|",
 	gratsReg="^thank\\syou$|^thanks\\shubot|^thanks\\sderpbot$|^thanks\\sDerpbot$|^thanks$|",
 	lifeReg="^are\\syou\\salive\\?$|are\\syou\\sdown\\?$|^are\\syou\\sdead\\?$|^you\\sup\\?$|you down\\?$|^dead$/",
 	//building the primary regex for inputs
@@ -52,7 +52,6 @@ function responseFilter(msg){
 			case "nice":
 			case "awesome":
 			case "cool":
-			case "pretty nice":
 				msg.send(randomBoast);
 				break;
 
@@ -68,15 +67,10 @@ function responseFilter(msg){
 			case "are you alive?":
 			case "are you down?":
 			case "are you dead?":
-			case "dead":
 			case "you down?":
 			case "you up?":
 				msg.send(randomLifeResponses);
 				break;
-				
-			//God forbid you somehow do get past all the above text comparisons and didnt misscapitalize the bots will explain you need to learn to speak clearly.
-			default:
-				msg.send("Hey! I can't understand you when you mumble make sure to capitalize my awesome name, all right.")
 		}
 }
 module.exports = function(robot) {
