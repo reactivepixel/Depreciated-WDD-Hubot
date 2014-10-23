@@ -14,6 +14,10 @@
 //
 // Author: 
 //	 dgerena aka Eli!
+//
+// Contributor:
+//	Holly Springsteen
+// 	hhspringsteen@gmail.com
 
 
 // I had wished to be able to pass in some specific charecter codes to push the page dependent on size of the browser had to settle for entering in spaces...
@@ -29,6 +33,9 @@ module.exports = function(robot) {
 		//Filtering out the possible context to which someone might try to use the huclear.js/ Will work with the local and staging bots.
 		//Suggested fixes or upgrades are to extend this to work with anyones bot named anything. Or to function while somehow getting the viewing size.
 		//Still couldnt somehow pass in the robot to concat onto the string clear desktop to make dynamic for each robot its plugged into.
+
+		// Holly Springsteen
+		// allow for lower case robot calls with toLowerCase
 		var input = msg.message.text
 		switch(input.toLowerCase()){
 			//desktop clear
