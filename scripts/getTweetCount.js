@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot get tweet count <url> - Enter an article's URL starting with "http" to see how many times it has been shared on Twitter.
+//   Hubot get tweet count <url> - Enter an article's URL starting with 'http' to see how many times it has been shared on Twitter.
 //
 // Author:
 //   Eddie Gemayel
@@ -49,7 +49,7 @@ function getTweetCount(msg){
 		});
 	}else{
 		//if they didnt enter an http url
-		msg.send("Hmm...I don't think that is a URL.");
+		msg.send("Hmm...I don't think that's a valid URL. Be sure it starts with 'http'.");
 	}
 
 }//end of function
