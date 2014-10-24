@@ -19,7 +19,7 @@ var request = require('request');
 
 // Function to find the tweet count of an internet article
 function getTweetCount(msg){
-   
+
 	//get URL that the user entered
 	var url = msg.match[1];
 	//RegEx to test if url entered was an actual URL
@@ -30,12 +30,12 @@ function getTweetCount(msg){
   	'(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
   	'(\\#[-a-z\\d_]*)?$','i'); // fragment locater // fragment locater
 
-	//Regex conditional to see if whatever was entered was actually a URL 
+	//Regex conditional to see if whatever was entered was actually a URL
 	if(pattern.test(url)) {
-		
+
 		//url for the API stored in a variable
 		apiURL = 'http://urls.api.twitter.com/1/urls/count.json?url='+ url +'';
-		
+
 		// make the request to the api
 		request(apiURL, function (error, response, body) {
 
@@ -60,8 +60,8 @@ function getTweetCount(msg){
 
 }//end of function
 
-// Listens for the exact match of show weather and calls the getWeather function.
 module.exports = function(robot) {
+  // Listens for the exact match of tweet count.
 	return robot.respond(/tweet count (.*)/i, function(msg) {
 		//call our main function
 		getTweetCount(msg);
