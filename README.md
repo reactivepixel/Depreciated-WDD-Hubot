@@ -153,5 +153,3 @@ Once you are up and running with a prompt you can interact with hubot by typing 
 
 Take a look at the scr1ipts in the `./scripts` folder for examples.
 Add whatever functionality you want hubot to have. Read up on what you can do with hubot in the [Scripting Guide](https://github.com/github/hubot/blob/master/docs/scripting.md).
-
-> See the Development Guidelines for how best to integrate your work with the team.
