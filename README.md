@@ -24,26 +24,30 @@ These requirements and installation instructions are intended for a OS X local D
 
 ### NodeJS
 
-* Download and install NodeJS from [NodeJS.org][nodejs]
+Download and install NodeJS from [NodeJS.org][nodejs]
 
 ### Xcode
-* Install Xcode from the [Apple App Store][xcode]
-* Once Xcode has fully installed, run the following command in terminal (in any directory) to install the Xcode Developer Tool that Heroku will use.
+Install Xcode from the [Apple App Store][xcode]
+
+Once Xcode has fully installed, run the following command in terminal (in any directory) to install the Xcode Developer Tool that Heroku will use.
 
 
 
     $ xcode-select --install
 
 ### Heroku
-* Create an account with Heroku.com
-* Post the email you used to signup to Heroku to the Slack Group. This will allow me to add your user to the Hubot App on my account.
-* Install the [Heroku Toolbelt][toolbelt]
-* Authenticate with Heroku for the first time using the command line:
+Create an account with Heroku.com
+
+Post the email you used to signup to Heroku to the Slack Group. This will allow me to add your user to the Hubot App on my account.
+
+Install the [Heroku Toolbelt][toolbelt]
+
+Authenticate with Heroku for the first time using the command line:
 
 
     $ heroku login
 
-* Enter you user credentials and you should see the message **Authentication successful.**. Alternatively, you may be presented with a message about a **Public Key**. This is the key we generated and shared with Github previously and there are two different messages that may be displayed asking you how to proceed:
+Enter you user credentials and you should see the message **Authentication successful.**. Alternatively, you may be presented with a message about a **Public Key**. This is the key we generated and shared with Github previously and there are two different messages that may be displayed asking you how to proceed:
 
 
 > Could not find an existing public key. Would you like to generate one? [Yn]
@@ -56,14 +60,16 @@ Select any option that does not have **Github** in the name.
 
 ### Github
 
-* Fork the [WDD-Hubot][wddhubot] Repo on Github.
-* Notate, for later use, the SSH clone URL for the forked repo that was just created on your account.
-* In Terminal, navigate to where you want to house the code from Hubot. Once prepared run the heroku command to clone and download Hubot's files to your **local environment**
+Fork the [WDD-Hubot][wddhubot] Repo on Github.
+
+Notate, for later use, the SSH clone URL for the forked repo that was just created on your account.
+
+In Terminal, navigate to where you want to house the code from Hubot. Once prepared run the heroku command to clone and download Hubot's files to your **local environment**
 
 
     $ heroku git:clone -a hubot-staging
 
-* Navigate into the newly cloned folder called Hubot, note that it is already a git repo. Add a new remote to the forked repo you created. It should look like this next command, but with your SSH clone URL you notated previously.
+Navigate into the newly cloned folder called Hubot, note that it is already a git repo. Add a new remote to the forked repo you created. It should look like this next command, but with your SSH clone URL you notated previously.
 
 
     git remote add github **SSH Clone URL to your fork (no astricks)**
@@ -72,7 +78,7 @@ This connects your own code base to your own forked repo. You will be using this
 
 ### Unpack Hubot
 
-* Navigate to your Hubot folder and run the node command to install all dependencies:
+Navigate to your Hubot folder and run the node command to install all dependencies:
 
 
     $ npm install
