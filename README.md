@@ -31,6 +31,7 @@ These requirements and installation instructions are intended for a OS X local D
 * Once Xcode has fully installed, run the following command in terminal (in any directory) to install the Xcode Developer Tool that Heroku will use.
 
 
+
     $ xcode-select --install
 
 ### Heroku
