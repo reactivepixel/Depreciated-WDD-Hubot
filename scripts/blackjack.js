@@ -79,7 +79,7 @@ function playJack(msg){
 	var arySuits = ["&hearts;" , "&clubs;", "&spades;", "&diams;"],
 		deck = [],
 		delt = [];
-		
+
 	var cnt = 0;
 
 	// For loop for the 4 suits
@@ -99,14 +99,14 @@ function playJack(msg){
 
 		// Checks if the player's "delt" array has cards inside
 		if(!delt["You"]){
-			delt["You"] = [];	
+			delt["You"] = [];
 		}
 
 		// Checks if the dealer's "delt" array has cards inside
 		if(!delt["Dealer"]){
-			delt["Dealer"] = [];	
+			delt["Dealer"] = [];
 		}
-			
+
 		// Push to the delt array the cards the player and dealer has been delt
 		delt["You"].push(dealCard(deck));
 		delt["Dealer"].push(dealCard(deck));
@@ -137,8 +137,8 @@ function playJack(msg){
             msg.send(messageArray[z])
         }, 500 * z);
     }(z));
-} 
-	
+}
+
 }
 
 

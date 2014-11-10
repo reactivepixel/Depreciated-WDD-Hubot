@@ -27,7 +27,7 @@ function rollDice(msg){
 
 	// if only one die is rolled, get a random number for the number of sides of the die
 	// else get random numbers for the number of dice rolled storing them to an array for output
-	if (numberDice == 'a' || numberDice == 'A' || numberDice == 1){
+	if (numberDice.toLowerCase() === 'a' || numberDice === 1){
 		newRoll = getDiceRoll(diceSides);
 		if (newRoll == diceSides){
 			msg.send("You rolled a " + newRoll + " : Critical hit!");
@@ -35,19 +35,19 @@ function rollDice(msg){
 			msg.send("You rolled a " + newRoll + " : Critical miss!");
 		}else{
 			msg.send("You rolled a " + newRoll);
-		};
+		}
 	}else{
 		diceArray[0] = "You rolled: ";
 		// loop for each of the number of dice to be rolled
 		for (numRolls = 0; numRolls < numberDice; numRolls++){
 			newRoll = getDiceRoll(diceSides);
-			if (newRoll == diceSides){
+			if (newRoll === diceSides){
 				diceArray.push("\t\t" + newRoll + " : Critical hit!");
-			}else if (newRoll == 1){
+			}else if (newRoll === 1){
 				diceArray.push("\t\t" + newRoll + " : Critical miss!");
 			}else{
 				diceArray.push("\t\t" + newRoll);
-			};
+			}
 		};
 		// loop through the array of dice roll message array
 		for(arrIndex = 0; arrIndex < diceArray.length; arrIndex++){
@@ -55,9 +55,9 @@ function rollDice(msg){
 				setTimeout(function(){
 					msg.send(diceArray[arrIndex]);
 				}, 30 * arrIndex);
-			}(arrIndex));
-		};
-	};
+			}(arrIndex))
+		}
+	}
 	return false;
 }; // end of rollDice function
 
