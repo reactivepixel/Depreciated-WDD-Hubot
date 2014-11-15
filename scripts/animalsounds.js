@@ -10,7 +10,11 @@
 //
 //Hubot chicken - reply coo coo
 //Hubot dog - reply ruff ruff
-// Hubot cat - reply meow meow 
+//Hubot cat - reply meow meow 
+//
+//Author
+//Mathew Beyer
+//matthew@beyerbuilds.com
 
 module.exports = function(robot) {
 robot.respond(/chicken$/i, function(msg) {
