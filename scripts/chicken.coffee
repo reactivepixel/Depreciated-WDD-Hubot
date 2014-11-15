@@ -1,4 +1,4 @@
-//Why did the chicken cross the road
+#Why did the chicken cross the road
 module.exports = (robot) ->
 
 robot.respond /chicken$/i, (msg) ->
