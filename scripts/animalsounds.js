@@ -1,8 +1,16 @@
-//Matthew Beyer Hubot I Release
-//This is going to be animalsounds.js
-//Hubot chicken --> reply coo coo
-//Hubot dog --> reply ruff ruff
-// Hubot cat --> reply meow meow
+//Description
+//
+//Animal Sounds
+//
+//Dependencies
+//
+//none
+//
+//Commands
+//
+//Hubot chicken - reply coo coo
+//Hubot dog - reply ruff ruff
+// Hubot cat - reply meow meow 
 
 module.exports = function(robot) {
 robot.respond(/chicken$/i, function(msg) {
