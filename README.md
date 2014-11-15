@@ -36,7 +36,7 @@ Once Xcode has fully installed, run the following command in terminal (in any di
     $ xcode-select --install
 
 ### Heroku
-Create an account with Heroku.com
+Create an account with [Heroku.com][herokusignup]
 
 Post the email you used to signup to Heroku to the Slack Group. This will allow me to add your user to the Hubot App on my account.
 
@@ -112,7 +112,7 @@ Test that your redis brain works!
 [xcode]: https://itunes.apple.com/us/app/xcode/id497799835
 [toolbelt]: https://toolbelt.heroku.com/
 [wddhubot]: https://github.com/reactivepixel/WDD-Hubot/fork
-
+[herokusignup]: https://signup.heroku.com/identity
 
 
 
