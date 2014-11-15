@@ -7,4 +7,7 @@ return msg.send("coo coo");
 robot.respond(/dog$/i, function(msg) {
 return msg.send("ruff ruff");
 });
+robot.respond(/cat$/i, function(msg) {
+return msg.send("meow meow");
+});
 };
