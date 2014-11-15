@@ -4,4 +4,7 @@ module.exports = function(robot) {
 robot.respond(/chicken$/i, function(msg) {
 return msg.send("coo coo");
 });
+robot.respond(/dog$/i, function(msg) {
+return msg.send("ruff ruff");
+});
 };
