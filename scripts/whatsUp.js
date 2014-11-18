@@ -2,7 +2,7 @@
 
 module.exports = function(robot) {
 
-  robot.respond(/wassup$/i, function(msg) {
+  robot.respond(/WASSUP$/i, function(msg) {
     return msg.send("Chilling, whats good with you?");
   });
 
