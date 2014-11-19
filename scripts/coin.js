@@ -15,7 +15,7 @@
 // Holly Springsteen
 // hhspringsteen@gmail.com
 
-var thecoin = ["heads", "tails"];
+var theCoin = ["heads", "tails"];
 
 function multipleCoins(msg){
 	var coins = msg.match[2],
@@ -24,12 +24,12 @@ function multipleCoins(msg){
 
 	if(coins == 'a' || coins == 1){
 		// if user asks for "a"/1 coin then only display the result
-		msg.send(msg.random(thecoin));
+		msg.send(msg.random(theCoin));
 	}else if(coins > 0 && coins <= 1000000){
 		// for multiple coins flipped
 		for (var i=0; i<coins; i++){
 			// retrieve a random result for the coin
-			var randomCoin = msg.random(thecoin);
+			var randomCoin = msg.random(theCoin);
 			// count the total of heads and tails
 			if(randomCoin == 'heads'){
 				heads++;
