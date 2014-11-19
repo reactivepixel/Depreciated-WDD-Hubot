@@ -16,7 +16,7 @@
 
 module.exports = function(robot) {
 robot.hear(/cow\??/i, function(msg) {
-return msg.send("http://i.imgur.com/G2YpErL.jpg"); // Holly Springsteen - use .jpg extension instead of page address
+return msg.send("http://i.imgur.com/G2YpErL.jpg#.png"); // Holly Springsteen - use .jpg extension instead of page address (last extension must be png to display)
 });
 };
 
