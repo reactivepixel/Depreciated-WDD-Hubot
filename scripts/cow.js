@@ -16,7 +16,7 @@
 
 module.exports = function(robot) {
 robot.hear(/cow\??/i, function(msg) {
-  return msg.send("http://imgur.com/gallery/G2YpErL");
+return msg.send("http://imgur.com/gallery/G2YpErL");
 });
 };
 
