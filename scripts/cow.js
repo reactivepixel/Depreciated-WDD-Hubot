@@ -17,6 +17,6 @@
 module.exports = function(robot) {
 	return robot.respond(/cow$/i, function(msg) {
 		//hubot returns the image/image link
-		msg.send("http://i.imgur.com/G2YpErL.jpg#.png"); // Holly Springsteen - use .jpg extension instead of page address (last extension must be png to display)
+		msg.send("http://www.picgifs.com/graphics/c/cows/graphics-cows-170079.gif");
 	});
 };
