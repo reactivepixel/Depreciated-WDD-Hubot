@@ -41,7 +41,7 @@ function startCountingCups(msg){
 			return a + b;
 		});
 
-		msg.send("You will need " + totalRedSoloCups + " to complete your pyramid.");
+		msg.send("You will need " + totalRedSoloCups + " red solo cups to complete your pyramid. Which should cost you about $" + totalRedSoloCups*0.96);
 	}
 }
 
