@@ -47,6 +47,6 @@ function startCountingCups(msg){
 
 module.exports = function(robot) {
 	return robot.respond(/red solo cup pyramid (.*) feet in height/i, function(msg) {
-		return msg.send(startCountingCups());
+		startCountingCups(msg);
 	});
 };
