@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot red solo cup pyramid <height> - Enter height, get red solo cup count
+//   Hubot red solo cup pyramid <height> in height- Enter height, get red solo cup count
 //
 // Author:
 //  Clayton Allen
