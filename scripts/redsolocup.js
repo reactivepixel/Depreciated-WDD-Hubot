@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot red solo cup pyramid <height> feet in height - Enter height, get red solo cup count
+//   Hubot red solo cup pyramid <height> feet in height- Enter height, get red solo cup count
 //
 // Author:
 //  Clayton Allen
@@ -20,8 +20,7 @@ function getHeightRequested(msg){
 
 module.exports = function(robot){
 
-	return robot.respond('/red solo cup pyramid (.*) feet in height/i', function(msg){
-		msg.send('Im Here');
+	return robot.respond('/red solo cup pyramid (.*) feet in height /i', function(msg){
+		msg.send('Oh so you want to build a Red Solo Cup Pyramid);
 	});
-
 }
