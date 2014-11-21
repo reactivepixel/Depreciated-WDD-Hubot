@@ -20,7 +20,7 @@ function getHeightRequested(msg){
 
 module.exports = function(robot){
 
-	return robot.respond('/red solo cup pyramid (.*) feet in height /i', function(msg){
-		msg.send('Oh so you want to build a Red Solo Cup Pyramid);
+	return robot.respond('/red solo cup pyramid (.*) feet in height /i'), function(msg){
+		msg.send(getHeightRequested());
 	});
 }
