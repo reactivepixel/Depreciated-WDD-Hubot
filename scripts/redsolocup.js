@@ -14,13 +14,8 @@
 //  Clayton Allen
 //  clayton.allen.us@gmail.com
 
-function getHeightRequested(msg){
-	var thisHeight = msg.match[4];
-}
-
-module.exports = function(robot){
-
-	return robot.respond('/red solo cup pyramid (.*) feet in height /i', function(msg){
-		msg.send('Here');
+module.exports = function(robot) {
+	return robot.respond(/red solo cup pyramid (.*) feet in height/i, function(msg) {
+		return msg.send("Hi There!");
 	});
-}
+};
