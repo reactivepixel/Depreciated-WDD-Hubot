@@ -16,7 +16,7 @@
 
 module.exports = function(robot){
 
-	return robot.respond('/red solo cup/i', function(msg){
+	return robot.respond('/red solo cup pyramid (.*) in height/i', function(msg){
 		msg.send('Oh so you want to build a Red Solo Cup Pyramid, just one second while I calculate that');
 	});
 }
