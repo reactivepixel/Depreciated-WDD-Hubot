@@ -26,7 +26,7 @@ function startCountingCups(msg){
 		// Needed to calculate how many total rows are needed
 		var redSoloCupHeight = 0.39;
 		// Now divide the height requested by the height of a red solo cup
-		var totalRows = Math.floor(theHeight / redSoloCupHeight);
+		var totalRows = Math.floor(thisHeight / redSoloCupHeight);
 		// Set the number of rows to zero for the for loop
 		var numberOfRows = 0;
 		// Now for an empty array of rows so we can add up each cup in each row
