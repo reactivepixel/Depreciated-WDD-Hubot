@@ -75,7 +75,7 @@ function startCountingCups(msg){
 module.exports = function(robot) {
 
 	// Listen for a height to build a pyramid!
-	return robot.respond(/(.*) ft red solo cup pyramid/i, function(msg) {
+	return robot.respond(/(.*)ft red solo cup pyramid/i, function(msg) {
 		// Call the red solo cup pyramid builder!
 		startCountingCups(msg);
 	});
