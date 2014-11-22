@@ -22,12 +22,12 @@ function tastetherainbow(msg){
 	request('http://www.colourlovers.com/api/colors/random?format=json', function (error, response, body){
 		if (!error && response.statusCode < 300){
 			var colorData = JSON.parse(response.body),
-				colorArr = colorData[0].imageUrl;
-				// for(var i = 0; i < colorData.length; i++){
-				// 	colorArr.push(colorData[i]);
-				// 	msg.send(colorData[i]);
-				// }
-			msg.send("Your color name is " + colorArr);
+				colorName = colorData[0].title;
+				colorCard = colorData[0].imageUrl;
+				
+			msg.send("Your color name is " + colorName);
+			msg.send(colorCard);
+
 		}else{
 			msg.send("Yuck!!! That rainbow was nasty... Try running that again");
 		}
