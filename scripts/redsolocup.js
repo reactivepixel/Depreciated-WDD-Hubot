@@ -8,10 +8,12 @@
 //   None
 //
 // Commands:
-//   Hubot red solo cup pyramid <height> feet in height - Enter height, get red solo cup count
+//   Hubot <HEIGHT>ft red solo cup pyramid - Enter the height for a red solo cup pyramid - I'll tell how many cups you'll need and more!
 //
 // Author:
 //  Clayton Allen
+//
+// Email:
 //  clayton.allen.us@gmail.com
 
 function startCountingCups(msg){
@@ -19,7 +21,7 @@ function startCountingCups(msg){
 	var thisHeight = msg.match[1];
 	// Validate users input
 	if(isNaN(thisHeight)){
-		msg.send("You need to enter a number value for this work booger...");
+		msg.send("You need to enter a number value for this to work booger...");
 	}else if( thisHeight <= 0 ){
 		msg.send("My brain hurts, try putting a number bigger than 1");
 	}else{
@@ -46,7 +48,7 @@ function startCountingCups(msg){
 }
 
 module.exports = function(robot) {
-	return robot.respond(/red solo cup pyramid (.*) feet in height/i, function(msg) {
+	return robot.respond(/(.*)ft red solo cup pyramid/i, function(msg) {
 		startCountingCups(msg);
 	});
 };
