@@ -22,7 +22,7 @@ function tastetherainbow(msg){
 	request('http://www.colourlovers.com/api/colors/random?format=json', function (error, response, body){
 		if (!error && response.statusCode < 300){
 			var colorData = JSON.parse(response.body),
-				colorName = colorData;
+				colorName = colorData[0];
 			msg.send("Your color name is " + colorName);
 		}else{
 			msg.send("Yuck!!! That rainbow was nasty... Try running that again");
