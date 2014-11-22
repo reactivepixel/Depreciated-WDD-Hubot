@@ -24,7 +24,8 @@ function tastetherainbow(msg){
 			var colorData = JSON.parse(response.body),
 				colorArr = [];
 				for(var i = 0; i < colorData.length; i++){
-					colorArr.push(colorData[i])
+					colorArr.push(colorData[i]);
+					msg.send(colorData[i]);
 				}
 			msg.send("Your color name is " + colorArr);
 		}else{
