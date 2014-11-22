@@ -21,7 +21,7 @@ var request = require('request');
 function tastetherainbow(msg){
 	request('http://www.colourlovers.com/api/colors/random?format=json', function (error, response, body){
 		if (!error && response.statusCode < 300){
-			var colorData = JSON.parse(response.body),
+			var colorData = JSON.parse(response),
 				colorArr = [];
 				for(var i = 0; i < colorData.length; i++){
 					colorArr.push(colorData[i]);
