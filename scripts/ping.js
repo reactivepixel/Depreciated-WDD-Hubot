@@ -27,4 +27,4 @@ module.exports = function(robot) {
   return robot.hear(/^PONG$/i, function(msg) {
     return msg.send("Thats not how this goes...");
   });
-};
+};  
