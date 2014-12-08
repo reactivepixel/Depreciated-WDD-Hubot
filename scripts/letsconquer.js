@@ -23,7 +23,7 @@ var adjective = ["the terrible", "the destroyer", "the sweet", "the fury", "the 
 "the glamorous"]
 
 // Where they conquered.
-var place = ["of the world", "of mars", "of your mom", "of uranus", "of Egypt","of America","of the Antartic"]
+var place = ["of the World", "of Mars", "of your Mom", "of Uranus", "of Egypt","of America","of the Antartic"]
 
 
 module.exports = function(robot) {
