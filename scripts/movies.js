@@ -24,9 +24,9 @@ function getMovies(msg){
         if (!error && response.statusCode < 300){
                 //parse the json
                 var json = JSON.parse(response.body);
-                var movie1 = "Title:"+ json.results[0].display_title +" Rating:"+ json.results[0].mpaa_rating +" CriticPick:"+json.results[0].critics_pick+" OpeningDate:"+ json.results[0].opening_date +"\nMoreInfo: "+ json.results[0].link.url+"\n\n";
-                var movie2 = "Title:"+ json.results[1].display_title +" Rating:"+ json.results[1].mpaa_rating +" CriticPick:"+json.results[1].critics_pick+" OpeningDate:"+ json.results[1].opening_date +"\nMoreInfo: "+ json.results[1].link.url+"\n\n";
-                var movie3 = "Title:"+ json.results[2].display_title +" Rating:"+ json.results[2].mpaa_rating +" CriticPick:"+json.results[2].critics_pick+" OpeningDate:"+ json.results[2].opening_date +"\nMoreInfo: "+ json.results[2].link.url;
+                var movie1 = "Title: "+ json.results[0].display_title +", Rating: "+ json.results[0].mpaa_rating +", Critic Pick:"+json.results[0].critics_pick+", Opening Date:"+ json.results[0].opening_date +"\nMoreInfo: "+ json.results[0].link.url+"\n\n";
+                var movie2 = "Title: "+ json.results[1].display_title +", Rating: "+ json.results[1].mpaa_rating +", Critic Pick:"+json.results[1].critics_pick+", Opening Date:"+ json.results[1].opening_date +"\nMoreInfo: "+ json.results[1].link.url+"\n\n";
+                var movie3 = "Title: "+ json.results[2].display_title +", Rating: "+ json.results[2].mpaa_rating +", Critic Pick:"+json.results[2].critics_pick+", Opening Date:"+ json.results[2].opening_date +"\nMoreInfo: "+ json.results[2].link.url;
                 //return the three movies
                 
                 msg.send(movie1 + movie2 + movie3);
