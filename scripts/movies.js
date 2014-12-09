@@ -41,7 +41,7 @@ function getMovies(msg){
 
 //Listens for the movies string and executes the function
 module.exports = function(robot) {
-  return robot.respond(/movies/i, function(msg) {
+  return robot.respond(/movies $/i, function(msg) {
  	 getMovies(msg);
   });
 }
