@@ -19,8 +19,8 @@ var firstname = ["Ivan","Bodark","Genghis","Alexander","Hitler","Attila","Napole
 "","Fluffy","Sparkles","Jordan", "Gmd","Ashoka","Charlemagne","Thutmose","Cyrus","Caesar"];
 
 // Adjective that descibes the conqueror.
-var adjective = ["the terrible", "the destroyer", "the sweet", "the fury", "the furry", "the fabulous",
-"the glamorous","the Fire-Wielder","the Iron-Clad","the Shadow-Hand"]
+var adjective = ["the Terrible", "the Destroyer", "the Sweet", "the Fury", "the Furry", "the Fabulous",
+"the Glamorous","the Fire-Wielder","the Iron-Clad","the Shadow-Hand"]
 
 // Where they conquered.
 var place = ["of the World", "of Mars", "of your Mom", "of Uranus", "of Egypt","of America","of the Antartic","of Narnia",
