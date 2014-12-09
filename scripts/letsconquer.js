@@ -28,7 +28,7 @@ var place = ["of the World", "of Mars", "of your Mom", "of Uranus", "of Egypt","
 
 
 module.exports = function(robot) {
-    return robot.respond(/lets conquer $/, function(msg) {
+    return robot.respond(/lets conquer$/i, function(msg) {
 
         //The message that hubot will deliver.
 
