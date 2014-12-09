@@ -14,7 +14,7 @@
 //  Jordan Wilson
 
 var request = require('request');
-var key = process.env.NYTMOVIE_APIKEY
+var key = process.env.NYTMOVIE_APIKEY;
 function getMovies(msg){
 
     // a variable to hold the api url
