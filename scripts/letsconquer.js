@@ -16,7 +16,7 @@
 
 // First name for conquerors.
 var firstname = ["Ivan","Bodark","Genghis","Alexander","Hitler","Attila","Napoleon","Tamerlane",
-"","Fluffy","Sparkles","Jordan", "Gmd","Ashoka","Charlemagne","Thutmose","Cyrus","Caesar"];
+"","Fluffy","Sparkles","Jordan", "Antonio","Ashoka","Charlemagne","Thutmose","Cyrus","Caesar"];
 
 // Adjective that descibes the conqueror.
 var adjective = ["the Terrible", "the Destroyer", "the Sweet", "the Fury", "the Furry", "the Fabulous",
