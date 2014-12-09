@@ -23,7 +23,7 @@ var adjective = ["the Terrible", "the Destroyer", "the Sweet", "the Fury", "the 
 "the Glamorous","the Fire-Wielder","the Iron-Clad","the Shadow-Hand"]
 
 // Where they conquered.
-var place = ["of the World", "of Mars", "of your Mom", "of Uranus", "of Egypt","of America","of the Antartic","of Narnia",
+var place = ["of the World", "of Mars", "of your Mom", "of Uranus", "of Egypt","of America","of the Antarctic","of Narnia",
 "of Middle-Earth","of the Shire","of the Universe","of the Front Yard","of Death"]
 
 
