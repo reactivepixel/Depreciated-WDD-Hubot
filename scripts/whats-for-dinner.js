@@ -19,7 +19,7 @@ var request = require('request');
 
 
 function food(msg){
-  var randomINT = Math.floor((Math.random() * 200000) + 1);
+  var randomINT = Math.floor((Math.random() * 200000) + 1);//random int for recepie array.
   var apiURL = 'http://api.yummly.com/v1/api/recipes?_app_id=2f555d00&_app_key=3a78da9d272c848b3d6dd9665b9a35f7&q=""&maxResult=1&start=' + randomINT; // API conection
   
   request(apiURL, function (error, response, body){
@@ -30,8 +30,8 @@ function food(msg){
       var readById = "http://api.yummly.com/v1/api/recipe/"+food.matches[0].id+"?_app_id=2f555d00&_app_key=3a78da9d272c848b3d6dd9665b9a35f7"; //API url for additional information.
       
       request(readById, function (error, response, body){
-        var recipesID = JSON.parse(body);
-        msg.send(recipesID.source.sourceRecipeUrl);
+        var recipesID = JSON.parse(body);// this reads the additionl content for the recepie
+        msg.send(recipesID.source.sourceRecipeUrl);// this will give the sours material for the recepie
       });
 
     }else{
@@ -43,7 +43,7 @@ function food(msg){
 
 // Listens for the dinner bell (food function)
 module.exports = function(robot) {
-  return robot.respond(/whats-for-dinner?/i, function (msg) {
+  return robot.respond(/whats for dinner$/i, function (msg) {
     food(msg);
   });
 };
