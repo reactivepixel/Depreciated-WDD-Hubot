@@ -20,8 +20,8 @@ var request = require( 'request' );
 function pokedex( msg ) {
 
   // Get the Pokemon name.
-  var pokeName = msg.match[ 1 ];
-
+  var inputName = msg.match[ 1 ];
+  var pokeName = inputName.toLowerCase();
   // Verify if submission is a string.
   if ( isNaN( pokeName ) == true ) {
     // *** Submission IS a string ***
