@@ -9,7 +9,7 @@
 #
 # Commands:
 #   hubot norris me -- random Chuck Norris awesomeness
-#   hubot chuck norris me <user> -- let's see how <user> would do as Chuck Norris
+#   hubot norris me <user> -- let's see how <user> would do as Chuck Norris
 #
 # Author:
 #   Seth Healy
