@@ -19,39 +19,39 @@ QS = require "querystring"
 
 module.exports = (robot) ->
   robot.respond /text (\d+) (.*)/i, (msg) ->
-    to    = msg.match[1]
+    address = msg.match[1]
     message = msg.match[2]
-    sid   = process.env.HUBOT_SMS_SID
-    tkn   = process.env.HUBOT_SMS_TOKEN
-    from  = process.env.HUBOT_SMS_FROM
-    auth  = 'Basic ' + new Buffer(sid + ':' + tkn).toString("base64")
-    data  = QS.stringify From: from, To: to, Body: message
+    username = process.env.HUBOT_SMSIFIED_USERNAME
+    password = process.env.HUBOT_SMSIFIED_PASSWORD
+    senderAddress  = process.env.HUBOT_SMSIFIED_SENDERADDRESS
+    auth  = 'Basic ' + new Buffer(username + ':' + password).toString("base64")
+    data  = QS.stringify address: address, message: message
 
-    unless sid
-      msg.send "Twilio SID isn't set."
-      msg.send "Please set the HUBOT_SMS_SID environment variable."
+    unless username
+      msg.send "SMSified username isn't set."
+      msg.send "Please set the HUBOT_SMSIFIED_USERNAME environment variable."
       return
 
-    unless tkn
-      msg.send "Twilio token isn't set."
-      msg.send "Please set the HUBOT_SMS_TOKEN environment variable."
+    unless password
+      msg.send "SMSified password isn't set."
+      msg.send "Please set the HUBOT_SMSIFIED_PASSWORD environment variable."
       return
 
-    unless from
-      msg.send "Twilio from number isn't set."
-      msg.send "Please set the HUBOT_SMS_FROM environment variable."
+    unless senderAddress
+      msg.send "SMSified senderAddress isn't set."
+      msg.send "Please set the HUBOT_SMSIFIED_SENDERADDRESS environment variable."
       return
 
-    msg.http("https://api.twilio.com")
-      .path("/2010-04-01/Accounts/#{sid}/SMS/Messages.json")
+    msg.http("https://api.smsified.com")
+      .path("/v1/smsmessaging/outbound/#{senderAddress}/requests")
       .header("Authorization", auth)
       .header("Content-Type", "application/x-www-form-urlencoded")
       .post(data) (err, res, body) ->
         json = JSON.parse body
         switch res.statusCode
           when 201
-            msg.send "Sent text to #{to}"
+            msg.send "Sent text message to #{address}"
           when 400
-            msg.send "Failed to send. #{json.message}"
+            msg.send "Failed to send text message. #{json.message}"
           else
-            msg.send "Failed to send."
+            msg.send "Failed to send text message."
