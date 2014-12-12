@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot chuck norris -- random Chuck Norris awesomeness
+#   hubot norris me -- random Chuck Norris awesomeness
 #   hubot chuck norris me <user> -- let's see how <user> would do as Chuck Norris
 #
 # Author:
@@ -16,7 +16,7 @@
 
 module.exports = (robot) ->
 
-  robot.respond /(chuck norris)( me )?(.*)/i, (msg)->
+  robot.respond /(norris me)( me )?(.*)/i, (msg)->
     user = msg.match[3]
     if user.length == 0
       askChuck msg, "http://api.icndb.com/jokes/random"
