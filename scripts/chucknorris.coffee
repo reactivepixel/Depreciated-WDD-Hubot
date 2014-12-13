@@ -18,7 +18,7 @@
 module.exports = (robot) ->
 
   url = http://api.icndb.com/jokes/random
-  cleanurl = url.replace(/&quot;/i,"''")
+  cleanurl = url.replace(/&quot;/g, "'")
 
 
   robot.respond /(norris me)( me )?(.*)/i, (msg)->
