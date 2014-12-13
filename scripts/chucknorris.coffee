@@ -1,5 +1,5 @@
 # Description:
-#   Hubot sends a random chuck norris fact
+#   Hubot sends a random Chuck Norris fact
 #
 # Dependencies:
 #   None
