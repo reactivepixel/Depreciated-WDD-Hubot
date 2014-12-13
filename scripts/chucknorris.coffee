@@ -14,7 +14,12 @@
 # Author:
 #   Seth Healy
 
+
 module.exports = (robot) ->
+
+  url = http://api.icndb.com/jokes/random
+  cleanurl = url.replace(/&quot;/i,"''")
+
 
   robot.respond /(norris me)( me )?(.*)/i, (msg)->
     user = msg.match[3]
