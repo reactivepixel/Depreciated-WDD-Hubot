@@ -17,8 +17,6 @@
 
 module.exports = (robot) ->
 
-  url = http://api.icndb.com/jokes/random
-  cleanurl = url.replace(/&quot;/g, "'")
 
 
   robot.respond /(norris me)( me )?(.*)/i, (msg)->
@@ -38,4 +36,4 @@ module.exports = (robot) ->
           if message_from_chuck.length == 0
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
           else
-            msg.send message_from_chuck.value.joke.replace /\s\s/g, " "
+            msg.send message_from_chuck.value.joke.replace /\s\s/&quot;/g, " "
