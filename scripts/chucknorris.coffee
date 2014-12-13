@@ -22,7 +22,7 @@ module.exports = (robot) ->
   robot.respond /(norris me)( me )?(.*)/i, (msg)->
     user = msg.match[3]
     if user.length == 0
-      askChuck msg, cleanurl
+      askChuck msg, "http://api.icndb.com/jokes/random"
     else
       askChuck msg, "http://api.icndb.com/jokes/random?firstName="+user+"&lastName="
 
