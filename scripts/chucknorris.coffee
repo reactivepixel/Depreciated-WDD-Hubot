@@ -45,5 +45,4 @@ module.exports = (robot) ->
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
           else
           # Replaces quotes with ASCII characters.
-            msg.send message_from_chuck.value.joke.replace /&quot;/g, ""
-            msg.send message_from_chuck.value.joke.replace /\s+$/g, ""
+            msg.send message_from_chuck.value.joke.replace /&quot;\s+$/g, ""
