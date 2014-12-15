@@ -21,7 +21,7 @@ module.exports = (robot) ->
   # Second one being Chuck me <user> where you can insert a user name and hubot will tell a joke
   # but with your name.
 
-  robot.respond /(Chuck me)(me)?(.*)\s/i,(msg)->
+  robot.respond /(Chuck me)(me/s)?(.*)/i,(msg)->
     user = msg.match[3]
   # I am calling the api here for the the Chuck me feature.
     if user.length == 0
