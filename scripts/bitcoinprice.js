@@ -40,35 +40,38 @@ function bci( msg ) {
         // Parse the incoming json.
         var json = JSON.parse( response.body );
 
+        switch(currencyType){
 
-        // Verify if the user selected a correct currency
-        if( currencyType == "usd"){
+          case "usd":
 
-          // If US Dollar...
-          msg.send( "The current rate for a bitcoin, in " + json.bpi.USD.description + ", is " + json.bpi.USD.rate + " dollars per bitcoin.");
+            // If US Dollar...
+            msg.send( "The current rate for a bitcoin, in " + json.bpi.USD.description + ", is " + json.bpi.USD.rate + " dollars per bitcoin.");
+            break;
 
-        }else if(currencyType == "gbp"){
+          case "gbp":
 
-          // If English Pound...
-          msg.send( "The current rate for a bitcoin, in " + json.bpi.GBP.description + ", is " + json.bpi.GBP.rate + " pounds per bitcoin.");
+            // If English Pound...
+            msg.send( "The current rate for a bitcoin, in " + json.bpi.GBP.description + ", is " + json.bpi.GBP.rate + " pounds per bitcoin.");
+            break;
 
-        }else if(currencyType == "eur"){
+          case "eur":
 
-          // If Euro Dollar...
-          msg.send( "The current rate for a bitcoin, in " + json.bpi.EUR.description + ", is " + json.bpi.EUR.rate + " euros per bitcoin.");
+            // If Euro...
+            msg.send( "The current rate for a bitcoin, in " + json.bpi.EUR.description + ", is " + json.bpi.EUR.rate + " euros per bitcoin.");
+            break;
 
-        }else{
-          // *** Incorrect User Input ***
+          default:
+            // *** Incorrect User Input ***
 
-          // The string did not match any currency types.
-          msg.send( 'I did not understand. Please try again.' );
-          msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD"' );
-          return; // If incorrect submission, terminate the process.
+            // The string did not match any currency types.
+            msg.send( 'I did not understand. Please try again.' );
+            msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
+            break; // If incorrect submission, terminate the process.
 
         }// ...Succesfully printed the message in the correct currency format...
 
         // Finally... Send a message to the user of when the data was updated.
-        msg.send( "This data was last updated on "+json.time.updateduk );
+        msg.send( "This data was last updated on " + json.time.updateduk + "." );
 
       } else {
         // *** The api is not responding ***
@@ -84,7 +87,7 @@ function bci( msg ) {
     // *** Submission IS NOT a string ***
 
     // Incorrect input type.
-    msg.send( 'I did not understand. Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD"' );
+    msg.send( 'I did not understand. Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
 
   }
 
