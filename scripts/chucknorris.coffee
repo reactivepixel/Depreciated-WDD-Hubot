@@ -29,7 +29,7 @@ module.exports = (robot) ->
   # Here is my else statement for if they add their name to it hubot will put their name in the
   # joke.
     else
-      Chuck msg, "http://api.icndb.com/jokes/random?"+user
+      Chuck msg, "http://api.icndb.com/jokes/random?firstName="+user+"&lastName="
 
   # Here is my varible for Chuck so I can send my msg.
   Chuck = (msg, url) ->
