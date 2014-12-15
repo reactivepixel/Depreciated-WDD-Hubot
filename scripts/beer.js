@@ -1,5 +1,5 @@
 // Description:
-//   This will look up the beer of the day
+//   Hubot will tell you the beer of the day! What luck!
 //
 // Dependencies:
 //   Request
@@ -8,26 +8,26 @@
 //   None
 //
 // Commands:
-//   Hubot beer - It will look the beer of the day
+//   Hubot malt me - It will tell you the beer of the day
 //
 // Author:
 //  Jordan Wilson
 
 var request = require('request');
-//var key = process.env.NYTMOVIE_APIKEY;
-function getMovies(msg){
+var key = process.env.BREWERYDB_KEY;
+function beerRun(msg){
 
     // a variable to hold the api url
-    apiURL = 'http://api.brewerydb.com/v2/beer/random?key=b41432eb842b38fa923f79f588a2c74c';
+    apiURL = 'http://api.brewerydb.com/v2/beer/random?key=' + key;
     // API request
     request(apiURL, function (error, response, body) {
         if (!error && response.statusCode < 300){
                 //parse the json
                 var json = JSON.parse(response.body);
-                
+                // finds a random beer from the api and brings back the name, style and description 
                 var beer = "Beer Name: "+json.data.name +"\n\n"+"Style: "+json.data.style.category.name+"\n\n"+"Description: "+json.data.style.description;
                 
-                msg.send(beer);
+                msg.send(beer);//displays the random beer 
                 
         }else{
             //sends an error message if something goes wrong
@@ -39,7 +39,7 @@ function getMovies(msg){
 
 //Listens for the movies string and executes the function
 module.exports = function(robot) {
-  return robot.respond(/beer$/i, function(msg) {
- 	 getMovies(msg);
+  return robot.respond(/malt me$/i, function(msg) {
+ 	 beerRun(msg);
   });
 }
