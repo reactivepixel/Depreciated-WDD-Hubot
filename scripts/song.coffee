@@ -1,5 +1,6 @@
 # Description:
 #   Grabs snippets of song lyrics
+#   Limited to snippets due to copyright stuff
 #
 # Dependencies:
 #   None
