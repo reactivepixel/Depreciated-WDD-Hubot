@@ -3,4 +3,3 @@ node_modules
 *.rdb
 *.log
 .env
-.hubot_history
