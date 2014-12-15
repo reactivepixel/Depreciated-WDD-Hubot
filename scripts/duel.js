@@ -27,7 +27,7 @@ function duel(msg){
 
 		msg.send("Hubot has challenged Derpbot to a duel!");
 		msg.send("Ready???");
-        msg.send("Hubot:" + p1Health + "HP ***START*** Derpbot:" + p2Health+"HP");
+        msg.send("Hubot: " + p1Health + "HP ***START*** Derpbot: " + p2Health+"HP");
 
         for(i = 0; i < 7; i++){
 			//Minimum damage.
@@ -43,23 +43,23 @@ function duel(msg){
             p2Health -= damage2;
 
 
-            msg.send("Hubot took " + damage1 + " damage! Derpbot took " + damage2 + " damage!");
+            msg.send("Hubot took " + damage1 + " damage! Derpbot took " + damage2 + " damage!");//Shows the results after each round.
 
-            var result = winnerCheck();
+            var result = winChecker();
 
             if(result === "No Winner"){
                 round++;
-                msg.send("Hubot:" + p1Health + "HP ***Round " + round + " Over*** Derpbot:" + p2Health + "HP\n");
+                msg.send("Hubot: " + p1Health + "HP ***Round " + round + " Over*** Derpbot: " + p2Health + "HP\n");//If there is no winner the fight continues.
             }
             else{
-                msg.send(result);
+                msg.send(result);//If someone has won, display the winner.
                 break;
             }
         }
 
-    function winnerCheck(){
+    function winChecker(){
 
-        var results = "No Winner";
+        var results = "No Winner";//Checks each round to see if there is a winner.
 
         if(p1Health < 1 && p2Health < 1){
             results = "They both got knocked out!";
