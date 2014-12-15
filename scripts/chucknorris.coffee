@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot Chuck me -- random Chuck Norris awesomeness
+#   hubot Chuck me -- random Chuck Norris joke.
 #   hubot Chuck me <user> -- let's see how <user> would do as Chuck Norris
 #
 # Author:
