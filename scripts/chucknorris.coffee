@@ -35,7 +35,7 @@ module.exports = (robot) ->
   Chuck = (msg, url) ->
     msg.http(url)
       .get() (err, res, body) ->
-        # My error message incase something fails.
+        # My error message in case something fails.
         if err
           msg.send "Chuck Norris says: #{err}"
         else
