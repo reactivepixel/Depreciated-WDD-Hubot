@@ -22,7 +22,8 @@ module.exports = (robot) ->
   # but with your name.
 
   robot.respond /(Chuck me)(me)?(.*)/i,(msg)->
-    user = msg.match[3]
+    olduser = msg.match[3]
+    user = olduser.trim()
   # I am calling the api here for the the Chuck me feature.
     if user.length == 0
       Chuck msg, "http://api.icndb.com/jokes/random"
@@ -45,4 +46,4 @@ module.exports = (robot) ->
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
           else
           # Replaces quotes with ASCII characters.
-            msg.send message_from_chuck.value.joke.replace /&quot;\s+$/g, ""
+            msg.send message_from_chuck.value.joke.replace /&quot;/g, ""
