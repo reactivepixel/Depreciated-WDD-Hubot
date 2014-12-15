@@ -24,7 +24,7 @@ module.exports = (robot) ->
     if user.length == 0
       askChuck msg, "http://api.icndb.com/jokes/random"
     else
-      askChuck msg, "http://api.icndb.com/jokes/random?firstName="+user+"&lastName="
+      askChuck msg, "http://api.icndb.com/jokes/random?firstName="+user
 
   askChuck = (msg, url) ->
     msg.http(url)
