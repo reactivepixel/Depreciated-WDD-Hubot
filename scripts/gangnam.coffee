@@ -1,19 +1,20 @@
 # Description:
-#   Causes psy to dance
+#   Causes Psy to dance
 #
 # Dependencies:
 #   None
+#
 # Configuration:
 #   None
 #
 # Commands:
-#   hubot gangnam - Delivers random gif from gifbin.com
+#   hubot gangnam - Delivers random gif of Psy dancing
 #
 # Author:
 #   Seth Healy
 
 gifs = [
-  "http://i1.kym-cdn.com/photos/images/original/000/370/936/cb3.gif","http://i3.kym-cdn.com/photos/images/original/000/363/835/32a.gif","http://i3.kym-cdn.com/photos/images/original/000/388/760/3f3.gif","http://i2.kym-cdn.com/photos/images/original/000/386/610/52d.gif","https://a248.e.akamai.net/camo.github.com/fd39c2be2c139705edba5c52738a7c111be9ad37/687474703a2f2f7777772e726566696e65646775792e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031322f31302f67616e676e616d2d7374796c652d737461722d776172732d6769662e676966","https://a248.e.akamai.net/camo.github.com/0a7ede4e91eabd1d5e0a86901efb984136765410/687474703a2f2f696d67342e6a6f7972656163746f722e636f6d2f706963732f706f73742f6769662d737461722d776172732d67616e676e616d2d7374796c652d68616e2d736f6c6f2d3337303636342e676966","https://a248.e.akamai.net/camo.github.com/d82d76a32a0d667c8f2f6d7bf0d9e0b1abe75399/687474703a2f2f7261636b2e302e6d736863646e2e636f6d2f6d656469612f5a676b794d4445794c7a45774c7a45344c7a4577587a4d31587a4134587a51794d6c396d6157786c2f6130376264663034"]
+  "http://www.refinedguy.com/wp-content/uploads/2012/10/gangnam-style-horse-stable-gif.gif","http://media.tumblr.com/e5ae57178254de59bf642b9bbcf1ba44/tumblr_inline_mfbel0ynkj1rn1lln.gif","http://www.businessinsider.com/~~/f?id=506b5a87eab8ea0e16000017","http://gifrific.com/wp-content/uploads/2012/09/PSY-Gangnam-Style-Elevator-Dance.gif","http://www.refinedguy.com/wp-content/uploads/2012/10/gangnam-style-little-boy.gif","http://s258.photobucket.com/user/jimifunguzz/media/gangnam%20style/gangnam-style-psy-cartoon.gif.html","http://shikagoland.files.wordpress.com/2013/04/psy-gangnam-style-gif.gif?w=812"]
 
 module.exports = (robot)->
   robot.hear /gangnam/i, (message)->
