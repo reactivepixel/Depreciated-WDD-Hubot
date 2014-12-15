@@ -22,8 +22,8 @@ module.exports = (robot) ->
   # but with your name.
 
   robot.respond /(Chuck me)(me)?(.*)/i,(msg)->
-    olduser = msg.match[3]
-    user = olduser.replace /\s/g, ""
+    user = msg.match[3]
+    #user = olduser.replace /\s/g, ""
   # I am calling the api here for the the Chuck me feature.
     if user.length == 0
       Chuck msg, "http://api.icndb.com/jokes/random"
