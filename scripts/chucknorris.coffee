@@ -27,7 +27,7 @@ module.exports = (robot) ->
     if user.length == 0
       Chuck msg, "http://api.icndb.com/jokes/random"
   # Here is my else statement for if they add their name to it hubot will put their name in the
-  #joke.
+  # joke.
     else
       Chuck msg, "http://api.icndb.com/jokes/random?firstName="+user+"&lastName="
 
@@ -41,7 +41,7 @@ module.exports = (robot) ->
         else
           message_from_chuck = JSON.parse(body)
           # If my length goes to zero this error message will show.
-           if message_from_chuck.length == 0
+          if message_from_chuck.length == 0
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
           else
           # Replaces quotes with ASCII characters.
