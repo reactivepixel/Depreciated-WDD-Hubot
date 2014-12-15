@@ -14,7 +14,7 @@
 //
 
 module.exports = (robot) {
-  robot.respond /lyrics for (.*) by (.*)/i, (msg) {
+  robot.respond /song for (.*) by (.*)/i, (msg) {
     song = msg.match[1];
     artist = msg.match[2];
     getLyrics msg, song, artist
