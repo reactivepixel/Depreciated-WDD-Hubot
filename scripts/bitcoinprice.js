@@ -63,7 +63,7 @@ function bci( msg ) {
           // The string did not match any currency types.
           msg.send( 'I did not understand. Please try again.' );
           msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD"' );
-          return // If incorrect submission, terminate the process.
+          return; // If incorrect submission, terminate the process.
 
         }// ...Succesfully printed the message in the correct currency format...
 
