@@ -40,24 +40,38 @@ function bci( msg ) {
         // Parse the incoming json.
         var json = JSON.parse( response.body );
 
+        // Prepare the message that will be sent to the user.
+        var firstStr = "The current rate for a bitcoin, in ";
+        var secondStr = ", is ";
+        var thirdStr = "per bitcoin.";
+
+        var updateMsg = "This data was last updated on " + json.time.updateduk + ".";
+        var apiErrorMsg = "The api that powers this script is currently down. Please verify http://www.coindesk.com for more information.";
+
         switch(currencyType){
 
           case "usd":
 
             // If US Dollar...
-            msg.send( "The current rate for a bitcoin, in " + json.bpi.USD.description + ", is " + json.bpi.USD.rate + " dollars per bitcoin.");
+            msg.send( firstStr + json.bpi.USD.description + secondStr + json.bpi.USD.rate + " dollars " + thirdStr );
+            // Send a message to the user of when the data was updated.
+            msg.send( updateMsg );
             break;
 
           case "gbp":
 
             // If English Pound...
-            msg.send( "The current rate for a bitcoin, in " + json.bpi.GBP.description + ", is " + json.bpi.GBP.rate + " pounds per bitcoin.");
+            msg.send( firstStr + json.bpi.GBP.description + secondStr + json.bpi.GBP.rate + " pounds " + thirdStr );
+            // Send a message to the user of when the data was updated.
+            msg.send( updateMsg );
             break;
 
           case "eur":
 
             // If Euro...
-            msg.send( "The current rate for a bitcoin, in " + json.bpi.EUR.description + ", is " + json.bpi.EUR.rate + " euros per bitcoin.");
+            msg.send( firstStr + json.bpi.EUR.description + secondStr + json.bpi.EUR.rate + " euros " + thirdStr );
+            // Send a message to the user of when the data was updated.
+            msg.send( updateMsg );
             break;
 
           default:
@@ -68,16 +82,13 @@ function bci( msg ) {
             msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
             break; // If incorrect submission, terminate the process.
 
-        }// ...Succesfully printed the message in the correct currency format...
-
-        // Finally... Send a message to the user of when the data was updated.
-        msg.send( "This data was last updated on " + json.time.updateduk + "." );
+        }// ...Succesfully printed the message in the correct currency format.
 
       } else {
         // *** The api is not responding ***
 
         // Failed to load the Coin Desk API.
-        msg.send( "The api that powers this script is currently down. Please verify http://www.coindesk.com for more information." );
+        msg.send( apiErrorMsg );
 
       }
 
@@ -87,8 +98,8 @@ function bci( msg ) {
     // *** Submission IS NOT a string ***
 
     // Incorrect input type.
-    msg.send( 'I did not understand. Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
-
+    msg.send( 'I did not understand. Please try again.' );
+    msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
   }
 
 }//...end of function.
