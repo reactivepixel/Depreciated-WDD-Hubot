@@ -8,7 +8,7 @@
 // None
 //
 // Commands:
-// Hubot show bitcoin in <currencyType> - Runs the script based on a currency type.
+// Hubot show bitcoin in <currencyType> - Runs the script based on a currency type. Use "USD", "GBP" or "EUR".
 //
 // Author:
 // Antonio J. Figueroa
@@ -84,7 +84,7 @@ function bci( msg ) {
     // *** Submission IS NOT a string ***
 
     // Incorrect input type.
-    msg.send( 'I did not understand. Please ask for USD, GBP or EUR. <br> For example: "hubot show bitcoin in USD' );
+    msg.send( 'I did not understand. Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD"' );
 
   }
 
