@@ -1,5 +1,5 @@
 // Description:
-// This script will query the Coin Desk API to retrieve the latest bitcoin rate and present it to the user based on a input for the desired currency type.
+// This script will query the Coin Desk API to retrieve the latest bitcoin rate and present it to the user based on an input for the desired currency type.
 //
 // Dependencies:
 // Request
