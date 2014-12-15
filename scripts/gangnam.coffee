@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot gangnam - Delivers random gif of Psy dancing
+#   (hubot) gangnam - Delivers random gif of Psy dancing
 #
 # Author:
 #   Seth Healy
