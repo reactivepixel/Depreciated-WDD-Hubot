@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   (hubot) dance - Delivers random gif of Psy dancing
+#   (hubot) dancing - Delivers random gif of Psy dancing
 #
 # Author:
 #   Seth Healy
@@ -25,5 +25,5 @@ gifs = [
 
 module.exports = (robot)->
   # Here im using robot.hear to listen for gangnam in any line.
-  robot.hear /dance/i, (message)->
+  robot.hear /dancing/i, (message)->
     message.send message.random gifs
