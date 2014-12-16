@@ -1,5 +1,5 @@
 // Description:
-//   Gives you stuff or places to go to depending on wether your hungry or bored.
+//   Gives you stuff or places to go to depending on whether your hungry or bored.
 //   (Note these are only intendend for the Full Sail area.)
 //
 // Dependencies:
@@ -10,12 +10,9 @@
 //   None
 //
 // Commands:
-//   The command is always started by 'I feel' then is followed by one 
-//   of two key words, 'hungry' or 'bored'.
+//   Hubot I feel <hungry> - Enter hungry to get restaurants.
+//   Hubot I feel <bored> -  Enter bored to find places of entertainment.
 //
-//   Hubot I feel hungry // Examples are
-//   Hubot I feel bored  // as followed.
-
 // Author:
 //   Julian Rodriguez
 //
@@ -31,12 +28,12 @@ var lat = '28.6079'; // latitude  //  for the Orlando area speciflicly Full Sail
 function ifeel(msg){
   var keyWord = msg.match[1];
   
-  if (keyWord == 'hungry' || 'bored'){
+  if (keyWord == 'hungry' || keyWord == 'bored'){
 
-        if (keyWord === 'hungry'){          ///
+        if (keyWord === 'hungry'){          
           var newKeyWord = 'restaurant';    /// This will filter proper commands
         }else if(keyWord === 'bored'){      /// to be passed into the new key word variable.
-          var newKeyWord = 'entertainment'; ///
+          var newKeyWord = 'entertainment'; 
         };
 
         var apiURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lon+'&radius=17000&keyword='+newKeyWord+'&key='+API_KEY; // This is the api url that will be loaded to get places to go to.
@@ -54,7 +51,7 @@ function ifeel(msg){
               msg.send(matches[randomINT].vicinity);// This will give the address of the given location           
             
             }else{
-              msg.send("Got Nothing..."); //This will let the user know if the Google Places API came back with anything.
+              msg.send("Got Nothing..."); //This will let the user know if the Google Places API came back with nothing.
             }; 
           
           }else{
