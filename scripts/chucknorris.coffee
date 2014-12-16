@@ -41,6 +41,7 @@ module.exports = (robot) ->
           msg.send "Chuck Norris says: #{err}"
         else
           message_from_chuck = JSON.parse(body)
+          cleanmessage = message_from_chuck.replace String(user)
           # If my length goes to zero this error message will show.
           if message_from_chuck.length == 0
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
