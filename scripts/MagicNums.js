@@ -14,10 +14,10 @@
 //  Jordan Wilson
 
 
+//This is where the game starts and the rules are described to the user
+function numGame(msg){
 
-function numgame(msg){
-
-    msg.send("Let's play Magic Numbers! :D");// Intro.
+	msg.send("Let's play Magic Numbers! :D");// Intro.
     msg.send("Pick a number between 0-10 and I'll tell you if you're high, low or spot on."); 
     msg.send("You have 3 tries.");
     msg.send("What's your guess?");
@@ -26,17 +26,17 @@ function numgame(msg){
 
 //Listens for the test string and executes the function
 module.exports = function(robot) {
-  robot.respond(/play magic numbers$/i, function(msg) {
- 	 numgame(msg); //Plays the number game.
- 	 setupObj.startGame();//Sets the random number and the tries.
+	robot.respond(/play magic numbers$/i, function(msg) {
+	numgame(msg); //Plays the number game.
+ 	setupObj.startGame();//Sets the random number and the tries.
   });	
   
-  robot.respond(/take a five$/i, function(msg) {
- 	 setupObj.playing=false;
- 	 msg.send("Oh really? What if I wanted to play again? No. Go take your five.");//Quit the game.
+robot.respond(/quit$/i, function(msg) {
+	setupObj.playing=false;
+ 	msg.send("Oh really? What if I wanted to play again? No? Go quit then.");//Quit the game.
   });
 
-	var setupObj = {};
+	var setupObj = {};//This object holds the rules of the game.
   	//The rules.
    setupObj.startGame = function(){
 		this.tries = 3;
@@ -46,7 +46,6 @@ module.exports = function(robot) {
   	
   robot.hear(/^\d{1,2}$/i, function(msg){
   		var guess = msg.match[0];//Looks for a one or two digit number.
-  		//console.log("my guess ",guess);
   		
     	if(guess < setupObj.magNum && setupObj.playing){
     		setupObj.tries--;//Guess is too low.
@@ -61,7 +60,7 @@ module.exports = function(robot) {
             setupObj.magNum = Math.ceil(Math.random() * 10 - 1);//Restart the game.
             setupObj.tries = 3;
             setupObj.startGame();
-            msg.send("Nice going! Let's play again! Or would you like to 'take a five'?");
+            msg.send("Nice going! Let's play again! Or would you like to 'quit'?");
             msg.send("If you want to play, what's your guess?");
         }
         if(setupObj.tries == 0 && setupObj.playing){
@@ -69,7 +68,7 @@ module.exports = function(robot) {
             setupObj.magNum = Math.ceil(Math.random() * 10 - 1);//Restart the game
             setupObj.tries = 3;
             setupObj.startGame();
-            msg.send("Tough luck! Would you like to try again, Or would you like to 'take a five'?");
+            msg.send("Tough luck! Would you like to try again, Or would you like to 'quit'?");
             msg.send("If you want to play, what's your guess?");
         }
     });

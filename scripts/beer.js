@@ -18,7 +18,7 @@ var key = process.env.BREWERYDB_KEY;
 function beerRun(msg){
 
     // a variable to hold the api url
-    apiURL = 'http://api.brewerydb.com/v2/beer/random?key=' + key;
+    var apiURL = 'http://api.brewerydb.com/v2/beer/random?key=' + key;
     // API request
     request(apiURL, function (error, response, body) {
         if (!error && response.statusCode < 300){
