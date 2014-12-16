@@ -1,4 +1,4 @@
-   // Description:
+// Description:
 //   Magic Numbers is a game where Hubot picks a random number 0-10 and and the user has to guess it
 //
 // Dependencies:
