@@ -23,7 +23,7 @@ module.exports = (robot) ->
 
   robot.respond /(Chuck me)(me)?(.*)/i,(msg)->
     olduser = msg.match[3]
-    user = olduser.replace /\s/g, ""
+    user = olduser.replace /\s{2,}/g, ""
   # I am calling the api here for the the Chuck me feature.
     if user.length == 0
       Chuck msg, "http://api.icndb.com/jokes/random"
@@ -41,11 +41,9 @@ module.exports = (robot) ->
           msg.send "Chuck Norris says: #{err}"
         else
           message_from_chuck = JSON.parse(body)
-          console.log(message_from_chuck)
-          cleanmessage = message_from_chuck.value.replace /\s{2,}/g, " "
           # If my length goes to zero this error message will show.
           if message_from_chuck.length == 0
             msg.send "Achievement unlocked: Chuck Norris is quiet!"
           else
           # Replaces quotes with ASCII characters.
-            msg.send cleanmessage.value.joke.replace /&quot;/g, ""
+            msg.send message.value.joke.replace /&quot;/g, ""
