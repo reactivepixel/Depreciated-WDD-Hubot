@@ -3,28 +3,30 @@
 //   (Note these are only intendend for the Full Sail area.)
 //
 // Dependencies:
-//   var request = require('request');
-//   API_KEY= process.env.GOOGLE_API_KEY;
-//   GOOGLE PLACES API
+//   request
+//   GOOGLE_API_KEY
 //
 // Configuration:
 //   None
 //
 // Commands:
-//   Hubot I feel <hungry>
-//   Hubot I feel <bored>
+//   The command is always started by 'I feel' then is followed by one 
+//   of two key words, 'hungry' or 'bored'.
+//
+//   Hubot I feel hungry // Examples are
+//   Hubot I feel bored  // as followed.
 
 // Author:
 //   Julian Rodriguez
 //
 
-//Dependencie for url load.
+//Dependencies for url load.
 var request = require('request');
 var API_KEY= process.env.GOOGLE_API_KEY;
 
 var lon = '-81.3055'; // longitude // These are currently
 var lat = '28.6079'; // latitude  //  for the Orlando area speciflicly Full Sail Area.
-////////////////
+
 
 function ifeel(msg){
   var keyWord = msg.match[1];
@@ -43,12 +45,12 @@ function ifeel(msg){
           
           if (!error && response.statusCode < 300){
             var json = JSON.parse(body)
-            var matches = json.results; // This will holf the entire JSON object to be drilled into later.
+            var matches = json.results; // This will hold the entire JSON object to be drilled into later.
             var number = matches.length;// This will count its length for the random number generator
             
             if (number > 0){
               var randomINT = Math.floor(Math.random() * (number - 0 + 1)) + 0;//random int for matches array.        
-              msg.send(matches[randomINT].name);    // This will givr the name of the location.
+              msg.send(matches[randomINT].name);    // This will give the name of the location.
               msg.send(matches[randomINT].vicinity);// This will give the address of the given location           
             
             }else{
