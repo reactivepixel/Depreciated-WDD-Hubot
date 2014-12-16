@@ -27,7 +27,7 @@ function numGame(msg){
 //Listens for the test string and executes the function
 module.exports = function(robot) {
 	robot.respond(/play magic numbers$/i, function(msg) {
-	numgame(msg); //Plays the number game.
+	numGame(msg); //Plays the number game.
  	setupObj.startGame();//Sets the random number and the tries.
   });	
   
@@ -57,16 +57,12 @@ robot.respond(/quit$/i, function(msg) {
         }
         else if(guess == setupObj.magNum && setupObj.playing){
             msg.send("You got it!!!!!!!!!!!!!!!");//Winner winner chicken dinner!
-            setupObj.magNum = Math.ceil(Math.random() * 10 - 1);//Restart the game.
-            setupObj.tries = 3;
             setupObj.startGame();
             msg.send("Nice going! Let's play again! Or would you like to 'quit'?");
             msg.send("If you want to play, what's your guess?");
         }
         if(setupObj.tries == 0 && setupObj.playing){
             msg.send("You have no more chances left!");//Lost the game.
-            setupObj.magNum = Math.ceil(Math.random() * 10 - 1);//Restart the game
-            setupObj.tries = 3;
             setupObj.startGame();
             msg.send("Tough luck! Would you like to try again, Or would you like to 'quit'?");
             msg.send("If you want to play, what's your guess?");
