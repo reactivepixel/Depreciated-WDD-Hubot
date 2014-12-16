@@ -8,7 +8,7 @@
 // None
 //
 // Commands:
-// Hubot show bitcoin in <currencyType> - Runs the script based on a currency type. Use "USD", "GBP" or "EUR".
+// Hubot show bitcoin in <currencyType> - This command will show the users the currenct going rate for a bitcoin. The user specifies which currency they want the rate to appear in.
 //
 // Author:
 // Antonio J. Figueroa
@@ -48,41 +48,49 @@ function bci( msg ) {
         var updateMsg = "This data was last updated on " + json.time.updateduk + ".";
         var apiErrorMsg = "The api that powers this script is currently down. Please verify http://www.coindesk.com for more information.";
 
+        var desc;
+        var rate;
+        var message;
         switch(currencyType){
 
           case "usd":
 
             // If US Dollar...
-            msg.send( firstStr + json.bpi.USD.description + secondStr + json.bpi.USD.rate + " dollars " + thirdStr );
-            // Send a message to the user of when the data was updated.
-            msg.send( updateMsg );
+            desc = json.bpi.USD.description;
+            rate = json.bpi.USD.rate;
+            currencyType = "US Dollar";
+            message = firstStr + desc + secondStr + rate + " " + currencyType +" " + thirdStr;
             break;
 
           case "gbp":
 
             // If English Pound...
-            msg.send( firstStr + json.bpi.GBP.description + secondStr + json.bpi.GBP.rate + " pounds " + thirdStr );
-            // Send a message to the user of when the data was updated.
-            msg.send( updateMsg );
+            desc = json.bpi.GBP.description;
+            rate = json.bpi.GBP.rate;
+            currencyType = "British Pound Sterling";
+            message = firstStr + desc + secondStr + rate + " " + currencyType +" " + thirdStr;
             break;
 
           case "eur":
 
             // If Euro...
-            msg.send( firstStr + json.bpi.EUR.description + secondStr + json.bpi.EUR.rate + " euros " + thirdStr );
-            // Send a message to the user of when the data was updated.
-            msg.send( updateMsg );
+            desc = json.bpi.EUR.description;
+            rate = json.bpi.EUR.rate;
+            currencyType = "euros";
+            message = firstStr + desc + secondStr + rate + " " + currencyType +" " + thirdStr;
             break;
 
           default:
             // *** Incorrect User Input ***
 
             // The string did not match any currency types.
-            msg.send( 'I did not understand. Please try again.' );
-            msg.send( 'Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".' );
+            var message = 'I did not understand. Please try again.Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD". ';
             break; // If incorrect submission, terminate the process.
 
         }// ...Succesfully printed the message in the correct currency format.
+
+        msg.send( message );
+        msg.send( updateMsg );
 
       } else {
         // *** The api is not responding ***
