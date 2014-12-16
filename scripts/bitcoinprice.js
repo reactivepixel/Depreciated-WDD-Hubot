@@ -84,7 +84,7 @@ function bci( msg ) {
             // *** Incorrect User Input ***
 
             // The string did not match any currency types.
-            var message = 'I did not understand. Please try again.Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD". ';
+            var message = 'I did not understand. Please try again. Please ask for USD, GBP or EUR. For example: "hubot show bitcoin in USD".';
             break; // If incorrect submission, terminate the process.
 
         }// ...Succesfully printed the message in the correct currency format.
