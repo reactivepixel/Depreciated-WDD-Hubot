@@ -28,7 +28,7 @@ function duel(msg){
 		msg.send("Hubot has challenged Derpbot to a duel!");
 		msg.send("Ready???");
 		msg.send("Hubot: " + p1Health + "HP ***START*** Derpbot: " + p2Health+"HP");
-	}, 400);
+	}, 200);
 
 	for(i = 0; i < 7; i++){
 		//Minimum damage.
@@ -45,7 +45,7 @@ function duel(msg){
 
 		setTimeout(function(){
 			msg.send("Hubot took " + damage1 + " damage! Derpbot took " + damage2 + " damage!");//Shows the results after each round.
-		}, 4000);
+		}, 2000);
 		var result = winChecker();
 
 		if(result === "No Winner"){
@@ -57,7 +57,7 @@ function duel(msg){
         else{
         	setTimeout(function(){
         		msg.send(result);//If someone has won, display the winner.
-        	}, 4000);
+        	}, 6000);
         	break;
         }
     }
