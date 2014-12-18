@@ -5,7 +5,7 @@
 # None
 #
 # Configuration:
-# YODA_API
+# MASHAPE_API
 #
 # Commands:
 # hubot yoda <sentence> -- translates what is typed to how Yoda would say it
@@ -16,7 +16,7 @@
 module.exports = (robot) ->
 #Waits for messages directed to hubot that contain yoda <text>.
   robot.respond /yoda (.*)/i, (msg) ->
-    yodaKey = process.env.YODA_API
+    mashKey = process.env.MASHAPE_API
     #Sets text to msg and replaces empty spaces from front and end of text.
     text = msg.match[1].replace /^\s+|\s+$/g, ""
     #Checks if text is now empty.
@@ -27,7 +27,7 @@ module.exports = (robot) ->
       #If not empty, sets url with text.
       msg.http("https://yoda.p.mashape.com/yoda?sentence=#{text}")
         #Changes headers to contain API key and accept JSON.
-        .headers("X-Mashape-Key" : "#{yodaKey}", Accept: 'application/json')
+        .headers("X-Mashape-Key" : "#{mashKey}", Accept: 'application/json')
         #Get content
         .get() (err, res, body) ->
           try
