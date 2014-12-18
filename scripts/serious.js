@@ -5,7 +5,7 @@
 //none
 //
 //Commands
-//Hubot why so serious? - display gif
+//Hubot Why so serious? - displays Joker laughing
 //
 //Author
 //Jake Chapman
