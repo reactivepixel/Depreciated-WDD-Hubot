@@ -1,19 +1,20 @@
-// Description:
-//   Simple Deceision making responsibility offloader
-//
-// Dependencies:
-//   None
-//
-// Configuration:
-//   None
-//
-// Commands:
-//   Hubot should I <Any question no matter how illogical>
-//
-// Contributor:
-//   Daniel Carroll
-//   dcarroll@fullsail.edu
+/*
+Description:
+   Simple Decision making responsibility offloader
 
+Dependencies:
+   None
+
+Configuration:
+   None
+
+Commands:
+   Hubot should I <Any question no matter how illogical>
+
+Contributor:
+   Daniel Carroll
+   dcarroll@fullsail.edu
+*/
 
 module.exports = function(robot) {
     robot.respond(/should I (.*)$/i, function(msg) {
