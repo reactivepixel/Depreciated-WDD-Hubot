@@ -15,62 +15,67 @@
 
 function duel(msg){
 
-    //Player Damages
-    var p1Damage = 25;
-    var p2Damage = 25;
+	//Player Damages
+	var p1Damage = 25;
+	var p2Damage = 25;
 
-    //Players Health
-    var p1Health = 100;
-    var p2Health = 100;
+	//Players Health
+	var p1Health = 100;
+	var p2Health = 100;
 
-    var round = 0;
+	var round = 0;
+	setTimeout(function(){
+		msg.send("Hubot has challenged Derpbot to a duel!");
+		msg.send("Ready???");
+		msg.send("Hubot: " + p1Health + "HP ***START*** Derpbot: " + p2Health+"HP");
+	}, 200);
 
-	msg.send("Hubot has challenged Derpbot to a duel!");
-	msg.send("Ready???");
-    msg.send("Hubot: " + p1Health + "HP ***START*** Derpbot: " + p2Health+"HP");
-
-    for(i = 0; i < 7; i++){
+	for(i = 0; i < 7; i++){
 		//Minimum damage.
-        var minDamage1 = p1Damage * .6; 
-        var minDamage2 = p2Damage * .6;
+    	var minDamage1 = p1Damage * .6; 
+    	var minDamage2 = p2Damage * .6;
 		//Calculates the damage delt.
-        var damage1 = Math.floor(Math.random() * (p1Damage - minDamage1) + minDamage1);
-        var damage2 = Math.floor(Math.random() * (p2Damage - minDamage2) + minDamage2);
+    	var damage1 = Math.floor(Math.random() * (p1Damage - minDamage1) + minDamage1);
+    	var damage2 = Math.floor(Math.random() * (p2Damage - minDamage2) + minDamage2);
 
 
-        //Inflict Damage
-        p1Health -= damage1;
-        p2Health -= damage2;
+		//Inflict Damage
+    	p1Health -= damage1;
+    	p2Health -= damage2;
 
+		setTimeout(function(){
+			msg.send("Hubot took " + damage1 + " damage! Derpbot took " + damage2 + " damage!");//Shows the results after each round.
+		}, 2000);
+		var result = winChecker();
 
-        msg.send("Hubot took " + damage1 + " damage! Derpbot took " + damage2 + " damage!");//Shows the results after each round.
-
-        var result = winChecker();
-
-        if(result === "No Winner"){
-            round++;
-            msg.send("Hubot: " + p1Health + "HP ***Round " + round + " Over*** Derpbot: " + p2Health + "HP\n");//If there is no winner the fight continues.
+		if(result === "No Winner"){
+        	round++;
+        	setTimeout(function(){
+        		msg.send("Hubot: " + p1Health + "HP ***Round " + round + " Over*** Derpbot: " + p2Health + "HP\n");//If there is no winner the fight continues.
+        	}, 4000);
         }
         else{
-            msg.send(result);//If someone has won, display the winner.
-            break;
+        	setTimeout(function(){
+        		msg.send(result);//If someone has won, display the winner.
+        	}, 6000);
+        	break;
         }
     }
 
-	function winChecker(){//Checks each round to see if there is a winner.
+function winChecker(){//Checks each round to see if there is a winner.
 
-    	var results = "No Winner";
+	var results = "No Winner";
 
-        if(p1Health < 1 && p2Health < 1){
-            results = "They both got knocked out!";
-        }
-        else if(p1Health < 1){
-            results = "Knock out! Derpbot WINS!!!";
-        }
-        else if(p2Health < 1){
-            results = "Knock out! Hubot WINS!!!";
-        }
-        return results;
+    if(p1Health < 1 && p2Health < 1){
+        results = "They both got knocked out!";
+    }
+    else if(p1Health < 1){
+        results = "Knock out! Derpbot WINS!!!";
+    }
+    else if(p2Health < 1){
+        results = "Knock out! Hubot WINS!!!";
+    }
+    return results;
 
     }
 
