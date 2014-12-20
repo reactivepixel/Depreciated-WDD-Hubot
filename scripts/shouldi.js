@@ -16,7 +16,7 @@ Contributor:
    dcarroll@fullsail.edu
 */
 
-//Beginning the script that listens to the user input.
+//Beginning the script that listens to the user input!
 module.exports = function (robot) {
     //This will hear any sentance that starts with <bot> should I <rest of content>
     robot.respond(/should I (.*)$/i, function (msg) {
