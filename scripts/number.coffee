@@ -1,5 +1,5 @@
 # Description:
-# Hubot gives facts about numbers and years
+# Hubot provides facts about numbers and years
 #
 # Dependencies:
 # None
