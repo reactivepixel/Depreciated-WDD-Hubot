@@ -30,7 +30,7 @@ module.exports = (robot) ->
           try
             #Parse JSON into book variable.
             book = JSON.parse(body)
-            #Send book information.
+            #Set book information.
             info = [
               "#{book.items[0].volumeInfo.title}",
               "#{book.items[0].volumeInfo.imageLinks.thumbnail}#.png",
@@ -39,9 +39,11 @@ module.exports = (robot) ->
               "More at: #{book.items[0].volumeInfo.canonicalVolumeLink}"
             ]
             infoArrayIndex = 0
+            #While array index is less than the info array.
             while infoArrayIndex < info.length
               ((infoArrayIndex) ->
                 setTimeout (->
+                  #Send selected info
                   msg.send info[infoArrayIndex]
                   return
                 ), 50 * infoArrayIndex
