@@ -29,8 +29,8 @@ module.exports = function (robot) {
         }
         //hubot returns the image/image link
         msg.send('http://oi57.tinypic.com/zvug5v.jpg');
-        msg.send('A Wild Charizard Apeared!!!!!');
-        msg.send('I Choose you Pikachu!');
+        msg.send('A Wild Charizard Apeared!!!!!' + "\n" + 
+                 'I Choose you Pikachu!' );
         question();
         robot.hear(/attack/i, function (msg) {
             if (charHp <= 1 || urHP <= 1) {
