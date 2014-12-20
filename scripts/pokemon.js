@@ -21,22 +21,23 @@ module.exports = function (robot) {
                 msg.send('Game Over'); 
                 return true;
             }
-            msg.send('What will do?');
-            msg.send('Attack');
-            msg.send('Run');
-            msg.send('Pokeball');
+           msg.send("\n" + 'What will do? ' + "\n" +
+                     ' Attack ' + "\n" +
+                     ' Run ' + "\n" +
+                     ' Pokeball '
+                    );
         }
-        msg.send('http://oi57.tinypic.com/zvug5v.jpg'); //hubot returns the image/image link
-        msg.send('A Wild Charizard Apeared!!!!! '); //init message upon function start
-        msg.send('I Choose you Pikachu!'); //init message upon function start
+       msg.send('http://oi57.tinypic.com/zvug5v.jpg');//hubot returns the image/image link
+        msg.send('A Wild Charizard Apeared!!!!!' + "\n" +  //init message upon function start
+                 'I Choose you Pikachu!' ); //init message upon function start
         question(); //init question function
         robot.hear(/attack/i, function (msg) { //hubot listens for attack command
             if (charHp <= 1 || urHP <= 1) { //cancel if pokemon are dead
                 return true;
             }
-            msg.send('What atack will you use?'); //ask what move to use
-            msg.send('Bolt | Thunder');
-            msg.send('Tackle | Cut');
+            msg.send("\n" + 'What atack will you use?' + "\n" +
+                     'Bolt | Thunder' + '\n' +
+                      'Tackle | Cut'); //ask what move to use
         });
         function winnerCheck() { //Variable that checks winnder
             var result = "";
@@ -62,8 +63,8 @@ module.exports = function (robot) {
                 return true;
             }
             charHp -= dmg; //negates char hp based off move used
-            msg.send('Pikachu used ' + attack + ' which did ' + dmg + ' damage! Charizard now has ' +  charHp + ' health!'); //string for pikachus attack
-            msg.send(random()[0]); //string char attack from random function
+            //string for pikachus attack + charizard attacks from random function
+            msg.send('Pikachu used ' + attack + ' which did ' + dmg + ' damage! Charizard now has ' +  charHp + ' health!' + "\n" + random()[0] ); 
             winnerCheck(); //checks winner
             question(); //asks question
         }
