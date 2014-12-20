@@ -5,7 +5,7 @@ module.exports = function (robot) {
             myAT = {
                 'Thunder' : 20,
                 'Tackle' : 6,
-                'Lightningbolt' : 10,
+                'Bolt' : 10,
                 'Cut': 2
             },
             charAT = {
@@ -34,7 +34,7 @@ module.exports = function (robot) {
                 return true;
             }
             msg.send('What atack will you use?');
-            msg.send('Lightningbolt | Thunder');
+            msg.send('Bolt | Thunder');
             msg.send('Tackle | Cut');
         });
         function winnerCheck() {
@@ -75,7 +75,7 @@ module.exports = function (robot) {
             return true;
         });	
             
-        robot.hear(/lightningbolt/i, function () {
+        robot.hear(/bolt/i, function () {
              fight(Object.keys(myAT)[2], myAT[Object.keys(myAT)[2]]);
              return true;
         });
