@@ -1,5 +1,5 @@
 # Description:
-# Hubot gets the information of a book using the ISBN
+# Hubot gets the information of a book using the provided ISBN.
 #
 # Dependencies:
 # None
