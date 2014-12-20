@@ -96,7 +96,7 @@ module.exports = function (robot) {
            if(charHp <= 1 || urHP <= 1){
                 return true;
            }else{
-               msg.send('Darn the Charizard broke free!');
+               msg.send(' Darn the Charizard broke free!');
                question();
             }
         });
