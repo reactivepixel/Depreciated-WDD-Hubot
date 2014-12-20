@@ -19,10 +19,13 @@ module.exports = function (robot) {
                 msg.send('Game Over');
                 return true;
             }
-            msg.send('What will do?');
-            msg.send('Attack');
-            msg.send('Run');
-            msg.send('Pokeball');
+            msg.send("\n" + 'What will do? ' + "\n" +
+                     ' Attack ' + "\n" +
+                     ' Run ' + "\n" +
+                     ' Pokeball '
+                    );
+                   
+          
         }
         //hubot returns the image/image link
         msg.send('http://oi57.tinypic.com/zvug5v.jpg');
@@ -61,8 +64,7 @@ module.exports = function (robot) {
                 return true;
             }
             charHp -= dmg;
-            msg.send('Pikachu used ' + attack + ' which did ' + dmg + ' damage! Charizard now has ' +  charHp + ' health!');
-            msg.send(random()[0]);
+            msg.send('Pikachu used ' + attack + ' which did ' + dmg + ' damage! Charizard now has ' +  charHp + ' health!' + "\n" + random()[0] );
             winnerCheck();
             question();
         }
