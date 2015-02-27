@@ -20,7 +20,7 @@
 
 newVid = (msg) ->
   keyword = msg
-  msg.reply "Did somebody say video? I can't wait to watch it!"  if keyword
+  msg.send "Did somebody say video? I can't wait to watch it!"  if keyword
 
 # make accessable to robot
 module.exports = (robot) ->
