@@ -22,13 +22,12 @@ var happyGifs = [
   'http://25.media.tumblr.com/tumblr_m8x2bl4OzI1rbybp4o1_500.gif',
   'http://38.media.tumblr.com/tumblr_me8ahlT1Ni1qc4uvwo1_400.gif'];
 
-// Pick a Random Number between 0 and one less than the gif array length
-var randomPick = Math.floor((Math.random() * (happyGifs.length - 1)));
-
 //Listens for someone to need cheering up string and replies with a random gif
 module.exports = function (robot) {
   "use strict";
   return robot.respond(/cheer me up$/i, function (msg) {
-     msg.reply(happyGifs[randomPick]);
+     // Pick a Random Gif
+     var randomPick = happyGifs[Math.floor(Math.random() * (6))];  
+     msg.reply(randomPick);
   });
 };
