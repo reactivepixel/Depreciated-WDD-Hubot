@@ -4,12 +4,12 @@
 // Commands:
 //   hubot ping - Reply with pong
 //   hubot echo <text> - Reply back with <text>
-//  hubot time - Reply with current time
+//   hubot time - Reply with current time
 //   hubot die - End hubot process
     
 module.exports = function(robot) {
   robot.respond(/PING$/i, function(msg) {
-    return msg.send("PONG");
+    return msg.send("Hello there!");
   });
   robot.respond(/ADAPTER$/i, function(msg) {
     return msg.send(robot.adapterName);
