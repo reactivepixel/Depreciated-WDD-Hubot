@@ -39,5 +39,5 @@ module.exports = (robot) ->
   # listen event for keyword "homestar"
   robot.respond /homestar/i, (msg) ->
 
-    # configure remote URL
-    msg.http('http://www.homestarrunner.com/vcr_homsar.html')
+  	# return msg, in this case a randomly picked URL
+    msg.send msg.random char
