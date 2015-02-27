@@ -46,4 +46,4 @@ module.exports = (robot) ->
         .get() (error, response, body) ->
 
             # return msg, in this case a randomly picked URL
-            msg.send body
+            msg.send response
