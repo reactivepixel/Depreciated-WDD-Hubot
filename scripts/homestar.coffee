@@ -25,7 +25,7 @@ char = [
     'http://www.homestarrunner.com/vcr_sb.html',
     'http://www.homestarrunner.com/vcr_marzy.html',
     'http://www.homestarrunner.com/vcr_pp.html',
-    'http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash',
+    'http://www.homestarrunner.com/vcr_ss.html',
     'http://www.homestarrunner.com/vcr_bubs.html',
     'http://www.homestarrunner.com/vcr_sm.html',
     'http://www.homestarrunner.com/vcr_poop.html',
