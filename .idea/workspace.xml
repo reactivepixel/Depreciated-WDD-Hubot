@@ -48,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/scripts/catmeme.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.54091537" vertical-offset="0" max-vertical-offset="721">
-              <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -779,7 +779,7 @@
     <entry file="file://$PROJECT_DIR$/scripts/catmeme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54091537" vertical-offset="0" max-vertical-offset="721">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding />
         </state>
       </provider>
