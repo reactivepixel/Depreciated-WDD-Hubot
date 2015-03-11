@@ -45,9 +45,9 @@ function getTip(msg) {
 		
 		// Pushes each string to messageArray.
 		messageArray.push("Amount entered: "+ numeral(amountDecimal).format('$0,0.00') +".");
-		messageArray.push("10% tip is "+ numeral(tip10).format("$0,0.00") +". Total is "+ numeral(total10).format("$0,0.00") +".");
-		messageArray.push("15% tip is "+ numeral(tip15).format("$0,0.00") +". Total is "+ numeral(total15).format("$0,0.00") +".");
-		messageArray.push("20% tip is "+ numeral(tip20).format("$0,0.00") +". Total is "+ numeral(total20).format("$0,0.00") +".");
+		messageArray.push("10a% tip is "+ numeral(tip10).format("$0,0.00") +". Total is "+ numeral(total10).format("$0,0.00") +".");
+		messageArray.push("15a% tip is "+ numeral(tip15).format("$0,0.00") +". Total is "+ numeral(total15).format("$0,0.00") +".");
+		messageArray.push("20a% tip is "+ numeral(tip20).format("$0,0.00") +". Total is "+ numeral(total20).format("$0,0.00") +".");
 		
 		// Outputs the strings back.
 		for(z = 0; z <= messageArray.length; z++) {
