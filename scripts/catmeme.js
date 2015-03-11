@@ -24,7 +24,7 @@ function getCatMeme(msg) {
         var json = JSON.parse(response.body);
         var json = msg.random(json.data.memes);
         msg.send("Cat meme: " + json.name);
-        msg.send("<img src='" + json.url + "' alt='" + json.name + "'/>");
+        msg.send("json.url");
     });
 
 } // End of "getCatMeme" function.
