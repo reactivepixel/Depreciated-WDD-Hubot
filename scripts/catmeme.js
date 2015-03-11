@@ -15,7 +15,7 @@
 
 var request = require('request');
 
-// Function to find and return a random cat meme
+// Function to find and return a random meme image
 function getMeme(msg) {
 
     request('https://api.imgflip.com/get_memes', function (error, response){
