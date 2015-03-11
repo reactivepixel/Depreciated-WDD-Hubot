@@ -1,5 +1,5 @@
 // Description:
-// Random cat memes
+// Random meme images
 //
 // Dependencies:
 // none
@@ -8,7 +8,7 @@
 // none
 //
 // Commands:
-// hubot cat meme - Returns a random cat meme
+// hubot meme image - Returns a random meme image
 //
 // Author:
 // Andrew Kroft
@@ -16,21 +16,19 @@
 var request = require('request');
 
 // Function to find and return a random cat meme
-function getCatMeme(msg) {
+function getMeme(msg) {
 
     request('https://api.imgflip.com/get_memes', function (error, response){
-        //var rand = response[Math.floor(Math.random() * response.length)];
-        //var meme = rand.data.memes.url
         var json = JSON.parse(response.body);
         var json = msg.random(json.data.memes);
-        msg.send("Cat meme: " + json.name);
+        msg.send("Meme: " + json.name);
         msg.send(json.url);
     });
 
-} // End of "getCatMeme" function.
+} // End of "getMeme" function.
 
 module.exports = function(robot) {
-	return robot.respond(/cat meme(.*)/i, function(msg) {
-		getCatMeme(msg);
+	return robot.respond(/meme image(.*)/i, function(msg) {
+		getMeme(msg);
 	});
 }
