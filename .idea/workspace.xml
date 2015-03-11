@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0522102b-2e20-4404-8543-7ffb03ed59a5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.hubot_history" afterPath="$PROJECT_DIR$/.hubot_history" />
-    </list>
+    <list default="true" id="0522102b-2e20-4404-8543-7ffb03ed59a5" name="Default" comment="" />
     <ignored path="hubot-staging.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -59,8 +57,8 @@
       <file leaf-file-name="wiki.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/wiki.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49930653" vertical-offset="0" max-vertical-offset="721">
-              <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.52011096" vertical-offset="0" max-vertical-offset="721">
+              <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -761,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/wiki.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49930653" vertical-offset="0" max-vertical-offset="721">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.52011096" vertical-offset="0" max-vertical-offset="721">
+          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
           <folding />
         </state>
       </provider>

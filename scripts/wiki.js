@@ -23,7 +23,7 @@ function getWiki(msg) {
         //var json = msg.random(json.data.memes);
         //msg.send("Meme: " + json.name);
         wikiTitle = json.query.random[0].title;
-        var wikiURL = wikiTitle.replace(" ", "_");
+        var wikiURL = wikiTitle.replace(/ /g, "_");
         wikiURL = "https://en.wikipedia.org/wiki/" + wikiURL;
         msg.send("Wiki Title: " + wikiTitle);
         msg.send("URL: " + wikiURL);
