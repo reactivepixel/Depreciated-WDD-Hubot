@@ -1,5 +1,5 @@
 # Description:
-#   holiday detector script
+#   Holiday detector script!
 #
 # Dependencies:
 #   None

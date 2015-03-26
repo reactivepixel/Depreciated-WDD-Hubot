@@ -13,6 +13,8 @@
 # Author:
 #   James Lavender
 
+# These below are the images that are choose whne the related command is executed.
+#### Look below!
 module.exports = (robot) ->
   robot.hear /u mad/i, (msg) ->
     msg.send "http://www.memes.at/faces/u_mad_troll.gif"
