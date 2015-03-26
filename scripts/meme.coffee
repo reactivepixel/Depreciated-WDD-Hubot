@@ -14,16 +14,16 @@
 #   James Lavender
 
 module.exports = (robot) ->
-  robot.hear /u mad troll/i, (msg) ->
+  robot.hear /meme u mad troll$/i, (msg) ->
     msg.send "http://www.memes.at/faces/u_mad_troll.gif"
 
-  robot.hear /ultra gay/i, (msg) ->
+  robot.hear /meme ultra gay$/i, (msg) ->
     msg.send "http://www.memes.at/faces/ultra_gay.jpg"
 
-  robot.hear /whyyy/i, (msg) ->
+  robot.hear /meme whyyy$/i, (msg) ->
     msg.send "http://www.memes.at/faces/whyyy.jpg"
 
-  robot.hear /cuteness overload/i, (msg) ->
+  robot.hear /cuteness overload$/i, (msg) ->
     msg.send "http://www.memes.at/faces/cuteness_overload.jpg"
 
   robot.hear /hah gay/i, (msg) ->
