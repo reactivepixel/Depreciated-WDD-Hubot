@@ -13,7 +13,8 @@
 // Author: 
 //	 Juanita J Hales
 // 
-//Date march 27, 2015
+//Date: 
+//   March 27, 2015
 
 //fire Hubot Timer
 module.exports = function(robot){
