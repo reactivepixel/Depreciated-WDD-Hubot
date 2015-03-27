@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   (hubot) gameofthrones - Responds with a GoT animate gif when the command executes.
+#   hubot gameofthrones - Responds with a GoT animate gif when the command executes.
 #
 # Author:
 #   James Lavender

@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   Look below, too many to list.
+#   hubot Look below, too many to list.
 #
 # Author:
 #   James Lavender
