@@ -13,6 +13,7 @@
 // Author: 
 //	 Juanita J Hales
 // 
+//Date march 27, 2015
 
 //fire Hubot Timer
 module.exports = function(robot){
@@ -20,7 +21,7 @@ module.exports = function(robot){
 	return robot.respond(/timer/i,function(msg){
 		msg.send("Minute Timer Start!");
 		setTimeout(function(){
-			//set timeout message
+			//set timeout message and 60 second timer
 			msg.send("60 seconds is up!");
 		}, 60000);
 	});
