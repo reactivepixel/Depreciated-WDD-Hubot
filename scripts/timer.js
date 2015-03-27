@@ -26,4 +26,4 @@ module.exports = function(robot){
 			msg.send("60 seconds is up!");
 		}, 60000);
 	});
-}
+}//close module
