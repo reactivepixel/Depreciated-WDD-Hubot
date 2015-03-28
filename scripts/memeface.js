@@ -31,11 +31,6 @@ module.exports = function (robot) {
     // picture of a happy dance
     return msg.send("http://slashfiction.org/wp-content/uploads/2013/10/gif-happy-dance.gif");
   });
-    // Anytime the word 'wth' is used by a user
-  robot.hear(/wth$/i, function (msg) {
-    // picture of a happy dance
-    return msg.send("http://animatedgifs.xtgem.com/images/blog/what-the-hell-is-wrong-with-yo-82679.gif");
-  });
     // Anytime the word 'bye' is used by a user
   robot.hear(/bye$/i, function (msg) {
     // picture of a person waving bye
