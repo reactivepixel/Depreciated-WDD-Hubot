@@ -24,7 +24,7 @@ module.exports = function (robot) {
   // Anytime the word 'hype' is used by a user
   return robot.hear(/sadface/i, function (msg) {
     // picture of a sad face
-    msg.send("sad picture goes here");
+    msg.send("http://media2.giphy.com/media/NTY1kHmcLsCsg/giphy.gif");
   });
 }
 
