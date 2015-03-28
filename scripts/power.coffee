@@ -10,8 +10,6 @@
 # Commands:
 #   Hubot scanner - classic DBZ joke
 #
-# Notes:
-#   No lint found using http://www.coffeelint.org
 #
 # Author:
 #   Douglas "DJay" Sweeting  e-mail at bidgsweetz@gmail.com
