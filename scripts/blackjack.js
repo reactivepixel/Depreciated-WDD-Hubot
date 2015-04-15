@@ -9,7 +9,7 @@
 //
 // Commands:
 //   Hubot blackjack - Plays a game of blackjack
-//
+// 
 // Author:
 //   Bogoroh
 
