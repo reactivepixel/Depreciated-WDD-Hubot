@@ -131,7 +131,7 @@ function playJack(msg){
 	}
 
 	// Output the strings back
-	for(z = 0; z <= messageArray.length; z++){
+	for(z = 0; z < messageArray.length; z++){
     (function(z){
         setTimeout(function(){
             msg.send(messageArray[z])
