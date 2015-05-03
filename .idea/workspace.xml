@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0522102b-2e20-4404-8543-7ffb03ed59a5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.hubot_history" afterPath="$PROJECT_DIR$/.hubot_history" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/hubot-staging.iml" afterPath="$PROJECT_DIR$/.idea/hubot-staging.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/hubot_staging_node_modules.xml" afterPath="$PROJECT_DIR$/.idea/libraries/hubot_staging_node_modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="0522102b-2e20-4404-8543-7ffb03ed59a5" name="Default" comment="" />
     <ignored path="hubot-staging.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -45,18 +37,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="travel.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/travel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39310345" vertical-offset="0" max-vertical-offset="725">
-              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="catbark.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/catbark.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,6 +55,18 @@
             <state vertical-scroll-proportion="45.791668" vertical-offset="1129" max-vertical-offset="1830">
               <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="travel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/travel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.39310345" vertical-offset="0" max-vertical-offset="725">
+              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +93,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="113" />
-    <option name="y" value="46" />
+    <option name="x" value="109" />
+    <option name="y" value="65" />
     <option name="width" value="1309" />
     <option name="height" value="822" />
   </component>
@@ -260,7 +252,7 @@
     <option name="totallyTimeSpent" value="12780000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="113" y="46" width="1309" height="822" extended-state="1" />
+    <frame x="109" y="65" width="1309" height="822" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
