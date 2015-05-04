@@ -15,16 +15,7 @@ function qrCode(msg) {
 
 	if (usersText.length >= 1) {
 		var apiURL = 'http://api.qrserver.com/v1/create-qr-code/?data=' + usersText + '&size=300x300';
-
-		msg.http(apiURL).get()(function(err, res, body){
-			var error;
-			try{
-				return msg.send(body);
-			}catch(e){
-				e = error;
-				return msg.send('There was an error');
-			}
-		});
+		return msg.send(apiURL);		
 	} else if(usersText.length < 1) {
 		return msg.send('Please enter something for the qr code generator.');
 	};
