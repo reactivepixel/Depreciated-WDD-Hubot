@@ -8,7 +8,7 @@
 //   hubot arrr your text here 
 //
 // Author:
-//   William Norton - wnorton2013
+//   William Norton - wnorton2013 @ github
 
 
 /* translate function - receives users input from module.exports 
