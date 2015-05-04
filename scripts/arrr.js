@@ -20,7 +20,7 @@ function translate(msg){
 	// conditional to check length of users input
 	if(myText.length > 0){
 		// variable holding the API address with users input appended in
-		var apiURL = 'http://isithackday.com/arrpi.php?text=' + myText + '&format=json';
+		var apiURL = 'http://isithackday.com/arrpi.php?text=' + encodeURI(myText) + '&format=json';
 		// making the API call with a callback function to accept the response from server
 		msg.http(apiURL).get()(function(err, res, body){
 			var error, json;
@@ -41,7 +41,6 @@ function translate(msg){
 		msg.send('You have to give me something to translate.');
 	};
 };
-
 
 
 /* module.exports function starts the robot
