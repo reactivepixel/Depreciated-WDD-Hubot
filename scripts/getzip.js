@@ -13,47 +13,48 @@
 // Author:
 //  John Pace IV
 
+//Dependencies assignment
 var request = require('request');
 
-function getZipDetails(){
-    var inputValue = msg.match[1]; // Gets input value
+function getZipCode(msg){
+    //Gets the input value and assigns from variable
+    var zipInput = msg.match[1];
     //Checks that the input value is an integer and is the correct length
-    if(isInt(inputValue) && inputValue.length == 4){
+    if (isNaN(zipInput) && zipInput.length == 5) {
+        //Error message in case of error
+        msg.send("The zipcode you entered is invalid. Please try again.");
+    }else {
         //Assigns API URL from Ziptastic
-        var api = "http://ZiptasticAPI.com/" + inputValue;
+        var apiURL = "http://ZiptasticAPI.com/" + zipInput;
         //Request API
-        request(api, function (error, response, body) {
-
-                // This checks to ensure the JSON response is not an error
-                if (!error && response.statusCode < 300) {
-
-                    // Parse the JSON
-                    var result = JSON.parse(response.body);
-
-                    //Output of the ZipCode Details through JSON
-                    if (!json.response.error) {
-                        msg.send("The information for " + inputValue + " is in the " + result.country + "in the city of " + json.city + " in the state of " + json.state + ".")
-                    }//In case of error, please run this script
-                    else{
-                        //Assigns the JSON response error to a variable to be output
-                        var responseError = json.response.error.description;
-                        //Returns the error to the user
-                        msg.send(responseError);
-                    }
+        request(apiURL, function (error, response, body) {
+            //Conditional to check for errors
+            if (!error && response.statusCode < 300){
+                // Parse JSON response to be utilized in the echo message.
+                var json = JSON.parse(response.body);
+                var city = json.city;
+                //Checks for any errors
+                if(!error){
+                    //Gives the user the requested information.
+                    msg.send("The information for zipcode " + zipInput + " is the city of " + city + " in the state of " + json.state + " in the " + json.country + ".");
+                    //Error response to show what went wrong.
                 }else{
-                    //If the API is idle or has no response
-                    msg.send("There was an error in your request. Please check that all the information is correct and/or try again.");
+                    var errorMsg = json.response.error.description;
+                    //Sends error details to the user
+                    msg.send(errorMsg);
                 }
+            }else{
+                //If the API is idle or has no response
+                msg.send("It appears the API is down. Please try again later.");
             }
-        )
-    }else{
-        msg.send("The data you entered doesn't match the criteria for a zip code. Please check and try again.")
+        });
     }
 }
-//Hubot interface
+// Hubot interaction
 module.exports = function(robot) {
+    //uses the find zip command to retrieve information from the API
     return robot.respond(/find zip (.*)/i, function(msg) {
-        //Calls to getZipDetails
-        getZipDetails(msg);
+        //Calls to Zip Code Function
+        getZipCode(msg);
     });
 };
