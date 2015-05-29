@@ -40,7 +40,7 @@ module.exports = function (robot) {
                 for (i = 0; i < 3; i++) {
                     var link = stories.results[i].url;
                     var title = stories.results[i].title;
-                    msg.send('<a href="' + link + '">' + title + '</a>');
+                    msg.send(title + ' -- ' + link);
                 }
                 
                 //if we encounter an error
