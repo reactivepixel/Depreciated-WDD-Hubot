@@ -37,7 +37,7 @@ module.exports = function (robot) {
                 var stories = JSON.parse(response.body);
                 
                 //get the first three stories and display them
-                for (var i = 0; i < 3; i++) {
+                for (i = 0; i < 3; i++) {
                     var story = stories.results[i].url;
                     msg.send(story);
                 }
