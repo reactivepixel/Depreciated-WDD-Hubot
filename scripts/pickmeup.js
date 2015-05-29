@@ -13,7 +13,7 @@
 // Author:
 // John Pace IV
 
-// First name for conquerors.
+// A list of links to inspirational quotes
 var quotes = [
     "http://www.brainyquote.com/quotes/quotes/f/francisofa121023.html?src=t_inspirational",
     "http://www.brainyquote.com/quotes/quotes/h/helenkelle101301.html?src=t_inspirational",
@@ -46,12 +46,10 @@ var quotes = [
     "http://www.brainyquote.com/quotes/quotes/d/desiderius148991.html?src=t_inspirational",
     "http://www.brainyquote.com/quotes/quotes/a/ameliabarr202840.html?src=t_inspirational"
 ];
-
+//Starts up the hubot interface
 module.exports = function(robot) {
     return robot.respond(/inspire me$/i, function(msg) {
-
-        //The message that hubot will deliver.
-
+        //Picks up a random quote from the list above and sends it as a message with atttribution.
         msg.send(msg.random(quotes) + " from BrainyQuote.com");
     });
 };
