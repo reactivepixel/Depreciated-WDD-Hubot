@@ -20,7 +20,7 @@ function getZipCode(msg){
     //Gets the input value and assigns from variable
     var zipInput = msg.match[1];
     //Checks that the input value is an integer and is the correct length
-    if (isNaN(zipInput) && zipInput.length == 5) {
+    if (isNaN(zipInput) || zipInput.length != 5) {
         //Error message in case of error
         msg.send("The zipcode you entered is invalid. Please try again.");
     }else {
@@ -45,7 +45,7 @@ function getZipCode(msg){
                 }
             }else{
                 //If the API is idle or has no response
-                msg.send("It appears the API is down. Please try again later.");
+                msg.send("There was an error access the API. Please try again in a bit...");
             }
         });
     }
