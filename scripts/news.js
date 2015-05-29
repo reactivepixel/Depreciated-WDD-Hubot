@@ -38,8 +38,9 @@ module.exports = function (robot) {
                 
                 //get the first three stories and display them
                 for (i = 0; i < 3; i++) {
-                    var story = stories.results[i].url;
-                    msg.send(story);
+                    var link = stories.results[i].url;
+                    var title = stories.results[i].title;
+                    msg.send('<a href="' + link + '">' + title + '</a>');
                 }
                 
                 //if we encounter an error
