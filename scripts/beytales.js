@@ -15,7 +15,7 @@
 module.exports = function (robot) {
     return robot.respond(/beytales$/i, function (msg) {
         //hubot displays video
-        msg.send('http://www.youtube.com/watch?v=-EW9yS1YhTE');
+        msg.send('https://youtu.be/-EW9yS1YhTE');
     });
 };
 
