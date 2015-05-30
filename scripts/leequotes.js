@@ -47,7 +47,7 @@ quotes = [
 
 //Simple script that listens for "drop some Bruce Lee knowledge", and returns a random quote from above.
 module.exports = function(robot) {
-  return robot.hear(/.*(drop some Bruce Lee knowledge).*/i, function(msg) {
+  return robot.hear(/.*(drop some Bruce Lee knowledge).*/i, function (msg) {
     return msg.send(msg.random(quotes) + " ~ Bruce Lee");
   });
 };
