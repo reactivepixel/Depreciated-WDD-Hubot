@@ -15,7 +15,7 @@
 module.exports = function (robot) {
     return robot.respond(/what time is it/i, function (msg) {
         //hubot displays message
-        msg.send("It's Peanut Butter Jelly Time!");
+        msg.send("It's Peanut Butter Jelly Time!!!");
         //hubot displays gif
         msg.send('http://studybreaks.com/sites/default/files/peanut%20butter.gif');
         
