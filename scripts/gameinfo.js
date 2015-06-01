@@ -22,7 +22,7 @@ module.exports = function(robot) {
 		
 		var answer = msg.match[1];
 
-		apiURL = 'http://www.giantbomb.com/api/search/?api_key=c3913d473d53387b014049deeaabe14abacf3482&format=json&query='+answer+'&resources=game';
+		apiURL = 'http://www.giantbomb.com/api/search/?api_key=c3913d473d53387b014049deeaabe14abacf3482&format=json&query='+answer+'&resources=game&limit=5';
 
 		// make the request to the api
 		request(apiURL, function (error, response, body) {
