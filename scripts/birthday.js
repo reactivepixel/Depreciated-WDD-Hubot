@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot days until birthday <name> -  Hubot returns the amoun of earth days until birthday.
+//   Hubot days until birthday -  Hubot returns the amoun of earth days until birthday.
 //	<trigger> - <what the hear trigger does>
 //
 //	Notes:
@@ -16,15 +16,13 @@
 // Author:
 //  David Gilliam
 //	davygxyz@gmail.com
-
 module.exports = function(robot) {
 	return robot.respond(/days until birthday/i, function (msg) {
-		msg.send('When is your birthday? Format: M/D/Y');
+		msg.send('When is your next birthday? Format: M/D/Y Note: Not birth year.');
 
 		return robot.hear(/(.*)/, function(msg){
-			
-			//setting variables
-			var insertDate = new Date('5/22/2016');
+			var answer = process.env.HUBOT_DAYS_UNTIL_BIRTHDAY;
+			var insertDate = new Date(msg.match[0]);
 			var currentDate = new Date();
 			var millYear = 31556952000;
 			var millDay = 86400000;
@@ -37,7 +35,7 @@ module.exports = function(robot) {
 			var daysBirth = insertDate / millDay;
 			var daysCurrent = currentDate / millDay;
 			//console check
-			console.log(daysBirth+" / "+daysCurrent);
+			//console.log(daysBirth+" / "+daysCurrent);
 
 			var days = daysBirth - daysCurrent;
 			var days = Math.round(days)
