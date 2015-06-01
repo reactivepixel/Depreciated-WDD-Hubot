@@ -8,7 +8,7 @@
 //   None
 //
 // Commands:
-//   Hubot days until birthday -  Hubot returns the amoun of earth days until birthday.
+//   Hubot days until birthday <date> -  Hubot returns the amount of earth days until birthday.Format M/D/Y.
 //	<trigger> - <what the hear trigger does>
 //
 //	Notes:
@@ -17,12 +17,11 @@
 //  David Gilliam
 //	davygxyz@gmail.com
 module.exports = function(robot) {
-	return robot.respond(/days until birthday/i, function (msg) {
-		msg.send('When is your next birthday? Format: M/D/Y Note: Not birth year.');
+	return robot.hear(/days until birthday(.*)/i, function (msg) {
 
-		return robot.hear(/(.*)/, function(msg){
 			var answer = process.env.HUBOT_DAYS_UNTIL_BIRTHDAY;
-			var insertDate = new Date(msg.match[0]);
+			var insertDate = new Date(msg.match[1]);
+			console.log(insertDate);
 			var currentDate = new Date();
 			var millYear = 31556952000;
 			var millDay = 86400000;
@@ -44,7 +43,6 @@ module.exports = function(robot) {
 
 			msg.send('There is approximately '+days+' earth days until your birthday.');
 
-		});
     });
 
 } 
