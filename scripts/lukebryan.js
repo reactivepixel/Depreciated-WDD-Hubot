@@ -15,7 +15,7 @@
 // istacy@fullsail.edu
 
 // array of Luke Bryan songs on youtube
-var songs = ["https://www.youtube.com/watch?v=ALV-QtDFpSw"];
+var songs = ["https://www.youtube.com/watch?v=ALV-QtDFpSw","https://www.youtube.com/watch?v=1WEpLzsdEeY","https://www.youtube.com/watch?v=crCqWK3SmRo&index=3"];
 
 module.exports = function(robot) {
 	return robot.respond(/play luke bryan/i, function(msg) {
