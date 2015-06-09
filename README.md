@@ -1,6 +1,5 @@
 # WDD-Hubot
 
-
 [![Code Climate](https://codeclimate.com/github/reactivepixel/WDD-Hubot/badges/gpa.svg)](https://codeclimate.com/github/reactivepixel/WDD-Hubot)
 
 This is a version of GitHub's Campfire bot, hubot..
