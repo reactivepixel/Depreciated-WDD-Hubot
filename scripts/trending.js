@@ -13,7 +13,7 @@
 // shye@fuillsail.edu
 
   var trend = [
-   "twitter " + <iframe src="https://twitter.com/hashtag/trending"</iframe>,
+   "twitter " + "https://twitter.com/hashtag/trending",
    "what's trending " + "http://whatstrending.com/categories/trending-now",
    "buzz feed " + "http://www.buzzfeed.com/trending",
     ];
