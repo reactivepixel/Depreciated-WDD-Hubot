@@ -17,6 +17,6 @@ module.exports = function(robot) {
   		}
   		else {
   			return msg.send("Somebody, somewhere is the HYPE!!");
-  		}
+  		};
   	});
 };
