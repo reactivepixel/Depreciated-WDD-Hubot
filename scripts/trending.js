@@ -18,3 +18,4 @@ module.exports = function(robot) {
         return msg.send('https://twitter.com/whatstrending');
     });
 };
+
