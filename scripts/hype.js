@@ -5,11 +5,11 @@
 // Erick Sitter
 
 module.exports = function(robot) {
-  // Type muffin button to get a muffin
+  // I want to believe the hype
   robot.hear(/do you believe your own hype?/i, function(msg) {
       return msg.send("I am the hype!!");
     });
-
+    // Response
     robot.respond(/(.*) am the hype/i, function(msg) {
       hypemaster = msg.match[1]
       if (hypemaster == "I") {
