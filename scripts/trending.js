@@ -13,15 +13,15 @@
 // shye@fuillsail.edu
 
   var trend = [
-   "twitter" + "https://twitter.com/hashtag/trending",
-   "what's trending" + "http://whatstrending.com/categories/trending-now",
-   "buzz feed" + "http://www.buzzfeed.com/trending",
+   "twitter " + <iframe src="https://twitter.com/hashtag/trending"</iframe>,
+   "what's trending " + "http://whatstrending.com/categories/trending-now",
+   "buzz feed " + "http://www.buzzfeed.com/trending",
     ];
 //Starts up the hubot interface
 module.exports = function(robot) {
     return robot.respond(/what's trending$/i, function(msg) {
         
-        msg.send("Here's what's trening on " + msg.random(trend) + " Check it out!");
+        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
     });
 };
 
