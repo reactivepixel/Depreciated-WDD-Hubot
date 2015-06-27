@@ -13,10 +13,10 @@ module.exports = function(robot) {
   	robot.hear(/(.*) am the HYPE!!/i, function(msg) {
   		hype = msg.match[1]
   		if (hype == "I") {
-  			return msg.send("I am the HYPE!!");
+  			return msg.reply("I am the HYPE!!");
   		}
   		else {
-  			return msg.send("Somebody, somewhere is the HYPE!!");
-  		};
+  			return msg.reply("Somebody, somewhere is the HYPE!!");
+  		}
   	});
 };
