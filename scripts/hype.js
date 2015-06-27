@@ -10,7 +10,12 @@ module.exports = function(robot) {
       return msg.send("I am the hype!!");
     });
 
-    // Respond to the muffin button
+    robot.respond(/(.*) am the hype/i, function(msg) {
+      hypemaster = msg.match[1]
+      if (hypemaster == "I am") {
+        return msg.send("the hype!!")
+      }
+    });
     robot.respond(/response test/i, function(msg) {
       return msg.send("Test");
     });
