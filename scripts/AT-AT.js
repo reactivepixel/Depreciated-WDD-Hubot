@@ -18,7 +18,7 @@
 
 module.exports = function (robot) {
     return robot.respond(/Walk the AT-AT/i, function (msg) {
-        //hubot returns the image/image link
+        //hubot returns animated image of an AT-AT
         msg.send('http://www.picgifs.com/graphics/s/star-wars/graphics-star-wars-006895.gif');
     });
 };

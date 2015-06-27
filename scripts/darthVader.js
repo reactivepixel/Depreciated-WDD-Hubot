@@ -18,7 +18,7 @@
 
 module.exports = function (robot) {
     return robot.respond(/Are you my father?/i, function (msg) {
-        //hubot returns the image/image link
+        //hubot respods with image of Darth Vader
         msg.send('http://media-cache-ec0.pinimg.com/736x/6c/25/fb/6c25fb6f0bccd3da68324a56f7bc4505.jpg');
     });
 };
