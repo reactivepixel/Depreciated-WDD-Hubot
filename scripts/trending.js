@@ -15,7 +15,7 @@
   var trend = [
     "http://https://twitter.com/hashtag/trending",
     "http://whatstrending.com/categories/trending-now",
-    "https://www.google.com/trends/hottrends",
+    "http://www.buzzfeed.com/trending",
     ];
 //Starts up the hubot interface
 module.exports = function(robot) {
