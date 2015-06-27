@@ -12,6 +12,6 @@ module.exports = (robot) ->
   	robot.hear /(.*) am the hype!/i, (res) ->
     doorType = res.match[1]
     if doorType is "I"
-      res.reply "I am the hype!!"
+      res.reply "#{doorType} am the hype!!"
     else
       res.reply "somebody, somewhere is the hype!!"
