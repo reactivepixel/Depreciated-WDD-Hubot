@@ -23,6 +23,14 @@ module.exports = function(robot) {
         
         msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
     });
+    return robot.respond(/whats trending$/i, function(msg) {
+        
+        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
+    });
+    return robot.respond(/trending$/i, function(msg) {
+        
+        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
+    });
 };
 
 
