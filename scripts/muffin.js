@@ -16,6 +16,6 @@ module.exports = function(robot) {
 
   	// Respond to the muffin button
   	robot.respond(/wheres that button that makes blueberry muffins/i, function(msg) {
-  		return msg.send("Did you say muffin button?!" + " " + "https://www.youtube.com/watch?v=xpIeqU0OiAU");
+  		return msg.send("Sorry, a button that makes muffins does not exist. Well, unless it's an oven at 375 degrees.");
   	});
 };
