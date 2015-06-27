@@ -1,9 +1,6 @@
 // Description
 // Do you believe your own hype?
 //
-// Commands
-// Hubot muffin button 
-//
 // Author
 // Erick Sitter
 
