@@ -11,7 +11,7 @@
 module.exports = function(robot){
 	
 	return robot.hear(/dwp_class/i, function(msg){
-		msg.send("This is the Deployment of Web Applications for the Web Design and Development program at Full Sail University.");
+		msg.send("This is the Deployment of Web Applications class for the Web Design and Development program at Full Sail University.");
 	});
 
 };
