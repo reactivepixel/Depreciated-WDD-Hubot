@@ -9,7 +9,7 @@
     
 module.exports = function(robot) {
   robot.respond(/PING$/i, function(msg) {
-    return msg.send("PONG!");
+    return msg.send("PONG test ");
   });
   robot.respond(/ADAPTER$/i, function(msg) {
     return msg.send(robot.adapterName);
