@@ -12,19 +12,23 @@
 // author: Shye TG
 // shye@fuillsail.edu
 
-var request = require('request');
+  robot.http("http://whatstrending.com/categories/trending-now")
+    .header('Accept', 'application/json')
+    .get() (err, res, body) ->
+      // err & response status checking code here
 
-module.exports = function (robot) {
-    
-    
-    //whats trending?
-    robot.respond(/whats trending?/i, function (msg) {
-        
-        //Make hubot respond with URL
-        msg.send("http://whatstrending.com/categories/trending-now");
-        
-       
+      if response.getHeader('Content-Type') isnt 'application/json'
+        res.send "Didn't get back JSON :("
+        return
 
+      data = null
+      try
+        data = JSON.parse body
+      catch error
+       res.send "Ran into an error parsing JSON :("
+       return
+
+      
 //module.exports = function(robot) {
 //    robot.hear(/trending$/i, function(msg) {
 //        return msg.send('https://twitter.com/whatstrending');
