@@ -13,9 +13,9 @@
 // shye@fuillsail.edu
 
   var trend = [
-   "https://twitter.com/hashtag/trending",
-   "http://whatstrending.com/categories/trending-now",
-   "http://www.buzzfeed.com/trending",
+   "twitter" + "https://twitter.com/hashtag/trending",
+   "what's trending" + "http://whatstrending.com/categories/trending-now",
+   "buzz feed" + "http://www.buzzfeed.com/trending",
     ];
 //Starts up the hubot interface
 module.exports = function(robot) {
