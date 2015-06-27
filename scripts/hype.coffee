@@ -9,9 +9,9 @@ module.exports = (robot) ->
   	robot.hear /do you believe your own hype?/i, (msg) ->
   		msg.send "I am the HYPE!!"
   	
-  	robot.respond /open the (.*) doors/i, (res) ->
+  	robot.respond /(.*) am the hype/i, (res) ->
     doorType = res.match[1]
-    if doorType is "pod bay"
-      res.reply "I'm afraid I can't let you do that."
+    if doorType is "I"
+      res.reply "I am the hype!!"
     else
-      res.reply "Opening #{doorType} doors"
+      res.reply "somebody, somewhere is the hype!!"
