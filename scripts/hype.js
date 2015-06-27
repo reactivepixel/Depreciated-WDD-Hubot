@@ -12,7 +12,7 @@ module.exports = function(robot) {
 
     robot.respond(/(.*) am the hype/i, function(msg) {
       hypemaster = msg.match[1]
-      if (hypemaster == "I am") {
+      if (hypemaster == "I") {
         return msg.send("the hype!!")
       }
       else {
