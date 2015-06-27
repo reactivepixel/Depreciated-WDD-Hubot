@@ -28,7 +28,7 @@
             msEachDay = 24 * 60 * 60 * 1000;
             
             //calculate the days remaining until the release date
-            daysRemaining = (eventDate - now)/msEachDay;
+            daysRemaining = (releaseDate - currentDate)/msEachDay;
                     
             //round the number of days remaining
             daysRemaining = Math.round(daysRemaining);
