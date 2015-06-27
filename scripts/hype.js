@@ -1,24 +1,22 @@
-// Description:
-//   Hubot listens eagerly for the word 'hype' to be used, so he can play your hype man
+// Description
+// Do you believe your own hype?
 //
-// Dependencies:
-//   Hear
-//
-// Configuration:
-//   None
-//
-// Commands:
-//   Hubot hears 'hype'
-//
-// Author:
-//  Harmony Betancourt
+// Author
+// Erick Sitter
 
-// Listens for the word 'hype' 
-module.exports = function (robot) {
-  "use strict";
-  // Anytime the word 'hype' is used by a user
-  return robot.hear(/hype/i, function (msg) {
-    // Hubot responds as any good hype man would
-    msg.send("WHAT!!!! OKAY!!! YEAH BOI!!!");
-  });
-}
+// Lets press that button!
+module.exports = function(robot) {
+  	// I want to believe
+  	robot.respond(/do you believe your own hype?/i, function(msg) {
+  		return msg.send("I am the HYPE!!");
+  	});
+  	robot.hear(/(.*) am the HYPE!!/i, function(msg) {
+  		hype = msg.match[1]
+  		if (hype == "I") {
+  			return msg.send("I am the HYPE!!");
+  		}
+  		else {
+  			return msg.send("Somebody, somewhere is the HYPE!!");
+  		};
+  	});
+};
