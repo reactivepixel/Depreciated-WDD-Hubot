@@ -19,18 +19,17 @@
     ];
 //Starts up the hubot interface
 module.exports = function(robot) {
-    return robot.respond(/what's trending$/i, function(msg) {
+    robot.respond(/what's trending$/i, function(msg) {
         
-        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
+    	return msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
     });
-    return robot.respond(/whats trending$/i, function(msg) {
+    robot.respond(/whats trending$/i, function(msg) {
         
-        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
+    	return msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
     });
-    return robot.respond(/trending$/i, function(msg) {
+    robot.respond(/trending$/i, function(msg) {
         
-        msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
+    	return msg.send("Here's what's trending on " + msg.random(trend) + " Check it out!");
     });
 };
-
 
