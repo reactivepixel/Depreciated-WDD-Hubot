@@ -20,7 +20,7 @@
 //Starts up the hubot interface
 module.exports = function(robot) {
     return robot.respond(/whats trending$/i, function(msg) {
-        //Picks a random trending site
-        msg.send(msg.random(trend) + "Check it out!");
+        
+        msg.send(msg.random(trend) + " Check it out!");
     });
 };
