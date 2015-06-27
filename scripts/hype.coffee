@@ -6,11 +6,12 @@
 
 module.exports = (robot) ->
   	# I want to believe
-  	robot.respond /do you believe your own hype?/i, (msg) ->
+  	robot.hear /do you believe your own hype?/i, (msg) ->
   		msg.send "I am the HYPE!!"
-  	robot.hear /(.*) am the hype/i, (msg) ->
-  		hype = msg.match[1]
-  		if hype is "I"
-  		  msg.reply "I am the HYPE!!"
-  		else 
-  			msg.reply "Somebody, somewhere is the HYPE!!"
+  	
+  	robot.respond /open the (.*) doors/i, (res) ->
+    doorType = res.match[1]
+    if doorType is "pod bay"
+      res.reply "I'm afraid I can't let you do that."
+    else
+      res.reply "Opening #{doorType} doors"
