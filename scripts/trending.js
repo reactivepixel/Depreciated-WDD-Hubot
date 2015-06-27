@@ -21,7 +21,7 @@
 module.exports = function(robot) {
     return robot.respond(/what's trending$/i, function(msg) {
         
-        msg.send(msg.random(trend) + " Check it out!");
+        msg.send("Here's what's trening on " + msg.random(trend) + " Check it out!");
     });
 };
 
