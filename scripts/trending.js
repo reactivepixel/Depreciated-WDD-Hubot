@@ -16,14 +16,12 @@ var request = require('request');
 
 module.exports = function (robot) {
     
-    //the URL to twitter
-    var URL = 'https://twitter.com/whatstrending';
     
     //whats trending?
     robot.respond(/whats trending?/i, function (msg) {
         
         //Make hubot respond with URL
-        msg.send("URL");
+        msg.send("http://whatstrending.com/categories/trending-now");
         
        
 
