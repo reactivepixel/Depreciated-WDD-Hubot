@@ -15,6 +15,9 @@ module.exports = function(robot) {
       if (hypemaster == "I am") {
         return msg.send("the hype!!")
       }
+      else {
+        return msg.send("Somebody, somewhere is the hype!")
+      }
     });
     robot.respond(/response test/i, function(msg) {
       return msg.send("Test");
