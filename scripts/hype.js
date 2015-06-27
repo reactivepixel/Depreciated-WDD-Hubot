@@ -13,13 +13,10 @@ module.exports = function(robot) {
     robot.respond(/(.*) am the hype/i, function(msg) {
       hypemaster = msg.match[1]
       if (hypemaster == "I") {
-        return msg.send("#{hypemaster} the hype!!")
+        return msg.reply("No, no you're not!")
       }
       else {
-        return msg.send("Somebody, somewhere is the hype!")
+        return msg.reply("Somebody, somewhere is the hype!")
       }
-    });
-    robot.respond(/response test/i, function(msg) {
-      return msg.send("Test");
     });
 };
