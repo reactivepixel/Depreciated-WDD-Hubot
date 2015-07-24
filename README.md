@@ -157,6 +157,6 @@ Once you are up and running with a prompt you can interact with Hubot by typing 
 
 ## Development
 
-Take a look at the scr1ipts in the `./scripts` folder for examples.
+Take a look at the scripts in the `./scripts` folder for examples.
 Add whatever functionality you want Hubot to have. Read up on what you can do with Hubot in the [Scripting Guide][scriptingGuide].
 
