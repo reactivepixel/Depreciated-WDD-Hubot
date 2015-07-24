@@ -81,19 +81,19 @@ Authenticate with Heroku for the first time using the command line:
 
     $ heroku login
 
-Enter you user credentials and you should see the message **Authentication successful.**. Alternatively, you may be presented with a message about a **Public Key**. This is the key we generated and shared with Github previously and there are two different messages that may be displayed asking you how to proceed:
+Enter you user credentials and you should see the message **Authentication successful.**. Alternatively, you may be presented with a message about a **Public Key**. This is the key we generated and shared with GitHub previously and there are two different messages that may be displayed asking you how to proceed:
 
 > Could not find an existing public key. Would you like to generate one? [Yn]
 
 In this case a ssh key was not found on your system and Heroku needs to generate one for you, simply press Y and Enter.
 
-> If you have multiple ssh keys on your computer (likely if you have previously used the Github GUI App) you are presented with a numbered list of each of your keys and asked to select one to use.
+> If you have multiple ssh keys on your computer (likely if you have previously used the GitHub GUI App) you are presented with a numbered list of each of your keys and asked to select one to use.
 
-Select any option that does not have **Github** in the name.
+Select any option that does not have **GitHub** in the name.
 
-### Github
+### GitHub
 
-Fork the [WDD-Hubot][wddhubot] Repo on Github.
+Fork the [WDD-Hubot][wddhubot] Repo on GitHub.
 
 Notate, for later use, the SSH clone URL for the forked repo that was just created on your account.
 
