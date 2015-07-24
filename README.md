@@ -22,11 +22,11 @@ This version is designed to be deployed on [Heroku][heroku].
 
 Code that you need to substitute will be written in angle brackets, like this: `hubot I am <your GitHub username>`. In this example, you'd substitute your GitHub username in the angle brackets.
 
-The symbol for your terminal prompt will be `$`, but `$` is also used to denote an environmental variable. You would enter the following into your terminal to display what username you were currently using:
+The symbol for your terminal prompt will be `$`, but `$` is also used to denote an environmental variable. When `$` is displayed first thing with a space immediately following it, you don't type it into the terminal. You would enter the following into your terminal to display what username you were currently using:
 
     $ whoami
     
-You would enter the following to figure out the search path for commands:
+You would enter the following into the terminal to figure out the search path for commands:
 
     $ echo $PATH
 
@@ -63,7 +63,7 @@ To install Homebrew, paste the following into your terminal prompt:
 
 ### NodeJS
 
-Use brew (short for Homebrew) to install Node.js and its bundled package manager, NPM. In your terminal, type
+Use brew (short for Homebrew) to install Node.js and its bundled package manager, NPM. In your terminal, type:
 
     $ brew install node
     
