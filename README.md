@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [brew]: http://brew.sh/
 [codeClimate]: https://codeclimate.com/github/reactivepixel/WDD-Hubot/badges/gpa.svg
 [heroku]: http://www.heroku.com
@@ -13,7 +12,6 @@
 # WDD-Hubot
 =======
 # WDD-Hubot (is awesome)
->>>>>>> 09dd2e32c114956d0f1bfc1fcebf42d597f2f23c
 
 ![Code Climate][codeClimate]
 
