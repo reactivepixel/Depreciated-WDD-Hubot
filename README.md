@@ -1,4 +1,4 @@
-# WDD-Hubot
+# WDD-Hubot (is awesome)
 
 [![Code Climate](https://codeclimate.com/github/reactivepixel/WDD-Hubot/badges/gpa.svg)](https://codeclimate.com/github/reactivepixel/WDD-Hubot)
 
