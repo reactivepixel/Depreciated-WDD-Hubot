@@ -10,8 +10,6 @@
 [xcode]: https://itunes.apple.com/us/app/xcode/id497799835
 
 # WDD-Hubot
-=======
-# WDD-Hubot (is awesome)
 
 ![Code Climate][codeClimate]
 
@@ -24,7 +22,7 @@ This version is designed to be deployed on [Heroku][heroku].
 
 Code that you need to substitute will be written in angle brackets, like this: `hubot I am <your GitHub username>`. In this example, you'd substitute your GitHub username in the angle brackets.
 
-The symbol for your terminal prompt will be `$`, but `$` is also used to denote an environmental variable. When `$` is displayed first thing with a space immediately following it, you don't type it into the terminal. You would enter the following into your terminal to display what username you were currently using:
+The symbol for your terminal prompt will be `$`, but `$` could also used to denote an environmental variable. When `$` is displayed first thing with a space immediately following it, you don't type it into the terminal. You would enter the following into your terminal to display what username you were currently using:
 
     $ whoami
     
